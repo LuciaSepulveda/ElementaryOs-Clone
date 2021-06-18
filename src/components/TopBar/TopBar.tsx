@@ -1,4 +1,15 @@
-import {Flex, Text} from "@chakra-ui/react"
+import {Search2Icon} from "@chakra-ui/icons"
+import {
+  Grid,
+  Flex,
+  Menu,
+  MenuButton,
+  Text,
+  Button,
+  MenuList,
+  GridItem,
+  Spacer,
+} from "@chakra-ui/react"
 import * as React from "react"
 
 const TopBar: React.FC = () => {
@@ -78,18 +89,43 @@ const TopBar: React.FC = () => {
   }
 
   return (
-    <Flex bg="black" color="white" h="25px" justify="space-between">
-      <Text ml="5px" alignSelf="center" fontSize="small" fontWeight="bold">
-        Aplicaciones
-      </Text>
-      <Flex justify="space-between" w="17%">
+    <Flex bg="black" color="white" h="25px">
+      <Flex>
+        <Menu>
+          <MenuButton
+            as={Button}
+            leftIcon={<Search2Icon alignSelf="center" h={3} ml="5px" w={3} />}
+            style={{backgroundColor: "transparent", height: "20px", alignSelf: "center"}}
+          >
+            <Text alignSelf="center" fontSize="small" fontWeight="bold" ml="5px">
+              Aplicaciones
+            </Text>
+          </MenuButton>
+          <MenuList
+            bg="#313131"
+            border="0px"
+            boxShadow="xl"
+            color="black"
+            style={{width: "650px", marginLeft: "10px"}}
+          >
+            <Grid gap={2} templateColumns="repeat(5, 1fr)">
+              <GridItem>hola</GridItem>
+              <GridItem>Nose</GridItem>
+            </Grid>
+          </MenuList>
+        </Menu>
+      </Flex>
+      <Spacer />
+      <Flex w="150px">
         <Text alignSelf="center" fontSize="small" fontWeight="bold">
           {day} {month} de {date.getDate().toString()}
         </Text>
+        <Spacer />
         <Text alignSelf="center" fontSize="small" fontWeight="bold">
           {date.toLocaleTimeString()}
         </Text>
       </Flex>
+      <Spacer />
       <Text mr="5px">Iconos</Text>
     </Flex>
   )

@@ -7,6 +7,8 @@ import TopBar from "../components/TopBar/TopBar"
 import Window from "../components/Window/Window"
 
 const App: React.FC = () => {
+  const constraintRef = React.useRef(null)
+
   return (
     <Box
       backgroundImage={fondo}
@@ -16,9 +18,7 @@ const App: React.FC = () => {
       w="100%"
     >
       <TopBar />
-      <motion.div
-        style={{width: "100%", height: "100%", backgroundColor: "red", overflow: "hidden"}}
-      >
+      <motion.div ref={constraintRef} style={{width: "100%", height: "95%", overflow: "hidden"}}>
         <Window />
       </motion.div>
     </Box>
