@@ -1,4 +1,4 @@
-import {Search2Icon} from "@chakra-ui/icons"
+import {Search2Icon, MoonIcon} from "@chakra-ui/icons"
 import {
   Grid,
   Flex,
@@ -89,7 +89,7 @@ const TopBar: React.FC = () => {
   }
 
   return (
-    <Flex bg="black" color="white" h="25px">
+    <Flex bg="black" color="white" h="26px">
       <Flex>
         <Menu>
           <MenuButton
@@ -116,7 +116,7 @@ const TopBar: React.FC = () => {
         </Menu>
       </Flex>
       <Spacer />
-      <Flex w="150px">
+      <Flex ml="-70px" w="150px">
         <Text alignSelf="center" fontSize="small" fontWeight="bold">
           {day} {month} de {date.getDate().toString()}
         </Text>
@@ -126,7 +126,9 @@ const TopBar: React.FC = () => {
         </Text>
       </Flex>
       <Spacer />
-      <Text mr="5px">Iconos</Text>
+      <Flex alignSelf="center" mr="10px">
+        <MoonIcon />
+      </Flex>
     </Flex>
   )
 }
