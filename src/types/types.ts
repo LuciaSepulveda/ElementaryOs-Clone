@@ -3,6 +3,7 @@ export interface Program {
   img: string
   open: boolean
   maximized: boolean
+  minimized: boolean
 }
 
 export enum Status {

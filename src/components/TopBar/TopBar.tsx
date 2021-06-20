@@ -9,13 +9,31 @@ import {
   MenuList,
   GridItem,
   Spacer,
+  Image,
+  VStack,
+  Input,
 } from "@chakra-ui/react"
 import * as React from "react"
 
+import {usePrograms, useOpenProgram} from "../../context/hooks"
+
 const TopBar: React.FC = () => {
+  const [search, setSearch] = React.useState<string>("")
   const [date, setDate] = React.useState<Date>(new Date())
+  const programs = usePrograms()
+  const openProgram = useOpenProgram()
   let day = ""
   let month = ""
+
+  const cantPrograms = () => {
+    if (programs.length > 3) {
+      return Math.round(programs.length / 2)
+    } else return programs.length
+  }
+
+  const handleChange = (event: {target: {value: React.SetStateAction<string>}}) => {
+    setSearch(event.target.value)
+  }
 
   switch (date.getDay().toString()) {
     case "1":
@@ -89,8 +107,8 @@ const TopBar: React.FC = () => {
   }
 
   return (
-    <Flex bg="black" color="white" h="26px">
-      <Flex>
+    <Flex bg="black" color="white" h="26px" position="sticky">
+      <Flex style={{transition: "0.2s"}}>
         <Menu>
           <MenuButton
             as={Button}
@@ -106,12 +124,49 @@ const TopBar: React.FC = () => {
             border="0px"
             boxShadow="xl"
             color="black"
-            style={{width: "650px", marginLeft: "10px"}}
+            style={{marginLeft: "10px"}}
           >
-            <Grid gap={2} templateColumns="repeat(5, 1fr)">
-              <GridItem>hola</GridItem>
-              <GridItem>Nose</GridItem>
-            </Grid>
+            <VStack>
+              <Input
+                alignSelf="center"
+                color="white"
+                h="20%"
+                mt="2%"
+                value={search}
+                w="70%"
+                onChange={handleChange}
+              />
+              <Grid gap={6} p={6} templateColumns={`repeat(${cantPrograms()}, 1fr)`}>
+                {search === "" &&
+                  programs.map((elem) => {
+                    return (
+                      <GridItem key={elem.name} m="10px">
+                        <VStack as="button" onClick={() => openProgram(elem)}>
+                          <Image h="50px" src={elem.img} w="50px" />
+                          <Text color="white" fontSize="small">
+                            {elem.name}
+                          </Text>
+                        </VStack>
+                      </GridItem>
+                    )
+                  })}
+                {search !== "" &&
+                  programs
+                    .filter((elem) => elem.name.toLowerCase().includes(search.toLowerCase()))
+                    .map((elem) => {
+                      return (
+                        <GridItem key={elem.name} m="10px">
+                          <VStack as="button" onClick={() => openProgram(elem)}>
+                            <Image h="50px" src={elem.img} w="50px" />
+                            <Text color="white" fontSize="small">
+                              {elem.name}
+                            </Text>
+                          </VStack>
+                        </GridItem>
+                      )
+                    })}
+              </Grid>
+            </VStack>
           </MenuList>
         </Menu>
       </Flex>

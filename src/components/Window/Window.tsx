@@ -2,14 +2,14 @@ import {Box, Flex, Button} from "@chakra-ui/react"
 import {motion} from "framer-motion"
 import * as React from "react"
 
-import {useCloseProgram, useMaximizedProgram} from "../../context/hooks"
+import {useCloseProgram, useMaximizedProgram, usePrograms} from "../../context/hooks"
 import {Program} from "../../types/types"
 
 interface Props {
   program: Program
 }
 
-const Window: React.FC<Props> = ({program}) => {
+const Window: React.FC<Props> = ({program, children}) => {
   const constraintRef = React.useRef(null)
   const close = useCloseProgram()
   const maximized = useMaximizedProgram()
@@ -20,8 +20,7 @@ const Window: React.FC<Props> = ({program}) => {
         <motion.div
           ref={constraintRef}
           drag
-          dragConstraints={{top: -150, left: -150, right: 350, bottom: -50}}
-          style={{width: "100%", height: "100%", position: "absolute"}}
+          dragConstraints={{top: -100, left: -100, right: 350, bottom: 100}}
         >
           <Box
             bg="#242424"
@@ -29,9 +28,8 @@ const Window: React.FC<Props> = ({program}) => {
             borderColor="black"
             borderRadius="xl"
             boxShadow="lg"
-            h="60%"
             m="10%"
-            w="70%"
+            width="fit-content"
           >
             <Flex bg="#313131" borderTopRadius="xl" h="30px" w="100%">
               <Box
@@ -52,6 +50,7 @@ const Window: React.FC<Props> = ({program}) => {
                 h="15px"
                 ml="8px"
                 w="15px"
+                onClick={() => close(program)}
               />
               <Box
                 alignSelf="center"
@@ -64,7 +63,7 @@ const Window: React.FC<Props> = ({program}) => {
                 onClick={() => maximized(program)}
               />
             </Flex>
-            {program.name}
+            {children}
           </Box>
         </motion.div>
       )}
@@ -76,7 +75,7 @@ const Window: React.FC<Props> = ({program}) => {
           borderRadius="xl"
           borderTopRadius="none"
           boxShadow="lg"
-          h="98%"
+          h="95%"
           position="sticky"
           w="100%"
         >
@@ -99,6 +98,7 @@ const Window: React.FC<Props> = ({program}) => {
               h="15px"
               ml="8px"
               w="15px"
+              onClick={() => close(program)}
             />
             <Box
               alignSelf="center"
@@ -111,7 +111,7 @@ const Window: React.FC<Props> = ({program}) => {
               onClick={() => maximized(program)}
             />
           </Flex>
-          {program.name}
+          {children}
         </Box>
       )}
     </>

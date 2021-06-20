@@ -4,7 +4,13 @@ import projects from "../assets/layout.png"
 import {Program} from "../types/types"
 
 export const programs: Program[] = [
-  {name: "User", img: `${dev}`, open: true, maximized: false},
-  {name: "projects", img: `${projects}`, open: true, maximized: false},
-  {name: "info", img: `${disk}`, open: false, maximized: false},
+  {
+    name: "User",
+    img: `${dev}`,
+    open: true,
+    maximized: false,
+    minimized: false,
+  },
+  {name: "Projects", img: `${projects}`, open: false, maximized: false, minimized: false},
+  {name: "Info", img: `${disk}`, open: false, maximized: false, minimized: false},
 ]
