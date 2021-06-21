@@ -21,6 +21,7 @@ const Window: React.FC<Props> = ({program, children}) => {
           ref={constraintRef}
           drag
           dragConstraints={{top: -100, left: -100, right: 350, bottom: 100}}
+          style={{position: "absolute"}}
         >
           <Box
             bg="#242424"

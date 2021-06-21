@@ -6,6 +6,14 @@ export interface Program {
   minimized: boolean
 }
 
+export interface Project {
+  name: string
+  img: string
+  description: string
+  github: string
+  demo: string
+}
+
 export enum Status {
   loading = "loading",
   ready = "ready",

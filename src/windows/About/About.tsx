@@ -6,7 +6,7 @@ const About: React.FC = () => {
     <Grid bg="#07273B" h="500px" templateColumns="repeat(4, 1fr)" w="800px">
       <GridItem bg="#062132" colSpan={1} h="100%">
         <VStack>
-          <Box bg="#09334E" w="100%">
+          <Box bg="#09334E" w="100%" p={1}>
             <Text align="justify" color="white" fontSize="small" fontWeight="bold" ml="10px">
               ABOUT
             </Text>

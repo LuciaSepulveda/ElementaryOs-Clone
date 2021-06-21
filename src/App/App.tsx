@@ -8,6 +8,7 @@ import BottomBar from "../components/BottomBar/BottomBar"
 import TopBar from "../components/TopBar/TopBar"
 import Window from "../components/Window/Window"
 import About from "../windows/About"
+import Projects from "../windows/Projects"
 
 const App: React.FC = () => {
   const constraintRef = React.useRef(null)
@@ -20,7 +21,7 @@ const App: React.FC = () => {
       backgroundSize="cover"
       h="100vh"
       overflow="hidden"
-      position="fixed"
+      position="absolute"
       transition="0.1s"
       w="100%"
     >
@@ -31,6 +32,7 @@ const App: React.FC = () => {
             return (
               <Window key={elem.name} program={elem}>
                 {elem.name === "User" && <About />}
+                {elem.name === "Projects" && <Projects />}
               </Window>
             )
           if (elem.open === true && elem.maximized === true)
