@@ -13,6 +13,7 @@ export interface Context {
     openProgram: (program: Program) => void
     closeProgram: (program: Program) => void
     maximizedProgram: (program: Program) => void
+    minimizedProgram: (program: Program) => void
   }
 }
 
@@ -28,6 +29,7 @@ const UserProvider: React.FC = ({children}) => {
 
   function handleOpenProgram(p: Program) {
     p.open = true
+    p.minimized = false
     setStatus(Status.update)
   }
 
@@ -38,6 +40,12 @@ const UserProvider: React.FC = ({children}) => {
 
   function handleMaximizedProgram(p: Program) {
     p.maximized = !p.maximized
+    p.minimized = false
+    setStatus(Status.update)
+  }
+
+  function handleMinimizedProgram(p: Program) {
+    p.minimized = true
     setStatus(Status.update)
   }
 
@@ -51,6 +59,7 @@ const UserProvider: React.FC = ({children}) => {
     openProgram: handleOpenProgram,
     closeProgram: handleCloseProgram,
     maximizedProgram: handleMaximizedProgram,
+    minimizedProgram: handleMinimizedProgram,
   }
 
   if (status === "update") {

@@ -49,3 +49,11 @@ export function useMaximizedProgram(): Context["actions"]["maximizedProgram"] {
 
   return maximizedProgram
 }
+
+export function useMinimizedProgram(): Context["actions"]["minimizedProgram"] {
+  const {
+    actions: {minimizedProgram},
+  } = React.useContext(UserContext)
+
+  return minimizedProgram
+}

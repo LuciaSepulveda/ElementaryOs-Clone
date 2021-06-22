@@ -12,6 +12,9 @@ import {
   Image,
   VStack,
   Input,
+  InputGroup,
+  InputLeftElement,
+  HStack,
 } from "@chakra-ui/react"
 import * as React from "react"
 
@@ -127,15 +130,20 @@ const TopBar: React.FC = () => {
             style={{marginLeft: "10px"}}
           >
             <VStack>
-              <Input
-                alignSelf="center"
-                color="white"
-                h="20%"
-                mt="2%"
-                value={search}
-                w="70%"
-                onChange={handleChange}
-              />
+              <InputGroup>
+                <HStack h="20px">
+                  <Search2Icon ml="10px" />
+                  <Input
+                    alignSelf="center"
+                    color="white"
+                    mt="2%"
+                    h="90%"
+                    value={search}
+                    w="90%"
+                    onChange={handleChange}
+                  />
+                </HStack>
+              </InputGroup>
               <Grid gap={6} p={6} templateColumns={`repeat(${cantPrograms()}, 1fr)`}>
                 {search === "" &&
                   programs.map((elem) => {
@@ -173,7 +181,7 @@ const TopBar: React.FC = () => {
       <Spacer />
       <Flex ml="-70px" w="150px">
         <Text alignSelf="center" fontSize="small" fontWeight="bold">
-          {day} {month} de {date.getDate().toString()}
+          {day} {date.getDate().toString()} de {month}
         </Text>
         <Spacer />
         <Text alignSelf="center" fontSize="small" fontWeight="bold">

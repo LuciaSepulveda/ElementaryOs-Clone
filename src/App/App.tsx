@@ -26,25 +26,30 @@ const App: React.FC = () => {
       w="100%"
     >
       <TopBar />
-      <motion.div ref={constraintRef} style={{width: "100%", height: "90%", overflow: "hidden"}}>
-        {programs.map((elem) => {
-          if (elem.open === true && elem.maximized === false)
-            return (
+      <motion.div ref={constraintRef} style={{width: "100%", height: "90%"}} />
+      {programs.map((elem) => {
+        if (elem.open === true && elem.maximized === false)
+          return (
+            <motion.div
+              drag
+              dragConstraints={constraintRef}
+              style={{position: "absolute", top: "100px", left: "25%"}}
+            >
               <Window key={elem.name} program={elem}>
                 {elem.name === "User" && <About />}
                 {elem.name === "Projects" && <Projects />}
               </Window>
-            )
-          if (elem.open === true && elem.maximized === true)
-            return (
-              <Window key={elem.name} program={elem}>
-                <Box bg="blue.900" h="100%" w="100%">
-                  hola
-                </Box>
-              </Window>
-            )
-        })}
-      </motion.div>
+            </motion.div>
+          )
+        if (elem.open === true && elem.maximized === true)
+          return (
+            <Window key={elem.name} program={elem}>
+              <Box bg="blue.900" h="100%" w="100%">
+                hola
+              </Box>
+            </Window>
+          )
+      })}
       <BottomBar programs={programs} />
     </Box>
   )

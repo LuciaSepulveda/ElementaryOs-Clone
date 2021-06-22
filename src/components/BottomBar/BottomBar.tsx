@@ -19,8 +19,8 @@ const BottomBar: React.FC<Props> = ({programs}) => {
       boxShadow="md"
       h="75px"
       m="auto"
-      mt="-10px"
-      p="1%"
+      mt="-12px"
+      p={1}
       position="sticky"
       w="fit-content"
     >
@@ -30,12 +30,12 @@ const BottomBar: React.FC<Props> = ({programs}) => {
           alignSelf="center"
           as="button"
           h="65px"
-          m="10px"
+          m="5px"
           w="60px"
           onClick={() => openProgram(elem)}
         >
           <Image alignSelf="center" h="50px" src={elem.img} w="50px" />
-          {elem.open === true && (
+          {(elem.open === true || elem.minimized === true) && (
             <Box
               bg="#01afff"
               borderRadius="50%"
@@ -44,7 +44,6 @@ const BottomBar: React.FC<Props> = ({programs}) => {
               w="3px"
             />
           )}
-          {elem.open === false && <Box bg="black" borderRadius="50%" h="8px" w="8px" />}
         </VStack>
       ))}
     </Flex>

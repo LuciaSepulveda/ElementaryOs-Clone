@@ -40,4 +40,11 @@ export const projects: Project[] = [
     description: "Aplicación de votación realtime",
     img: `${realtrends}`,
   },
+  {
+    name: "RealTrends Challenge",
+    github: "https://github.com/LuciaSepulveda/RealTrends-Challenge",
+    demo: "https://realtrends-challenge.netlify.app/",
+    description: "Aplicación de votación realtime",
+    img: `${realtrends}`,
+  },
 ]
