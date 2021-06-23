@@ -7,6 +7,7 @@ export interface Context {
   state: {
     status: Status
     programs: Program[]
+    noProgramsOpen: boolean
   }
   actions: {
     changeStatus: (status: Status) => void
@@ -22,6 +23,17 @@ const UserContext = React.createContext({} as Context)
 const UserProvider: React.FC = ({children}) => {
   const [status, setStatus] = React.useState<Status>(Status.loading)
   const [programs_, setPrograms] = React.useState<Program[]>(programs)
+  const [noProgramsOpen, setProgramsOpen] = React.useState<boolean>(false)
+
+  const handleCheckProgramsClose = () => {
+    let allClose = true
+
+    for (let i = 0; i < programs.length; i++) {
+      if (programs[i].open === true) allClose = false
+    }
+
+    setProgramsOpen(allClose)
+  }
 
   function handleChangeStatus(s: Status) {
     setStatus(s)
@@ -31,11 +43,14 @@ const UserProvider: React.FC = ({children}) => {
     p.open = true
     p.minimized = false
     setStatus(Status.update)
+    handleCheckProgramsClose()
   }
 
   function handleCloseProgram(p: Program) {
     p.open = false
+    p.minimized = false
     setStatus(Status.update)
+    handleCheckProgramsClose()
   }
 
   function handleMaximizedProgram(p: Program) {
@@ -47,11 +62,13 @@ const UserProvider: React.FC = ({children}) => {
   function handleMinimizedProgram(p: Program) {
     p.minimized = true
     setStatus(Status.update)
+    handleCheckProgramsClose()
   }
 
   const state: Context["state"] = {
     status,
     programs,
+    noProgramsOpen,
   }
 
   const actions = {

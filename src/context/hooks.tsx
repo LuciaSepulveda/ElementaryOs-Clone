@@ -18,6 +18,14 @@ export function usePrograms(): Context["state"]["programs"] {
   return programs
 }
 
+export function useNoProgramsOpen(): Context["state"]["noProgramsOpen"] {
+  const {
+    state: {noProgramsOpen},
+  } = React.useContext(UserContext)
+
+  return noProgramsOpen
+}
+
 export function useChangeStatus(): Context["actions"]["changeStatus"] {
   const {
     actions: {changeStatus},

@@ -26,7 +26,7 @@ const Projects: React.FC = () => {
         >
           <VStack color="white">
             <Text fontWeight="bold">{elem.name}</Text>
-            <Link href={elem.demo}>
+            <Link href={elem.demo} target="_blank">
               <Skeleton h="125px" isLoaded={loaded} w="100%">
                 <Image
                   ref={imageRef}
@@ -38,8 +38,8 @@ const Projects: React.FC = () => {
                 />
               </Skeleton>
             </Link>
-            <Link bg="white" borderRadius="md" href={elem.github}>
-              <Image alt="Logo github" h="20px" src={github} />
+            <Link bg="white" borderRadius="md" href={elem.github} target="_blank">
+              <Image h="20px" src={github} />
             </Link>
             <Box
               bg="#333333"

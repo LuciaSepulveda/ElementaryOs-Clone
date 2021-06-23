@@ -136,8 +136,8 @@ const TopBar: React.FC = () => {
                   <Input
                     alignSelf="center"
                     color="white"
-                    mt="2%"
                     h="90%"
+                    mt="2%"
                     value={search}
                     w="90%"
                     onChange={handleChange}
