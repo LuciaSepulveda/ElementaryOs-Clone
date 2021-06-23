@@ -26,6 +26,14 @@ export function useNoProgramsOpen(): Context["state"]["noProgramsOpen"] {
   return noProgramsOpen
 }
 
+export function useAnyProgramMaximized(): Context["state"]["anyProgramMaximized"] {
+  const {
+    state: {anyProgramMaximized},
+  } = React.useContext(UserContext)
+
+  return anyProgramMaximized
+}
+
 export function useChangeStatus(): Context["actions"]["changeStatus"] {
   const {
     actions: {changeStatus},

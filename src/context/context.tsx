@@ -8,6 +8,7 @@ export interface Context {
     status: Status
     programs: Program[]
     noProgramsOpen: boolean
+    anyProgramMaximized: boolean
   }
   actions: {
     changeStatus: (status: Status) => void
@@ -24,6 +25,7 @@ const UserProvider: React.FC = ({children}) => {
   const [status, setStatus] = React.useState<Status>(Status.loading)
   const [programs_, setPrograms] = React.useState<Program[]>(programs)
   const [noProgramsOpen, setProgramsOpen] = React.useState<boolean>(false)
+  const [anyProgramMaximized, setAnyProgramMaximized] = React.useState<boolean>(false)
 
   const handleCheckProgramsClose = () => {
     let allClose = true
@@ -33,6 +35,16 @@ const UserProvider: React.FC = ({children}) => {
     }
 
     setProgramsOpen(allClose)
+  }
+
+  const handleCheckProgramMaximized = () => {
+    let anyMaximized = false
+
+    for (let i = 0; i < programs.length; i++) {
+      if (programs[i].maximized === true) anyMaximized = true
+    }
+
+    setAnyProgramMaximized(anyMaximized)
   }
 
   function handleChangeStatus(s: Status) {
@@ -48,7 +60,7 @@ const UserProvider: React.FC = ({children}) => {
 
   function handleCloseProgram(p: Program) {
     p.open = false
-    p.minimized = false
+    p.maximized = false
     setStatus(Status.update)
     handleCheckProgramsClose()
   }
@@ -57,10 +69,13 @@ const UserProvider: React.FC = ({children}) => {
     p.maximized = !p.maximized
     p.minimized = false
     setStatus(Status.update)
+    handleCheckProgramsClose()
+    handleCheckProgramMaximized()
   }
 
   function handleMinimizedProgram(p: Program) {
     p.minimized = true
+    p.maximized = false
     setStatus(Status.update)
     handleCheckProgramsClose()
   }
@@ -69,6 +84,7 @@ const UserProvider: React.FC = ({children}) => {
     status,
     programs,
     noProgramsOpen,
+    anyProgramMaximized,
   }
 
   const actions = {

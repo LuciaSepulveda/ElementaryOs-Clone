@@ -29,7 +29,7 @@ const TopBar: React.FC = () => {
   let month = ""
 
   const cantPrograms = () => {
-    if (programs.length > 3) {
+    if (programs.length > 4) {
       return Math.round(programs.length / 2)
     } else return programs.length
   }

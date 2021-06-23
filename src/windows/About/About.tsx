@@ -6,7 +6,12 @@ import {ChevronRightIcon} from "@chakra-ui/icons"
 
 import {techs, info} from "../../data/data"
 
-const About: React.FC = () => {
+interface Props {
+  w: string
+  h: string
+}
+
+const About: React.FC<Props> = ({h, w}) => {
   const [state, setState] = React.useState<string>("about")
   const [update, setUpdate] = React.useState<boolean>(false)
 
@@ -24,14 +29,22 @@ const About: React.FC = () => {
   }, [update])
 
   return (
-    <VStack spacing="0px">
+    <VStack bg="green.700" borderRadius="xl" borderTopRadius="none" h={h} spacing="0px" w={w}>
       <Center w="100%">
         {state === "about" && <Text>Sobre mi -</Text>}
         {state === "tech" && <Text>Conocimientos -</Text>}
         <Text> Portfolio</Text>
       </Center>
-      <Grid bg="#07273B" gap={0} h="500px" templateColumns="repeat(4, 1fr)" w="800px">
-        <GridItem bg="#062132" colSpan={1}>
+      <Grid
+        bg="#07273B"
+        borderRadius="xl"
+        borderTopRadius="none"
+        gap={0}
+        h="100%"
+        templateColumns="repeat(4, 1fr)"
+        w="100%"
+      >
+        <GridItem bg="#062132" borderBottomLeftRadius="xl" colSpan={1}>
           <VStack>
             <Box bg="#09334E" p={1} w="100%">
               <Text align="justify" color="white" fontSize="small" fontWeight="bold" ml="10px">
