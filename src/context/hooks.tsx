@@ -34,6 +34,14 @@ export function useAnyProgramMaximized(): Context["state"]["anyProgramMaximized"
   return anyProgramMaximized
 }
 
+export function useSectionAbout(): Context["state"]["sectionAbout"] {
+  const {
+    state: {sectionAbout},
+  } = React.useContext(UserContext)
+
+  return sectionAbout
+}
+
 export function useChangeStatus(): Context["actions"]["changeStatus"] {
   const {
     actions: {changeStatus},
@@ -72,4 +80,20 @@ export function useMinimizedProgram(): Context["actions"]["minimizedProgram"] {
   } = React.useContext(UserContext)
 
   return minimizedProgram
+}
+
+export function useChangeSectionAbout(): Context["actions"]["changeSectionAbout"] {
+  const {
+    actions: {changeSectionAbout},
+  } = React.useContext(UserContext)
+
+  return changeSectionAbout
+}
+
+export function useCloseAllPrograms(): Context["actions"]["closeAllPrograms"] {
+  const {
+    actions: {closeAllPrograms},
+  } = React.useContext(UserContext)
+
+  return closeAllPrograms
 }

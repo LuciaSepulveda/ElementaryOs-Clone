@@ -1,8 +1,9 @@
 import {Box, Flex, Image, VStack, Link} from "@chakra-ui/react"
 import * as React from "react"
+import {useMediaQuery} from "react-responsive"
 
 import {Program} from "../../types/types"
-import {useOpenProgram} from "../../context/hooks"
+import {useCloseAllPrograms, useOpenProgram} from "../../context/hooks"
 
 interface Props {
   programs: Program[]
@@ -10,6 +11,8 @@ interface Props {
 
 const BottomBar: React.FC<Props> = ({programs}) => {
   const openProgram = useOpenProgram()
+  const isPortrait = useMediaQuery({query: "(orientation: portrait)"})
+  const closeAllPrograms = useCloseAllPrograms()
 
   return (
     <Flex
@@ -26,26 +29,54 @@ const BottomBar: React.FC<Props> = ({programs}) => {
       {programs.map((elem) => {
         if (elem.name !== "Mail")
           return (
-            <VStack
-              key={elem.name}
-              alignSelf="center"
-              as="button"
-              h="65px"
-              m="5px"
-              w="60px"
-              onClick={() => openProgram(elem)}
-            >
-              <Image alignSelf="center" h="55px" src={elem.img} w="50px" />
-              {(elem.open === true || elem.minimized === true) && (
-                <Box
-                  bg="#01afff"
-                  borderRadius="50%"
-                  boxShadow="0 0 17px 3px #01afff,0 0 4px 2px #01afff"
-                  h="3px"
-                  w="3px"
-                />
+            <>
+              {!isPortrait && (
+                <VStack
+                  key={elem.name}
+                  alignSelf="center"
+                  as="button"
+                  h="65px"
+                  m="5px"
+                  w="60px"
+                  onClick={() => openProgram(elem)}
+                >
+                  <Image alignSelf="center" h="55px" src={elem.img} w="50px" />
+                  {(elem.open === true || elem.minimized === true) && (
+                    <Box
+                      bg="#01afff"
+                      borderRadius="50%"
+                      boxShadow="0 0 17px 3px #01afff,0 0 4px 2px #01afff"
+                      h="3px"
+                      w="3px"
+                    />
+                  )}
+                </VStack>
               )}
-            </VStack>
+              {isPortrait && (
+                <VStack
+                  key={elem.name}
+                  alignSelf="center"
+                  as="button"
+                  h="65px"
+                  m="5px"
+                  w="60px"
+                  onClick={() => {
+                    openProgram(elem), closeAllPrograms(elem)
+                  }}
+                >
+                  <Image alignSelf="center" h="55px" src={elem.img} w="50px" />
+                  {(elem.open === true || elem.minimized === true) && (
+                    <Box
+                      bg="#01afff"
+                      borderRadius="50%"
+                      boxShadow="0 0 17px 3px #01afff,0 0 4px 2px #01afff"
+                      h="3px"
+                      w="3px"
+                    />
+                  )}
+                </VStack>
+              )}
+            </>
           )
         else
           return (

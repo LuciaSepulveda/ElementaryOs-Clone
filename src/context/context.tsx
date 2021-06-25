@@ -9,6 +9,7 @@ export interface Context {
     programs: Program[]
     noProgramsOpen: boolean
     anyProgramMaximized: boolean
+    sectionAbout: string
   }
   actions: {
     changeStatus: (status: Status) => void
@@ -16,6 +17,8 @@ export interface Context {
     closeProgram: (program: Program) => void
     maximizedProgram: (program: Program) => void
     minimizedProgram: (program: Program) => void
+    changeSectionAbout: (section: string) => void
+    closeAllPrograms: (program: Program) => void
   }
 }
 
@@ -26,6 +29,11 @@ const UserProvider: React.FC = ({children}) => {
   const [programs_, setPrograms] = React.useState<Program[]>(programs)
   const [noProgramsOpen, setProgramsOpen] = React.useState<boolean>(false)
   const [anyProgramMaximized, setAnyProgramMaximized] = React.useState<boolean>(false)
+  const [sectionAbout, setSectionAbout] = React.useState<string>("about")
+
+  const handleChangeSectionAbout = (s: string) => {
+    setSectionAbout(s)
+  }
 
   const handleCheckProgramsClose = () => {
     let allClose = true
@@ -63,6 +71,7 @@ const UserProvider: React.FC = ({children}) => {
     p.maximized = false
     setStatus(Status.update)
     handleCheckProgramsClose()
+    handleCheckProgramMaximized()
   }
 
   function handleMaximizedProgram(p: Program) {
@@ -80,11 +89,18 @@ const UserProvider: React.FC = ({children}) => {
     handleCheckProgramsClose()
   }
 
+  function handleCloseAllPrograms(p: Program) {
+    for (let i = 0; i !== programs.length; i++) {
+      if (programs[i].name !== p.name) handleCloseProgram(programs[i])
+    }
+  }
+
   const state: Context["state"] = {
     status,
     programs,
     noProgramsOpen,
     anyProgramMaximized,
+    sectionAbout,
   }
 
   const actions = {
@@ -93,6 +109,8 @@ const UserProvider: React.FC = ({children}) => {
     closeProgram: handleCloseProgram,
     maximizedProgram: handleMaximizedProgram,
     minimizedProgram: handleMinimizedProgram,
+    changeSectionAbout: handleChangeSectionAbout,
+    closeAllPrograms: handleCloseAllPrograms,
   }
 
   if (status === "update") {

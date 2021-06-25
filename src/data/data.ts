@@ -14,12 +14,12 @@ export const programs: Program[] = [
   {
     name: "User",
     img: `${dev}`,
-    open: true,
+    open: false,
     maximized: false,
     minimized: false,
   },
   {name: "Projects", img: `${project}`, open: false, maximized: false, minimized: false},
-  {name: "Contact", img: `${smart}`, open: false, maximized: false, minimized: false},
+  {name: "Contact", img: `${smart}`, open: true, maximized: false, minimized: false},
   {name: "Mail", img: `${mail}`, open: false, maximized: false, minimized: false},
 ]
 

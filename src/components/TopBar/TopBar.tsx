@@ -13,10 +13,11 @@ import {
   VStack,
   Input,
   InputGroup,
-  InputLeftElement,
+  Link,
   HStack,
 } from "@chakra-ui/react"
 import * as React from "react"
+import {useMediaQuery} from "react-responsive"
 
 import {usePrograms, useOpenProgram} from "../../context/hooks"
 
@@ -27,6 +28,7 @@ const TopBar: React.FC = () => {
   const openProgram = useOpenProgram()
   let day = ""
   let month = ""
+  const isPortrait = useMediaQuery({query: "(orientation: portrait)"})
 
   const cantPrograms = () => {
     if (programs.length > 4) {
@@ -115,7 +117,7 @@ const TopBar: React.FC = () => {
         <Menu>
           <MenuButton
             as={Button}
-            leftIcon={<Search2Icon alignSelf="center" h={3} ml="5px" w={3} />}
+            leftIcon={<Search2Icon alignSelf="center" h={3} ml={["0px", "5px"]} w={3} />}
             style={{backgroundColor: "transparent", height: "20px", alignSelf: "center"}}
           >
             <Text alignSelf="center" fontSize="small" fontWeight="bold" ml="5px">
@@ -149,12 +151,24 @@ const TopBar: React.FC = () => {
                   programs.map((elem) => {
                     return (
                       <GridItem key={elem.name} m="10px">
-                        <VStack as="button" onClick={() => openProgram(elem)}>
-                          <Image h="50px" src={elem.img} w="50px" />
-                          <Text color="white" fontSize="small">
-                            {elem.name}
-                          </Text>
-                        </VStack>
+                        {elem.name !== "Mail" && (
+                          <VStack as="button" onClick={() => openProgram(elem)}>
+                            <Image h="50px" src={elem.img} w="50px" />
+                            <Text color="white" fontSize="small">
+                              {elem.name}
+                            </Text>
+                          </VStack>
+                        )}
+                        {elem.name === "Mail" && (
+                          <Link h="100%" href="mailto:luciabsep18@gmail.com">
+                            <VStack key={elem.name}>
+                              <Image h="50px" src={elem.img} w="50px" />
+                              <Text color="white" fontSize="small">
+                                {elem.name}
+                              </Text>
+                            </VStack>
+                          </Link>
+                        )}
                       </GridItem>
                     )
                   })}
@@ -164,12 +178,24 @@ const TopBar: React.FC = () => {
                     .map((elem) => {
                       return (
                         <GridItem key={elem.name} m="10px">
-                          <VStack as="button" onClick={() => openProgram(elem)}>
-                            <Image h="50px" src={elem.img} w="50px" />
-                            <Text color="white" fontSize="small">
-                              {elem.name}
-                            </Text>
-                          </VStack>
+                          {elem.name !== "Mail" && (
+                            <VStack as="button" onClick={() => openProgram(elem)}>
+                              <Image h="50px" src={elem.img} w="50px" />
+                              <Text color="white" fontSize="small">
+                                {elem.name}
+                              </Text>
+                            </VStack>
+                          )}
+                          {elem.name === "Mail" && (
+                            <Link h="100%" href="mailto:luciabsep18@gmail.com">
+                              <VStack key={elem.name}>
+                                <Image h="50px" src={elem.img} w="50px" />
+                                <Text color="white" fontSize="small">
+                                  {elem.name}
+                                </Text>
+                              </VStack>
+                            </Link>
+                          )}
                         </GridItem>
                       )
                     })}
@@ -185,7 +211,7 @@ const TopBar: React.FC = () => {
         </Text>
         <Spacer />
         <Text alignSelf="center" fontSize="small" fontWeight="bold">
-          {date.toLocaleTimeString()}
+          {date.toLocaleTimeString().substring(5, -1)}
         </Text>
       </Flex>
       <Spacer />

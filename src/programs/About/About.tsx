@@ -5,6 +5,7 @@ import {Center, Box, Flex, Grid, GridItem, HStack, Text, VStack} from "@chakra-u
 import {ChevronRightIcon} from "@chakra-ui/icons"
 
 import {techs, info} from "../../data/data"
+import {useChangeSectionAbout} from "../../context/hooks"
 
 interface Props {
   w: string
@@ -14,10 +15,12 @@ interface Props {
 const About: React.FC<Props> = ({h, w}) => {
   const [state, setState] = React.useState<string>("about")
   const [update, setUpdate] = React.useState<boolean>(false)
+  const changeSection = useChangeSectionAbout()
 
   const updateState = (s: string) => {
     setUpdate(true)
     setState(s)
+    changeSection(s)
   }
 
   React.useEffect(() => {
@@ -30,11 +33,6 @@ const About: React.FC<Props> = ({h, w}) => {
 
   return (
     <VStack bg="green.700" borderRadius="xl" borderTopRadius="none" h={h} spacing="0px" w={w}>
-      <Center w="100%">
-        {state === "about" && <Text>Sobre mi -</Text>}
-        {state === "tech" && <Text>Conocimientos -</Text>}
-        <Text> Portfolio</Text>
-      </Center>
       <Grid
         bg="#07273B"
         borderRadius="xl"
