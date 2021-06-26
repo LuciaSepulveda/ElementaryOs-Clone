@@ -1,6 +1,7 @@
 import {Box, Center, Flex, Text} from "@chakra-ui/react"
 import {useMediaQuery} from "react-responsive"
 import * as React from "react"
+import {AnimatePresence, motion} from "framer-motion"
 
 import {
   useCloseProgram,
@@ -24,188 +25,211 @@ const Window: React.FC<Props> = ({program, children}) => {
   return (
     <>
       {program.maximized === false && !isPortrait && (
-        <Box
-          bg="#242424"
-          border="1px solid"
-          borderColor="black"
-          borderRadius="xl"
-          boxShadow="lg"
-          m="10%"
-          position="relative"
-          width="fit-content"
-          zIndex="1"
+        <motion.div
+          animate={{y: 0, scale: 1}}
+          exit={{scale: 0.5, y: -500}}
+          initial={{y: 500, scale: 0.2}}
+          transition={{duration: 0.5}}
         >
-          <Flex bg="#313131" borderTopRadius="xl" h="30px" w="100%">
-            <Box
-              alignSelf="center"
-              as="button"
-              bg="#EF5050"
-              borderRadius="50%"
-              h="15px"
-              ml="10px"
-              w="15px"
-              onClick={() => {
-                close(program)
-              }}
-            />
-            <Box
-              alignSelf="center"
-              as="button"
-              bg="#F6AD3B"
-              borderRadius="50%"
-              h="15px"
-              ml="8px"
-              w="15px"
-              onClick={() => {
-                minimized(program), close(program)
-              }}
-            />
-            <Box
-              alignSelf="center"
-              as="button"
-              bg="#4DC849"
-              borderRadius="50%"
-              h="15px"
-              ml="8px"
-              w="15px"
-              onClick={() => maximized(program)}
-            />
-            <Center w="85%">
-              {program.name === "User" && (
-                <Text color="white" fontWeight="bold">
-                  {section} -
+          <Box
+            bg="#242424"
+            border="1px solid"
+            borderColor="black"
+            borderRadius="xl"
+            boxShadow="lg"
+            m="10%"
+            position="relative"
+            width="fit-content"
+            zIndex="1"
+          >
+            <Flex bg="#313131" borderTopRadius="xl" h="30px" w="100%">
+              <Box
+                alignSelf="center"
+                as="button"
+                bg="#EF5050"
+                borderRadius="50%"
+                h="15px"
+                ml="10px"
+                w="15px"
+                onClick={() => {
+                  close(program)
+                }}
+              />
+              <Box
+                alignSelf="center"
+                as="button"
+                bg="#F6AD3B"
+                borderRadius="50%"
+                h="15px"
+                ml="8px"
+                w="15px"
+                onClick={() => {
+                  minimized(program), close(program)
+                }}
+              />
+              <Box
+                alignSelf="center"
+                as="button"
+                bg="#4DC849"
+                borderRadius="50%"
+                h="15px"
+                ml="8px"
+                w="15px"
+                onClick={() => maximized(program)}
+              />
+              <Center w="85%">
+                {program.name === "User" && (
+                  <Text color="white" fontWeight="bold">
+                    {section} -
+                  </Text>
+                )}
+                <Text color="white" fontWeight="bold" ml="5px">
+                  {program.name}
                 </Text>
-              )}
-              <Text color="white" fontWeight="bold" ml="5px">
-                {program.name}
-              </Text>
-            </Center>
-          </Flex>
-          {children}
-        </Box>
+              </Center>
+            </Flex>
+            {children}
+          </Box>
+        </motion.div>
       )}
       {program.maximized === true && !isPortrait && (
-        <Box
-          bg="#242424"
-          border="1px solid"
-          borderColor="black"
-          borderRadius="xl"
-          borderTopRadius="none"
-          boxShadow="lg"
-          h="90%"
-          position="relative"
-          w="100%"
-          zIndex="10"
+        <motion.div
+          animate={{scale: 1}}
+          exit={{scale: 0.5, y: -500}}
+          initial={{scale: 0.5}}
+          style={{height: "90%", width: "100%"}}
+          transition={{duration: 0.5}}
         >
-          <Flex bg="#313131" h="30px" w="100%">
-            <Box
-              alignSelf="center"
-              as="button"
-              bg="#EF5050"
-              borderRadius="50%"
-              h="15px"
-              ml="10px"
-              w="15px"
-              onClick={() => {
-                close(program)
-              }}
-            />
-            <Box
-              alignSelf="center"
-              as="button"
-              bg="#F6AD3B"
-              borderRadius="50%"
-              h="15px"
-              ml="8px"
-              w="15px"
-              onClick={() => {
-                minimized(program), close(program)
-              }}
-            />
-            <Box
-              alignSelf="center"
-              as="button"
-              bg="#4DC849"
-              borderRadius="50%"
-              h="15px"
-              ml="8px"
-              w="15px"
-              onClick={() => maximized(program)}
-            />
-            <Center w="95%">
-              {program.name === "User" && (
-                <Text color="white" fontWeight="bold">
-                  {section} -
+          <Box
+            bg="#242424"
+            border="1px solid"
+            borderColor="black"
+            borderRadius="xl"
+            borderTopRadius="none"
+            boxShadow="lg"
+            h="100%"
+            position="relative"
+            w="100%"
+            zIndex="10"
+          >
+            <Flex bg="#313131" h="30px" w="100%">
+              <Box
+                alignSelf="center"
+                as="button"
+                bg="#EF5050"
+                borderRadius="50%"
+                h="15px"
+                ml="10px"
+                w="15px"
+                onClick={() => {
+                  close(program)
+                }}
+              />
+              <Box
+                alignSelf="center"
+                as="button"
+                bg="#F6AD3B"
+                borderRadius="50%"
+                h="15px"
+                ml="8px"
+                w="15px"
+                onClick={() => {
+                  minimized(program), close(program)
+                }}
+              />
+              <Box
+                alignSelf="center"
+                as="button"
+                bg="#4DC849"
+                borderRadius="50%"
+                h="15px"
+                ml="8px"
+                w="15px"
+                onClick={() => maximized(program)}
+              />
+              <Center w="95%">
+                {program.name === "User" && (
+                  <Text color="white" fontWeight="bold">
+                    {section} -
+                  </Text>
+                )}
+                <Text color="white" fontWeight="bold" ml="5px">
+                  {program.name}
                 </Text>
-              )}
-              <Text color="white" fontWeight="bold" ml="5px">
-                {program.name}
-              </Text>
-            </Center>
-          </Flex>
-          {children}
-        </Box>
+              </Center>
+            </Flex>
+            {children}
+          </Box>
+        </motion.div>
       )}
       {isPortrait && (
-        <Box
-          bg="#242424"
-          border="1px solid"
-          borderColor="black"
-          borderRadius="xl"
-          borderTopRadius="none"
-          boxShadow="lg"
-          h={["84%", "90%"]}
-          position="relative"
-          w="100%"
+        <motion.div
+          animate={{y: 0, scale: 1}}
+          exit={{scale: 0.5, y: -500}}
+          initial={{y: 500, scale: 0.2}}
+          style={{height: "86%", width: "100%"}}
+          transition={{duration: 0.5}}
         >
-          <Flex bg="#313131" h="30px" w="100%">
-            <Box
-              alignSelf="center"
-              as="button"
-              bg="#EF5050"
-              borderRadius="50%"
-              h="15px"
-              ml="10px"
-              w="15px"
-              onClick={() => {
-                close(program)
-              }}
-            />
-            <Box
-              alignSelf="center"
-              as="button"
-              bg="#F6AD3B"
-              borderRadius="50%"
-              h="15px"
-              ml="8px"
-              w="15px"
-              onClick={() => {
-                minimized(program), close(program)
-              }}
-            />
-            <Box
-              alignSelf="center"
-              as="button"
-              bg="#4DC849"
-              borderRadius="50%"
-              h="15px"
-              ml="8px"
-              w="15px"
-              onClick={() => maximized(program)}
-            />
-            <Center w="85%">
-              {program.name === "User" && (
-                <Text color="white" fontWeight="bold">
-                  {section} -
+          <Box
+            bg="#242424"
+            border="1px solid"
+            borderColor="black"
+            borderRadius="xl"
+            borderTopRadius="none"
+            boxShadow="lg"
+            h="100%"
+            position="relative"
+            w="100%"
+          >
+            <Flex bg="#313131" h="30px" w="100%">
+              <Box
+                alignSelf="center"
+                as="button"
+                bg="#EF5050"
+                borderRadius="50%"
+                h="15px"
+                ml="10px"
+                w="15px"
+                onClick={() => {
+                  close(program)
+                }}
+              />
+              <Box
+                alignSelf="center"
+                as="button"
+                bg="#F6AD3B"
+                borderRadius="50%"
+                h="15px"
+                ml="8px"
+                w="15px"
+                onClick={() => {
+                  minimized(program), close(program)
+                }}
+              />
+              <Box
+                alignSelf="center"
+                as="button"
+                bg="#4DC849"
+                borderRadius="50%"
+                h="15px"
+                ml="8px"
+                w="15px"
+                onClick={() => maximized(program)}
+              />
+              <Center w="85%">
+                {program.name === "User" && (
+                  <Text color="white" fontWeight="bold">
+                    {section} -
+                  </Text>
+                )}
+                <Text color="white" fontWeight="bold" ml="5px">
+                  {program.name}
                 </Text>
-              )}
-              <Text color="white" fontWeight="bold" ml="5px">
-                {program.name}
-              </Text>
-            </Center>
-          </Flex>
-          {children}
-        </Box>
+              </Center>
+            </Flex>
+            {children}
+          </Box>
+        </motion.div>
       )}
     </>
   )

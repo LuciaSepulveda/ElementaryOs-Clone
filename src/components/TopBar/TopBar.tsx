@@ -115,7 +115,7 @@ const TopBar: React.FC = () => {
   }
 
   return (
-    <Flex bg="black" color="white" h="26px" position="sticky">
+    <Flex bg="black" color="white" h="26px">
       {!isPortrait && (
         <Flex style={{transition: "0.2s"}}>
           <Menu>
@@ -133,7 +133,7 @@ const TopBar: React.FC = () => {
               border="0px"
               boxShadow="xl"
               color="black"
-              style={{marginLeft: "10px", position: "fixed"}}
+              style={{marginLeft: "10px"}}
             >
               <VStack>
                 <InputGroup>

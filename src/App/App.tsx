@@ -1,6 +1,6 @@
 import {Box} from "@chakra-ui/react"
 import * as React from "react"
-import {motion} from "framer-motion"
+import {motion, AnimatePresence} from "framer-motion"
 import {useMediaQuery} from "react-responsive"
 
 import {useAnyProgramMaximized, useNoProgramsOpen, usePrograms} from "../context/hooks"
@@ -18,6 +18,10 @@ const App: React.FC = () => {
   const noProgramsOpen = useNoProgramsOpen()
   const anyProgramMaximized = useAnyProgramMaximized()
   const isPortrait = useMediaQuery({query: "(orientation: portrait)"})
+  const variants = {
+    open: {scaleX: 0.2, scaleY: 0, y: 500},
+    visible: {scaleX: 1, scaleY: 1, y: 0},
+  }
 
   return (
     <Box
@@ -27,7 +31,7 @@ const App: React.FC = () => {
       h="100vh"
       overflow="hidden"
       position="absolute"
-      transition="0.1s"
+      transition="0.2s"
       w="100%"
     >
       <TopBar />
@@ -43,7 +47,7 @@ const App: React.FC = () => {
                 </Window>
               )
           })}
-          {noProgramsOpen && <Box h={["84%", "90%"]} w="100%" />}
+          {noProgramsOpen && <Box h={["84%", "88%"]} w="100%" />}
         </>
       )}
       {!isPortrait && (
