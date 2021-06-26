@@ -1,5 +1,16 @@
 import * as React from "react"
-import {Grid, Center, GridItem, Image, Box, Skeleton, Text, VStack, Link} from "@chakra-ui/react"
+import {
+  Grid,
+  Center,
+  GridItem,
+  Image,
+  Box,
+  Skeleton,
+  Text,
+  VStack,
+  Link,
+  useColorModeValue,
+} from "@chakra-ui/react"
 import {useMediaQuery} from "react-responsive"
 
 import github from "../../assets/GitHub_Logo.png"
@@ -14,6 +25,10 @@ const Projects: React.FC<Props> = ({h, w}) => {
   const imageRef = React.useRef<HTMLImageElement>(null)
   const [loaded, setLoaded] = React.useState<boolean>(false)
   const isPortrait = useMediaQuery({query: "(orientation: portrait)"})
+  const bg = useColorModeValue("#FBFBFB", "#242424")
+  const bgItem = useColorModeValue("#A0A7AC", "#333333")
+  const border = useColorModeValue("2px solid #A0A7AC", "2px solid #333333")
+  const colorText = useColorModeValue("#242424", "#FBFBFB")
 
   React.useEffect(() => {
     if (!loaded && imageRef.current?.complete && imageRef.current?.naturalWidth > 0) {
@@ -22,17 +37,27 @@ const Projects: React.FC<Props> = ({h, w}) => {
   }, [loaded])
 
   return (
-    <Center alignItems="center" h="96%" w="100%">
+    <Center
+      alignItems="center"
+      bg={bg}
+      borderBottomRadius="xl"
+      h="96%"
+      transitionDuration="0.4s"
+      transitionTimingFunction="ease-in-out"
+      w="100%"
+    >
       {!isPortrait && (
         <Grid gap={4} h={h} p={2} templateColumns="repeat(3, 1fr)" w={w}>
           {projects.map((elem) => (
-            <GridItem
-              key={elem.name}
-              border="2px solid #333333"
-              borderBottomRadius="xl"
-              colSpan={1}
-            >
-              <VStack color="white" h="100%">
+            <GridItem key={elem.name} border={border} borderBottomRadius="xl" colSpan={1}>
+              <VStack
+                bg={bgItem}
+                borderBottomRadius="xl"
+                color={colorText}
+                h="100%"
+                transitionDuration="0.5s"
+                transitionTimingFunction="ease-in-out"
+              >
                 <Text fontWeight="bold">{elem.name}</Text>
                 <Link h="100%" href={elem.demo} target="_blank">
                   <Skeleton h="125px" isLoaded={loaded} w="100%">
@@ -50,10 +75,10 @@ const Projects: React.FC<Props> = ({h, w}) => {
                   <Image h="20px" src={github} />
                 </Link>
                 <Box
-                  bg="#333333"
+                  bg={bgItem}
                   borderBottomRadius="md"
                   boxShadow="md"
-                  h="50px"
+                  h="80px"
                   overflow="hidden"
                   p={1}
                   w="100%"
@@ -66,18 +91,19 @@ const Projects: React.FC<Props> = ({h, w}) => {
         </Grid>
       )}
       {isPortrait && (
-        <Grid h={h} p={1} templateColumns="repeat(2, 1fr)" w={w}>
+        <Grid gap={2} h={h} p={1} templateColumns="repeat(2, 1fr)" w={w}>
           {projects.map((elem) => (
-            <GridItem
-              key={elem.name}
-              border="2px solid #333333"
-              borderBottomRadius="xl"
-              colSpan={1}
-              h="fit-content"
-            >
-              <VStack color="white">
+            <GridItem key={elem.name} border={border} borderBottomRadius="xl" colSpan={1}>
+              <VStack
+                bg={bgItem}
+                borderBottomRadius="xl"
+                color={colorText}
+                h="100%"
+                transitionDuration="0.5s"
+                transitionTimingFunction="ease-in-out"
+              >
                 <Text fontWeight="bold">{elem.name}</Text>
-                <Link h="100%" href={elem.demo} target="_blank">
+                <Link h={["100%", "80%"]} href={elem.demo} target="_blank">
                   <Skeleton h="50px" isLoaded={loaded} w="100%">
                     <Image
                       ref={imageRef}
@@ -90,7 +116,7 @@ const Projects: React.FC<Props> = ({h, w}) => {
                   </Skeleton>
                 </Link>
                 <Box
-                  bg="#333333"
+                  bg={bgItem}
                   borderBottomRadius="md"
                   boxShadow="md"
                   h="50px"

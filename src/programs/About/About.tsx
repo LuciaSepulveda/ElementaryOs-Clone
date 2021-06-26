@@ -1,7 +1,7 @@
 import "@fontsource/jetbrains-mono/"
 
 import * as React from "react"
-import {Center, Box, Flex, Grid, GridItem, HStack, Text, VStack} from "@chakra-ui/react"
+import {Box, Grid, GridItem, HStack, Text, VStack, useColorModeValue} from "@chakra-ui/react"
 import {ChevronRightIcon} from "@chakra-ui/icons"
 
 import {techs, info} from "../../data/data"
@@ -16,6 +16,15 @@ const About: React.FC<Props> = ({h, w}) => {
   const [state, setState] = React.useState<string>("about")
   const [update, setUpdate] = React.useState<boolean>(false)
   const changeSection = useChangeSectionAbout()
+  const bgLeft = useColorModeValue("#E6F2F3", "#07273B")
+  const bgRight = useColorModeValue("#F4F6F6", "#07273B")
+  const bgLeftTop = useColorModeValue("#BEDEEF", "#09334E")
+  const text = useColorModeValue("#6F838D", "white")
+  const text1 = useColorModeValue("#FF5592", "#CA7692")
+  const text2 = useColorModeValue("#ED3F44", "#DF4F38")
+  const text3 = useColorModeValue("#AF8F27", "#D58929")
+  const text4 = useColorModeValue("#009BAF", "#46E991")
+  const colorCorchetes = useColorModeValue("#8DA6AC", "#568498")
 
   const updateState = (s: string) => {
     setUpdate(true)
@@ -32,28 +41,42 @@ const About: React.FC<Props> = ({h, w}) => {
   }, [update])
 
   return (
-    <VStack bg="green.700" borderRadius="xl" borderTopRadius="none" h={h} spacing="0px" w={w}>
+    <VStack borderRadius="xl" borderTopRadius="none" h={h} spacing="0px" w={w}>
       <Grid
-        bg="#07273B"
+        bg={bgRight}
         borderRadius="xl"
         borderTopRadius="none"
         gap={0}
         h="100%"
         templateColumns="repeat(4, 1fr)"
+        transitionDuration="0.4s"
+        transitionTimingFunction="ease-in-out"
         w="100%"
       >
-        <GridItem bg="#062132" borderBottomLeftRadius="xl" colSpan={1}>
+        <GridItem
+          bg={bgLeft}
+          borderBottomLeftRadius="xl"
+          colSpan={1}
+          transitionDuration="0.4s"
+          transitionTimingFunction="ease-in-out"
+        >
           <VStack>
-            <Box bg="#09334E" p={1} w="100%">
-              <Text align="justify" color="white" fontSize="small" fontWeight="bold" ml="10px">
+            <Box
+              bg={bgLeftTop}
+              p={1}
+              transitionDuration="0.4s"
+              transitionTimingFunction="ease-in-out"
+              w="100%"
+            >
+              <Text align="justify" color={text} fontSize="small" fontWeight="bold" ml="10px">
                 Portfolio
               </Text>
             </Box>
             <HStack w="100%">
               {state === "about" && (
                 <>
-                  <ChevronRightIcon color="white" />
-                  <Text align="justify" color="white" ml="10px">
+                  <ChevronRightIcon color={text} />
+                  <Text align="justify" color={text} ml="10px">
                     Sobre mi
                   </Text>
                 </>
@@ -62,7 +85,7 @@ const About: React.FC<Props> = ({h, w}) => {
                 <Text
                   align="justify"
                   as="button"
-                  color="white"
+                  color={text}
                   ml="10px"
                   onClick={() => updateState("about")}
                 >
@@ -73,9 +96,9 @@ const About: React.FC<Props> = ({h, w}) => {
             <HStack w="100%">
               {state === "tech" && (
                 <>
-                  <ChevronRightIcon color="white" />
-                  <Text align="justify" color="white" ml="10px">
-                    Conocimientos
+                  <ChevronRightIcon color={text} />
+                  <Text align="justify" color={text} ml="10px">
+                    Habilidades
                   </Text>
                 </>
               )}
@@ -83,7 +106,7 @@ const About: React.FC<Props> = ({h, w}) => {
                 <Text
                   align="justify"
                   as="button"
-                  color="white"
+                  color={text}
                   ml="10px"
                   onClick={() => updateState("tech")}
                 >
@@ -98,96 +121,96 @@ const About: React.FC<Props> = ({h, w}) => {
             {state === "about" && (
               <>
                 <HStack spacing="4px" w="100%">
-                  <Text color="#568498">{`<`}!</Text>
-                  <Text color="#CA7692">DOCTYPE html</Text>
-                  <Text color="#568498">{`>`}</Text>
+                  <Text color={colorCorchetes}>{`<`}!</Text>
+                  <Text color={text1}>DOCTYPE html</Text>
+                  <Text color={colorCorchetes}>{`>`}</Text>
                 </HStack>
                 <HStack spacing="4px" w="100%">
-                  <Text color="#568498">{`<`}</Text>
-                  <Text color="#DF4F38">html</Text>
-                  <Text color="#D58929"> lang</Text>
-                  <Text color="white">{`=`}</Text>
-                  <Text color="#46E991">{`"ES"`}</Text>
-                  <Text color="#568498">{`>`}</Text>
+                  <Text color={colorCorchetes}>{`<`}</Text>
+                  <Text color={text2}>html</Text>
+                  <Text color={text3}> lang</Text>
+                  <Text color={text}>{`=`}</Text>
+                  <Text color={text4}>{`"ES"`}</Text>
+                  <Text color={colorCorchetes}>{`>`}</Text>
                 </HStack>
                 <HStack ml="10%" spacing="4px" w="90%">
-                  <Text color="#568498">{`<`}</Text>
-                  <Text color="#DF4F38">head</Text>
-                  <Text color="#568498">{`>`}</Text>
+                  <Text color={colorCorchetes}>{`<`}</Text>
+                  <Text color={text2}>head</Text>
+                  <Text color={colorCorchetes}>{`>`}</Text>
                 </HStack>
                 <HStack ml="20%" spacing="4px" w="80%">
-                  <Text color="#568498">{`<`}</Text>
-                  <Text color="#DF4F38">title</Text>
-                  <Text color="#568498">{`>`}</Text>
-                  <Text color="white">Portfolio</Text>
-                  <Text color="#568498">{`</ `}</Text>
-                  <Text color="#DF4F38">title</Text>
-                  <Text color="#568498">{`>`}</Text>
+                  <Text color={colorCorchetes}>{`<`}</Text>
+                  <Text color={text2}>title</Text>
+                  <Text color={colorCorchetes}>{`>`}</Text>
+                  <Text color={text}>Portfolio</Text>
+                  <Text color={colorCorchetes}>{`</ `}</Text>
+                  <Text color={text2}>title</Text>
+                  <Text color={colorCorchetes}>{`>`}</Text>
                 </HStack>
                 <HStack ml="10%" spacing="4px" w="90%">
-                  <Text color="#568498">{`</ `}</Text>
-                  <Text color="#DF4F38">head</Text>
-                  <Text color="#568498">{`>`}</Text>
+                  <Text color={colorCorchetes}>{`</ `}</Text>
+                  <Text color={text2}>head</Text>
+                  <Text color={colorCorchetes}>{`>`}</Text>
                 </HStack>
                 <HStack ml="10%" spacing="4px" w="90%">
-                  <Text color="#568498">{`<`}</Text>
-                  <Text color="#DF4F38">body</Text>
-                  <Text color="#568498">{`>`}</Text>
+                  <Text color={colorCorchetes}>{`<`}</Text>
+                  <Text color={text2}>body</Text>
+                  <Text color={colorCorchetes}>{`>`}</Text>
                 </HStack>
                 <HStack ml="20%" spacing="4px" w="80%">
-                  <Text color="#568498">{`<`}</Text>
-                  <Text color="#DF4F38">h1</Text>
-                  <Text color="#568498">{`>`}</Text>
-                  <Text color="white">Lucia Sepulveda</Text>
-                  <Text color="#568498">{`</ `}</Text>
-                  <Text color="#DF4F38">h1</Text>
-                  <Text color="#568498">{`>`}</Text>
+                  <Text color={colorCorchetes}>{`<`}</Text>
+                  <Text color={text2}>h1</Text>
+                  <Text color={colorCorchetes}>{`>`}</Text>
+                  <Text color={text}>Lucia Sepulveda</Text>
+                  <Text color={colorCorchetes}>{`</ `}</Text>
+                  <Text color={text2}>h1</Text>
+                  <Text color={colorCorchetes}>{`>`}</Text>
                 </HStack>
                 {info.map((elem) => (
                   <HStack key={elem} ml="20%" spacing="4px" w="80%">
-                    <Text color="#568498">{`<`}</Text>
-                    <Text color="#DF4F38">p</Text>
-                    <Text color="#568498">{`>`}</Text>
-                    <Text color="white">{elem}</Text>
-                    <Text color="#568498">{`</ `}</Text>
-                    <Text color="#DF4F38">p</Text>
-                    <Text color="#568498">{`>`}</Text>
+                    <Text color={colorCorchetes}>{`<`}</Text>
+                    <Text color={text2}>p</Text>
+                    <Text color={colorCorchetes}>{`>`}</Text>
+                    <Text color={text}>{elem}</Text>
+                    <Text color={colorCorchetes}>{`</ `}</Text>
+                    <Text color={text2}>p</Text>
+                    <Text color={colorCorchetes}>{`>`}</Text>
                   </HStack>
                 ))}
                 <HStack ml="10%" spacing="4px" w="90%">
-                  <Text color="#568498">{`</ `}</Text>
-                  <Text color="#DF4F38">body</Text>
-                  <Text color="#568498">{`>`}</Text>
+                  <Text color={colorCorchetes}>{`</ `}</Text>
+                  <Text color={text2}>body</Text>
+                  <Text color={colorCorchetes}>{`>`}</Text>
                 </HStack>
                 <HStack spacing="4px" w="100%">
-                  <Text color="#568498">{`</ `}</Text>
-                  <Text color="#DF4F38">html</Text>
-                  <Text color="#568498">{`>`}</Text>
+                  <Text color={colorCorchetes}>{`</ `}</Text>
+                  <Text color={text2}>html</Text>
+                  <Text color={colorCorchetes}>{`>`}</Text>
                 </HStack>
               </>
             )}
             {state === "tech" && (
               <>
                 <HStack spacing="4px" w="100%">
-                  <Text color="#568498">{`<`}</Text>
-                  <Text color="#DF4F38">ul</Text>
-                  <Text color="#568498">{`>`}</Text>
+                  <Text color={colorCorchetes}>{`<`}</Text>
+                  <Text color={text2}>ul</Text>
+                  <Text color={colorCorchetes}>{`>`}</Text>
                 </HStack>
                 {techs.map((elem) => (
                   <HStack key={elem} ml="10%" spacing="4px" w="90%">
-                    <Text color="#568498">{`<`}</Text>
-                    <Text color="#DF4F38">li</Text>
-                    <Text color="#568498">{`>`}</Text>
-                    <Text color="white"> {elem} </Text>
-                    <Text color="#568498">{`</ `}</Text>
-                    <Text color="#DF4F38">li</Text>
-                    <Text color="#568498">{`>`}</Text>
+                    <Text color={colorCorchetes}>{`<`}</Text>
+                    <Text color={text2}>li</Text>
+                    <Text color={colorCorchetes}>{`>`}</Text>
+                    <Text color={text}> {elem} </Text>
+                    <Text color={colorCorchetes}>{`</ `}</Text>
+                    <Text color={text2}>li</Text>
+                    <Text color={colorCorchetes}>{`>`}</Text>
                   </HStack>
                 ))}
                 <HStack spacing="4px" w="100%">
-                  <Text color="#568498">{`</ `}</Text>
-                  <Text color="#DF4F38">ul</Text>
-                  <Text color="#568498">{`>`}</Text>
+                  <Text color={colorCorchetes}>{`</ `}</Text>
+                  <Text color={text2}>ul</Text>
+                  <Text color={colorCorchetes}>{`>`}</Text>
                 </HStack>
               </>
             )}

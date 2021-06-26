@@ -39,10 +39,11 @@ const App: React.FC = () => {
                 <Window key={elem.name} program={elem}>
                   {elem.name === "User" && <About h="96%" w="100%" />}
                   {elem.name === "Projects" && <Projects h="96%" w="90%" />}
+                  {elem.name === "Contact" && <Contact h="96%" w="100%" />}
                 </Window>
               )
           })}
-          {noProgramsOpen && <Box h="84%" w="100%" />}
+          {noProgramsOpen && <Box h={["84%", "90%"]} w="100%" />}
         </>
       )}
       {!isPortrait && (

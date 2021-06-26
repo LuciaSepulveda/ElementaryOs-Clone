@@ -1,5 +1,4 @@
 import dev from "../assets/developer.png"
-import disk from "../assets/floppy-disk1.png"
 import project from "../assets/layout1.png"
 import blackbox from "../assets/blackbox-vision.png"
 import aerolab from "../assets/aerolab.png"
@@ -8,18 +7,19 @@ import sambuche from "../assets/sambuche.png"
 import random from "../assets/randomQuote.png"
 import mail from "../assets/mailbox1.png"
 import smart from "../assets/smartphone1.png"
-import {Program, Project} from "../types/types"
+import github from "../assets/github.png"
+import {Program, Project, Social} from "../types/types"
 
 export const programs: Program[] = [
   {
     name: "User",
     img: `${dev}`,
-    open: false,
+    open: true,
     maximized: false,
     minimized: false,
   },
   {name: "Projects", img: `${project}`, open: false, maximized: false, minimized: false},
-  {name: "Contact", img: `${smart}`, open: true, maximized: false, minimized: false},
+  {name: "Contact", img: `${smart}`, open: false, maximized: false, minimized: false},
   {name: "Mail", img: `${mail}`, open: false, maximized: false, minimized: false},
 ]
 
@@ -59,6 +59,11 @@ export const projects: Project[] = [
     description: "Aplicación que muestra una frase random",
     img: `${random}`,
   },
+]
+
+export const social: Social[] = [
+  {name: "Github", link: "https://github.com/LuciaSepulveda", logo: `${github}`},
+  {name: "Github", link: "https://github.com/LuciaSepulveda", logo: `${github}`},
 ]
 
 export const techs: string[] = [

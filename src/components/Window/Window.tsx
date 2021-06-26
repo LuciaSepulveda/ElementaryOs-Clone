@@ -15,7 +15,6 @@ interface Props {
 }
 
 const Window: React.FC<Props> = ({program, children}) => {
-  const constraintRef = React.useRef(null)
   const close = useCloseProgram()
   const maximized = useMaximizedProgram()
   const minimized = useMinimizedProgram()
@@ -71,9 +70,13 @@ const Window: React.FC<Props> = ({program, children}) => {
               w="15px"
               onClick={() => maximized(program)}
             />
-            <Center w="90%">
-              {program.name === "User" && <Text color="white">{section} -</Text>}
-              <Text color="white" ml="5px">
+            <Center w="85%">
+              {program.name === "User" && (
+                <Text color="white" fontWeight="bold">
+                  {section} -
+                </Text>
+              )}
+              <Text color="white" fontWeight="bold" ml="5px">
                 {program.name}
               </Text>
             </Center>
@@ -94,7 +97,7 @@ const Window: React.FC<Props> = ({program, children}) => {
           w="100%"
           zIndex="10"
         >
-          <Flex bg="#313131" borderTopRadius="xl" h="30px" w="100%">
+          <Flex bg="#313131" h="30px" w="100%">
             <Box
               alignSelf="center"
               as="button"
@@ -129,6 +132,16 @@ const Window: React.FC<Props> = ({program, children}) => {
               w="15px"
               onClick={() => maximized(program)}
             />
+            <Center w="95%">
+              {program.name === "User" && (
+                <Text color="white" fontWeight="bold">
+                  {section} -
+                </Text>
+              )}
+              <Text color="white" fontWeight="bold" ml="5px">
+                {program.name}
+              </Text>
+            </Center>
           </Flex>
           {children}
         </Box>
@@ -145,7 +158,7 @@ const Window: React.FC<Props> = ({program, children}) => {
           position="relative"
           w="100%"
         >
-          <Flex bg="#313131" borderTopRadius="xl" h="30px" w="100%">
+          <Flex bg="#313131" h="30px" w="100%">
             <Box
               alignSelf="center"
               as="button"
@@ -180,6 +193,16 @@ const Window: React.FC<Props> = ({program, children}) => {
               w="15px"
               onClick={() => maximized(program)}
             />
+            <Center w="85%">
+              {program.name === "User" && (
+                <Text color="white" fontWeight="bold">
+                  {section} -
+                </Text>
+              )}
+              <Text color="white" fontWeight="bold" ml="5px">
+                {program.name}
+              </Text>
+            </Center>
           </Flex>
           {children}
         </Box>

@@ -1,6 +1,7 @@
-import {Box, Flex, Image, VStack, Link} from "@chakra-ui/react"
+import {Box, Flex, Image, VStack, Link, useColorModeValue} from "@chakra-ui/react"
 import * as React from "react"
 import {useMediaQuery} from "react-responsive"
+import {motion} from "framer-motion"
 
 import {Program} from "../../types/types"
 import {useCloseAllPrograms, useOpenProgram} from "../../context/hooks"
@@ -13,17 +14,20 @@ const BottomBar: React.FC<Props> = ({programs}) => {
   const openProgram = useOpenProgram()
   const isPortrait = useMediaQuery({query: "(orientation: portrait)"})
   const closeAllPrograms = useCloseAllPrograms()
+  const bgBar = useColorModeValue("rgba(255,255,255,0.2)", "rgba(0,0,0,0.3)")
 
   return (
     <Flex
       backdropFilter="blur(1px)"
-      bg="rgba(255,255,255,0.2)"
-      borderRadius="xl"
+      bg={bgBar}
+      borderRadius="2xl"
       boxShadow="md"
       h="75px"
       m="auto"
-      p={1}
+      p={2}
       position="sticky"
+      transitionDuration="0.4s"
+      transitionTimingFunction="ease-in-out"
       w="fit-content"
     >
       {programs.map((elem) => {
@@ -40,7 +44,12 @@ const BottomBar: React.FC<Props> = ({programs}) => {
                   w="60px"
                   onClick={() => openProgram(elem)}
                 >
-                  <Image alignSelf="center" h="55px" src={elem.img} w="50px" />
+                  <motion.div
+                    whileHover={{scale: 1.2, transition: {duration: 0.1}}}
+                    whileTap={{y: -200, transition: {duration: 0.5}}}
+                  >
+                    <Image alignSelf="center" h="50px" src={elem.img} w="50px" />
+                  </motion.div>
                   {(elem.open === true || elem.minimized === true) && (
                     <Box
                       bg="#01afff"
@@ -64,7 +73,12 @@ const BottomBar: React.FC<Props> = ({programs}) => {
                     openProgram(elem), closeAllPrograms(elem)
                   }}
                 >
-                  <Image alignSelf="center" h="55px" src={elem.img} w="50px" />
+                  <motion.div
+                    whileHover={{scale: 1.2}}
+                    whileTap={{y: -200, transition: {duration: 0.5}}}
+                  >
+                    <Image alignSelf="center" h="50px" src={elem.img} w="50px" />
+                  </motion.div>
                   {(elem.open === true || elem.minimized === true) && (
                     <Box
                       bg="#01afff"
@@ -81,8 +95,13 @@ const BottomBar: React.FC<Props> = ({programs}) => {
         else
           return (
             <Link h="100%" href="mailto:luciabsep18@gmail.com">
-              <VStack key={elem.name} alignSelf="center" h="65px" m="5px" w="60px">
-                <Image alignSelf="center" h="52px" src={elem.img} w="50px" />
+              <VStack key={elem.name} alignSelf="center" h="60px" m="5px" mt="0px" w="60px">
+                <motion.div
+                  whileHover={{scale: 1.2}}
+                  whileTap={{y: -200, transition: {duration: 0.5}}}
+                >
+                  <Image alignSelf="center" h="50px" src={elem.img} w="50px" />
+                </motion.div>
               </VStack>
             </Link>
           )

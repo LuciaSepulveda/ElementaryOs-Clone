@@ -1,5 +1,6 @@
-import {Search2Icon, MoonIcon} from "@chakra-ui/icons"
+import {Search2Icon, MoonIcon, SunIcon} from "@chakra-ui/icons"
 import {
+  Box,
   Grid,
   Flex,
   Menu,
@@ -15,6 +16,7 @@ import {
   InputGroup,
   Link,
   HStack,
+  useColorMode,
 } from "@chakra-ui/react"
 import * as React from "react"
 import {useMediaQuery} from "react-responsive"
@@ -29,6 +31,7 @@ const TopBar: React.FC = () => {
   let day = ""
   let month = ""
   const isPortrait = useMediaQuery({query: "(orientation: portrait)"})
+  const {colorMode, toggleColorMode} = useColorMode()
 
   const cantPrograms = () => {
     if (programs.length > 4) {
@@ -113,69 +116,43 @@ const TopBar: React.FC = () => {
 
   return (
     <Flex bg="black" color="white" h="26px" position="sticky">
-      <Flex style={{transition: "0.2s"}}>
-        <Menu>
-          <MenuButton
-            as={Button}
-            leftIcon={<Search2Icon alignSelf="center" h={3} ml={["0px", "5px"]} w={3} />}
-            style={{backgroundColor: "transparent", height: "20px", alignSelf: "center"}}
-          >
-            <Text alignSelf="center" fontSize="small" fontWeight="bold" ml="5px">
-              Aplicaciones
-            </Text>
-          </MenuButton>
-          <MenuList
-            bg="#313131"
-            border="0px"
-            boxShadow="xl"
-            color="black"
-            style={{marginLeft: "10px"}}
-          >
-            <VStack>
-              <InputGroup>
-                <HStack h="20px">
-                  <Search2Icon ml="10px" />
-                  <Input
-                    alignSelf="center"
-                    color="white"
-                    h="90%"
-                    mt="2%"
-                    value={search}
-                    w="90%"
-                    onChange={handleChange}
-                  />
-                </HStack>
-              </InputGroup>
-              <Grid gap={6} p={6} templateColumns={`repeat(${cantPrograms()}, 1fr)`}>
-                {search === "" &&
-                  programs.map((elem) => {
-                    return (
-                      <GridItem key={elem.name} m="10px">
-                        {elem.name !== "Mail" && (
-                          <VStack as="button" onClick={() => openProgram(elem)}>
-                            <Image h="50px" src={elem.img} w="50px" />
-                            <Text color="white" fontSize="small">
-                              {elem.name}
-                            </Text>
-                          </VStack>
-                        )}
-                        {elem.name === "Mail" && (
-                          <Link h="100%" href="mailto:luciabsep18@gmail.com">
-                            <VStack key={elem.name}>
-                              <Image h="50px" src={elem.img} w="50px" />
-                              <Text color="white" fontSize="small">
-                                {elem.name}
-                              </Text>
-                            </VStack>
-                          </Link>
-                        )}
-                      </GridItem>
-                    )
-                  })}
-                {search !== "" &&
-                  programs
-                    .filter((elem) => elem.name.toLowerCase().includes(search.toLowerCase()))
-                    .map((elem) => {
+      {!isPortrait && (
+        <Flex style={{transition: "0.2s"}}>
+          <Menu>
+            <MenuButton
+              as={Button}
+              leftIcon={<Search2Icon alignSelf="center" h={3} ml={["0px", "5px"]} w={3} />}
+              style={{backgroundColor: "transparent", height: "20px", alignSelf: "center"}}
+            >
+              <Text alignSelf="center" fontSize="small" fontWeight="bold" ml="5px">
+                Aplicaciones
+              </Text>
+            </MenuButton>
+            <MenuList
+              bg="#313131"
+              border="0px"
+              boxShadow="xl"
+              color="black"
+              style={{marginLeft: "10px", position: "fixed"}}
+            >
+              <VStack>
+                <InputGroup>
+                  <HStack h="20px" w="100%">
+                    <Search2Icon ml="10px" />
+                    <Input
+                      alignSelf="center"
+                      color="white"
+                      h="90%"
+                      mt="2%"
+                      value={search}
+                      w="90%"
+                      onChange={handleChange}
+                    />
+                  </HStack>
+                </InputGroup>
+                <Grid gap={6} p={6} templateColumns={`repeat(${cantPrograms()}, 1fr)`}>
+                  {search === "" &&
+                    programs.map((elem) => {
                       return (
                         <GridItem key={elem.name} m="10px">
                           {elem.name !== "Mail" && (
@@ -199,11 +176,40 @@ const TopBar: React.FC = () => {
                         </GridItem>
                       )
                     })}
-              </Grid>
-            </VStack>
-          </MenuList>
-        </Menu>
-      </Flex>
+                  {search !== "" &&
+                    programs
+                      .filter((elem) => elem.name.toLowerCase().includes(search.toLowerCase()))
+                      .map((elem) => {
+                        return (
+                          <GridItem key={elem.name} m="10px">
+                            {elem.name !== "Mail" && (
+                              <VStack as="button" onClick={() => openProgram(elem)}>
+                                <Image h="50px" src={elem.img} w="50px" />
+                                <Text color="white" fontSize="small">
+                                  {elem.name}
+                                </Text>
+                              </VStack>
+                            )}
+                            {elem.name === "Mail" && (
+                              <Link h="100%" href="mailto:luciabsep18@gmail.com">
+                                <VStack key={elem.name}>
+                                  <Image h="50px" src={elem.img} w="50px" />
+                                  <Text color="white" fontSize="small">
+                                    {elem.name}
+                                  </Text>
+                                </VStack>
+                              </Link>
+                            )}
+                          </GridItem>
+                        )
+                      })}
+                </Grid>
+              </VStack>
+            </MenuList>
+          </Menu>
+        </Flex>
+      )}
+      {!isPortrait && <Box w="20px" />}
       <Spacer />
       <Flex ml="-70px" w="150px">
         <Text alignSelf="center" fontSize="small" fontWeight="bold">
@@ -215,8 +221,9 @@ const TopBar: React.FC = () => {
         </Text>
       </Flex>
       <Spacer />
-      <Flex alignSelf="center" mr="10px">
-        <MoonIcon />
+      <Flex alignSelf="center" as="button" mr="10px" onClick={toggleColorMode}>
+        {colorMode === "light" && <MoonIcon />}
+        {colorMode !== "light" && <SunIcon />}
       </Flex>
     </Flex>
   )

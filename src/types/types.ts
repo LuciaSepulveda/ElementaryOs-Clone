@@ -19,3 +19,9 @@ export enum Status {
   ready = "ready",
   update = "update",
 }
+
+export interface Social {
+  name: string
+  link: string
+  logo: string
+}
