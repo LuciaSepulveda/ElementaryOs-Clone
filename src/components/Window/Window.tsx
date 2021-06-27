@@ -29,7 +29,6 @@ const Window: React.FC<Props> = ({program, children}) => {
           animate={{y: 0, scale: 1}}
           exit={{scale: 0.5, y: -500}}
           initial={{y: 500, scale: 0.2}}
-          transition={{duration: 0.5}}
         >
           <Box
             bg="#242424"
@@ -95,10 +94,8 @@ const Window: React.FC<Props> = ({program, children}) => {
       {program.maximized === true && !isPortrait && (
         <motion.div
           animate={{scale: 1}}
-          exit={{scale: 0.5, y: -500}}
           initial={{scale: 0.5}}
           style={{height: "90%", width: "100%"}}
-          transition={{duration: 0.5}}
         >
           <Box
             bg="#242424"
@@ -167,8 +164,7 @@ const Window: React.FC<Props> = ({program, children}) => {
           animate={{y: 0, scale: 1}}
           exit={{scale: 0.5, y: -500}}
           initial={{y: 500, scale: 0.2}}
-          style={{height: "86%", width: "100%"}}
-          transition={{duration: 0.5}}
+          style={{height: "85%", width: "100%"}}
         >
           <Box
             bg="#242424"

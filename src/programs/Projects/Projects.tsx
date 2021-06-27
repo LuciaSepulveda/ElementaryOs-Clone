@@ -42,7 +42,6 @@ const Projects: React.FC<Props> = ({h, w}) => {
       bg={bg}
       borderBottomRadius="xl"
       h="96%"
-      transitionDuration="0.4s"
       transitionTimingFunction="ease-in-out"
       w="100%"
     >
@@ -55,7 +54,6 @@ const Projects: React.FC<Props> = ({h, w}) => {
                 borderBottomRadius="xl"
                 color={colorText}
                 h="100%"
-                transitionDuration="0.5s"
                 transitionTimingFunction="ease-in-out"
               >
                 <Text fontWeight="bold">{elem.name}</Text>
@@ -99,7 +97,6 @@ const Projects: React.FC<Props> = ({h, w}) => {
                 borderBottomRadius="xl"
                 color={colorText}
                 h="100%"
-                transitionDuration="0.5s"
                 transitionTimingFunction="ease-in-out"
               >
                 <Text fontWeight="bold">{elem.name}</Text>

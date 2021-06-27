@@ -1,5 +1,5 @@
 import * as React from "react"
-import {Box, HStack, Image, VStack, Text, useColorModeValue, Link} from "@chakra-ui/react"
+import {Box, HStack, Image, VStack, Text, useColorModeValue, Skeleton} from "@chakra-ui/react"
 
 import {social} from "../../data/data"
 import draw from "../../assets/undraw_Social.png"
@@ -14,6 +14,14 @@ const Contact: React.FC<Props> = ({w, h}) => {
   const bgProgram = useColorModeValue("#FFFFFF", "#14202A")
   const colorText = useColorModeValue("#0F1419", "#E6F2F3")
   const border = useColorModeValue("#EFF3F4", "#37444C")
+  const imageRef = React.useRef<HTMLImageElement>(null)
+  const [loaded, setLoaded] = React.useState<boolean>(false)
+
+  React.useEffect(() => {
+    if (!loaded && imageRef.current?.complete && imageRef.current?.naturalWidth > 0) {
+      setLoaded(true)
+    }
+  }, [loaded])
 
   return (
     <VStack
@@ -22,7 +30,6 @@ const Contact: React.FC<Props> = ({w, h}) => {
       h={h}
       paddingLeft={2}
       paddingRight={2}
-      transitionDuration="0.4s"
       transitionTimingFunction="ease-in-out"
       w={w}
     >
@@ -34,12 +41,20 @@ const Contact: React.FC<Props> = ({w, h}) => {
         h="100%"
         maxWidth="600px"
         spacing={0}
-        transitionDuration="0.4s"
         transitionTimingFunction="ease-in-out"
-        w={["90%", "70%"]}
+        w={["100%", "70%"]}
       >
         <Box align="center" bg="white" mb={4} w="100%">
-          <Image h="150px" src={draw} />
+          <Skeleton h="150px" isLoaded={loaded} w="100%">
+            <Image
+              ref={imageRef}
+              h="150px"
+              src={draw}
+              onLoad={() => {
+                setLoaded(true)
+              }}
+            />
+          </Skeleton>
         </Box>
         {social.map((elem) => (
           <HStack
@@ -47,20 +62,18 @@ const Contact: React.FC<Props> = ({w, h}) => {
             border={`1px solid ${border}`}
             color={colorText}
             p={4}
-            spacing={5}
-            w="80%"
+            spacing={[2, 5]}
+            w="95%"
           >
-            <Image h="50px" src={elem.logo} />
+            <Image h={["40px", "50px"]} src={elem.logo} />
             <VStack alignItems="start" w="100%">
               <Text fontWeight="bold">{elem.name}</Text>
-              <Text as="a" href={elem.link}>
+              <Text as="a" href={elem.link} target="_blank">
                 {elem.link}
               </Text>
             </VStack>
           </HStack>
         ))}
-        <Text color="#76C4C0">Hola</Text>
-        <Text color="#A29AED">Hola</Text>
       </VStack>
     </VStack>
   )

@@ -26,7 +26,6 @@ const BottomBar: React.FC<Props> = ({programs}) => {
       m="auto"
       p={2}
       position="sticky"
-      transitionDuration="0.4s"
       transitionTimingFunction="ease-in-out"
       w="fit-content"
     >
@@ -94,8 +93,8 @@ const BottomBar: React.FC<Props> = ({programs}) => {
           )
         else
           return (
-            <Link h="100%" href="mailto:luciabsep18@gmail.com">
-              <VStack key={elem.name} alignSelf="center" h="60px" m="5px" mt="0px" w="60px">
+            <Link key={elem.name} h="100%" href="mailto:luciabsep18@gmail.com">
+              <VStack alignSelf="center" h="60px" m="5px" mt="0px" w="60px">
                 <motion.div
                   whileHover={{scale: 1.2}}
                   whileTap={{y: -200, transition: {duration: 0.5}}}

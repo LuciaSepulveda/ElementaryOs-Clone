@@ -4,7 +4,7 @@ import {motion, AnimatePresence} from "framer-motion"
 import {useMediaQuery} from "react-responsive"
 
 import {useAnyProgramMaximized, useNoProgramsOpen, usePrograms} from "../context/hooks"
-import fondo from "../assets/fondo.jpg"
+import fondo from "../assets/fondo1.jpg"
 import BottomBar from "../components/BottomBar/BottomBar"
 import TopBar from "../components/TopBar/TopBar"
 import Window from "../components/Window/Window"
@@ -31,7 +31,6 @@ const App: React.FC = () => {
       h="100vh"
       overflow="hidden"
       position="absolute"
-      transition="0.2s"
       w="100%"
     >
       <TopBar />
@@ -62,8 +61,9 @@ const App: React.FC = () => {
                   drag
                   dragConstraints={constraintRef}
                   style={{position: "absolute", top: "100px", left: "25%"}}
+                  key={elem.name}
                 >
-                  <Window key={elem.name} program={elem}>
+                  <Window program={elem}>
                     {elem.name === "User" && <About h="500px" w="800px" />}
                     {elem.name === "Projects" && <Projects h="fit-content" w="900px" />}
                     {elem.name === "Contact" && <Contact h="600px" w="800px" />}
@@ -75,6 +75,7 @@ const App: React.FC = () => {
                 <Window key={elem.name} program={elem}>
                   {elem.name === "User" && <About h="96%" w="100%" />}
                   {elem.name === "Projects" && <Projects h="80%" w="80%" />}
+                  {elem.name === "Contact" && <Contact h="80%" w="100%" />}
                 </Window>
               )
           })}

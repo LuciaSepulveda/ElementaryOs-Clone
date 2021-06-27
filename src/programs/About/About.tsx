@@ -41,7 +41,14 @@ const About: React.FC<Props> = ({h, w}) => {
   }, [update])
 
   return (
-    <VStack borderRadius="xl" borderTopRadius="none" h={h} spacing="0px" w={w}>
+    <VStack
+      borderRadius="xl"
+      borderTopRadius="none"
+      fontSize={["small", "md"]}
+      h={h}
+      spacing="0px"
+      w={w}
+    >
       <Grid
         bg={bgRight}
         borderRadius="xl"
@@ -49,7 +56,6 @@ const About: React.FC<Props> = ({h, w}) => {
         gap={0}
         h="100%"
         templateColumns="repeat(4, 1fr)"
-        transitionDuration="0.4s"
         transitionTimingFunction="ease-in-out"
         w="100%"
       >
@@ -57,17 +63,10 @@ const About: React.FC<Props> = ({h, w}) => {
           bg={bgLeft}
           borderBottomLeftRadius="xl"
           colSpan={1}
-          transitionDuration="0.4s"
           transitionTimingFunction="ease-in-out"
         >
           <VStack>
-            <Box
-              bg={bgLeftTop}
-              p={1}
-              transitionDuration="0.4s"
-              transitionTimingFunction="ease-in-out"
-              w="100%"
-            >
+            <Box bg={bgLeftTop} p={1} transitionTimingFunction="ease-in-out" w="100%">
               <Text align="justify" color={text} fontSize="small" fontWeight="bold" ml="10px">
                 Portfolio
               </Text>
@@ -120,12 +119,12 @@ const About: React.FC<Props> = ({h, w}) => {
           <VStack fontFamily="JetBrains Mono" spacing={0}>
             {state === "about" && (
               <>
-                <HStack spacing="4px" w="100%">
+                <HStack spacing={["1px", "4px"]} w="100%">
                   <Text color={colorCorchetes}>{`<`}!</Text>
                   <Text color={text1}>DOCTYPE html</Text>
                   <Text color={colorCorchetes}>{`>`}</Text>
                 </HStack>
-                <HStack spacing="4px" w="100%">
+                <HStack spacing={["1px", "4px"]} w="100%">
                   <Text color={colorCorchetes}>{`<`}</Text>
                   <Text color={text2}>html</Text>
                   <Text color={text3}> lang</Text>
@@ -133,12 +132,12 @@ const About: React.FC<Props> = ({h, w}) => {
                   <Text color={text4}>{`"ES"`}</Text>
                   <Text color={colorCorchetes}>{`>`}</Text>
                 </HStack>
-                <HStack ml="10%" spacing="4px" w="90%">
+                <HStack ml="10%" spacing={["1px", "4px"]} w="90%">
                   <Text color={colorCorchetes}>{`<`}</Text>
                   <Text color={text2}>head</Text>
                   <Text color={colorCorchetes}>{`>`}</Text>
                 </HStack>
-                <HStack ml="20%" spacing="4px" w="80%">
+                <HStack ml="20%" spacing={["1px", "4px"]} w="80%">
                   <Text color={colorCorchetes}>{`<`}</Text>
                   <Text color={text2}>title</Text>
                   <Text color={colorCorchetes}>{`>`}</Text>
@@ -147,17 +146,17 @@ const About: React.FC<Props> = ({h, w}) => {
                   <Text color={text2}>title</Text>
                   <Text color={colorCorchetes}>{`>`}</Text>
                 </HStack>
-                <HStack ml="10%" spacing="4px" w="90%">
+                <HStack ml="10%" spacing={["1px", "4px"]} w="90%">
                   <Text color={colorCorchetes}>{`</ `}</Text>
                   <Text color={text2}>head</Text>
                   <Text color={colorCorchetes}>{`>`}</Text>
                 </HStack>
-                <HStack ml="10%" spacing="4px" w="90%">
+                <HStack ml="10%" spacing={["1px", "4px"]} w="90%">
                   <Text color={colorCorchetes}>{`<`}</Text>
                   <Text color={text2}>body</Text>
                   <Text color={colorCorchetes}>{`>`}</Text>
                 </HStack>
-                <HStack ml="20%" spacing="4px" w="80%">
+                <HStack ml="20%" spacing={["1px", "4px"]} w="80%">
                   <Text color={colorCorchetes}>{`<`}</Text>
                   <Text color={text2}>h1</Text>
                   <Text color={colorCorchetes}>{`>`}</Text>
@@ -167,7 +166,7 @@ const About: React.FC<Props> = ({h, w}) => {
                   <Text color={colorCorchetes}>{`>`}</Text>
                 </HStack>
                 {info.map((elem) => (
-                  <HStack key={elem} ml="20%" spacing="4px" w="80%">
+                  <HStack key={elem} ml="20%" spacing={["1px", "4px"]} w="80%">
                     <Text color={colorCorchetes}>{`<`}</Text>
                     <Text color={text2}>p</Text>
                     <Text color={colorCorchetes}>{`>`}</Text>
@@ -177,12 +176,12 @@ const About: React.FC<Props> = ({h, w}) => {
                     <Text color={colorCorchetes}>{`>`}</Text>
                   </HStack>
                 ))}
-                <HStack ml="10%" spacing="4px" w="90%">
+                <HStack ml="10%" spacing={["1px", "4px"]} w="90%">
                   <Text color={colorCorchetes}>{`</ `}</Text>
                   <Text color={text2}>body</Text>
                   <Text color={colorCorchetes}>{`>`}</Text>
                 </HStack>
-                <HStack spacing="4px" w="100%">
+                <HStack spacing={["1px", "4px"]} w="100%">
                   <Text color={colorCorchetes}>{`</ `}</Text>
                   <Text color={text2}>html</Text>
                   <Text color={colorCorchetes}>{`>`}</Text>
@@ -191,13 +190,13 @@ const About: React.FC<Props> = ({h, w}) => {
             )}
             {state === "tech" && (
               <>
-                <HStack spacing="4px" w="100%">
+                <HStack spacing={["1px", "4px"]} w="100%">
                   <Text color={colorCorchetes}>{`<`}</Text>
                   <Text color={text2}>ul</Text>
                   <Text color={colorCorchetes}>{`>`}</Text>
                 </HStack>
                 {techs.map((elem) => (
-                  <HStack key={elem} ml="10%" spacing="4px" w="90%">
+                  <HStack key={elem} ml="10%" spacing={["1px", "4px"]} w={["100%", "90%"]}>
                     <Text color={colorCorchetes}>{`<`}</Text>
                     <Text color={text2}>li</Text>
                     <Text color={colorCorchetes}>{`>`}</Text>
@@ -207,7 +206,7 @@ const About: React.FC<Props> = ({h, w}) => {
                     <Text color={colorCorchetes}>{`>`}</Text>
                   </HStack>
                 ))}
-                <HStack spacing="4px" w="100%">
+                <HStack spacing={["1px", "4px"]} w="100%">
                   <Text color={colorCorchetes}>{`</ `}</Text>
                   <Text color={text2}>ul</Text>
                   <Text color={colorCorchetes}>{`>`}</Text>

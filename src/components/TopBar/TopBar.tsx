@@ -117,7 +117,7 @@ const TopBar: React.FC = () => {
   return (
     <Flex bg="black" color="white" h="26px">
       {!isPortrait && (
-        <Flex style={{transition: "0.2s"}}>
+        <Flex>
           <Menu>
             <MenuButton
               as={Button}
