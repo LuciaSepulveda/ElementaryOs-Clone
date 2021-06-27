@@ -109,7 +109,7 @@ const About: React.FC<Props> = ({h, w}) => {
                   ml="10px"
                   onClick={() => updateState("tech")}
                 >
-                  Conocimientos
+                  Habilidades
                 </Text>
               )}
             </HStack>

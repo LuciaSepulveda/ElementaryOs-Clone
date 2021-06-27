@@ -14,12 +14,12 @@ export const programs: Program[] = [
   {
     name: "User",
     img: `${dev}`,
-    open: false,
+    open: true,
     maximized: false,
     minimized: false,
   },
   {name: "Projects", img: `${project}`, open: false, maximized: false, minimized: false},
-  {name: "Contact", img: `${smart}`, open: true, maximized: false, minimized: false},
+  {name: "Contact", img: `${smart}`, open: false, maximized: false, minimized: false},
   {name: "Mail", img: `${mail}`, open: false, maximized: false, minimized: false},
 ]
 
@@ -74,7 +74,7 @@ export const techs: string[] = [
   "Java",
   "POO",
   "Estructuras de datos",
-  "Chakra-ui",
+  "Chakra UI",
 ]
 
-export const info: string[] = ["Estudiante de Ingenieria en Computacion", "Vivo en Bahia Blanca"]
+export const info: string[] = ["Vivo en Bahia Blanca", "Estudiante de Ingenieria en Computacion"]

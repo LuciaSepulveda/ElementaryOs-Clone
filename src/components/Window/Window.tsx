@@ -1,7 +1,7 @@
 import {Box, Center, Flex, Text} from "@chakra-ui/react"
 import {useMediaQuery} from "react-responsive"
 import * as React from "react"
-import {AnimatePresence, motion} from "framer-motion"
+import {motion} from "framer-motion"
 
 import {
   useCloseProgram,

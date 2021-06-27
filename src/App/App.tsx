@@ -1,6 +1,6 @@
 import {Box} from "@chakra-ui/react"
 import * as React from "react"
-import {motion, AnimatePresence} from "framer-motion"
+import {motion} from "framer-motion"
 import {useMediaQuery} from "react-responsive"
 
 import {useAnyProgramMaximized, useNoProgramsOpen, usePrograms} from "../context/hooks"
@@ -18,10 +18,6 @@ const App: React.FC = () => {
   const noProgramsOpen = useNoProgramsOpen()
   const anyProgramMaximized = useAnyProgramMaximized()
   const isPortrait = useMediaQuery({query: "(orientation: portrait)"})
-  const variants = {
-    open: {scaleX: 0.2, scaleY: 0, y: 500},
-    visible: {scaleX: 1, scaleY: 1, y: 0},
-  }
 
   return (
     <Box
@@ -58,10 +54,10 @@ const App: React.FC = () => {
             if (elem.open === true && elem.maximized === false)
               return (
                 <motion.div
+                  key={elem.name}
                   drag
                   dragConstraints={constraintRef}
                   style={{position: "absolute", top: "100px", left: "25%"}}
-                  key={elem.name}
                 >
                   <Window program={elem}>
                     {elem.name === "User" && <About h="500px" w="800px" />}
@@ -75,7 +71,7 @@ const App: React.FC = () => {
                 <Window key={elem.name} program={elem}>
                   {elem.name === "User" && <About h="96%" w="100%" />}
                   {elem.name === "Projects" && <Projects h="80%" w="80%" />}
-                  {elem.name === "Contact" && <Contact h="80%" w="100%" />}
+                  {elem.name === "Contact" && <Contact h="96%" w="100%" />}
                 </Window>
               )
           })}
