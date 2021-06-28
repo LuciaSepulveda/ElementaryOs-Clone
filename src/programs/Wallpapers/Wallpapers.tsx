@@ -38,15 +38,11 @@ const Wallpapers: React.FC<Props> = ({h, w}) => {
           <Grid gap={4} h={h} p={4} templateColumns="repeat(3, 1fr)" w={w}>
             {wallpapers.map((elem) => (
               <motion.div key={elem} whileHover={{scale: 1.05, y: -5}}>
-                <GridItem
-                  as="button"
-                  boxShadow="dark-lg"
-                  colSpan={1}
-                  onClick={() => changeWallpaper(elem)}
-                >
-                  <Skeleton h="160px" isLoaded={loaded} w="100%">
+                <GridItem as="button" colSpan={1} h="100%" onClick={() => changeWallpaper(elem)}>
+                  <Skeleton h="160px" isLoaded={loaded} minWidth="200px" w="100%">
                     <Image
                       ref={imageRef}
+                      boxShadow="dark-lg"
                       src={elem}
                       onLoad={() => {
                         setLoaded(true)
@@ -61,6 +57,7 @@ const Wallpapers: React.FC<Props> = ({h, w}) => {
         {isPortrait && (
           <Grid
             gap={2}
+            h="100%"
             overflow="scroll"
             p={2}
             templateColumns={["repeat(1, 1fr)", "repeat(2, 1fr)"]}
@@ -71,10 +68,11 @@ const Wallpapers: React.FC<Props> = ({h, w}) => {
                 as="button"
                 bg="transparent"
                 colSpan={1}
+                h="100%"
                 p={1}
                 onClick={() => changeWallpaper(elem)}
               >
-                <Skeleton h="100%" isLoaded={loaded} w="96%">
+                <Skeleton h="160px" isLoaded={loaded} w="96%">
                   <Image
                     ref={imageRef}
                     boxShadow="xl"

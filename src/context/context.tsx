@@ -1,4 +1,5 @@
 import React from "react"
+import {Spinner} from "@chakra-ui/react"
 
 import {Program, Status} from "../types/types"
 import {programs, wallpapers} from "../data/data"

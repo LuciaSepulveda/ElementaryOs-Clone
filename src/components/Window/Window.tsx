@@ -1,4 +1,5 @@
 import {Box, Center, Flex, Text} from "@chakra-ui/react"
+import {ArrowUpDownIcon, CloseIcon, MinusIcon} from "@chakra-ui/icons"
 import {useMediaQuery} from "react-responsive"
 import * as React from "react"
 import {motion} from "framer-motion"
@@ -21,6 +22,9 @@ const Window: React.FC<Props> = ({program, children}) => {
   const minimized = useMinimizedProgram()
   const section = useSectionAbout()
   const isPortrait = useMediaQuery({query: "(orientation: portrait)"})
+  const [closeButton, setCloseButton] = React.useState<number>(0)
+  const [minButton, setMinButton] = React.useState<number>(0)
+  const [maxButton, setMaxButton] = React.useState<number>(0)
 
   return (
     <>
@@ -42,40 +46,91 @@ const Window: React.FC<Props> = ({program, children}) => {
             zIndex="1"
           >
             <Flex bg="#313131" borderTopRadius="xl" h="30px" w="100%">
-              <Box
-                alignSelf="center"
-                as="button"
-                bg="#EF5050"
-                borderRadius="50%"
-                h="15px"
-                ml="10px"
-                w="15px"
-                onClick={() => {
-                  close(program)
+              <motion.div
+                style={{
+                  height: "15px",
+                  width: "15px",
+                  marginLeft: "10px",
+                  alignSelf: "center",
                 }}
-              />
-              <Box
-                alignSelf="center"
-                as="button"
-                bg="#F6AD3B"
-                borderRadius="50%"
-                h="15px"
-                ml="8px"
-                w="15px"
-                onClick={() => {
-                  minimized(program), close(program)
+                onHoverEnd={() => setCloseButton(0)}
+                onHoverStart={() => setCloseButton(1)}
+              >
+                <Center
+                  alignContent="center"
+                  as="button"
+                  bg="#EF5050"
+                  borderRadius="50%"
+                  h="15px"
+                  w="15px"
+                  onClick={() => {
+                    close(program)
+                  }}
+                >
+                  <CloseIcon
+                    color="rgba(0,0,0,0.7)"
+                    h="8px"
+                    style={{opacity: `${closeButton}`}}
+                    w="8px"
+                  />
+                </Center>
+              </motion.div>
+              <motion.div
+                style={{
+                  height: "15px",
+                  width: "15px",
+                  marginLeft: "10px",
+                  alignSelf: "center",
                 }}
-              />
-              <Box
-                alignSelf="center"
-                as="button"
-                bg="#4DC849"
-                borderRadius="50%"
-                h="15px"
-                ml="8px"
-                w="15px"
-                onClick={() => maximized(program)}
-              />
+                onHoverEnd={() => setMinButton(0)}
+                onHoverStart={() => setMinButton(1)}
+              >
+                <Center
+                  alignSelf="center"
+                  as="button"
+                  bg="#F6AD3B"
+                  borderRadius="50%"
+                  h="15px"
+                  w="15px"
+                  onClick={() => {
+                    minimized(program), close(program)
+                  }}
+                >
+                  <MinusIcon
+                    color="rgba(0,0,0,0.7)"
+                    h="8px"
+                    style={{opacity: `${minButton}`}}
+                    w="8px"
+                  />
+                </Center>
+              </motion.div>
+              <motion.div
+                style={{
+                  height: "15px",
+                  width: "15px",
+                  marginLeft: "10px",
+                  alignSelf: "center",
+                }}
+                onHoverEnd={() => setMaxButton(0)}
+                onHoverStart={() => setMaxButton(1)}
+              >
+                <Center
+                  alignSelf="center"
+                  as="button"
+                  bg="#4DC849"
+                  borderRadius="50%"
+                  h="15px"
+                  w="15px"
+                  onClick={() => maximized(program)}
+                >
+                  <ArrowUpDownIcon
+                    color="rgba(0,0,0,0.7)"
+                    h="8px"
+                    style={{opacity: `${maxButton}`}}
+                    w="8px"
+                  />
+                </Center>
+              </motion.div>
               <Center w="85%">
                 {program.name === "User" && (
                   <Text color="white" fontWeight="bold">
@@ -110,40 +165,92 @@ const Window: React.FC<Props> = ({program, children}) => {
             zIndex="10"
           >
             <Flex bg="#313131" h="30px" w="100%">
-              <Box
-                alignSelf="center"
-                as="button"
-                bg="#EF5050"
-                borderRadius="50%"
-                h="15px"
-                ml="10px"
-                w="15px"
-                onClick={() => {
-                  close(program)
+              <motion.div
+                style={{
+                  height: "15px",
+                  width: "15px",
+                  marginLeft: "10px",
+                  alignSelf: "center",
+                  backgroundColor: "blue",
                 }}
-              />
-              <Box
-                alignSelf="center"
-                as="button"
-                bg="#F6AD3B"
-                borderRadius="50%"
-                h="15px"
-                ml="8px"
-                w="15px"
-                onClick={() => {
-                  minimized(program), close(program)
+                onHoverEnd={() => setCloseButton(0)}
+                onHoverStart={() => setCloseButton(1)}
+              >
+                <Center
+                  alignContent="center"
+                  as="button"
+                  bg="#EF5050"
+                  borderRadius="50%"
+                  h="15px"
+                  w="15px"
+                  onClick={() => {
+                    close(program)
+                  }}
+                >
+                  <CloseIcon
+                    color="rgba(0,0,0,0.7)"
+                    h="8px"
+                    style={{opacity: `${closeButton}`}}
+                    w="8px"
+                  />
+                </Center>
+              </motion.div>
+              <motion.div
+                style={{
+                  height: "15px",
+                  width: "15px",
+                  marginLeft: "10px",
+                  alignSelf: "center",
                 }}
-              />
-              <Box
-                alignSelf="center"
-                as="button"
-                bg="#4DC849"
-                borderRadius="50%"
-                h="15px"
-                ml="8px"
-                w="15px"
-                onClick={() => maximized(program)}
-              />
+                onHoverEnd={() => setMinButton(0)}
+                onHoverStart={() => setMinButton(1)}
+              >
+                <Center
+                  alignSelf="center"
+                  as="button"
+                  bg="#F6AD3B"
+                  borderRadius="50%"
+                  h="15px"
+                  w="15px"
+                  onClick={() => {
+                    minimized(program), close(program)
+                  }}
+                >
+                  <MinusIcon
+                    color="rgba(0,0,0,0.7)"
+                    h="8px"
+                    style={{opacity: `${minButton}`}}
+                    w="8px"
+                  />
+                </Center>
+              </motion.div>
+              <motion.div
+                style={{
+                  height: "15px",
+                  width: "15px",
+                  marginLeft: "10px",
+                  alignSelf: "center",
+                }}
+                onHoverEnd={() => setMaxButton(0)}
+                onHoverStart={() => setMaxButton(1)}
+              >
+                <Center
+                  alignSelf="center"
+                  as="button"
+                  bg="#4DC849"
+                  borderRadius="50%"
+                  h="15px"
+                  w="15px"
+                  onClick={() => maximized(program)}
+                >
+                  <ArrowUpDownIcon
+                    color="rgba(0,0,0,0.7)"
+                    h="8px"
+                    style={{opacity: `${maxButton}`}}
+                    w="8px"
+                  />
+                </Center>
+              </motion.div>
               <Center w="95%">
                 {program.name === "User" && (
                   <Text color="white" fontWeight="bold">
@@ -178,40 +285,91 @@ const Window: React.FC<Props> = ({program, children}) => {
             w="100%"
           >
             <Flex bg="#313131" h="30px" w="100%">
-              <Box
-                alignSelf="center"
-                as="button"
-                bg="#EF5050"
-                borderRadius="50%"
-                h="15px"
-                ml="10px"
-                w="15px"
-                onClick={() => {
-                  close(program)
+              <motion.div
+                style={{
+                  height: "15px",
+                  width: "15px",
+                  marginLeft: "10px",
+                  alignSelf: "center",
                 }}
-              />
-              <Box
-                alignSelf="center"
-                as="button"
-                bg="#F6AD3B"
-                borderRadius="50%"
-                h="15px"
-                ml="8px"
-                w="15px"
-                onClick={() => {
-                  minimized(program), close(program)
+                onHoverEnd={() => setCloseButton(0)}
+                onHoverStart={() => setCloseButton(1)}
+              >
+                <Center
+                  alignContent="center"
+                  as="button"
+                  bg="#EF5050"
+                  borderRadius="50%"
+                  h="15px"
+                  w="15px"
+                  onClick={() => {
+                    close(program)
+                  }}
+                >
+                  <CloseIcon
+                    color="rgba(0,0,0,0.7)"
+                    h="8px"
+                    style={{opacity: `${closeButton}`}}
+                    w="8px"
+                  />
+                </Center>
+              </motion.div>
+              <motion.div
+                style={{
+                  height: "15px",
+                  width: "15px",
+                  marginLeft: "10px",
+                  alignSelf: "center",
                 }}
-              />
-              <Box
-                alignSelf="center"
-                as="button"
-                bg="#4DC849"
-                borderRadius="50%"
-                h="15px"
-                ml="8px"
-                w="15px"
-                onClick={() => maximized(program)}
-              />
+                onHoverEnd={() => setMinButton(0)}
+                onHoverStart={() => setMinButton(1)}
+              >
+                <Center
+                  alignSelf="center"
+                  as="button"
+                  bg="#F6AD3B"
+                  borderRadius="50%"
+                  h="15px"
+                  w="15px"
+                  onClick={() => {
+                    minimized(program), close(program)
+                  }}
+                >
+                  <MinusIcon
+                    color="rgba(0,0,0,0.7)"
+                    h="8px"
+                    style={{opacity: `${minButton}`}}
+                    w="8px"
+                  />
+                </Center>
+              </motion.div>
+              <motion.div
+                style={{
+                  height: "15px",
+                  width: "15px",
+                  marginLeft: "10px",
+                  alignSelf: "center",
+                }}
+                onHoverEnd={() => setMaxButton(0)}
+                onHoverStart={() => setMaxButton(1)}
+              >
+                <Center
+                  alignSelf="center"
+                  as="button"
+                  bg="#4DC849"
+                  borderRadius="50%"
+                  h="15px"
+                  w="15px"
+                  onClick={() => maximized(program)}
+                >
+                  <ArrowUpDownIcon
+                    color="rgba(0,0,0,0.7)"
+                    h="8px"
+                    style={{opacity: `${maxButton}`}}
+                    w="8px"
+                  />
+                </Center>
+              </motion.div>
               <Center w="85%">
                 {program.name === "User" && (
                   <Text color="white" fontWeight="bold">

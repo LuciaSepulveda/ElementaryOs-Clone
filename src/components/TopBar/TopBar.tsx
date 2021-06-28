@@ -20,7 +20,7 @@ import {
 import * as React from "react"
 import {useMediaQuery} from "react-responsive"
 
-import {usePrograms, useOpenProgram} from "../../context/hooks"
+import {usePrograms, useOpenProgram, useCloseAllPrograms} from "../../context/hooks"
 
 const TopBar: React.FC = () => {
   const [search, setSearch] = React.useState<string>("")
@@ -31,6 +31,7 @@ const TopBar: React.FC = () => {
   let month = ""
   const isPortrait = useMediaQuery({query: "(orientation: portrait)"})
   const {colorMode, toggleColorMode} = useColorMode()
+  const closeAll = useCloseAllPrograms()
 
   const wallpaper = () => {
     let elem = programs[0]
@@ -124,7 +125,7 @@ const TopBar: React.FC = () => {
   }
 
   return (
-    <Flex bg="black" color="white" h="26px">
+    <Flex bg="black" color="white" h="26px" position="sticky">
       {!isPortrait && (
         <Flex>
           <Menu>
@@ -207,9 +208,21 @@ const TopBar: React.FC = () => {
       </Flex>
       <Spacer />
       <HStack mr="10px" spacing="10px">
-        <Box as="button" onClick={() => openProgram(wallpaper())}>
-          <EditIcon />
-        </Box>
+        {isPortrait && (
+          <Box
+            as="button"
+            onClick={() => {
+              openProgram(wallpaper()), closeAll(wallpaper())
+            }}
+          >
+            <EditIcon />
+          </Box>
+        )}
+        {!isPortrait && (
+          <Box as="button" onClick={() => openProgram(wallpaper())}>
+            <EditIcon />
+          </Box>
+        )}
         <Box alignSelf="center" as="button" onClick={toggleColorMode}>
           {colorMode === "light" && <MoonIcon />}
           {colorMode !== "light" && <SunIcon />}
