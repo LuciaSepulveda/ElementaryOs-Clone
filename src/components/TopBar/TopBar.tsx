@@ -1,4 +1,4 @@
-import {Search2Icon, MoonIcon, SunIcon} from "@chakra-ui/icons"
+import {Search2Icon, MoonIcon, SunIcon, EditIcon} from "@chakra-ui/icons"
 import {
   Box,
   Grid,
@@ -14,7 +14,6 @@ import {
   VStack,
   Input,
   InputGroup,
-  Link,
   HStack,
   useColorMode,
 } from "@chakra-ui/react"
@@ -32,6 +31,16 @@ const TopBar: React.FC = () => {
   let month = ""
   const isPortrait = useMediaQuery({query: "(orientation: portrait)"})
   const {colorMode, toggleColorMode} = useColorMode()
+
+  const wallpaper = () => {
+    let elem = programs[0]
+
+    for (let i = 0; i !== programs.length; i++) {
+      if (programs[i].name === "Wallpapers") elem = programs[i]
+    }
+
+    return elem
+  }
 
   const cantPrograms = () => {
     if (programs.length > 4) {
@@ -155,24 +164,12 @@ const TopBar: React.FC = () => {
                     programs.map((elem) => {
                       return (
                         <GridItem key={elem.name} m="10px">
-                          {elem.name !== "Mail" && (
-                            <VStack as="button" onClick={() => openProgram(elem)}>
-                              <Image h="50px" src={elem.img} w="50px" />
-                              <Text color="white" fontSize="small">
-                                {elem.name}
-                              </Text>
-                            </VStack>
-                          )}
-                          {elem.name === "Mail" && (
-                            <Link h="100%" href="mailto:luciabsep18@gmail.com">
-                              <VStack key={elem.name}>
-                                <Image h="50px" src={elem.img} w="50px" />
-                                <Text color="white" fontSize="small">
-                                  {elem.name}
-                                </Text>
-                              </VStack>
-                            </Link>
-                          )}
+                          <VStack as="button" onClick={() => openProgram(elem)}>
+                            <Image h="50px" src={elem.img} w="50px" />
+                            <Text color="white" fontSize="small">
+                              {elem.name}
+                            </Text>
+                          </VStack>
                         </GridItem>
                       )
                     })}
@@ -182,24 +179,12 @@ const TopBar: React.FC = () => {
                       .map((elem) => {
                         return (
                           <GridItem key={elem.name} m="10px">
-                            {elem.name !== "Mail" && (
-                              <VStack as="button" onClick={() => openProgram(elem)}>
-                                <Image h="50px" src={elem.img} w="50px" />
-                                <Text color="white" fontSize="small">
-                                  {elem.name}
-                                </Text>
-                              </VStack>
-                            )}
-                            {elem.name === "Mail" && (
-                              <Link h="100%" href="mailto:luciabsep18@gmail.com">
-                                <VStack key={elem.name}>
-                                  <Image h="50px" src={elem.img} w="50px" />
-                                  <Text color="white" fontSize="small">
-                                    {elem.name}
-                                  </Text>
-                                </VStack>
-                              </Link>
-                            )}
+                            <VStack as="button" onClick={() => openProgram(elem)}>
+                              <Image h="50px" src={elem.img} w="50px" />
+                              <Text color="white" fontSize="small">
+                                {elem.name}
+                              </Text>
+                            </VStack>
                           </GridItem>
                         )
                       })}
@@ -211,7 +196,7 @@ const TopBar: React.FC = () => {
       )}
       {!isPortrait && <Box w="20px" />}
       <Spacer />
-      <Flex ml="-70px" w="150px">
+      <Flex ml={["20px", "-70px"]} w={["120px", "150px"]}>
         <Text alignSelf="center" fontSize="small" fontWeight="bold">
           {day} {date.getDate().toString()} de {month}
         </Text>
@@ -221,10 +206,15 @@ const TopBar: React.FC = () => {
         </Text>
       </Flex>
       <Spacer />
-      <Flex alignSelf="center" as="button" mr="10px" onClick={toggleColorMode}>
-        {colorMode === "light" && <MoonIcon />}
-        {colorMode !== "light" && <SunIcon />}
-      </Flex>
+      <HStack mr="10px" spacing="10px">
+        <Box as="button" onClick={() => openProgram(wallpaper())}>
+          <EditIcon />
+        </Box>
+        <Box alignSelf="center" as="button" onClick={toggleColorMode}>
+          {colorMode === "light" && <MoonIcon />}
+          {colorMode !== "light" && <SunIcon />}
+        </Box>
+      </HStack>
     </Flex>
   )
 }

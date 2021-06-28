@@ -68,9 +68,16 @@ const Contact: React.FC<Props> = ({w, h}) => {
             <Image h={["40px", "50px"]} src={elem.logo} />
             <VStack alignItems="start" w="100%">
               <Text fontWeight="bold">{elem.name}</Text>
-              <Text as="a" href={elem.link} target="_blank">
-                {elem.link}
-              </Text>
+              {elem.name !== "Email" && (
+                <Text as="a" href={elem.link} target="_blank">
+                  {elem.link}
+                </Text>
+              )}
+              {elem.name === "Email" && (
+                <Text as="a" href={elem.link} target="_blank">
+                  {elem.link.substring(28, 7)}
+                </Text>
+              )}
             </VStack>
           </HStack>
         ))}

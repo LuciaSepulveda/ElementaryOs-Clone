@@ -1,4 +1,4 @@
-import {Box, Flex, Image, VStack, Link, useColorModeValue} from "@chakra-ui/react"
+import {Box, Flex, Image, VStack, useColorModeValue} from "@chakra-ui/react"
 import * as React from "react"
 import {useMediaQuery} from "react-responsive"
 import {motion} from "framer-motion"
@@ -30,7 +30,7 @@ const BottomBar: React.FC<Props> = ({programs}) => {
       w="fit-content"
     >
       {programs.map((elem) => {
-        if (elem.name !== "Mail")
+        if (elem.name !== "Wallpapers")
           return (
             <>
               {!isPortrait && (
@@ -43,10 +43,7 @@ const BottomBar: React.FC<Props> = ({programs}) => {
                   w="60px"
                   onClick={() => openProgram(elem)}
                 >
-                  <motion.div
-                    whileHover={{scale: 1.2, transition: {duration: 0.1}}}
-                    whileTap={{y: -200, transition: {duration: 0.5}}}
-                  >
+                  <motion.div whileHover={{scale: 1.2}} whileTap={{y: -50}}>
                     <Image alignSelf="center" h="50px" src={elem.img} w="50px" />
                   </motion.div>
                   {(elem.open === true || elem.minimized === true) && (
@@ -72,10 +69,7 @@ const BottomBar: React.FC<Props> = ({programs}) => {
                     openProgram(elem), closeAllPrograms(elem)
                   }}
                 >
-                  <motion.div
-                    whileHover={{scale: 1.2}}
-                    whileTap={{y: -200, transition: {duration: 0.5}}}
-                  >
+                  <motion.div whileHover={{scale: 1.2}} whileTap={{y: -50}}>
                     <Image alignSelf="center" h="50px" src={elem.img} w="50px" />
                   </motion.div>
                   {(elem.open === true || elem.minimized === true) && (
@@ -93,16 +87,54 @@ const BottomBar: React.FC<Props> = ({programs}) => {
           )
         else
           return (
-            <Link key={elem.name} h="100%" href="mailto:luciabsep18@gmail.com">
-              <VStack alignSelf="center" h="60px" m="5px" mt="0px" w="60px">
-                <motion.div
-                  whileHover={{scale: 1.2}}
-                  whileTap={{y: -200, transition: {duration: 0.5}}}
+            <>
+              {!isPortrait && (elem.open === true || elem.minimized === true) && (
+                <VStack
+                  key={elem.name}
+                  alignSelf="center"
+                  as="button"
+                  h="65px"
+                  m="5px"
+                  w="60px"
+                  onClick={() => openProgram(elem)}
                 >
-                  <Image alignSelf="center" h="50px" src={elem.img} w="50px" />
-                </motion.div>
-              </VStack>
-            </Link>
+                  <motion.div whileHover={{scale: 1.2}} whileTap={{y: -50}}>
+                    <Image alignSelf="center" h="50px" src={elem.img} w="50px" />
+                  </motion.div>
+                  <Box
+                    bg="#01afff"
+                    borderRadius="50%"
+                    boxShadow="0 0 17px 3px #01afff,0 0 4px 2px #01afff"
+                    h="3px"
+                    w="3px"
+                  />
+                </VStack>
+              )}
+              {isPortrait && (elem.open === true || elem.minimized === true) && (
+                <VStack
+                  key={elem.name}
+                  alignSelf="center"
+                  as="button"
+                  h="65px"
+                  m="5px"
+                  w="60px"
+                  onClick={() => {
+                    openProgram(elem), closeAllPrograms(elem)
+                  }}
+                >
+                  <motion.div whileHover={{scale: 1.2}} whileTap={{y: -50}}>
+                    <Image alignSelf="center" h="50px" src={elem.img} w="50px" />
+                  </motion.div>
+                  <Box
+                    bg="#01afff"
+                    borderRadius="50%"
+                    boxShadow="0 0 17px 3px #01afff,0 0 4px 2px #01afff"
+                    h="3px"
+                    w="3px"
+                  />
+                </VStack>
+              )}
+            </>
           )
       })}
     </Flex>

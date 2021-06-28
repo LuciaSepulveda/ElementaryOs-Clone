@@ -3,14 +3,19 @@ import * as React from "react"
 import {motion} from "framer-motion"
 import {useMediaQuery} from "react-responsive"
 
-import {useAnyProgramMaximized, useNoProgramsOpen, usePrograms} from "../context/hooks"
-import fondo from "../assets/fondo1.jpg"
+import {
+  useAnyProgramMaximized,
+  useNoProgramsOpen,
+  usePrograms,
+  useWallpaper,
+} from "../context/hooks"
 import BottomBar from "../components/BottomBar/BottomBar"
 import TopBar from "../components/TopBar/TopBar"
 import Window from "../components/Window/Window"
 import About from "../programs/About"
 import Projects from "../programs/Projects"
 import Contact from "../programs/Contact"
+import Wallpapers from "../programs/Wallpapers/Wallpapers"
 
 const App: React.FC = () => {
   const constraintRef = React.useRef(null)
@@ -18,10 +23,11 @@ const App: React.FC = () => {
   const noProgramsOpen = useNoProgramsOpen()
   const anyProgramMaximized = useAnyProgramMaximized()
   const isPortrait = useMediaQuery({query: "(orientation: portrait)"})
+  const wallpaper = useWallpaper()
 
   return (
     <Box
-      backgroundImage={fondo}
+      backgroundImage={wallpaper}
       backgroundPosition="center"
       backgroundSize="cover"
       h="100vh"
@@ -39,6 +45,7 @@ const App: React.FC = () => {
                   {elem.name === "User" && <About h="96%" w="100%" />}
                   {elem.name === "Projects" && <Projects h="96%" w="90%" />}
                   {elem.name === "Contact" && <Contact h="96%" w="100%" />}
+                  {elem.name === "Wallpapers" && <Wallpapers h="96%" w="100%" />}
                 </Window>
               )
           })}
@@ -63,6 +70,7 @@ const App: React.FC = () => {
                     {elem.name === "User" && <About h="500px" w="800px" />}
                     {elem.name === "Projects" && <Projects h="fit-content" w="900px" />}
                     {elem.name === "Contact" && <Contact h="600px" w="800px" />}
+                    {elem.name === "Wallpapers" && <Wallpapers h="fit-content" w="800px" />}
                   </Window>
                 </motion.div>
               )
@@ -72,6 +80,7 @@ const App: React.FC = () => {
                   {elem.name === "User" && <About h="96%" w="100%" />}
                   {elem.name === "Projects" && <Projects h="80%" w="80%" />}
                   {elem.name === "Contact" && <Contact h="96%" w="100%" />}
+                  {elem.name === "Wallpapers" && <Wallpapers h="90%" w="80%" />}
                 </Window>
               )
           })}

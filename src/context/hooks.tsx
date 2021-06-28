@@ -97,3 +97,19 @@ export function useCloseAllPrograms(): Context["actions"]["closeAllPrograms"] {
 
   return closeAllPrograms
 }
+
+export function useWallpaper(): Context["state"]["wallpaper"] {
+  const {
+    state: {wallpaper},
+  } = React.useContext(UserContext)
+
+  return wallpaper
+}
+
+export function useChangeWallpaper(): Context["actions"]["changeWallpaper"] {
+  const {
+    actions: {changeWallpaper},
+  } = React.useContext(UserContext)
+
+  return changeWallpaper
+}

@@ -1,7 +1,7 @@
 import React from "react"
 
 import {Program, Status} from "../types/types"
-import {programs} from "../data/data"
+import {programs, wallpapers} from "../data/data"
 
 export interface Context {
   state: {
@@ -10,6 +10,7 @@ export interface Context {
     noProgramsOpen: boolean
     anyProgramMaximized: boolean
     sectionAbout: string
+    wallpaper: string
   }
   actions: {
     changeStatus: (status: Status) => void
@@ -19,6 +20,7 @@ export interface Context {
     minimizedProgram: (program: Program) => void
     changeSectionAbout: (section: string) => void
     closeAllPrograms: (program: Program) => void
+    changeWallpaper: (wallpaper: string) => void
   }
 }
 
@@ -26,13 +28,17 @@ const UserContext = React.createContext({} as Context)
 
 const UserProvider: React.FC = ({children}) => {
   const [status, setStatus] = React.useState<Status>(Status.loading)
-  const [programs_, setPrograms] = React.useState<Program[]>(programs)
   const [noProgramsOpen, setProgramsOpen] = React.useState<boolean>(false)
   const [anyProgramMaximized, setAnyProgramMaximized] = React.useState<boolean>(false)
   const [sectionAbout, setSectionAbout] = React.useState<string>("about")
+  const [wallpaper, setWallpaper] = React.useState<string>(wallpapers[0])
 
   const handleChangeSectionAbout = (s: string) => {
     setSectionAbout(s)
+  }
+
+  const handleChangeWallpaper = (w: string) => {
+    setWallpaper(w)
   }
 
   const handleCheckProgramsClose = () => {
@@ -101,6 +107,7 @@ const UserProvider: React.FC = ({children}) => {
     noProgramsOpen,
     anyProgramMaximized,
     sectionAbout,
+    wallpaper,
   }
 
   const actions = {
@@ -111,6 +118,7 @@ const UserProvider: React.FC = ({children}) => {
     minimizedProgram: handleMinimizedProgram,
     changeSectionAbout: handleChangeSectionAbout,
     closeAllPrograms: handleCloseAllPrograms,
+    changeWallpaper: handleChangeWallpaper,
   }
 
   if (status === "update") {

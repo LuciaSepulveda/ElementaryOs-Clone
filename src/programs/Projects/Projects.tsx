@@ -89,7 +89,7 @@ const Projects: React.FC<Props> = ({h, w}) => {
         </Grid>
       )}
       {isPortrait && (
-        <Grid gap={2} h={h} p={1} templateColumns="repeat(2, 1fr)" w={w}>
+        <Grid gap={2} h={h} overflow="scroll" p={1} templateColumns="repeat(2, 1fr)" w={w}>
           {projects.map((elem) => (
             <GridItem key={elem.name} border={border} borderBottomRadius="xl" colSpan={1}>
               <VStack
@@ -116,12 +116,12 @@ const Projects: React.FC<Props> = ({h, w}) => {
                   bg={bgItem}
                   borderBottomRadius="md"
                   boxShadow="md"
-                  h="50px"
+                  h="80px"
                   overflow="hidden"
                   p={1}
                   w="100%"
                 >
-                  <Text>{elem.description}</Text>
+                  <Text fontSize={["small", "initial"]}>{elem.description}</Text>
                 </Box>
               </VStack>
             </GridItem>
