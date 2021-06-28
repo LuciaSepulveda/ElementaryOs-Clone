@@ -171,7 +171,6 @@ const Window: React.FC<Props> = ({program, children}) => {
                   width: "15px",
                   marginLeft: "10px",
                   alignSelf: "center",
-                  backgroundColor: "blue",
                 }}
                 onHoverEnd={() => setCloseButton(0)}
                 onHoverStart={() => setCloseButton(1)}
