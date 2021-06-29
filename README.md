@@ -22,3 +22,13 @@ Aplicación que permite cambiar el fondo de la pagina, puede verse que esta maxi
 ![Screen](https://github.com/LuciaSepulveda/ElementaryOs-Clone/blob/master/src/assets/Screen4.png "Menú desplegable para buscar las aplicaciones.")
 
 Menú desplegable para buscar las aplicaciones.
+
+## Correr el proyecto
+
+```bash
+## Instalar las dependencias del proyecto
+yarn
+
+## Correr el proyecto
+yarn run start
+```
