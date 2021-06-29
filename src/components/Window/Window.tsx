@@ -69,9 +69,9 @@ const Window: React.FC<Props> = ({program, children}) => {
                 >
                   <CloseIcon
                     color="rgba(0,0,0,0.7)"
-                    h="8px"
+                    h="7.5px"
                     style={{opacity: `${closeButton}`}}
-                    w="8px"
+                    w="7.5px"
                   />
                 </Center>
               </motion.div>
@@ -98,9 +98,9 @@ const Window: React.FC<Props> = ({program, children}) => {
                 >
                   <MinusIcon
                     color="rgba(0,0,0,0.7)"
-                    h="8px"
+                    h="7.5px"
                     style={{opacity: `${minButton}`}}
-                    w="8px"
+                    w="7.5px"
                   />
                 </Center>
               </motion.div>
@@ -125,9 +125,9 @@ const Window: React.FC<Props> = ({program, children}) => {
                 >
                   <ArrowUpDownIcon
                     color="rgba(0,0,0,0.7)"
-                    h="8px"
+                    h="7.5px"
                     style={{opacity: `${maxButton}`}}
-                    w="8px"
+                    w="7.5px"
                   />
                 </Center>
               </motion.div>
@@ -188,9 +188,9 @@ const Window: React.FC<Props> = ({program, children}) => {
                 >
                   <CloseIcon
                     color="rgba(0,0,0,0.7)"
-                    h="8px"
+                    h="7.5px"
                     style={{opacity: `${closeButton}`}}
-                    w="8px"
+                    w="7.5px"
                   />
                 </Center>
               </motion.div>
@@ -217,9 +217,9 @@ const Window: React.FC<Props> = ({program, children}) => {
                 >
                   <MinusIcon
                     color="rgba(0,0,0,0.7)"
-                    h="8px"
+                    h="7.5px"
                     style={{opacity: `${minButton}`}}
-                    w="8px"
+                    w="7.5px"
                   />
                 </Center>
               </motion.div>
@@ -244,9 +244,9 @@ const Window: React.FC<Props> = ({program, children}) => {
                 >
                   <ArrowUpDownIcon
                     color="rgba(0,0,0,0.7)"
-                    h="8px"
+                    h="7.5px"
                     style={{opacity: `${maxButton}`}}
-                    w="8px"
+                    w="7.5px"
                   />
                 </Center>
               </motion.div>
@@ -307,9 +307,9 @@ const Window: React.FC<Props> = ({program, children}) => {
                 >
                   <CloseIcon
                     color="rgba(0,0,0,0.7)"
-                    h="8px"
+                    h="7.5px"
                     style={{opacity: `${closeButton}`}}
-                    w="8px"
+                    w="7.5px"
                   />
                 </Center>
               </motion.div>
@@ -336,9 +336,9 @@ const Window: React.FC<Props> = ({program, children}) => {
                 >
                   <MinusIcon
                     color="rgba(0,0,0,0.7)"
-                    h="8px"
+                    h="7.5px"
                     style={{opacity: `${minButton}`}}
-                    w="8px"
+                    w="7.5px"
                   />
                 </Center>
               </motion.div>
@@ -363,9 +363,9 @@ const Window: React.FC<Props> = ({program, children}) => {
                 >
                   <ArrowUpDownIcon
                     color="rgba(0,0,0,0.7)"
-                    h="8px"
+                    h="7.5px"
                     style={{opacity: `${maxButton}`}}
-                    w="8px"
+                    w="7.5px"
                   />
                 </Center>
               </motion.div>

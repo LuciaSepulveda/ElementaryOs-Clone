@@ -135,7 +135,7 @@ const TopBar: React.FC = () => {
               style={{backgroundColor: "transparent", height: "20px", alignSelf: "center"}}
             >
               <Text alignSelf="center" fontSize="small" fontWeight="bold" ml="5px">
-                Aplicaciones
+                Applications
               </Text>
             </MenuButton>
             <MenuList

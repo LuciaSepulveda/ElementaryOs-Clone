@@ -83,6 +83,6 @@ export const techs: string[] = [
   "Chakra UI",
 ]
 
-export const info: string[] = ["Vivo en Bahia Blanca", "Estudiante de Ingenieria en Computacion"]
+export const info: string[] = ["Vivo en Bahía Blanca", "Estudiante de Ingeniería en Computación"]
 
 export const wallpapers: string[] = [`${fondo1}`, `${fondo2}`, `${fondo3}`, `${fondo4}`]
