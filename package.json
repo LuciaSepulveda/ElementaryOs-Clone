@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "predeploy": "yarn run build",
-    "start": "FAST_REFRESH=false react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "eject": "react-scripts eject",
     "test": "react-scripts test"
@@ -21,6 +21,7 @@
     "react-scripts": "^4.0.3"
   },
   "devDependencies": {
+    "@rooks/use-raf": "^4.11.2",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/react-responsive": "^8.0.2",
