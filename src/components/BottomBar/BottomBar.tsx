@@ -60,7 +60,9 @@ const BottomBar: React.FC<Props> = ({programs}) => {
                       openProgram(elem), closeAllPrograms(elem)
                     }}
                   >
-                    <Icon mouseX={mouseX} src={elem.img} />
+                    <motion.div whileHover={{scale: 1.2}} whileTap={{y: -50}}>
+                      <Image alignSelf="center" h="50px" src={elem.img} w="50px" />
+                    </motion.div>
                     {(elem.open === true || elem.minimized === true) && (
                       <Box
                         bg="#01afff"
@@ -101,7 +103,9 @@ const BottomBar: React.FC<Props> = ({programs}) => {
                       openProgram(elem), closeAllPrograms(elem)
                     }}
                   >
-                    <Icon mouseX={mouseX} src={elem.img} />
+                    <motion.div whileHover={{scale: 1.2}} whileTap={{y: -50}}>
+                      <Image alignSelf="center" h="50px" src={elem.img} w="50px" />
+                    </motion.div>
                     <Box
                       bg="#01afff"
                       borderRadius="50%"
