@@ -23,6 +23,14 @@ Aplicación que permite cambiar el fondo de la pagina, puede verse que esta maxi
 
 Menú desplegable para buscar las aplicaciones.
 
+## GIFs
+
+<img src="https://media.giphy.com/media/w7vMAfRefgRqCal6PE/giphy.gif" />
+
+<img src="https://media.giphy.com/media/kU0fVfR7T5ieEOvppg/giphy.gif" />
+
+<img src="https://media.giphy.com/media/4nNPd4FWAC7Ol4VeqQ/giphy.gif" />
+
 ## Correr el proyecto
 
 ```bash
