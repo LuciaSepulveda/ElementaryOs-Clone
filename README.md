@@ -23,6 +23,14 @@ Aplicación que permite cambiar el fondo de la pagina, puede verse que esta maxi
 
 Menú desplegable para buscar las aplicaciones.
 
+![Screen](https://github.com/LuciaSepulveda/ElementaryOs-Clone/blob/master/src/assets/Screen5.png "Versión mobile aplicación about, modo claro activado.")
+
+Versión mobile aplicación about, modo claro activado.
+
+![Screen](https://github.com/LuciaSepulveda/ElementaryOs-Clone/blob/master/src/assets/Screen6.png "Versióon mobile aplicación Projects, modo oscuro activado.")
+
+Versión mobile aplicación Projects, modo oscuro activado.
+
 ## GIFs
 
 <img src="https://media.giphy.com/media/w7vMAfRefgRqCal6PE/giphy.gif" />
