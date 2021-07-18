@@ -38,7 +38,7 @@ const App: React.FC = () => {
   }, [loaded])
 
   return (
-    <Box bg="blue" h="100vh" overflow="hidden" position="absolute" w="100%">
+    <Box h="100vh" overflow="hidden" position="absolute" w="100%">
       <Image
         ref={imageRef}
         fit="cover"
@@ -121,7 +121,7 @@ const App: React.FC = () => {
                     {elem.open === true && elem.maximized === true && (
                       <Window program={elem}>
                         {elem.name === "User" && <About h="96%" w="100%" />}
-                        {elem.name === "Projects" && <Projects h="90%" maximized={true} w="70%" />}
+                        {elem.name === "Projects" && <Projects h="96%" maximized={true} w="70%" />}
                         {elem.name === "Contact" && <Contact h="96%" w="100%" />}
                         {elem.name === "Wallpapers" && <Wallpapers h="90%" w="80%" />}
                       </Window>

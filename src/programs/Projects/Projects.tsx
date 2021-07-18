@@ -32,7 +32,7 @@ const Projects: React.FC<Props> = ({h, w, maximized}) => {
   let heightImageProject = "140px"
 
   if (maximized) {
-    heightImageProject = "210px"
+    heightImageProject = "220px"
   }
 
   React.useEffect(() => {
@@ -58,6 +58,7 @@ const Projects: React.FC<Props> = ({h, w, maximized}) => {
               border={border}
               borderBottomRadius="xl"
               color={colorText}
+              maxHeight="360px"
               spacing="10px"
             >
               <Text fontWeight="bold">{elem.name}</Text>
