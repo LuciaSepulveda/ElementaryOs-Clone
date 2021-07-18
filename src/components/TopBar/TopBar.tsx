@@ -16,19 +16,26 @@ import {
   InputGroup,
   HStack,
   useColorMode,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverBody,
+  PopoverCloseButton,
+  PopoverHeader,
 } from "@chakra-ui/react"
 import * as React from "react"
 import {useMediaQuery} from "react-responsive"
+import {BsInfoCircle} from "react-icons/bs"
+import {Icon} from "@chakra-ui/icons"
 
+import Clock from "../Clock/Clock"
 import {usePrograms, useOpenProgram, useCloseAllPrograms} from "../../context/hooks"
+import {Program} from "../../types/types"
 
 const TopBar: React.FC = () => {
   const [search, setSearch] = React.useState<string>("")
-  const [date, setDate] = React.useState<Date>(new Date())
   const programs = usePrograms()
   const openProgram = useOpenProgram()
-  let day = ""
-  let month = ""
   const isPortrait = useMediaQuery({query: "(orientation: portrait)"})
   const {colorMode, toggleColorMode} = useColorMode()
   const closeAll = useCloseAllPrograms()
@@ -53,75 +60,13 @@ const TopBar: React.FC = () => {
     setSearch(event.target.value)
   }
 
-  switch (date.getDay().toString()) {
-    case "1":
-      day = "lun"
-      break
-    case "2":
-      day = "mar"
-      break
-    case "3":
-      day = "mie"
-      break
-    case "4":
-      day = "jue"
-      break
-    case "5":
-      day = "vie"
-      break
-    case "6":
-      day = "sab"
-      break
-    case "7":
-      day = "dom"
-      break
-  }
-
-  switch (date.getMonth().toString()) {
-    case "0":
-      month = "ene"
-      break
-    case "1":
-      month = "feb"
-      break
-    case "2":
-      month = "mar"
-      break
-    case "3":
-      month = "may"
-      break
-    case "4":
-      month = "abr"
-      break
-    case "5":
-      month = "jun"
-      break
-    case "6":
-      month = "jul"
-      break
-    case "7":
-      month = "ago"
-      break
-    case "8":
-      month = "sep"
-      break
-    case "9":
-      month = "oct"
-      break
-    case "10":
-      month = "nov"
-      break
-    case "11":
-      month = "dic"
-      break
-  }
-
-  React.useEffect(() => {
-    setInterval(updateDate, 1000)
-  })
-
-  const updateDate = () => {
-    setDate(new Date())
+  const functionOpenProgram = (p: Program) => {
+    if (isPortrait) {
+      openProgram(p)
+      closeAll(p)
+    } else {
+      openProgram(p)
+    }
   }
 
   return (
@@ -197,32 +142,51 @@ const TopBar: React.FC = () => {
       )}
       {!isPortrait && <Box w="20px" />}
       <Spacer />
-      <Flex ml={["20px", "-70px"]} w={["120px", "150px"]}>
-        <Text alignSelf="center" fontSize="small" fontWeight="bold">
-          {day} {date.getDate().toString()} de {month}
-        </Text>
-        <Spacer />
-        <Text alignSelf="center" fontSize="small" fontWeight="bold">
-          {date.toLocaleTimeString().substring(5, -1)}
-        </Text>
-      </Flex>
+      <Clock />
       <Spacer />
       <HStack mr="10px" spacing="10px">
-        {isPortrait && (
-          <Box
-            as="button"
-            onClick={() => {
-              openProgram(wallpaper()), closeAll(wallpaper())
-            }}
-          >
-            <EditIcon />
-          </Box>
-        )}
-        {!isPortrait && (
-          <Box as="button" onClick={() => openProgram(wallpaper())}>
-            <EditIcon />
-          </Box>
-        )}
+        <Popover>
+          <PopoverTrigger>
+            <Box role="button">
+              <Icon as={BsInfoCircle} />
+            </Box>
+          </PopoverTrigger>
+          <PopoverContent bg="black" position="static">
+            <PopoverBody>
+              <PopoverCloseButton />
+              <PopoverHeader h="20px" />
+              <Text color="#EFEFEF" textAlign="justify" w="100%">
+                Icons made by{" "}
+                <Text
+                  as="a"
+                  fontStyle="italic"
+                  fontWeight="bold"
+                  href="https://www.flaticon.com/authors/mynamepong"
+                  target="_blank"
+                >
+                  mynamepong
+                </Text>{" "}
+                and{" "}
+                <Text
+                  as="a"
+                  fontStyle="italic"
+                  fontWeight="bold"
+                  href="https://www.flaticon.com/authors/roundicons"
+                  target="_blank"
+                >
+                  roundicons
+                </Text>{" "}
+                from{" "}
+                <Text as="a" fontStyle="italic" href="https://www.flaticon.com/" target="_blank">
+                  www.flaticon.com
+                </Text>
+              </Text>
+            </PopoverBody>
+          </PopoverContent>
+        </Popover>
+        <Box as="button" onClick={() => functionOpenProgram(wallpaper())}>
+          <EditIcon />
+        </Box>
         <Box alignSelf="center" as="button" onClick={toggleColorMode}>
           {colorMode === "light" && <MoonIcon />}
           {colorMode !== "light" && <SunIcon />}

@@ -28,6 +28,12 @@ const Wallpapers: React.FC<Props> = ({h, w}) => {
   const isPortrait = useMediaQuery({query: "(orientation: portrait)"})
   const changeWallpaper = useChangeWallpaper()
 
+  React.useEffect(() => {
+    if (!loaded && imageRef.current?.complete && imageRef.current?.naturalWidth > 0) {
+      setLoaded(true)
+    }
+  }, [loaded])
+
   return (
     <Center bg={bg} borderBottomRadius="xl" color={colorText} h="96%" p={[4, 10]} w="100%">
       <VStack h={h} w={w}>
@@ -42,6 +48,7 @@ const Wallpapers: React.FC<Props> = ({h, w}) => {
                   <Skeleton h="160px" isLoaded={loaded} minWidth="200px" w="100%">
                     <Image
                       ref={imageRef}
+                      alt={elem}
                       boxShadow="dark-lg"
                       src={elem}
                       onLoad={() => {

@@ -170,7 +170,9 @@ const About: React.FC<Props> = ({h, w}) => {
                     <Text color={colorCorchetes}>{`<`}</Text>
                     <Text color={text2}>p</Text>
                     <Text color={colorCorchetes}>{`>`}</Text>
-                    <Text color={text}>{elem}</Text>
+                    <Text color={text} fontSize={["xs", null, "initial"]}>
+                      {elem}
+                    </Text>
                     <Text color={colorCorchetes}>{`</ `}</Text>
                     <Text color={text2}>p</Text>
                     <Text color={colorCorchetes}>{`>`}</Text>
