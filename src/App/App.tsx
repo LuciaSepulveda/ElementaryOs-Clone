@@ -70,17 +70,19 @@ const App: React.FC = () => {
           <TopBar />
           {isPortrait && (
             <>
-              {noProgramsOpen && <Box h={["84%", "88%"]} position="absolute" w="100%" />}
+              <Box h={["84%", "88%"]} position="absolute" w="100%" zIndex="-1" />
               {programs.map((elem) => {
                 return (
-                  elem.open === true && (
-                    <Window key={elem.name} program={elem}>
-                      {elem.name === "User" && <About h="94%" w="100%" />}
-                      {elem.name === "Projects" && <Projects h="94%" maximized={true} w="90%" />}
-                      {elem.name === "Contact" && <Contact h="94%" w="100%" />}
-                      {elem.name === "Wallpapers" && <Wallpapers h="96%" w="100%" />}
-                    </Window>
-                  )
+                  <AnimatePresence key={elem.name}>
+                    {elem.open === true && (
+                      <Window key={elem.name} program={elem}>
+                        {elem.name === "User" && <About h="94%" w="100%" />}
+                        {elem.name === "Projects" && <Projects h="94%" maximized={true} w="90%" />}
+                        {elem.name === "Contact" && <Contact h="94%" w="100%" />}
+                        {elem.name === "Wallpapers" && <Wallpapers h="96%" w="100%" />}
+                      </Window>
+                    )}
+                  </AnimatePresence>
                 )
               })}
             </>

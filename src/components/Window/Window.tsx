@@ -150,7 +150,7 @@ const Window: React.FC<Props> = ({program, children}) => {
         <motion.div
           animate={{scale: 1, opacity: 1}}
           exit={{scale: 0, y: 500, opacity: 0}}
-          style={{height: "89%", width: "100%"}}
+          style={{height: "89%", width: "100%", position: "absolute"}}
         >
           <Box
             bg="#242424"
@@ -268,8 +268,9 @@ const Window: React.FC<Props> = ({program, children}) => {
       {isPortrait && (
         <motion.div
           animate={{y: 0, scale: 1}}
+          exit={{y: 200, opacity: 0, scale: 0}}
           initial={{y: 200, scale: 0}}
-          style={{height: "84%", width: "100%"}}
+          style={{height: "84%", width: "100%", position: "absolute"}}
         >
           <Box
             bg="#242424"
