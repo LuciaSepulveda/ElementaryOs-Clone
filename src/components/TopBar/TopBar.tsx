@@ -70,9 +70,9 @@ const TopBar: React.FC = () => {
   }
 
   return (
-    <Flex bg="black" color="white" h="26px" position="absolute" w="100%">
+    <Flex bg="black" color="white" h="26px" position="relative" w="100%">
       {!isPortrait && (
-        <Flex position="sticky" zIndex="5">
+        <Flex position="sticky" zIndex="15">
           <Menu>
             <MenuButton
               alt="Search button"
