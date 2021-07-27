@@ -56,7 +56,7 @@ const BottomBar: React.FC<Props> = ({programs}) => {
                 {!isPortrait && <Icon mouseX={mouseX} src={elem.img} />}
                 {isPortrait && (
                   <motion.div whileHover={{scale: 1.2}} whileTap={{y: -50}}>
-                    <Image alignSelf="center" h="50px" src={elem.img} w="50px" />
+                    <Image alignSelf="center" alt={elem.name} h="50px" src={elem.img} w="50px" />
                   </motion.div>
                 )}
                 {(elem.open === true || elem.minimized === true) && (
@@ -78,7 +78,7 @@ const BottomBar: React.FC<Props> = ({programs}) => {
                   {!isPortrait && <Icon mouseX={mouseX} src={elem.img} />}
                   {isPortrait && (
                     <motion.div whileHover={{scale: 1.2}} whileTap={{y: -50}}>
-                      <Image alignSelf="center" h="50px" src={elem.img} w="50px" />
+                      <Image alignSelf="center" alt={elem.name} h="50px" src={elem.img} w="50px" />
                     </motion.div>
                   )}
                   {(elem.open === true || elem.minimized === true) && (

@@ -41,6 +41,7 @@ const App: React.FC = () => {
     <Box h="100vh" overflow="hidden" position="absolute" w="100%">
       <Image
         ref={imageRef}
+        alt="Wallpaper"
         fit="cover"
         h="100%"
         position="absolute"
@@ -62,7 +63,7 @@ const App: React.FC = () => {
           h="100vh"
           w="100%"
         >
-          <Spinner size="xl" />
+          <Spinner alt="Loading spinner" size="xl" />
         </Center>
       )}
       {status === Status.ready && (

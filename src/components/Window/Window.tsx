@@ -68,6 +68,7 @@ const Window: React.FC<Props> = ({program, children}) => {
                   }}
                 >
                   <CloseIcon
+                    alt="Close icon"
                     color="rgba(0,0,0,0.7)"
                     h="7.5px"
                     style={{opacity: `${closeButton}`}}
@@ -97,6 +98,7 @@ const Window: React.FC<Props> = ({program, children}) => {
                   }}
                 >
                   <MinusIcon
+                    alt="Minimize icon"
                     color="rgba(0,0,0,0.7)"
                     h="7.5px"
                     style={{opacity: `${minButton}`}}
@@ -124,6 +126,7 @@ const Window: React.FC<Props> = ({program, children}) => {
                   onClick={() => maximized(program)}
                 >
                   <ArrowUpDownIcon
+                    alt="Maximize icon"
                     color="rgba(0,0,0,0.7)"
                     h="7.5px"
                     style={{opacity: `${maxButton}`}}
@@ -187,6 +190,7 @@ const Window: React.FC<Props> = ({program, children}) => {
                   }}
                 >
                   <CloseIcon
+                    alt="Close icon"
                     color="rgba(0,0,0,0.7)"
                     h="7.5px"
                     style={{opacity: `${closeButton}`}}
@@ -216,6 +220,7 @@ const Window: React.FC<Props> = ({program, children}) => {
                   }}
                 >
                   <MinusIcon
+                    alt="Minimize icon"
                     color="rgba(0,0,0,0.7)"
                     h="7.5px"
                     style={{opacity: `${minButton}`}}
@@ -243,6 +248,7 @@ const Window: React.FC<Props> = ({program, children}) => {
                   onClick={() => maximized(program)}
                 >
                   <ArrowUpDownIcon
+                    alt="Maximize icon"
                     color="rgba(0,0,0,0.7)"
                     h="7.5px"
                     style={{opacity: `${maxButton}`}}
@@ -306,6 +312,7 @@ const Window: React.FC<Props> = ({program, children}) => {
                   }}
                 >
                   <CloseIcon
+                    alt="Close icon"
                     color="rgba(0,0,0,0.7)"
                     h="7.5px"
                     style={{opacity: `${closeButton}`}}
@@ -335,6 +342,7 @@ const Window: React.FC<Props> = ({program, children}) => {
                   }}
                 >
                   <MinusIcon
+                    alt="Minimize icon"
                     color="rgba(0,0,0,0.7)"
                     h="7.5px"
                     style={{opacity: `${minButton}`}}
@@ -362,6 +370,7 @@ const Window: React.FC<Props> = ({program, children}) => {
                   onClick={() => maximized(program)}
                 >
                   <ArrowUpDownIcon
+                    alt="Maximize icon"
                     color="rgba(0,0,0,0.7)"
                     h="7.5px"
                     style={{opacity: `${maxButton}`}}

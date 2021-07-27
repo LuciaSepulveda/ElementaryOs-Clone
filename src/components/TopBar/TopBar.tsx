@@ -70,11 +70,12 @@ const TopBar: React.FC = () => {
   }
 
   return (
-    <Flex bg="black" color="white" h="26px" position="sticky">
+    <Flex bg="black" color="white" h="26px" position="absolute" w="100%">
       {!isPortrait && (
-        <Flex>
+        <Flex position="sticky" zIndex="5">
           <Menu>
             <MenuButton
+              alt="Search button"
               as={Button}
               leftIcon={<Search2Icon alignSelf="center" h={3} ml={["0px", "5px"]} w={3} />}
               style={{backgroundColor: "transparent", height: "20px", alignSelf: "center"}}
@@ -99,8 +100,9 @@ const TopBar: React.FC = () => {
                       color="white"
                       h="90%"
                       mt="2%"
+                      position="sticky"
                       value={search}
-                      w="90%"
+                      w="88%"
                       onChange={handleChange}
                     />
                   </HStack>
@@ -111,7 +113,7 @@ const TopBar: React.FC = () => {
                       return (
                         <GridItem key={elem.name} m="10px">
                           <VStack as="button" onClick={() => openProgram(elem)}>
-                            <Image h="50px" src={elem.img} w="50px" />
+                            <Image alt={elem.name} h="50px" src={elem.img} w="50px" />
                             <Text color="white" fontSize="small">
                               {elem.name}
                             </Text>
@@ -126,7 +128,7 @@ const TopBar: React.FC = () => {
                         return (
                           <GridItem key={elem.name} m="10px">
                             <VStack as="button" onClick={() => openProgram(elem)}>
-                              <Image h="50px" src={elem.img} w="50px" />
+                              <Image alt={elem.name} h="50px" src={elem.img} w="50px" />
                               <Text color="white" fontSize="small">
                                 {elem.name}
                               </Text>
@@ -144,7 +146,7 @@ const TopBar: React.FC = () => {
       <Spacer />
       <Clock />
       <Spacer />
-      <HStack mr="10px" spacing="10px">
+      <HStack mr="10px" position="sticky" spacing="10px" zIndex="5">
         <Popover>
           <PopoverTrigger>
             <Box role="button">
@@ -185,11 +187,11 @@ const TopBar: React.FC = () => {
           </PopoverContent>
         </Popover>
         <Box as="button" onClick={() => functionOpenProgram(wallpaper())}>
-          <EditIcon />
+          <EditIcon alt="Edit icon" />
         </Box>
         <Box alignSelf="center" as="button" onClick={toggleColorMode}>
-          {colorMode === "light" && <MoonIcon />}
-          {colorMode !== "light" && <SunIcon />}
+          {colorMode === "light" && <MoonIcon alt="Dark mode icon" />}
+          {colorMode !== "light" && <SunIcon alt="Light mode icon" />}
         </Box>
       </HStack>
     </Flex>

@@ -48,6 +48,7 @@ const Contact: React.FC<Props> = ({w, h}) => {
           <Skeleton h="150px" isLoaded={loaded} w="100%">
             <Image
               ref={imageRef}
+              alt="Cover social page"
               h="150px"
               src={draw}
               onLoad={() => {
@@ -65,7 +66,7 @@ const Contact: React.FC<Props> = ({w, h}) => {
             spacing={[2, 5]}
             w="95%"
           >
-            <Image h={["40px", "50px"]} src={elem.logo} />
+            <Image alt={`Logo ` + elem.name} h={["40px", "50px"]} src={elem.logo} />
             <VStack alignItems="start" w="100%">
               <Text fontWeight="bold">{elem.name}</Text>
               {elem.name !== "Email" && (

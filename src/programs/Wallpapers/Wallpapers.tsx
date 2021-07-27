@@ -48,7 +48,7 @@ const Wallpapers: React.FC<Props> = ({h, w}) => {
                   <Skeleton h="160px" isLoaded={loaded} minWidth="200px" w="100%">
                     <Image
                       ref={imageRef}
-                      alt={elem}
+                      alt="Wallpaper"
                       boxShadow="dark-lg"
                       src={elem}
                       onLoad={() => {
@@ -82,6 +82,7 @@ const Wallpapers: React.FC<Props> = ({h, w}) => {
                 <Skeleton h="160px" isLoaded={loaded} w="96%">
                   <Image
                     ref={imageRef}
+                    alt="Wallpaper"
                     boxShadow="xl"
                     src={elem}
                     onLoad={() => {
