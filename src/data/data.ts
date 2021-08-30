@@ -20,11 +20,11 @@ export const programs: Program[] = [
   {
     name: "User",
     img: `${dev}`,
-    open: false,
+    open: true,
     maximized: false,
     minimized: false,
   },
-  {name: "Projects", img: `${project}`, open: true, maximized: false, minimized: false},
+  {name: "Projects", img: `${project}`, open: false, maximized: false, minimized: false},
   {name: "Contact", img: `${smart}`, open: false, maximized: false, minimized: false},
   {name: "Wallpapers", img: `${display}`, open: false, maximized: false, minimized: false},
 ]
