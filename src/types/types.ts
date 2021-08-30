@@ -12,6 +12,7 @@ export interface Project {
   description: string
   github: string
   demo: string
+  techs: string[]
 }
 
 export enum Status {

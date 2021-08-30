@@ -9,6 +9,7 @@ import {
   Link,
   useColorModeValue,
   SimpleGrid,
+  Badge,
 } from "@chakra-ui/react"
 import {useMediaQuery} from "react-responsive"
 
@@ -58,10 +59,11 @@ const Projects: React.FC<Props> = ({h, w, maximized}) => {
               border={border}
               borderBottomRadius="xl"
               color={colorText}
-              maxHeight="360px"
               spacing="10px"
             >
-              <Text fontWeight="bold">{elem.name}</Text>
+              <Text fontWeight="bold" h="16px">
+                {elem.name}
+              </Text>
               <Link h={heightImageProject} href={elem.demo} target="_blank">
                 <Skeleton h="150px" isLoaded={loaded} w="100%">
                   <Image
@@ -78,23 +80,22 @@ const Projects: React.FC<Props> = ({h, w, maximized}) => {
               <Link bg="white" borderRadius="md" h="22px" href={elem.github} target="_blank">
                 <Image h="20px" src={github} />
               </Link>
-              <Box
-                bg={bgItem}
-                borderBottomRadius="md"
-                boxShadow="md"
-                h="80px"
-                overflow="hidden"
-                p={1}
-                w="100%"
-              >
+              <Box bg={bgItem} h="52px" overflow="hidden" p={1} w="100%">
                 <Text>{elem.description}</Text>
               </Box>
+              <Center h="28px" w="100%">
+                {elem.techs.map((tech) => (
+                  <Badge key={tech} colorScheme="gray" ml={2}>
+                    {tech}
+                  </Badge>
+                ))}
+              </Center>
             </VStack>
           ))}
         </SimpleGrid>
       )}
       {isPortrait && (
-        <SimpleGrid columns={2} gap={2} h={h} overflow="scroll" p={1} w={w}>
+        <SimpleGrid columns={[1, 2]} gap={2} h={h} overflow="scroll" p={1} w={w}>
           {projects.map((elem) => (
             <VStack
               key={elem.name}
@@ -111,6 +112,7 @@ const Projects: React.FC<Props> = ({h, w, maximized}) => {
                   <Image
                     ref={imageRef}
                     alt={elem.name}
+                    h="130px"
                     src={elem.img}
                     onLoad={() => {
                       setLoaded(true)
@@ -118,17 +120,16 @@ const Projects: React.FC<Props> = ({h, w, maximized}) => {
                   />
                 </Skeleton>
               </Link>
-              <Box
-                bg={bgItem}
-                borderBottomRadius="md"
-                boxShadow="md"
-                h="80px"
-                overflow="hidden"
-                p={1}
-                w="100%"
-              >
+              <Box bg={bgItem} borderBottomRadius="md" h="80px" overflow="hidden" p={1} w="100%">
                 <Text fontSize={["small", "initial"]}>{elem.description}</Text>
               </Box>
+              <Center h="28px" w="100%">
+                {elem.techs.map((tech) => (
+                  <Badge key={tech} colorScheme="gray" ml={2}>
+                    {tech}
+                  </Badge>
+                ))}
+              </Center>
             </VStack>
           ))}
         </SimpleGrid>

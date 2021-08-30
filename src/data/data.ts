@@ -5,6 +5,7 @@ import aerolab from "../assets/aerolab.png"
 import realtrends from "../assets/realtrends.png"
 import sambuche from "../assets/sambuche.png"
 import random from "../assets/randomQuote.png"
+import basement from "../assets/basementChallenge.png"
 import mail from "../assets/mailbox.png"
 import smart from "../assets/smartphone1.png"
 import github from "../assets/github.png"
@@ -19,11 +20,11 @@ export const programs: Program[] = [
   {
     name: "User",
     img: `${dev}`,
-    open: true,
+    open: false,
     maximized: false,
     minimized: false,
   },
-  {name: "Projects", img: `${project}`, open: false, maximized: false, minimized: false},
+  {name: "Projects", img: `${project}`, open: true, maximized: false, minimized: false},
   {name: "Contact", img: `${smart}`, open: false, maximized: false, minimized: false},
   {name: "Wallpapers", img: `${display}`, open: false, maximized: false, minimized: false},
 ]
@@ -35,6 +36,15 @@ export const projects: Project[] = [
     demo: "https://sambuche.netlify.app/",
     description: "Aplicación que simula el armado de un pedido de sandwich",
     img: `${sambuche}`,
+    techs: ["React", "Typescript", "Chakra-UI"],
+  },
+  {
+    name: "Basement Challenge",
+    github: "https://github.com/LuciaSepulveda/Basement-Challenge",
+    demo: "https://basement-challenge-ls.vercel.app/",
+    description: "Aplicación que simula una tienda",
+    img: `${basement}`,
+    techs: ["NextJS", "Tailwind"],
   },
   {
     name: "Aerolab Challenge",
@@ -42,6 +52,7 @@ export const projects: Project[] = [
     demo: "https://aerolabchallenge.web.app/",
     description: "Tienda de productos basada en puntos.",
     img: `${aerolab}`,
+    techs: ["React", "Typescript", "Chakra-UI"],
   },
   {
     name: "BlackBox Vision Challenge",
@@ -49,6 +60,7 @@ export const projects: Project[] = [
     github: "https://github.com/LuciaSepulveda/BlackBox-Vision-challenge",
     demo: "https://quizbox-vision.web.app/",
     description: "Juego de preguntas y respuestas",
+    techs: ["React", "Typescript", "Chakra-UI"],
   },
   {
     name: "RealTrends Challenge",
@@ -56,6 +68,7 @@ export const projects: Project[] = [
     demo: "https://realtrends-challenge.netlify.app/",
     description: "Aplicación de votación realtime",
     img: `${realtrends}`,
+    techs: ["React", "Typescript", "Chakra-UI"],
   },
   {
     name: "Random Quote Generator",
@@ -63,6 +76,7 @@ export const projects: Project[] = [
     demo: "https://random-quote-luciasepulveda.netlify.app/",
     description: "Aplicación que muestra una frase random",
     img: `${random}`,
+    techs: ["React", "Typescript", "Chakra-UI"],
   },
 ]
 
