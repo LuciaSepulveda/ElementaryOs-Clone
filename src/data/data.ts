@@ -4,7 +4,7 @@ import blackbox from "../assets/blackbox-vision.png"
 import aerolab from "../assets/aerolab.png"
 import realtrends from "../assets/realtrends.png"
 import sambuche from "../assets/sambuche.png"
-import random from "../assets/randomQuote.png"
+import softvision from "../assets/softvision.png"
 import basement from "../assets/basementChallenge.png"
 import mail from "../assets/mailbox.png"
 import smart from "../assets/smartphone1.png"
@@ -55,6 +55,14 @@ export const projects: Project[] = [
     techs: ["React", "Typescript", "Chakra-UI"],
   },
   {
+    name: "Softvision Challenge",
+    github: "https://github.com/LuciaSepulveda/Softvision-Challenge",
+    demo: "https://cognizant-softvision-challenge.netlify.app/",
+    description: "Aplicación que simula a Trello",
+    img: `${softvision}`,
+    techs: ["React", "Typescript", "Chakra-UI"],
+  },
+  {
     name: "BlackBox Vision Challenge",
     img: `${blackbox}`,
     github: "https://github.com/LuciaSepulveda/BlackBox-Vision-challenge",
@@ -68,14 +76,6 @@ export const projects: Project[] = [
     demo: "https://realtrends-challenge.netlify.app/",
     description: "Aplicación de votación realtime",
     img: `${realtrends}`,
-    techs: ["React", "Typescript", "Chakra-UI"],
-  },
-  {
-    name: "Random Quote Generator",
-    github: "https://github.com/LuciaSepulveda/Random-quote-generator",
-    demo: "https://random-quote-luciasepulveda.netlify.app/",
-    description: "Aplicación que muestra una frase random",
-    img: `${random}`,
     techs: ["React", "Typescript", "Chakra-UI"],
   },
 ]
