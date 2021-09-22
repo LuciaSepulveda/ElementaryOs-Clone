@@ -14,6 +14,8 @@ import fondo1 from "../assets/fondo1.jpg"
 import fondo2 from "../assets/fondo2.jpg"
 import fondo3 from "../assets/fondo3.jpg"
 import fondo4 from "../assets/fondo4.jpg"
+import fondo5 from "../assets/fondo5.jpg"
+import fondo6 from "../assets/fondo6.jpg"
 import display from "../assets/display1.png"
 
 export const programs: Program[] = [
@@ -99,4 +101,11 @@ export const techs: string[] = [
 
 export const info: string[] = ["Vivo en Bahía Blanca", "Estudiante de Ingeniería en Computación"]
 
-export const wallpapers: string[] = [`${fondo1}`, `${fondo2}`, `${fondo3}`, `${fondo4}`]
+export const wallpapers: string[] = [
+  `${fondo1}`,
+  `${fondo2}`,
+  `${fondo3}`,
+  `${fondo4}`,
+  `${fondo5}`,
+  `${fondo6}`,
+]

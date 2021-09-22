@@ -1,5 +1,4 @@
 import React from "react"
-import {Spinner} from "@chakra-ui/react"
 
 import {Program, Status} from "../types/types"
 import {programs, wallpapers} from "../data/data"
@@ -32,13 +31,18 @@ const UserProvider: React.FC = ({children}) => {
   const [noProgramsOpen, setProgramsOpen] = React.useState<boolean>(false)
   const [anyProgramMaximized, setAnyProgramMaximized] = React.useState<boolean>(false)
   const [sectionAbout, setSectionAbout] = React.useState<string>("about")
-  const [wallpaper, setWallpaper] = React.useState<string>(wallpapers[0])
+  const [wallpaper, setWallpaper] = React.useState<string>(
+    typeof JSON.parse(localStorage.getItem("Wallpaper") || "{}") !== "object"
+      ? JSON.parse(localStorage.getItem("Wallpaper") || "{}")
+      : wallpapers[0],
+  )
 
   const handleChangeSectionAbout = (s: string) => {
     setSectionAbout(s)
   }
 
   const handleChangeWallpaper = (w: string) => {
+    localStorage.setItem("Wallpaper", JSON.stringify(w))
     setWallpaper(w)
   }
 
