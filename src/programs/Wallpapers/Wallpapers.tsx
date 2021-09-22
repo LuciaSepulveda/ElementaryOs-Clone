@@ -36,12 +36,18 @@ const Wallpapers: React.FC<Props> = ({h, w}) => {
 
   return (
     <Center bg={bg} borderBottomRadius="xl" color={colorText} h="96%" p={[4, 10]} w="100%">
-      <VStack h={h} w={w}>
+      <VStack h={h} w={[w, w, "90%", "90%", "90%", w]}>
         <Text fontSize="xl" fontWeight="bold">
           Select wallpaper
         </Text>
         {!isPortrait && (
-          <Grid gap={4} h={h} p={4} templateColumns="repeat(3, 1fr)" w={w}>
+          <Grid
+            gap={4}
+            h={[null, null, null, "500px", h, h]}
+            p={0}
+            templateColumns="repeat(3, 1fr)"
+            w={[null, null, null, "100%", "90%", w]}
+          >
             {wallpapers.map((elem) => (
               <motion.div key={elem} whileHover={{scale: 1.05, y: -5}}>
                 <GridItem as="button" colSpan={1} h="100%" onClick={() => changeWallpaper(elem)}>
