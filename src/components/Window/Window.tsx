@@ -368,23 +368,7 @@ const Window: React.FC<Props> = ({program, children}) => {
                 onHoverEnd={() => setMaxButton(0)}
                 onHoverStart={() => setMaxButton(1)}
               >
-                <Center
-                  alignSelf="center"
-                  as="button"
-                  bg="#4DC849"
-                  borderRadius="50%"
-                  h="15px"
-                  w="15px"
-                  onClick={() => maximized(program)}
-                >
-                  <ArrowUpDownIcon
-                    alt="Maximize icon"
-                    color="rgba(0,0,0,0.7)"
-                    h="7.5px"
-                    style={{opacity: `${maxButton}`}}
-                    w="7.5px"
-                  />
-                </Center>
+                <Center alignSelf="center" bg="#317e2e" borderRadius="50%" h="15px" w="15px" />
               </motion.div>
               <Center w="85%">
                 {program.name === "User" && (
