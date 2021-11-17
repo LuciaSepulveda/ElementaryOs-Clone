@@ -2,7 +2,6 @@ import dev from "../assets/developer.png"
 import project from "../assets/layout1.png"
 import blackbox from "../assets/blackbox-vision.png"
 import aerolab from "../assets/aerolab.png"
-import realtrends from "../assets/realtrends.png"
 import sambuche from "../assets/sambuche.png"
 import softvision from "../assets/softvision.png"
 import basement from "../assets/basementChallenge.png"
@@ -17,6 +16,7 @@ import fondo4 from "../assets/fondo4.jpg"
 import fondo5 from "../assets/fondo5.jpg"
 import fondo6 from "../assets/fondo6.jpg"
 import display from "../assets/display1.png"
+import abtm from "../assets/ABTM.png"
 
 export const programs: Program[] = [
   {
@@ -32,6 +32,14 @@ export const programs: Program[] = [
 ]
 
 export const projects: Project[] = [
+  {
+    name: "ABTM",
+    github: "https://github.com/LuciaSepulveda/ABTM",
+    demo: "https://abtm.vercel.app/",
+    description: "Web para la Asociación Bahiense de Tenis de Mesa",
+    img: `${abtm}`,
+    techs: ["NextJs", "Strapi", "Chakra-UI"],
+  },
   {
     name: "Sambuche App",
     github: "https://github.com/LuciaSepulveda/Sambuche-App",
@@ -70,14 +78,6 @@ export const projects: Project[] = [
     github: "https://github.com/LuciaSepulveda/BlackBox-Vision-challenge",
     demo: "https://quizbox-vision.web.app/",
     description: "Juego de preguntas y respuestas",
-    techs: ["React", "Typescript", "Chakra-UI"],
-  },
-  {
-    name: "RealTrends Challenge",
-    github: "https://github.com/LuciaSepulveda/RealTrends-Challenge",
-    demo: "https://realtrends-challenge.netlify.app/",
-    description: "Aplicación de votación realtime",
-    img: `${realtrends}`,
     techs: ["React", "Typescript", "Chakra-UI"],
   },
 ]
