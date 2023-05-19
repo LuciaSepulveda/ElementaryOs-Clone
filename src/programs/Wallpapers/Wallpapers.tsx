@@ -9,33 +9,44 @@ import {
   VStack,
 } from "@chakra-ui/react"
 import * as React from "react"
-import {useMediaQuery} from "react-responsive"
-import {motion} from "framer-motion"
+import { useMediaQuery } from "react-responsive"
+import { motion } from "framer-motion"
 
-import {useChangeWallpaper} from "../../context/hooks"
-import {wallpapers} from "../../data/data"
+import { useChangeWallpaper } from "../../context/hooks"
+import { wallpapers } from "../../data/data"
 
 interface Props {
   h: string
   w: string
 }
 
-const Wallpapers: React.FC<Props> = ({h, w}) => {
+const Wallpapers: React.FC<Props> = ({ h, w }) => {
   const imageRef = React.useRef<HTMLImageElement>(null)
   const [loaded, setLoaded] = React.useState<boolean>(false)
   const bg = useColorModeValue("#FBFBFB", "#242424")
   const colorText = useColorModeValue("#242424", "#FBFBFB")
-  const isPortrait = useMediaQuery({query: "(orientation: portrait)"})
+  const isPortrait = useMediaQuery({ query: "(orientation: portrait)" })
   const changeWallpaper = useChangeWallpaper()
 
   React.useEffect(() => {
-    if (!loaded && imageRef.current?.complete && imageRef.current?.naturalWidth > 0) {
+    if (
+      !loaded &&
+      imageRef.current?.complete &&
+      imageRef.current?.naturalWidth > 0
+    ) {
       setLoaded(true)
     }
   }, [loaded])
 
   return (
-    <Center bg={bg} borderBottomRadius="xl" color={colorText} h="96%" p={[4, 10]} w="100%">
+    <Center
+      bg={bg}
+      borderBottomRadius="xl"
+      color={colorText}
+      h="96%"
+      p={[4, 10]}
+      w="100%"
+    >
       <VStack h={h} w={[w, w, "90%", "90%", "90%", w]}>
         <Text fontSize="xl" fontWeight="bold">
           Select wallpaper
@@ -49,9 +60,19 @@ const Wallpapers: React.FC<Props> = ({h, w}) => {
             w={[null, null, null, "100%", "90%", w]}
           >
             {wallpapers.map((elem) => (
-              <motion.div key={elem} whileHover={{scale: 1.05, y: -5}}>
-                <GridItem as="button" colSpan={1} h="100%" onClick={() => changeWallpaper(elem)}>
-                  <Skeleton h="160px" isLoaded={loaded} minWidth="200px" w="100%">
+              <motion.div key={elem} whileHover={{ scale: 1.05, y: -5 }}>
+                <GridItem
+                  as="button"
+                  colSpan={1}
+                  h="100%"
+                  onClick={() => changeWallpaper(elem)}
+                >
+                  <Skeleton
+                    h="160px"
+                    isLoaded={loaded}
+                    minWidth="200px"
+                    w="100%"
+                  >
                     <Image
                       ref={imageRef}
                       alt="Wallpaper"

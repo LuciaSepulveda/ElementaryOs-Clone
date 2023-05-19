@@ -1,15 +1,22 @@
 import * as React from "react"
-import {Box, HStack, Image, VStack, Text, useColorModeValue, Skeleton} from "@chakra-ui/react"
+import {
+  Box,
+  HStack,
+  Image,
+  VStack,
+  Text,
+  useColorModeValue,
+  Skeleton,
+} from "@chakra-ui/react"
 
-import {social} from "../../data/data"
-import draw from "../../assets/undraw_Social.png"
+import { social } from "../../data/data"
 
 interface Props {
   w: string
   h: string
 }
 
-const Contact: React.FC<Props> = ({w, h}) => {
+const Contact: React.FC<Props> = ({ w, h }) => {
   const bg = useColorModeValue("#F7F9F9", "#14202A")
   const bgProgram = useColorModeValue("#FFFFFF", "#14202A")
   const colorText = useColorModeValue("#0F1419", "#E6F2F3")
@@ -18,7 +25,11 @@ const Contact: React.FC<Props> = ({w, h}) => {
   const [loaded, setLoaded] = React.useState<boolean>(false)
 
   React.useEffect(() => {
-    if (!loaded && imageRef.current?.complete && imageRef.current?.naturalWidth > 0) {
+    if (
+      !loaded &&
+      imageRef.current?.complete &&
+      imageRef.current?.naturalWidth > 0
+    ) {
       setLoaded(true)
     }
   }, [loaded])
@@ -44,13 +55,13 @@ const Contact: React.FC<Props> = ({w, h}) => {
         transitionTimingFunction="ease-in-out"
         w={["100%", "70%"]}
       >
-        <Box align="center" bg="white" mb={4} w="100%">
+        <Box bg="white" mb={4} w="100%">
           <Skeleton h="150px" isLoaded={loaded} w="100%">
             <Image
               ref={imageRef}
               alt="Cover social page"
               h="150px"
-              src={draw}
+              src="/undraw_Social.png"
               onLoad={() => {
                 setLoaded(true)
               }}
@@ -66,7 +77,11 @@ const Contact: React.FC<Props> = ({w, h}) => {
             spacing={[2, 5]}
             w="95%"
           >
-            <Image alt={`Logo ` + elem.name} h={["40px", "50px"]} src={elem.logo} />
+            <Image
+              alt={`Logo ` + elem.name}
+              h={["40px", "50px"]}
+              src={elem.logo}
+            />
             <VStack alignItems="start" w="100%">
               <Text fontWeight="bold">{elem.name}</Text>
               {elem.name !== "Email" && (

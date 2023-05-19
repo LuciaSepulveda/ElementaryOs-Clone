@@ -1,5 +1,5 @@
 import * as React from "react"
-import {Spacer, Flex, Text} from "@chakra-ui/react"
+import { Spacer, Flex, Text } from "@chakra-ui/react"
 
 const Clock: React.FC = () => {
   const [date, setDate] = React.useState<Date>(new Date())
@@ -84,8 +84,10 @@ const Clock: React.FC = () => {
       </Text>
       <Spacer />
       <Text alignSelf="center" fontSize="small" fontWeight="bold">
-        {date.getHours() === 0 && `${date.toLocaleTimeString().substring(4, -1)}`}
-        {date.getHours() !== 0 && `${date.toLocaleTimeString().substring(5, -1)}`}
+        {date.getHours() === 0 &&
+          `${date.toLocaleTimeString().substring(4, -1)}`}
+        {date.getHours() !== 0 &&
+          `${date.toLocaleTimeString().substring(5, -1)}`}
       </Text>
     </Flex>
   )

@@ -1,7 +1,7 @@
 import React from "react"
 
-import {Program, Status} from "../types/types"
-import {programs, wallpapers} from "../data/data"
+import { Program, Status } from "../types/types"
+import { programs, wallpapers } from "../data/data"
 
 export interface Context {
   state: {
@@ -24,17 +24,22 @@ export interface Context {
   }
 }
 
+interface ChildrenProp {
+  children: React.ReactNode
+}
+
 const UserContext = React.createContext({} as Context)
 
-const UserProvider: React.FC = ({children}) => {
+const UserProvider = ({ children }: ChildrenProp) => {
   const [status, setStatus] = React.useState<Status>(Status.loading)
   const [noProgramsOpen, setProgramsOpen] = React.useState<boolean>(false)
-  const [anyProgramMaximized, setAnyProgramMaximized] = React.useState<boolean>(false)
+  const [anyProgramMaximized, setAnyProgramMaximized] =
+    React.useState<boolean>(false)
   const [sectionAbout, setSectionAbout] = React.useState<string>("about")
   const [wallpaper, setWallpaper] = React.useState<string>(
-    typeof JSON.parse(localStorage.getItem("Wallpaper") || "{}") !== "object"
+    typeof window !== "undefined" && typeof JSON.parse(localStorage.getItem("Wallpaper") || "{}") !== "object"
       ? JSON.parse(localStorage.getItem("Wallpaper") || "{}")
-      : wallpapers[0],
+      : wallpapers[0]
   )
 
   const handleChangeSectionAbout = (s: string) => {
@@ -130,7 +135,11 @@ const UserProvider: React.FC = ({children}) => {
     setStatus(Status.ready)
   }
 
-  return <UserContext.Provider value={{state, actions}}>{children}</UserContext.Provider>
+  return (
+    <UserContext.Provider value={{ state, actions }}>
+      {children}
+    </UserContext.Provider>
+  )
 }
 
-export {UserContext as default, UserProvider as Provider}
+export { UserContext as default, UserProvider as Provider }

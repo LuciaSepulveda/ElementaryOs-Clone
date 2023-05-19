@@ -11,10 +11,9 @@ import {
   SimpleGrid,
   Badge,
 } from "@chakra-ui/react"
-import {useMediaQuery} from "react-responsive"
+import { useMediaQuery } from "react-responsive"
 
-import github from "../../assets/GitHub_Logo.png"
-import {projects} from "../../data/data"
+import { projects } from "../../data/data"
 
 interface Props {
   w: string
@@ -22,10 +21,10 @@ interface Props {
   maximized: boolean
 }
 
-const Projects: React.FC<Props> = ({h, w, maximized}) => {
+const Projects: React.FC<Props> = ({ h, w, maximized }) => {
   const imageRef = React.useRef<HTMLImageElement>(null)
   const [loaded, setLoaded] = React.useState<boolean>(false)
-  const isPortrait = useMediaQuery({query: "(orientation: portrait)"})
+  const isPortrait = useMediaQuery({ query: "(orientation: portrait)" })
   const bg = useColorModeValue("#FBFBFB", "#242424")
   const bgItem = useColorModeValue("#A0A7AC", "#333333")
   const border = useColorModeValue("2px solid #A0A7AC", "2px solid #333333")
@@ -37,7 +36,11 @@ const Projects: React.FC<Props> = ({h, w, maximized}) => {
   }
 
   React.useEffect(() => {
-    if (!loaded && imageRef.current?.complete && imageRef.current?.naturalWidth > 0) {
+    if (
+      !loaded &&
+      imageRef.current?.complete &&
+      imageRef.current?.naturalWidth > 0
+    ) {
       setLoaded(true)
     }
   }, [loaded])
@@ -77,8 +80,14 @@ const Projects: React.FC<Props> = ({h, w, maximized}) => {
                   />
                 </Skeleton>
               </Link>
-              <Link bg="white" borderRadius="md" h="22px" href={elem.github} target="_blank">
-                <Image h="20px" src={github} />
+              <Link
+                bg="white"
+                borderRadius="md"
+                h="22px"
+                href={elem.github}
+                target="_blank"
+              >
+                <Image h="20px" src="/GitHub_Logo.png" />
               </Link>
               <Box bg={bgItem} h="52px" m="auto" p={1} w="100%">
                 <Text>{elem.description}</Text>
@@ -131,8 +140,14 @@ const Projects: React.FC<Props> = ({h, w, maximized}) => {
                   />
                 </Skeleton>
               </Link>
-              <Link bg="white" borderRadius="md" h="22px" href={elem.github} target="_blank">
-                <Image h="20px" src={github} />
+              <Link
+                bg="white"
+                borderRadius="md"
+                h="22px"
+                href={elem.github}
+                target="_blank"
+              >
+                <Image h="20px" src="/GitHub_Logo.png" />
               </Link>
               <Box bg={bgItem} h="52px" m="auto" p={1} w="100%">
                 <Text>{elem.description}</Text>
@@ -149,7 +164,14 @@ const Projects: React.FC<Props> = ({h, w, maximized}) => {
         </SimpleGrid>
       )}
       {isPortrait && (
-        <SimpleGrid columns={[1, 2]} gap={2} h={h} overflow="scroll" p={1} w={w}>
+        <SimpleGrid
+          columns={[1, 2]}
+          gap={2}
+          h={h}
+          overflow="scroll"
+          p={1}
+          w={w}
+        >
           {projects.map((elem) => (
             <VStack
               key={elem.name}
@@ -174,7 +196,14 @@ const Projects: React.FC<Props> = ({h, w, maximized}) => {
                   />
                 </Skeleton>
               </Link>
-              <Box bg={bgItem} borderBottomRadius="md" h="80px" overflow="hidden" p={1} w="100%">
+              <Box
+                bg={bgItem}
+                borderBottomRadius="md"
+                h="80px"
+                overflow="hidden"
+                p={1}
+                w="100%"
+              >
                 <Text fontSize={["small", "initial"]}>{elem.description}</Text>
               </Box>
               <Center h="28px" w="100%">

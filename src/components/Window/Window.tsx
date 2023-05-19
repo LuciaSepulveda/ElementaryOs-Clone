@@ -1,8 +1,8 @@
-import {Box, Center, Flex, Text} from "@chakra-ui/react"
-import {ArrowUpDownIcon, CloseIcon, MinusIcon} from "@chakra-ui/icons"
-import {useMediaQuery} from "react-responsive"
+import { Box, Center, Flex, Text } from "@chakra-ui/react"
+import { ArrowUpDownIcon, CloseIcon, MinusIcon } from "@chakra-ui/icons"
+import { useMediaQuery } from "react-responsive"
 import * as React from "react"
-import {motion} from "framer-motion"
+import { motion } from "framer-motion"
 
 import {
   useCloseProgram,
@@ -10,18 +10,19 @@ import {
   useMinimizedProgram,
   useSectionAbout,
 } from "../../context/hooks"
-import {Program} from "../../types/types"
+import { Program } from "../../types/types"
 
 interface Props {
   program: Program
+  children: React.ReactNode
 }
 
-const Window: React.FC<Props> = ({program, children}) => {
+const Window: React.FC<Props> = ({ program, children }) => {
   const close = useCloseProgram()
   const maximized = useMaximizedProgram()
   const minimized = useMinimizedProgram()
   const section = useSectionAbout()
-  const isPortrait = useMediaQuery({query: "(orientation: portrait)"})
+  const isPortrait = useMediaQuery({ query: "(orientation: portrait)" })
   const [closeButton, setCloseButton] = React.useState<number>(0)
   const [minButton, setMinButton] = React.useState<number>(0)
   const [maxButton, setMaxButton] = React.useState<number>(0)
@@ -30,9 +31,9 @@ const Window: React.FC<Props> = ({program, children}) => {
     <>
       {program.maximized === false && !isPortrait && (
         <motion.div
-          animate={{y: 0, scale: 1}}
-          exit={{scale: 0, y: 500, opacity: 0}}
-          initial={{y: 500, scale: 0}}
+          animate={{ y: 0, scale: 1 }}
+          exit={{ scale: 0, y: 500, opacity: 0 }}
+          initial={{ y: 500, scale: 0 }}
         >
           <Box
             bg="#242424"
@@ -68,10 +69,9 @@ const Window: React.FC<Props> = ({program, children}) => {
                   }}
                 >
                   <CloseIcon
-                    alt="Close icon"
                     color="rgba(0,0,0,0.7)"
                     h="7.5px"
-                    style={{opacity: `${closeButton}`}}
+                    style={{ opacity: `${closeButton}` }}
                     w="7.5px"
                   />
                 </Center>
@@ -98,10 +98,9 @@ const Window: React.FC<Props> = ({program, children}) => {
                   }}
                 >
                   <MinusIcon
-                    alt="Minimize icon"
                     color="rgba(0,0,0,0.7)"
                     h="7.5px"
-                    style={{opacity: `${minButton}`}}
+                    style={{ opacity: `${minButton}` }}
                     w="7.5px"
                   />
                 </Center>
@@ -126,10 +125,9 @@ const Window: React.FC<Props> = ({program, children}) => {
                   onClick={() => maximized(program)}
                 >
                   <ArrowUpDownIcon
-                    alt="Maximize icon"
                     color="rgba(0,0,0,0.7)"
                     h="7.5px"
-                    style={{opacity: `${maxButton}`}}
+                    style={{ opacity: `${maxButton}` }}
                     w="7.5px"
                   />
                 </Center>
@@ -151,8 +149,8 @@ const Window: React.FC<Props> = ({program, children}) => {
       )}
       {program.maximized === true && !isPortrait && (
         <motion.div
-          animate={{scale: 1, opacity: 1}}
-          exit={{scale: 0, y: 500, opacity: 0}}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0, y: 500, opacity: 0 }}
           style={{
             height: "calc(100% - 101px)",
             width: "100%",
@@ -194,10 +192,9 @@ const Window: React.FC<Props> = ({program, children}) => {
                   }}
                 >
                   <CloseIcon
-                    alt="Close icon"
                     color="rgba(0,0,0,0.7)"
                     h="7.5px"
-                    style={{opacity: `${closeButton}`}}
+                    style={{ opacity: `${closeButton}` }}
                     w="7.5px"
                   />
                 </Center>
@@ -224,10 +221,9 @@ const Window: React.FC<Props> = ({program, children}) => {
                   }}
                 >
                   <MinusIcon
-                    alt="Minimize icon"
                     color="rgba(0,0,0,0.7)"
                     h="7.5px"
-                    style={{opacity: `${minButton}`}}
+                    style={{ opacity: `${minButton}` }}
                     w="7.5px"
                   />
                 </Center>
@@ -252,10 +248,9 @@ const Window: React.FC<Props> = ({program, children}) => {
                   onClick={() => maximized(program)}
                 >
                   <ArrowUpDownIcon
-                    alt="Maximize icon"
                     color="rgba(0,0,0,0.7)"
                     h="7.5px"
-                    style={{opacity: `${maxButton}`}}
+                    style={{ opacity: `${maxButton}` }}
                     w="7.5px"
                   />
                 </Center>
@@ -277,9 +272,9 @@ const Window: React.FC<Props> = ({program, children}) => {
       )}
       {isPortrait && (
         <motion.div
-          animate={{y: 0, scale: 1}}
-          exit={{y: 200, opacity: 0, scale: 0}}
-          initial={{y: 200, scale: 0}}
+          animate={{ y: 0, scale: 1 }}
+          exit={{ y: 200, opacity: 0, scale: 0 }}
+          initial={{ y: 200, scale: 0 }}
           style={{
             height: "calc(100% - 101px)",
             width: "100%",
@@ -320,10 +315,9 @@ const Window: React.FC<Props> = ({program, children}) => {
                   }}
                 >
                   <CloseIcon
-                    alt="Close icon"
                     color="rgba(0,0,0,0.7)"
                     h="7.5px"
-                    style={{opacity: `${closeButton}`}}
+                    style={{ opacity: `${closeButton}` }}
                     w="7.5px"
                   />
                 </Center>
@@ -350,10 +344,9 @@ const Window: React.FC<Props> = ({program, children}) => {
                   }}
                 >
                   <MinusIcon
-                    alt="Minimize icon"
                     color="rgba(0,0,0,0.7)"
                     h="7.5px"
-                    style={{opacity: `${minButton}`}}
+                    style={{ opacity: `${minButton}` }}
                     w="7.5px"
                   />
                 </Center>
@@ -368,7 +361,13 @@ const Window: React.FC<Props> = ({program, children}) => {
                 onHoverEnd={() => setMaxButton(0)}
                 onHoverStart={() => setMaxButton(1)}
               >
-                <Center alignSelf="center" bg="#317e2e" borderRadius="50%" h="15px" w="15px" />
+                <Center
+                  alignSelf="center"
+                  bg="#317e2e"
+                  borderRadius="50%"
+                  h="15px"
+                  w="15px"
+                />
               </motion.div>
               <Center w="85%">
                 {program.name === "User" && (

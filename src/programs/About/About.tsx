@@ -1,18 +1,26 @@
 import "@fontsource/jetbrains-mono/"
 
 import * as React from "react"
-import {Box, Grid, GridItem, HStack, Text, VStack, useColorModeValue} from "@chakra-ui/react"
-import {ChevronRightIcon} from "@chakra-ui/icons"
+import {
+  Box,
+  Grid,
+  GridItem,
+  HStack,
+  Text,
+  VStack,
+  useColorModeValue,
+} from "@chakra-ui/react"
+import { ChevronRightIcon } from "@chakra-ui/icons"
 
-import {techs, info} from "../../data/data"
-import {useChangeSectionAbout} from "../../context/hooks"
+import { techs, info } from "../../data/data"
+import { useChangeSectionAbout } from "../../context/hooks"
 
 interface Props {
   w: string
   h: string
 }
 
-const About: React.FC<Props> = ({h, w}) => {
+const About: React.FC<Props> = ({ h, w }) => {
   const [state, setState] = React.useState<string>("about")
   const [update, setUpdate] = React.useState<boolean>(false)
   const changeSection = useChangeSectionAbout()
@@ -66,8 +74,19 @@ const About: React.FC<Props> = ({h, w}) => {
           transitionTimingFunction="ease-in-out"
         >
           <VStack>
-            <Box bg={bgLeftTop} p={1} transitionTimingFunction="ease-in-out" w="100%">
-              <Text align="justify" color={text} fontSize="small" fontWeight="bold" ml="10px">
+            <Box
+              bg={bgLeftTop}
+              p={1}
+              transitionTimingFunction="ease-in-out"
+              w="100%"
+            >
+              <Text
+                align="justify"
+                color={text}
+                fontSize="small"
+                fontWeight="bold"
+                ml="10px"
+              >
                 Portfolio
               </Text>
             </Box>
@@ -198,7 +217,12 @@ const About: React.FC<Props> = ({h, w}) => {
                   <Text color={colorCorchetes}>{`>`}</Text>
                 </HStack>
                 {techs.map((elem) => (
-                  <HStack key={elem} ml="10%" spacing={["1px", "4px"]} w={["100%", "90%"]}>
+                  <HStack
+                    key={elem}
+                    ml="10%"
+                    spacing={["1px", "4px"]}
+                    w={["100%", "90%"]}
+                  >
                     <Text color={colorCorchetes}>{`<`}</Text>
                     <Text color={text2}>li</Text>
                     <Text color={colorCorchetes}>{`>`}</Text>
