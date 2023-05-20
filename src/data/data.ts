@@ -96,20 +96,24 @@ export const social: Social[] = [
 ]
 
 export const techs: string[] = [
+  "React",
+  "Next",
+  "Typescript",
+  "Javascript",
   "HTML",
   "CSS",
-  "Javascript",
-  "Typescript",
-  "React",
+  "Chakra UI",
+  "Styled Components",
+  "Three.js",
   "Java",
   "POO",
   "Estructuras de datos",
-  "Chakra UI",
 ]
 
 export const info: string[] = [
+  "Desarrolladora frontend",
+  "Mas de año de experiencia",
   "Vivo en Bahía Blanca",
-  "Estudiante de Ingeniería en Computación",
 ]
 
 export const wallpapers: string[] = [
