@@ -41,7 +41,6 @@ const Window: React.FC<Props> = ({ program, children }) => {
             borderColor="black"
             borderRadius="xl"
             boxShadow="lg"
-            m="10%"
             position="relative"
             width="fit-content"
             zIndex="1"
