@@ -22,6 +22,7 @@ import {
   PopoverBody,
   PopoverCloseButton,
   PopoverHeader,
+  Center,
 } from "@chakra-ui/react"
 import * as React from "react"
 import { useMediaQuery } from "react-responsive"
@@ -189,9 +190,9 @@ const TopBar: React.FC = () => {
       <HStack mr="10px" position="sticky" spacing="10px" zIndex="5">
         <Popover>
           <PopoverTrigger>
-            <Box role="button">
+            <Center role="button">
               <Icon as={BsInfoCircle} />
-            </Box>
+            </Center>
           </PopoverTrigger>
           <PopoverContent bg="black" position="static">
             <PopoverBody>

@@ -78,7 +78,7 @@ const Clock: React.FC = () => {
   }
 
   return (
-    <Flex ml={["20px", "-70px"]} w={["120px", "150px"]}>
+    <Flex ml={["20px", "-70px"]} w={["140px", "150px"]}>
       <Text alignSelf="center" fontSize="small" fontWeight="bold">
         {day} {date.getDate().toString()} de {month}
       </Text>
