@@ -93,6 +93,11 @@ export const social: Social[] = [
     link: "mailto:luciabsep18@gmail.com",
     logo: "/mailbox.png",
   },
+  {
+    name: "Linkedin",
+    link: "https://www.linkedin.com/in/lucia-sepulveda/",
+    logo: "/linkedin.png",
+  },
 ]
 
 export const techs: string[] = [
