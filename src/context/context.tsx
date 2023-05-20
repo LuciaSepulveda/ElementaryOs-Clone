@@ -10,7 +10,8 @@ export interface Context {
     noProgramsOpen: boolean
     anyProgramMaximized: boolean
     sectionAbout: string
-    wallpaper: string
+    wallpaper: string,
+    language: "EN" | "ES"
   }
   actions: {
     changeStatus: (status: Status) => void
@@ -21,6 +22,7 @@ export interface Context {
     changeSectionAbout: (section: string) => void
     closeAllPrograms: (program: Program) => void
     changeWallpaper: (wallpaper: string) => void
+    changeLanguage: (l: "ES" | "EN") => void
   }
 }
 
@@ -41,6 +43,7 @@ const UserProvider = ({ children }: ChildrenProp) => {
       ? JSON.parse(localStorage.getItem("Wallpaper") || "{}")
       : wallpapers[0]
   )
+  const [language, setLanguage] = React.useState<"EN" | "ES">("ES")
 
   const handleChangeSectionAbout = (s: string) => {
     setSectionAbout(s)
@@ -111,6 +114,10 @@ const UserProvider = ({ children }: ChildrenProp) => {
     }
   }
 
+  function handleChangeLanguage(l: "ES" | "EN") {
+    setLanguage(l)
+  }
+
   const state: Context["state"] = {
     status,
     programs,
@@ -118,6 +125,7 @@ const UserProvider = ({ children }: ChildrenProp) => {
     anyProgramMaximized,
     sectionAbout,
     wallpaper,
+    language
   }
 
   const actions = {
@@ -129,6 +137,7 @@ const UserProvider = ({ children }: ChildrenProp) => {
     changeSectionAbout: handleChangeSectionAbout,
     closeAllPrograms: handleCloseAllPrograms,
     changeWallpaper: handleChangeWallpaper,
+    changeLanguage: handleChangeLanguage,
   }
 
   if (status === "update") {

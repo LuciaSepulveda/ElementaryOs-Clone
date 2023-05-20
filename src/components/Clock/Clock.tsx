@@ -1,38 +1,40 @@
 import * as React from "react"
 import { Spacer, Flex, Text } from "@chakra-ui/react"
+import { useLanguage } from "../../context/hooks"
 
 const Clock: React.FC = () => {
   const [date, setDate] = React.useState<Date>(new Date())
+  const language = useLanguage()
   let day = ""
   let month = ""
 
   switch (date.getDay().toString()) {
     case "1":
-      day = "lun"
+      day = language === "ES" ? "lun" : "mon"
       break
     case "2":
-      day = "mar"
+      day = language === "ES" ? "mar" : "tue"
       break
     case "3":
-      day = "mie"
+      day = language === "ES" ? "mie" : "wed"
       break
     case "4":
-      day = "jue"
+      day = language === "ES" ? "jue" : "thu"
       break
     case "5":
-      day = "vie"
+      day = language === "ES" ? "vie" : "fri"
       break
     case "6":
-      day = "sab"
+      day = language === "ES" ? "sab" : "sat"
       break
     case "7":
-      day = "dom"
+      day = language === "ES" ? "dom" : "sun"
       break
   }
 
   switch (date.getMonth().toString()) {
     case "0":
-      month = "ene"
+      month = language === "ES" ? "ene" : "jan"
       break
     case "1":
       month = "feb"
@@ -44,7 +46,7 @@ const Clock: React.FC = () => {
       month = "may"
       break
     case "4":
-      month = "abr"
+      month = language === "ES" ? "abr" : "apr"
       break
     case "5":
       month = "jun"
@@ -53,7 +55,7 @@ const Clock: React.FC = () => {
       month = "jul"
       break
     case "7":
-      month = "ago"
+      month = language === "ES" ? "ago" : "aug"
       break
     case "8":
       month = "sep"
@@ -65,7 +67,7 @@ const Clock: React.FC = () => {
       month = "nov"
       break
     case "11":
-      month = "dic"
+      month = language === "ES" ? "dic" : "dec"
       break
   }
 
@@ -80,7 +82,7 @@ const Clock: React.FC = () => {
   return (
     <Flex ml={["20px", "-70px"]} w={["140px", "150px"]}>
       <Text alignSelf="center" fontSize="small" fontWeight="bold">
-        {day} {date.getDate().toString()} de {month}
+        {day} {date.getDate().toString()} {language === "ES" ? "de" : "of"} {month}
       </Text>
       <Spacer />
       <Text alignSelf="center" fontSize="small" fontWeight="bold">

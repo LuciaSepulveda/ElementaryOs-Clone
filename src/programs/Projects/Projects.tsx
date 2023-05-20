@@ -13,7 +13,8 @@ import {
 } from "@chakra-ui/react"
 import { useMediaQuery } from "react-responsive"
 
-import { projects } from "../../data/data"
+import { projects, projectsEn } from "../../data/data"
+import { useLanguage } from "../../context/hooks"
 
 interface Props {
   w: string
@@ -30,6 +31,16 @@ const Projects: React.FC<Props> = ({ h, w, maximized }) => {
   const border = useColorModeValue("2px solid #A0A7AC", "2px solid #333333")
   const colorText = useColorModeValue("#242424", "#FBFBFB")
   let heightImageProject = "140px"
+  const language = useLanguage()
+  const [arrayProjects, setArrayProjects] = React.useState(projects)
+
+  React.useEffect(() => {
+    if (language === "ES") {
+      setArrayProjects(projects)
+    } else {
+      setArrayProjects(projectsEn)
+    }
+  }, [language])
 
   if (maximized) {
     heightImageProject = "220px"
@@ -56,7 +67,7 @@ const Projects: React.FC<Props> = ({ h, w, maximized }) => {
     >
       {!isPortrait && !maximized && (
         <SimpleGrid columns={3} gap={4} h="100%" p={2} w={w}>
-          {projects.map((elem) => (
+          {arrayProjects.map((elem) => (
             <VStack
               key={elem.name}
               border={border}
@@ -87,7 +98,7 @@ const Projects: React.FC<Props> = ({ h, w, maximized }) => {
                 href={elem.github}
                 target="_blank"
               >
-                <Image h="20px" src="/GitHub_Logo.png" />
+                <Image h="20px" src="/GitHub_Logo.png" alt="Github" />
               </Link>
               <Box bg={bgItem} h="52px" m="auto" p={1} w="100%">
                 <Text>{elem.description}</Text>
@@ -147,7 +158,7 @@ const Projects: React.FC<Props> = ({ h, w, maximized }) => {
                 href={elem.github}
                 target="_blank"
               >
-                <Image h="20px" src="/GitHub_Logo.png" />
+                <Image h="20px" src="/GitHub_Logo.png" alt="Github" />
               </Link>
               <Box bg={bgItem} h="52px" m="auto" p={1} w="100%">
                 <Text>{elem.description}</Text>

@@ -82,6 +82,57 @@ export const projects: Project[] = [
   },
 ]
 
+export const projectsEn: Project[] = [
+  {
+    name: "ABTM",
+    github: "https://github.com/LuciaSepulveda/ABTM",
+    demo: "https://abtm.vercel.app/",
+    description: "Website for Asociación Bahiense de Tenis de Mesa.",
+    img: "/ABTM.png",
+    techs: ["NextJs", "Strapi", "Chakra-UI"],
+  },
+  {
+    name: "Sambuche App",
+    github: "https://github.com/LuciaSepulveda/Sambuche-App",
+    demo: "https://sambuche.netlify.app/",
+    description: "Site that simulates the prepare of a sandwich.",
+    img: "/sambuche.png",
+    techs: ["React", "Typescript", "Chakra-UI"],
+  },
+  {
+    name: "Basement Challenge",
+    github: "https://github.com/LuciaSepulveda/Basement-Challenge",
+    demo: "https://basement-challenge-ls.vercel.app/",
+    description: "Site that simulates a store",
+    img: "/basementChallenge.png",
+    techs: ["NextJS", "Tailwind"],
+  },
+  {
+    name: "Aerolab Challenge",
+    github: "https://github.com/LuciaSepulveda/Challenge-Aerolab",
+    demo: "https://aerolabchallenge.web.app/",
+    description: "Site of a store based on points.",
+    img: "/aerolab.png",
+    techs: ["React", "Typescript", "Chakra-UI"],
+  },
+  {
+    name: "Softvision Challenge",
+    github: "https://github.com/LuciaSepulveda/Softvision-Challenge",
+    demo: "https://cognizant-softvision-challenge.netlify.app/",
+    description: "Site that simulates Trello.",
+    img: "/softvision.png",
+    techs: ["React", "Typescript", "Chakra-UI"],
+  },
+  {
+    name: "BlackBox Vision Challenge",
+    img: "/blackbox-vision.png",
+    github: "https://github.com/LuciaSepulveda/BlackBox-Vision-challenge",
+    demo: "https://quizbox-vision.web.app/",
+    description: "Game of questions and answers.",
+    techs: ["React", "Typescript", "Chakra-UI"],
+  },
+]
+
 export const social: Social[] = [
   {
     name: "Github",
@@ -115,10 +166,31 @@ export const techs: string[] = [
   "Estructuras de datos",
 ]
 
+export const techsEn: string[] = [
+  "React",
+  "Next",
+  "Typescript",
+  "Javascript",
+  "HTML",
+  "CSS",
+  "Chakra UI",
+  "Styled Components",
+  "Three.js",
+  "Java",
+  "OOP",
+  "Data structures",
+]
+
 export const info: string[] = [
   "Desarrolladora frontend",
   "Mas de año de experiencia",
   "Vivo en Bahía Blanca",
+]
+
+export const infoEn: string[] = [
+  "Frontend developer",
+  "More than a year of experience",
+  "I'm from Bahia Blanca, Buenos Aires",
 ]
 
 export const wallpapers: string[] = [

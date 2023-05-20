@@ -12,8 +12,8 @@ import {
 } from "@chakra-ui/react"
 import { ChevronRightIcon } from "@chakra-ui/icons"
 
-import { techs, info } from "../../data/data"
-import { useChangeSectionAbout } from "../../context/hooks"
+import { techs, techsEn, info, infoEn } from "../../data/data"
+import { useChangeSectionAbout, useLanguage } from "../../context/hooks"
 
 interface Props {
   w: string
@@ -33,6 +33,19 @@ const About: React.FC<Props> = ({ h, w }) => {
   const text3 = useColorModeValue("#AF8F27", "#D58929")
   const text4 = useColorModeValue("#009BAF", "#46E991")
   const colorCorchetes = useColorModeValue("#8DA6AC", "#568498")
+  const language = useLanguage()
+  const [skills, setSkills] = React.useState(techs)
+  const [information, setInformation] = React.useState(info)
+
+  React.useEffect(() => {
+    if (language === "ES") {
+      setSkills(techs)
+      setInformation(info)
+    } else {
+      setSkills(techsEn)
+      setInformation(infoEn)
+    }
+  }, [language])
 
   const updateState = (s: string) => {
     setUpdate(true)
@@ -95,7 +108,7 @@ const About: React.FC<Props> = ({ h, w }) => {
                 <>
                   <ChevronRightIcon color={text} />
                   <Text align="justify" color={text} ml="10px">
-                    Sobre mi
+                    {language === "ES" ? "Sobre mí" : "About me"}
                   </Text>
                 </>
               )}
@@ -107,7 +120,7 @@ const About: React.FC<Props> = ({ h, w }) => {
                   ml="10px"
                   onClick={() => updateState("about")}
                 >
-                  Sobre mi
+                  {language === "ES" ? "Sobre mí" : "About me"}
                 </Text>
               )}
             </HStack>
@@ -116,7 +129,7 @@ const About: React.FC<Props> = ({ h, w }) => {
                 <>
                   <ChevronRightIcon color={text} />
                   <Text align="justify" color={text} ml="10px">
-                    Habilidades
+                    {language === "ES" ? "Habilidades" : "Skills"}
                   </Text>
                 </>
               )}
@@ -128,7 +141,7 @@ const About: React.FC<Props> = ({ h, w }) => {
                   ml="10px"
                   onClick={() => updateState("tech")}
                 >
-                  Habilidades
+                  {language === "ES" ? "Habilidades" : "Skills"}
                 </Text>
               )}
             </HStack>
@@ -184,7 +197,7 @@ const About: React.FC<Props> = ({ h, w }) => {
                   <Text color={text2}>h1</Text>
                   <Text color={colorCorchetes}>{`>`}</Text>
                 </HStack>
-                {info.map((elem) => (
+                {information.map((elem) => (
                   <HStack key={elem} ml="20%" spacing={["1px", "4px"]} w="80%">
                     <Text color={colorCorchetes}>{`<`}</Text>
                     <Text color={text2}>p</Text>
@@ -216,7 +229,7 @@ const About: React.FC<Props> = ({ h, w }) => {
                   <Text color={text2}>ul</Text>
                   <Text color={colorCorchetes}>{`>`}</Text>
                 </HStack>
-                {techs.map((elem) => (
+                {skills.map((elem) => (
                   <HStack
                     key={elem}
                     ml="10%"

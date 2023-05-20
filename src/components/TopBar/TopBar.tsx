@@ -34,6 +34,8 @@ import {
   usePrograms,
   useOpenProgram,
   useCloseAllPrograms,
+  useLanguage,
+  useChangeLanguage,
 } from "../../context/hooks"
 import { Program } from "../../types/types"
 
@@ -44,6 +46,8 @@ const TopBar: React.FC = () => {
   const isPortrait = useMediaQuery({ query: "(orientation: portrait)" })
   const { colorMode, toggleColorMode } = useColorMode()
   const closeAll = useCloseAllPrograms()
+  const language = useLanguage()
+  const changeLanguage = useChangeLanguage()
 
   const wallpaper = () => {
     let elem = programs[0]
@@ -103,7 +107,7 @@ const TopBar: React.FC = () => {
                 fontWeight="bold"
                 ml="5px"
               >
-                Applications
+                {language === "ES" ? "Aplicaciones" : "Applications"}
               </Text>
             </MenuButton>
             <MenuList
@@ -188,6 +192,11 @@ const TopBar: React.FC = () => {
       <Clock />
       <Spacer />
       <HStack mr="10px" position="sticky" spacing="10px" zIndex="5">
+        <button onClick={() => changeLanguage(language === "ES" ? "EN" : "ES")}>
+          <Text align="center" fontSize="sm" fontWeight="semibold">
+            {language}
+          </Text>
+        </button>
         <Popover>
           <PopoverTrigger>
             <Center role="button">

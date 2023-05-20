@@ -113,3 +113,19 @@ export function useChangeWallpaper(): Context["actions"]["changeWallpaper"] {
 
   return changeWallpaper
 }
+
+export function useLanguage(): Context["state"]["language"] {
+  const {
+    state: { language },
+  } = React.useContext(UserContext)
+
+  return language
+}
+
+export function useChangeLanguage(): Context["actions"]["changeLanguage"] {
+  const {
+    actions: { changeLanguage },
+  } = React.useContext(UserContext)
+
+  return changeLanguage
+}
