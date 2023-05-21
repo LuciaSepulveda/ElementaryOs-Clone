@@ -1,7 +1,7 @@
 import React from "react"
 
 import { Program, Status } from "../types/types"
-import { programs, wallpapers } from "../data/data"
+import { programs as programsArray, wallpapers } from "../data/data"
 
 export interface Context {
   state: {
@@ -10,7 +10,7 @@ export interface Context {
     noProgramsOpen: boolean
     anyProgramMaximized: boolean
     sectionAbout: string
-    wallpaper: string,
+    wallpaper: string
     language: "EN" | "ES"
   }
   actions: {
@@ -39,11 +39,13 @@ const UserProvider = ({ children }: ChildrenProp) => {
     React.useState<boolean>(false)
   const [sectionAbout, setSectionAbout] = React.useState<string>("sobre mi")
   const [wallpaper, setWallpaper] = React.useState<string>(
-    typeof window !== "undefined" && typeof JSON.parse(localStorage.getItem("Wallpaper") || "{}") !== "object"
+    typeof window !== "undefined" &&
+      typeof JSON.parse(localStorage.getItem("Wallpaper") || "{}") !== "object"
       ? JSON.parse(localStorage.getItem("Wallpaper") || "{}")
       : wallpapers[0]
   )
   const [language, setLanguage] = React.useState<"EN" | "ES">("ES")
+  const [programs, setPrograms] = React.useState<Program[]>(programsArray)
 
   const handleChangeSectionAbout = (s: string) => {
     setSectionAbout(s)
@@ -56,10 +58,9 @@ const UserProvider = ({ children }: ChildrenProp) => {
 
   const handleCheckProgramsClose = () => {
     let allClose = true
-
-    for (let i = 0; i < programs.length; i++) {
-      if (programs[i].open === true) allClose = false
-    }
+    programs.map((program) => {
+      if (program.open === true) allClose = false
+    })
 
     setProgramsOpen(allClose)
   }
@@ -67,9 +68,9 @@ const UserProvider = ({ children }: ChildrenProp) => {
   const handleCheckProgramMaximized = () => {
     let anyMaximized = false
 
-    for (let i = 0; i < programs.length; i++) {
-      if (programs[i].maximized === true) anyMaximized = true
-    }
+    programs.map((program) => {
+      if (program.maximized === true) anyMaximized = false
+    })
 
     setAnyProgramMaximized(anyMaximized)
   }
@@ -79,39 +80,88 @@ const UserProvider = ({ children }: ChildrenProp) => {
   }
 
   function handleOpenProgram(p: Program) {
-    p.open = true
-    p.minimized = false
+    const aux = programs.map((program) => {
+      if (program.name === p.name) {
+        return {
+          ...program,
+          open: true,
+          minimized: false
+        }
+      } return program
+    }) 
+    setPrograms(aux)
     setStatus(Status.update)
     handleCheckProgramsClose()
   }
 
   function handleCloseProgram(p: Program) {
-    p.open = false
-    p.maximized = false
+    const aux = programs.map((program) => {
+      if (program.name === p.name) {
+        return {
+          ...program,
+          open: false,
+          maximized: false
+        }
+      } return program
+    }) 
+    setPrograms(aux)
+    console.log(aux)
     setStatus(Status.update)
     handleCheckProgramsClose()
     handleCheckProgramMaximized()
   }
 
   function handleMaximizedProgram(p: Program) {
-    p.maximized = !p.maximized
-    p.minimized = false
+    const aux = programs.map((program) => {
+      if (program.name === p.name) {
+        return {
+          ...program,
+          maximized: !p.maximized,
+          minimized: false
+        }
+      } return program
+    }) 
+    setPrograms(aux)
     setStatus(Status.update)
     handleCheckProgramsClose()
     handleCheckProgramMaximized()
   }
 
   function handleMinimizedProgram(p: Program) {
-    p.minimized = true
-    p.maximized = false
+    const aux = programs.map((program) => {
+      if (program.name === p.name) {
+        return {
+          ...program,
+          maximized: false,
+          minimized: true,
+          open: false
+        }
+      } else return program
+    }) 
+    setPrograms(aux)
     setStatus(Status.update)
     handleCheckProgramsClose()
   }
 
   function handleCloseAllPrograms(p: Program) {
-    for (let i = 0; i !== programs.length; i++) {
-      if (programs[i].name !== p.name) handleCloseProgram(programs[i])
-    }
+    const aux = programs.map((program) => {
+      if (program.name !== p.name) {
+        return {
+          ...program,
+          open: false,
+          maximized: false,
+        }
+      } else return {
+        ...program,
+        open: true,
+        maximized: false,
+        minimized: false,
+      }
+    }) 
+    setPrograms(aux)
+    setStatus(Status.update)
+    handleCheckProgramsClose()
+    handleCheckProgramMaximized()
   }
 
   function handleChangeLanguage(l: "ES" | "EN") {
@@ -125,7 +175,7 @@ const UserProvider = ({ children }: ChildrenProp) => {
     anyProgramMaximized,
     sectionAbout,
     wallpaper,
-    language
+    language,
   }
 
   const actions = {

@@ -95,7 +95,7 @@ const Window: React.FC<Props> = ({ program, children }) => {
                   h="15px"
                   w="15px"
                   onClick={() => {
-                    minimized(program), close(program)
+                    minimized(program)
                   }}
                 >
                   <MinusIcon
@@ -226,7 +226,7 @@ const Window: React.FC<Props> = ({ program, children }) => {
                   h="15px"
                   w="15px"
                   onClick={() => {
-                    minimized(program), close(program)
+                    minimized(program)
                   }}
                 >
                   <MinusIcon
@@ -349,7 +349,7 @@ const Window: React.FC<Props> = ({ program, children }) => {
                   h="15px"
                   w="15px"
                   onClick={() => {
-                    minimized(program), close(program)
+                    minimized(program)
                   }}
                 >
                   <MinusIcon

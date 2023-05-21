@@ -126,61 +126,81 @@ export default function Home() {
                   {programs.map((elem) => {
                     return (
                       <AnimatePresence key={elem.name}>
-                        {elem.open === true && elem.maximized === false && (
+                        {elem.open === true && (
                           <motion.div
-                            drag
+                            drag={elem.maximized ? false : true}
                             dragConstraints={constraintRef}
+                            animate={{
+                              x: elem.maximized ? 0 : "",
+                              y: elem.maximized ? 0 : "",
+                            }}
                             style={{
-                              position: "absolute",
-                              height:
-                                elem.name === "User" ||
-                                elem.name === "Contact"
-                                  ? "500px"
-                                  : elem.name === "Projects"
-                                  ? "fit-content"
-                                  : "600px",
-                              width:
-                                elem.name !== "Projects" ? "800px" : "900px",
+                              position: elem.maximized
+                                ? "relative"
+                                : "absolute",
+                              height: elem.maximized
+                                ? "100%"
+                                : elem.name === "User" ||
+                                  elem.name === "Contact"
+                                ? "500px"
+                                : elem.name === "Projects"
+                                ? "fit-content"
+                                : "600px",
+                              width: elem.maximized
+                                ? "100%"
+                                : elem.name !== "Projects"
+                                ? "800px"
+                                : "900px",
                               top: 0,
                               bottom: 0,
                               left: 0,
                               right: 0,
-                              margin: "auto",
+                              margin: elem.maximized ? "0" : "auto",
+                              transform: elem.maximized
+                                ? "translateX(0px) translateY(0px) !important"
+                                : "",
                             }}
                           >
                             <Window program={elem}>
                               {elem.name === "User" && (
-                                <About h="500px" w="800px" />
+                                <About
+                                  h={elem.maximized ? "96%" : "500px"}
+                                  w={elem.maximized ? "100%" : "800px"}
+                                />
                               )}
                               {elem.name === "Projects" && (
                                 <Projects
-                                  h={window.innerHeight > 725 ? "600px" :"500px"}
-                                  maximized={false}
-                                  w={window.innerHeight > 725 ? "800px" : "900px"}
+                                  h={
+                                    elem.maximized
+                                      ? "96%"
+                                      : window.innerHeight > 725
+                                      ? "600px"
+                                      : "500px"
+                                  }
+                                  maximized={elem.maximized}
+                                  w={
+                                    elem.maximized
+                                      ? "70%"
+                                      : window.innerHeight > 725
+                                      ? "800px"
+                                      : "900px"
+                                  }
                                 />
                               )}
                               {elem.name === "Contact" && (
-                                <Contact h="500px" w="800px" />
+                                <Contact
+                                  h={elem.maximized ? "96%" : "500px"}
+                                  w={elem.maximized ? "100%" : "800px"}
+                                />
                               )}
                               {elem.name === "Wallpapers" && (
-                                <Wallpapers h="fit-content" w="800px" />
+                                <Wallpapers
+                                  h={elem.maximized ? "90%" : "fit-content"}
+                                  w={elem.maximized ? "80%" : "800px"}
+                                />
                               )}
                             </Window>
                           </motion.div>
-                        )}
-                        {elem.open === true && elem.maximized === true && (
-                          <Window program={elem}>
-                            {elem.name === "User" && <About h="96%" w="100%" />}
-                            {elem.name === "Projects" && (
-                              <Projects h="96%" maximized={true} w="70%" />
-                            )}
-                            {elem.name === "Contact" && (
-                              <Contact h="96%" w="100%" />
-                            )}
-                            {elem.name === "Wallpapers" && (
-                              <Wallpapers h="90%" w="80%" />
-                            )}
-                          </Window>
                         )}
                       </AnimatePresence>
                     )
