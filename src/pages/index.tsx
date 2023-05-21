@@ -1,5 +1,6 @@
 import Head from "next/head"
-import { Box, Center, Image, Spinner } from "@chakra-ui/react"
+import { Box, Center, Spinner } from "@chakra-ui/react"
+import Image from "next/image"
 import * as React from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import { useMediaQuery } from "react-responsive"
@@ -51,19 +52,19 @@ export default function Home() {
       </Head>
       <main style={{ height: "100vh", width: "100%" }}>
         <Box h="100vh" overflow="hidden" position="absolute" w="100%">
-          <Image
-            ref={imageRef}
-            alt="Wallpaper"
-            fit="cover"
-            h="100%"
-            position="absolute"
-            src={wallpaper}
-            w="100%"
-            onLoad={() => {
-              setLoaded(true)
-              changeStatus(Status.ready)
-            }}
-          />
+          {wallpaper && (
+            <Image
+              ref={imageRef}
+              alt="Wallpaper"
+              objectFit="cover"
+              src={wallpaper}
+              fill={true}
+              onLoad={() => {
+                setLoaded(true)
+                changeStatus(Status.ready)
+              }}
+            />
+          )}
           {status === Status.loading && (
             <Center
               alignContent="center"
@@ -195,7 +196,13 @@ export default function Home() {
                               )}
                               {elem.name === "Wallpapers" && (
                                 <Wallpapers
-                                  h={elem.maximized ? "90%" : "fit-content"}
+                                  h={
+                                    elem.maximized
+                                      ? "90%"
+                                      : window.innerHeight > 725
+                                      ? "fit-content"
+                                      : "400px"
+                                  }
                                   w={elem.maximized ? "80%" : "800px"}
                                 />
                               )}

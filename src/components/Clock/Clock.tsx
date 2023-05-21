@@ -1,8 +1,12 @@
 import * as React from "react"
-import { Spacer, Flex, Text } from "@chakra-ui/react"
+import { Text, Center, Flex } from "@chakra-ui/react"
 import { useLanguage } from "../../context/hooks"
 
-const Clock: React.FC = () => {
+interface Props {
+  isPortrait: boolean
+}
+
+const Clock: React.FC<Props> = ({ isPortrait }) => {
   const [date, setDate] = React.useState<Date>(new Date())
   const language = useLanguage()
   let day = ""
@@ -80,11 +84,16 @@ const Clock: React.FC = () => {
   }
 
   return (
-    <Flex ml={["20px", "-70px"]} w={["140px", "150px"]}>
-      <Text alignSelf="center" fontSize="small" fontWeight="bold">
-        {day} {date.getDate().toString()} {language === "ES" ? "de" : "of"} {month}
+    <Flex
+      justifyContent={"center"}
+      flexGrow={"1"}
+      w={isPortrait ? "100%" : ""}
+      ml={isPortrait ? "100px" : ""}
+    >
+      <Text alignSelf="center" fontSize="small" fontWeight="bold" mr="10px">
+        {day} {date.getDate().toString()} {language === "ES" ? "de" : "of"}{" "}
+        {month}
       </Text>
-      <Spacer />
       <Text alignSelf="center" fontSize="small" fontWeight="bold">
         {date.getHours() === 0 &&
           `${date.toLocaleTimeString().substring(4, -1)}`}

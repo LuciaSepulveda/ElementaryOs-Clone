@@ -38,14 +38,17 @@ const UserProvider = ({ children }: ChildrenProp) => {
   const [anyProgramMaximized, setAnyProgramMaximized] =
     React.useState<boolean>(false)
   const [sectionAbout, setSectionAbout] = React.useState<string>("sobre mi")
-  const [wallpaper, setWallpaper] = React.useState<string>(
-    typeof window !== "undefined" &&
-      typeof JSON.parse(localStorage.getItem("Wallpaper") || "{}") !== "object"
-      ? JSON.parse(localStorage.getItem("Wallpaper") || "{}")
-      : wallpapers[0]
-  )
+  const [wallpaper, setWallpaper] = React.useState<string>(wallpapers[0])
   const [language, setLanguage] = React.useState<"EN" | "ES">("ES")
   const [programs, setPrograms] = React.useState<Program[]>(programsArray)
+
+  React.useEffect(() => {
+    if (
+      typeof window !== "undefined" &&
+      typeof JSON.parse(localStorage.getItem("Wallpaper") || "{}") !== "object"
+    )
+      setWallpaper(JSON.parse(localStorage.getItem("Wallpaper") || "{}"))
+  }, [])
 
   const handleChangeSectionAbout = (s: string) => {
     setSectionAbout(s)
@@ -85,10 +88,11 @@ const UserProvider = ({ children }: ChildrenProp) => {
         return {
           ...program,
           open: true,
-          minimized: false
+          minimized: false,
         }
-      } return program
-    }) 
+      }
+      return program
+    })
     setPrograms(aux)
     setStatus(Status.update)
     handleCheckProgramsClose()
@@ -100,10 +104,11 @@ const UserProvider = ({ children }: ChildrenProp) => {
         return {
           ...program,
           open: false,
-          maximized: false
+          maximized: false,
         }
-      } return program
-    }) 
+      }
+      return program
+    })
     setPrograms(aux)
     console.log(aux)
     setStatus(Status.update)
@@ -117,10 +122,11 @@ const UserProvider = ({ children }: ChildrenProp) => {
         return {
           ...program,
           maximized: !p.maximized,
-          minimized: false
+          minimized: false,
         }
-      } return program
-    }) 
+      }
+      return program
+    })
     setPrograms(aux)
     setStatus(Status.update)
     handleCheckProgramsClose()
@@ -134,10 +140,10 @@ const UserProvider = ({ children }: ChildrenProp) => {
           ...program,
           maximized: false,
           minimized: true,
-          open: false
+          open: false,
         }
       } else return program
-    }) 
+    })
     setPrograms(aux)
     setStatus(Status.update)
     handleCheckProgramsClose()
@@ -151,13 +157,14 @@ const UserProvider = ({ children }: ChildrenProp) => {
           open: false,
           maximized: false,
         }
-      } else return {
-        ...program,
-        open: true,
-        maximized: false,
-        minimized: false,
-      }
-    }) 
+      } else
+        return {
+          ...program,
+          open: true,
+          maximized: false,
+          minimized: false,
+        }
+    })
     setPrograms(aux)
     setStatus(Status.update)
     handleCheckProgramsClose()

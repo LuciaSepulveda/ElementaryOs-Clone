@@ -184,7 +184,7 @@ export const techsEn: string[] = [
 export const info: string[] = [
   "Desarrolladora frontend",
   "Mas de año de experiencia",
-  "Vivo en Bahía Blanca",
+  "Vivo en Bahía Blanca, Buenos Aires",
 ]
 
 export const infoEn: string[] = [

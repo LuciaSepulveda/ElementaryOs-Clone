@@ -81,9 +81,9 @@ const TopBar: React.FC = () => {
   }
 
   return (
-    <Flex bg="black" color="white" h="26px" position="relative" w="100%">
+    <Flex justifyContent="space-between" bg="black" color="white" h="26px" position="relative" w="100%">
       {!isPortrait && (
-        <Flex position="sticky" zIndex="15">
+        <Flex flexGrow="1" position="sticky" zIndex="15">
           <Menu>
             <MenuButton
               as={Button}
@@ -187,11 +187,8 @@ const TopBar: React.FC = () => {
           </Menu>
         </Flex>
       )}
-      {!isPortrait && <Box w="20px" />}
-      <Spacer />
-      <Clock />
-      <Spacer />
-      <HStack mr="10px" position="sticky" spacing="10px" zIndex="5">
+      <Clock isPortrait={isPortrait} />
+      <HStack justifyContent="flex-end" flexGrow="1" mr="10px" position="sticky" spacing="10px" zIndex="5">
         <button onClick={() => changeLanguage(language === "ES" ? "EN" : "ES")}>
           <Text align="center" fontSize="sm" fontWeight="semibold">
             {language}
@@ -241,13 +238,13 @@ const TopBar: React.FC = () => {
             </PopoverBody>
           </PopoverContent>
         </Popover>
-        <Box as="button" onClick={() => functionOpenProgram(wallpaper())}>
+        <Center as="button" onClick={() => functionOpenProgram(wallpaper())}>
           <EditIcon />
-        </Box>
-        <Box alignSelf="center" as="button" onClick={toggleColorMode}>
+        </Center>
+        <Center as="button" onClick={toggleColorMode}>
           {colorMode === "light" && <MoonIcon />}
           {colorMode !== "light" && <SunIcon />}
-        </Box>
+        </Center>
       </HStack>
     </Flex>
   )
