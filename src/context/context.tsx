@@ -1,7 +1,7 @@
 import React from "react"
 
-import {Program, Status} from "../types/types"
-import {programs, wallpapers} from "../data/data"
+import { Program, Status } from "../types/types"
+import { programs as programsArray, wallpapers } from "../data/data"
 
 export interface Context {
   state: {
@@ -11,6 +11,7 @@ export interface Context {
     anyProgramMaximized: boolean
     sectionAbout: string
     wallpaper: string
+    language: "EN" | "ES"
   }
   actions: {
     changeStatus: (status: Status) => void
@@ -21,21 +22,33 @@ export interface Context {
     changeSectionAbout: (section: string) => void
     closeAllPrograms: (program: Program) => void
     changeWallpaper: (wallpaper: string) => void
+    changeLanguage: (l: "ES" | "EN") => void
   }
+}
+
+interface ChildrenProp {
+  children: React.ReactNode
 }
 
 const UserContext = React.createContext({} as Context)
 
-const UserProvider: React.FC = ({children}) => {
+const UserProvider = ({ children }: ChildrenProp) => {
   const [status, setStatus] = React.useState<Status>(Status.loading)
   const [noProgramsOpen, setProgramsOpen] = React.useState<boolean>(false)
-  const [anyProgramMaximized, setAnyProgramMaximized] = React.useState<boolean>(false)
-  const [sectionAbout, setSectionAbout] = React.useState<string>("about")
-  const [wallpaper, setWallpaper] = React.useState<string>(
-    typeof JSON.parse(localStorage.getItem("Wallpaper") || "{}") !== "object"
-      ? JSON.parse(localStorage.getItem("Wallpaper") || "{}")
-      : wallpapers[0],
-  )
+  const [anyProgramMaximized, setAnyProgramMaximized] =
+    React.useState<boolean>(false)
+  const [sectionAbout, setSectionAbout] = React.useState<string>("sobre mi")
+  const [wallpaper, setWallpaper] = React.useState<string>(wallpapers[0])
+  const [language, setLanguage] = React.useState<"EN" | "ES">("ES")
+  const [programs, setPrograms] = React.useState<Program[]>(programsArray)
+
+  React.useEffect(() => {
+    if (
+      typeof window !== "undefined" &&
+      typeof JSON.parse(localStorage.getItem("Wallpaper") || "{}") !== "object"
+    )
+      setWallpaper(JSON.parse(localStorage.getItem("Wallpaper") || "{}"))
+  }, [])
 
   const handleChangeSectionAbout = (s: string) => {
     setSectionAbout(s)
@@ -48,10 +61,9 @@ const UserProvider: React.FC = ({children}) => {
 
   const handleCheckProgramsClose = () => {
     let allClose = true
-
-    for (let i = 0; i < programs.length; i++) {
-      if (programs[i].open === true) allClose = false
-    }
+    programs.map((program) => {
+      if (program.open === true) allClose = false
+    })
 
     setProgramsOpen(allClose)
   }
@@ -59,9 +71,9 @@ const UserProvider: React.FC = ({children}) => {
   const handleCheckProgramMaximized = () => {
     let anyMaximized = false
 
-    for (let i = 0; i < programs.length; i++) {
-      if (programs[i].maximized === true) anyMaximized = true
-    }
+    programs.map((program) => {
+      if (program.maximized === true) anyMaximized = false
+    })
 
     setAnyProgramMaximized(anyMaximized)
   }
@@ -71,39 +83,96 @@ const UserProvider: React.FC = ({children}) => {
   }
 
   function handleOpenProgram(p: Program) {
-    p.open = true
-    p.minimized = false
+    const aux = programs.map((program) => {
+      if (program.name === p.name) {
+        return {
+          ...program,
+          open: true,
+          minimized: false,
+        }
+      }
+      return program
+    })
+    setPrograms(aux)
     setStatus(Status.update)
     handleCheckProgramsClose()
   }
 
   function handleCloseProgram(p: Program) {
-    p.open = false
-    p.maximized = false
+    const aux = programs.map((program) => {
+      if (program.name === p.name) {
+        return {
+          ...program,
+          open: false,
+          maximized: false,
+        }
+      }
+      return program
+    })
+    setPrograms(aux)
+    console.log(aux)
     setStatus(Status.update)
     handleCheckProgramsClose()
     handleCheckProgramMaximized()
   }
 
   function handleMaximizedProgram(p: Program) {
-    p.maximized = !p.maximized
-    p.minimized = false
+    const aux = programs.map((program) => {
+      if (program.name === p.name) {
+        return {
+          ...program,
+          maximized: !p.maximized,
+          minimized: false,
+        }
+      }
+      return program
+    })
+    setPrograms(aux)
     setStatus(Status.update)
     handleCheckProgramsClose()
     handleCheckProgramMaximized()
   }
 
   function handleMinimizedProgram(p: Program) {
-    p.minimized = true
-    p.maximized = false
+    const aux = programs.map((program) => {
+      if (program.name === p.name) {
+        return {
+          ...program,
+          maximized: false,
+          minimized: true,
+          open: false,
+        }
+      } else return program
+    })
+    setPrograms(aux)
     setStatus(Status.update)
     handleCheckProgramsClose()
   }
 
   function handleCloseAllPrograms(p: Program) {
-    for (let i = 0; i !== programs.length; i++) {
-      if (programs[i].name !== p.name) handleCloseProgram(programs[i])
-    }
+    const aux = programs.map((program) => {
+      if (program.name !== p.name) {
+        return {
+          ...program,
+          open: false,
+          maximized: false,
+        }
+      } else
+        return {
+          ...program,
+          open: true,
+          maximized: false,
+          minimized: false,
+        }
+    })
+    setPrograms(aux)
+    setStatus(Status.update)
+    handleCheckProgramsClose()
+    handleCheckProgramMaximized()
+  }
+
+  function handleChangeLanguage(l: "ES" | "EN") {
+    setLanguage(l)
   }
 
   const state: Context["state"] = {
@@ -113,6 +182,7 @@ const UserProvider: React.FC = ({children}) => {
     anyProgramMaximized,
     sectionAbout,
     wallpaper,
+    language,
   }
 
   const actions = {
@@ -124,13 +194,18 @@ const UserProvider: React.FC = ({children}) => {
     changeSectionAbout: handleChangeSectionAbout,
     closeAllPrograms: handleCloseAllPrograms,
     changeWallpaper: handleChangeWallpaper,
+    changeLanguage: handleChangeLanguage,
   }
 
   if (status === "update") {
     setStatus(Status.ready)
   }
 
-  return <UserContext.Provider value={{state, actions}}>{children}</UserContext.Provider>
+  return (
+    <UserContext.Provider value={{ state, actions }}>
+      {children}
+    </UserContext.Provider>
+  )
 }
 
-export {UserContext as default, UserProvider as Provider}
+export { UserContext as default, UserProvider as Provider }

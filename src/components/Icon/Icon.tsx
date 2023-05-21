@@ -1,5 +1,11 @@
 import * as React from "react"
-import {motion, useMotionValue, useTransform, useSpring, MotionValue} from "framer-motion"
+import {
+  motion,
+  useMotionValue,
+  useTransform,
+  useSpring,
+  MotionValue,
+} from "framer-motion"
 import useRaf from "@rooks/use-raf"
 
 interface Props {
@@ -7,13 +13,25 @@ interface Props {
   mouseX: MotionValue<any>
 }
 
-const Icon: React.FC<Props> = ({src, mouseX}) => {
+const Icon: React.FC<Props> = ({ src, mouseX }) => {
   const baseWidth = 60
   const distanceLimit = baseWidth * 6
   const beyondTheDistanceLimit = distanceLimit + 1
-  const distanceInput = [-distanceLimit, -distanceLimit / 2, 0, distanceLimit / 2, distanceLimit]
+  const distanceInput = [
+    -distanceLimit,
+    -distanceLimit / 2,
+    0,
+    distanceLimit / 2,
+    distanceLimit,
+  ]
 
-  const widthOutput = [baseWidth, baseWidth * 1.5, baseWidth * 2, baseWidth * 1.5, baseWidth]
+  const widthOutput = [
+    baseWidth,
+    baseWidth * 1.5,
+    baseWidth * 2,
+    baseWidth * 1.5,
+    baseWidth,
+  ]
   const distance = useMotionValue(beyondTheDistanceLimit)
   const width = useSpring(useTransform(distance, distanceInput, widthOutput), {
     damping: 25,
@@ -48,7 +66,7 @@ const Icon: React.FC<Props> = ({src, mouseX}) => {
         padding: "5px",
         height: "auto",
       }}
-      whileTap={{y: -50}}
+      whileTap={{ y: -50 }}
     />
   )
 }

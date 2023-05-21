@@ -1,19 +1,27 @@
 import "@fontsource/jetbrains-mono/"
 
 import * as React from "react"
-import {Box, Grid, GridItem, HStack, Text, VStack, useColorModeValue} from "@chakra-ui/react"
-import {ChevronRightIcon} from "@chakra-ui/icons"
+import {
+  Box,
+  Grid,
+  GridItem,
+  HStack,
+  Text,
+  VStack,
+  useColorModeValue,
+} from "@chakra-ui/react"
+import { ChevronRightIcon } from "@chakra-ui/icons"
 
-import {techs, info} from "../../data/data"
-import {useChangeSectionAbout} from "../../context/hooks"
+import { techs, techsEn, info, infoEn } from "../../data/data"
+import { useChangeSectionAbout, useLanguage } from "../../context/hooks"
 
 interface Props {
   w: string
   h: string
 }
 
-const About: React.FC<Props> = ({h, w}) => {
-  const [state, setState] = React.useState<string>("about")
+const About: React.FC<Props> = ({ h, w }) => {
+  const [state, setState] = React.useState<string>("sobre mi")
   const [update, setUpdate] = React.useState<boolean>(false)
   const changeSection = useChangeSectionAbout()
   const bgLeft = useColorModeValue("#E6F2F3", "#07273B")
@@ -25,12 +33,37 @@ const About: React.FC<Props> = ({h, w}) => {
   const text3 = useColorModeValue("#AF8F27", "#D58929")
   const text4 = useColorModeValue("#009BAF", "#46E991")
   const colorCorchetes = useColorModeValue("#8DA6AC", "#568498")
+  const language = useLanguage()
+  const [skills, setSkills] = React.useState(techs)
+  const [information, setInformation] = React.useState(info)
+
+  React.useEffect(() => {
+    if (language === "ES") {
+      setSkills(techs)
+      setInformation(info)
+    } else {
+      setSkills(techsEn)
+      setInformation(infoEn)
+    }
+  }, [language])
 
   const updateState = (s: string) => {
     setUpdate(true)
     setState(s)
     changeSection(s)
   }
+
+  React.useEffect(() => {
+    if (language === "ES") {
+      if (state === "about me") {
+        changeSection("sobre mi")
+      } else if (state === "skills") changeSection("habilidades")
+    } else {
+      if (state === "sobre mi") {
+        changeSection("about me")
+      } else if (state === "habilidades") changeSection("skills")
+    }
+  }, [language])
 
   React.useEffect(() => {
     if (update === true) {
@@ -66,50 +99,63 @@ const About: React.FC<Props> = ({h, w}) => {
           transitionTimingFunction="ease-in-out"
         >
           <VStack>
-            <Box bg={bgLeftTop} p={1} transitionTimingFunction="ease-in-out" w="100%">
-              <Text align="justify" color={text} fontSize="small" fontWeight="bold" ml="10px">
+            <Box
+              bg={bgLeftTop}
+              p={1}
+              transitionTimingFunction="ease-in-out"
+              w="100%"
+            >
+              <Text
+                align="justify"
+                color={text}
+                fontSize="small"
+                fontWeight="bold"
+                ml="10px"
+              >
                 Portfolio
               </Text>
             </Box>
             <HStack w="100%">
-              {state === "about" && (
+              {state === "sobre mi" || state === "about me" ? (
                 <>
                   <ChevronRightIcon color={text} />
                   <Text align="justify" color={text} ml="10px">
-                    Sobre mi
+                    {language === "ES" ? "Sobre mí" : "About me"}
                   </Text>
                 </>
-              )}
-              {state !== "about" && (
+              ) : (
                 <Text
                   align="justify"
                   as="button"
                   color={text}
                   ml="10px"
-                  onClick={() => updateState("about")}
+                  onClick={() =>
+                    updateState(language === "ES" ? "sobre mi" : "about me")
+                  }
                 >
-                  Sobre mi
+                  {language === "ES" ? "Sobre mí" : "About me"}
                 </Text>
               )}
             </HStack>
             <HStack w="100%">
-              {state === "tech" && (
+              {state === "skills" || state === "habilidades" ? (
                 <>
                   <ChevronRightIcon color={text} />
                   <Text align="justify" color={text} ml="10px">
-                    Habilidades
+                    {language === "ES" ? "Habilidades" : "Skills"}
                   </Text>
                 </>
-              )}
-              {state !== "tech" && (
+              ) : (
                 <Text
                   align="justify"
                   as="button"
                   color={text}
                   ml="10px"
-                  onClick={() => updateState("tech")}
+                  onClick={() =>
+                    updateState(language === "ES" ? "habilidades" : "skills")
+                  }
                 >
-                  Habilidades
+                  {language === "ES" ? "Habilidades" : "Skills"}
                 </Text>
               )}
             </HStack>
@@ -117,7 +163,7 @@ const About: React.FC<Props> = ({h, w}) => {
         </GridItem>
         <GridItem colSpan={3}>
           <VStack fontFamily="JetBrains Mono" spacing={0}>
-            {state === "about" && (
+            {(state === "about me" || state === "sobre mi") && (
               <>
                 <HStack spacing={["1px", "4px"]} w="100%">
                   <Text color={colorCorchetes}>{`<`}!</Text>
@@ -165,7 +211,7 @@ const About: React.FC<Props> = ({h, w}) => {
                   <Text color={text2}>h1</Text>
                   <Text color={colorCorchetes}>{`>`}</Text>
                 </HStack>
-                {info.map((elem) => (
+                {information.map((elem) => (
                   <HStack key={elem} ml="20%" spacing={["1px", "4px"]} w="80%">
                     <Text color={colorCorchetes}>{`<`}</Text>
                     <Text color={text2}>p</Text>
@@ -190,15 +236,20 @@ const About: React.FC<Props> = ({h, w}) => {
                 </HStack>
               </>
             )}
-            {state === "tech" && (
+            {(state === "skills" || state === "habilidades") && (
               <>
                 <HStack spacing={["1px", "4px"]} w="100%">
                   <Text color={colorCorchetes}>{`<`}</Text>
                   <Text color={text2}>ul</Text>
                   <Text color={colorCorchetes}>{`>`}</Text>
                 </HStack>
-                {techs.map((elem) => (
-                  <HStack key={elem} ml="10%" spacing={["1px", "4px"]} w={["100%", "90%"]}>
+                {skills.map((elem) => (
+                  <HStack
+                    key={elem}
+                    ml="10%"
+                    spacing={["1px", "4px"]}
+                    w={["100%", "90%"]}
+                  >
                     <Text color={colorCorchetes}>{`<`}</Text>
                     <Text color={text2}>li</Text>
                     <Text color={colorCorchetes}>{`>`}</Text>

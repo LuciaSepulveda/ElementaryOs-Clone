@@ -1,1 +1,1 @@
-export {default} from "./Wallpapers"
+export { default } from "./Wallpapers"

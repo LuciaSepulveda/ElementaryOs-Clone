@@ -1,34 +1,34 @@
-import dev from "../assets/developer.png"
-import project from "../assets/layout1.png"
-import blackbox from "../assets/blackbox-vision.png"
-import aerolab from "../assets/aerolab.png"
-import sambuche from "../assets/sambuche.png"
-import softvision from "../assets/softvision.png"
-import basement from "../assets/basementChallenge.png"
-import mail from "../assets/mailbox.png"
-import smart from "../assets/smartphone1.png"
-import github from "../assets/github.png"
-import {Program, Project, Social} from "../types/types"
-import fondo1 from "../assets/fondo1.jpg"
-import fondo2 from "../assets/fondo2.jpg"
-import fondo3 from "../assets/fondo3.jpg"
-import fondo4 from "../assets/fondo4.jpg"
-import fondo5 from "../assets/fondo5.jpg"
-import fondo6 from "../assets/fondo6.jpg"
-import display from "../assets/display1.png"
-import abtm from "../assets/ABTM.png"
+import { Program, Project, Social } from "../types/types"
 
 export const programs: Program[] = [
   {
     name: "User",
-    img: `${dev}`,
+    img: "/developer.png",
     open: true,
     maximized: false,
     minimized: false,
   },
-  {name: "Projects", img: `${project}`, open: false, maximized: false, minimized: false},
-  {name: "Contact", img: `${smart}`, open: false, maximized: false, minimized: false},
-  {name: "Wallpapers", img: `${display}`, open: false, maximized: false, minimized: false},
+  {
+    name: "Projects",
+    img: "/layout1.png",
+    open: false,
+    maximized: false,
+    minimized: false,
+  },
+  {
+    name: "Contact",
+    img: "/smartphone1.png",
+    open: false,
+    maximized: false,
+    minimized: false,
+  },
+  {
+    name: "Wallpapers",
+    img: "/display1.png",
+    open: false,
+    maximized: false,
+    minimized: false,
+  },
 ]
 
 export const projects: Project[] = [
@@ -37,7 +37,7 @@ export const projects: Project[] = [
     github: "https://github.com/LuciaSepulveda/ABTM",
     demo: "https://abtm.vercel.app/",
     description: "Web para la Asociación Bahiense de Tenis de Mesa",
-    img: `${abtm}`,
+    img: "/ABTM.png",
     techs: ["NextJs", "Strapi", "Chakra-UI"],
   },
   {
@@ -45,7 +45,7 @@ export const projects: Project[] = [
     github: "https://github.com/LuciaSepulveda/Sambuche-App",
     demo: "https://sambuche.netlify.app/",
     description: "Aplicación que simula el armado de un pedido de sandwich",
-    img: `${sambuche}`,
+    img: "/sambuche.png",
     techs: ["React", "Typescript", "Chakra-UI"],
   },
   {
@@ -53,7 +53,7 @@ export const projects: Project[] = [
     github: "https://github.com/LuciaSepulveda/Basement-Challenge",
     demo: "https://basement-challenge-ls.vercel.app/",
     description: "Aplicación que simula una tienda",
-    img: `${basement}`,
+    img: "/basementChallenge.png",
     techs: ["NextJS", "Tailwind"],
   },
   {
@@ -61,7 +61,7 @@ export const projects: Project[] = [
     github: "https://github.com/LuciaSepulveda/Challenge-Aerolab",
     demo: "https://aerolabchallenge.web.app/",
     description: "Tienda de productos basada en puntos.",
-    img: `${aerolab}`,
+    img: "/aerolab.png",
     techs: ["React", "Typescript", "Chakra-UI"],
   },
   {
@@ -69,12 +69,12 @@ export const projects: Project[] = [
     github: "https://github.com/LuciaSepulveda/Softvision-Challenge",
     demo: "https://cognizant-softvision-challenge.netlify.app/",
     description: "Aplicación que simula a Trello",
-    img: `${softvision}`,
+    img: "/softvision.png",
     techs: ["React", "Typescript", "Chakra-UI"],
   },
   {
     name: "BlackBox Vision Challenge",
-    img: `${blackbox}`,
+    img: "/blackbox-vision.png",
     github: "https://github.com/LuciaSepulveda/BlackBox-Vision-challenge",
     demo: "https://quizbox-vision.web.app/",
     description: "Juego de preguntas y respuestas",
@@ -82,30 +82,122 @@ export const projects: Project[] = [
   },
 ]
 
+export const projectsEn: Project[] = [
+  {
+    name: "ABTM",
+    github: "https://github.com/LuciaSepulveda/ABTM",
+    demo: "https://abtm.vercel.app/",
+    description: "Website for Asociación Bahiense de Tenis de Mesa.",
+    img: "/ABTM.png",
+    techs: ["NextJs", "Strapi", "Chakra-UI"],
+  },
+  {
+    name: "Sambuche App",
+    github: "https://github.com/LuciaSepulveda/Sambuche-App",
+    demo: "https://sambuche.netlify.app/",
+    description: "Site that simulates the prepare of a sandwich.",
+    img: "/sambuche.png",
+    techs: ["React", "Typescript", "Chakra-UI"],
+  },
+  {
+    name: "Basement Challenge",
+    github: "https://github.com/LuciaSepulveda/Basement-Challenge",
+    demo: "https://basement-challenge-ls.vercel.app/",
+    description: "Site that simulates a store",
+    img: "/basementChallenge.png",
+    techs: ["NextJS", "Tailwind"],
+  },
+  {
+    name: "Aerolab Challenge",
+    github: "https://github.com/LuciaSepulveda/Challenge-Aerolab",
+    demo: "https://aerolabchallenge.web.app/",
+    description: "Site of a store based on points.",
+    img: "/aerolab.png",
+    techs: ["React", "Typescript", "Chakra-UI"],
+  },
+  {
+    name: "Softvision Challenge",
+    github: "https://github.com/LuciaSepulveda/Softvision-Challenge",
+    demo: "https://cognizant-softvision-challenge.netlify.app/",
+    description: "Site that simulates Trello.",
+    img: "/softvision.png",
+    techs: ["React", "Typescript", "Chakra-UI"],
+  },
+  {
+    name: "BlackBox Vision Challenge",
+    img: "/blackbox-vision.png",
+    github: "https://github.com/LuciaSepulveda/BlackBox-Vision-challenge",
+    demo: "https://quizbox-vision.web.app/",
+    description: "Game of questions and answers.",
+    techs: ["React", "Typescript", "Chakra-UI"],
+  },
+]
+
 export const social: Social[] = [
-  {name: "Github", link: "https://github.com/LuciaSepulveda", logo: `${github}`},
-  {name: "Email", link: "mailto:luciabsep18@gmail.com", logo: `${mail}`},
+  {
+    name: "Github",
+    link: "https://github.com/LuciaSepulveda",
+    logo: "/github.png",
+  },
+  {
+    name: "Email",
+    link: "mailto:luciabsep18@gmail.com",
+    logo: "/mailbox.png",
+  },
+  {
+    name: "Linkedin",
+    link: "https://www.linkedin.com/in/lucia-sepulveda/",
+    logo: "/linkedin.png",
+  },
 ]
 
 export const techs: string[] = [
+  "React",
+  "Next",
+  "Typescript",
+  "Javascript",
   "HTML",
   "CSS",
-  "Javascript",
-  "Typescript",
-  "React",
+  "Chakra UI",
+  "Styled Components",
+  "Three.js",
   "Java",
   "POO",
   "Estructuras de datos",
-  "Chakra UI",
 ]
 
-export const info: string[] = ["Vivo en Bahía Blanca", "Estudiante de Ingeniería en Computación"]
+export const techsEn: string[] = [
+  "React",
+  "Next",
+  "Typescript",
+  "Javascript",
+  "HTML",
+  "CSS",
+  "Chakra UI",
+  "Styled Components",
+  "Three.js",
+  "Java",
+  "OOP",
+  "Data structures",
+]
+
+export const info: string[] = [
+  "Desarrolladora frontend",
+  "Mas de año de experiencia",
+  "Vivo en Bahía Blanca, Buenos Aires",
+]
+
+export const infoEn: string[] = [
+  "Frontend developer",
+  "More than a year of experience",
+  "I'm from Bahia Blanca, Buenos Aires",
+]
 
 export const wallpapers: string[] = [
-  `${fondo1}`,
-  `${fondo2}`,
-  `${fondo3}`,
-  `${fondo4}`,
-  `${fondo5}`,
-  `${fondo6}`,
+  "/fondo1.jpg",
+  "/fondo2.jpg",
+  "/fondo3.jpg",
+  "/fondo4.jpg",
+  "/fondo5.jpg",
+  "/fondo6.jpg",
 ]

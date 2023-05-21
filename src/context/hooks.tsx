@@ -1,10 +1,10 @@
 import React from "react"
 
-import UserContext, {Context} from "./context"
+import UserContext, { Context } from "./context"
 
 export function useStatus(): Context["state"]["status"] {
   const {
-    state: {status},
+    state: { status },
   } = React.useContext(UserContext)
 
   return status
@@ -12,7 +12,7 @@ export function useStatus(): Context["state"]["status"] {
 
 export function usePrograms(): Context["state"]["programs"] {
   const {
-    state: {programs},
+    state: { programs },
   } = React.useContext(UserContext)
 
   return programs
@@ -20,7 +20,7 @@ export function usePrograms(): Context["state"]["programs"] {
 
 export function useNoProgramsOpen(): Context["state"]["noProgramsOpen"] {
   const {
-    state: {noProgramsOpen},
+    state: { noProgramsOpen },
   } = React.useContext(UserContext)
 
   return noProgramsOpen
@@ -28,7 +28,7 @@ export function useNoProgramsOpen(): Context["state"]["noProgramsOpen"] {
 
 export function useAnyProgramMaximized(): Context["state"]["anyProgramMaximized"] {
   const {
-    state: {anyProgramMaximized},
+    state: { anyProgramMaximized },
   } = React.useContext(UserContext)
 
   return anyProgramMaximized
@@ -36,7 +36,7 @@ export function useAnyProgramMaximized(): Context["state"]["anyProgramMaximized"
 
 export function useSectionAbout(): Context["state"]["sectionAbout"] {
   const {
-    state: {sectionAbout},
+    state: { sectionAbout },
   } = React.useContext(UserContext)
 
   return sectionAbout
@@ -44,7 +44,7 @@ export function useSectionAbout(): Context["state"]["sectionAbout"] {
 
 export function useChangeStatus(): Context["actions"]["changeStatus"] {
   const {
-    actions: {changeStatus},
+    actions: { changeStatus },
   } = React.useContext(UserContext)
 
   return changeStatus
@@ -52,7 +52,7 @@ export function useChangeStatus(): Context["actions"]["changeStatus"] {
 
 export function useOpenProgram(): Context["actions"]["openProgram"] {
   const {
-    actions: {openProgram},
+    actions: { openProgram },
   } = React.useContext(UserContext)
 
   return openProgram
@@ -60,7 +60,7 @@ export function useOpenProgram(): Context["actions"]["openProgram"] {
 
 export function useCloseProgram(): Context["actions"]["closeProgram"] {
   const {
-    actions: {closeProgram},
+    actions: { closeProgram },
   } = React.useContext(UserContext)
 
   return closeProgram
@@ -68,7 +68,7 @@ export function useCloseProgram(): Context["actions"]["closeProgram"] {
 
 export function useMaximizedProgram(): Context["actions"]["maximizedProgram"] {
   const {
-    actions: {maximizedProgram},
+    actions: { maximizedProgram },
   } = React.useContext(UserContext)
 
   return maximizedProgram
@@ -76,7 +76,7 @@ export function useMaximizedProgram(): Context["actions"]["maximizedProgram"] {
 
 export function useMinimizedProgram(): Context["actions"]["minimizedProgram"] {
   const {
-    actions: {minimizedProgram},
+    actions: { minimizedProgram },
   } = React.useContext(UserContext)
 
   return minimizedProgram
@@ -84,7 +84,7 @@ export function useMinimizedProgram(): Context["actions"]["minimizedProgram"] {
 
 export function useChangeSectionAbout(): Context["actions"]["changeSectionAbout"] {
   const {
-    actions: {changeSectionAbout},
+    actions: { changeSectionAbout },
   } = React.useContext(UserContext)
 
   return changeSectionAbout
@@ -92,7 +92,7 @@ export function useChangeSectionAbout(): Context["actions"]["changeSectionAbout"
 
 export function useCloseAllPrograms(): Context["actions"]["closeAllPrograms"] {
   const {
-    actions: {closeAllPrograms},
+    actions: { closeAllPrograms },
   } = React.useContext(UserContext)
 
   return closeAllPrograms
@@ -100,7 +100,7 @@ export function useCloseAllPrograms(): Context["actions"]["closeAllPrograms"] {
 
 export function useWallpaper(): Context["state"]["wallpaper"] {
   const {
-    state: {wallpaper},
+    state: { wallpaper },
   } = React.useContext(UserContext)
 
   return wallpaper
@@ -108,8 +108,24 @@ export function useWallpaper(): Context["state"]["wallpaper"] {
 
 export function useChangeWallpaper(): Context["actions"]["changeWallpaper"] {
   const {
-    actions: {changeWallpaper},
+    actions: { changeWallpaper },
   } = React.useContext(UserContext)
 
   return changeWallpaper
+}
+
+export function useLanguage(): Context["state"]["language"] {
+  const {
+    state: { language },
+  } = React.useContext(UserContext)
+
+  return language
+}
+
+export function useChangeLanguage(): Context["actions"]["changeLanguage"] {
+  const {
+    actions: { changeLanguage },
+  } = React.useContext(UserContext)
+
+  return changeLanguage
 }

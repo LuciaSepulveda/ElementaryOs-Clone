@@ -1,4 +1,4 @@
-import {Search2Icon, MoonIcon, SunIcon, EditIcon} from "@chakra-ui/icons"
+import { Search2Icon, MoonIcon, SunIcon, EditIcon } from "@chakra-ui/icons"
 import {
   Box,
   Grid,
@@ -22,23 +22,32 @@ import {
   PopoverBody,
   PopoverCloseButton,
   PopoverHeader,
+  Center,
 } from "@chakra-ui/react"
 import * as React from "react"
-import {useMediaQuery} from "react-responsive"
-import {BsInfoCircle} from "react-icons/bs"
-import {Icon} from "@chakra-ui/icons"
+import { useMediaQuery } from "react-responsive"
+import { BsInfoCircle } from "react-icons/bs"
+import { Icon } from "@chakra-ui/icons"
 
 import Clock from "../Clock/Clock"
-import {usePrograms, useOpenProgram, useCloseAllPrograms} from "../../context/hooks"
-import {Program} from "../../types/types"
+import {
+  usePrograms,
+  useOpenProgram,
+  useCloseAllPrograms,
+  useLanguage,
+  useChangeLanguage,
+} from "../../context/hooks"
+import { Program } from "../../types/types"
 
 const TopBar: React.FC = () => {
   const [search, setSearch] = React.useState<string>("")
   const programs = usePrograms()
   const openProgram = useOpenProgram()
-  const isPortrait = useMediaQuery({query: "(orientation: portrait)"})
-  const {colorMode, toggleColorMode} = useColorMode()
+  const isPortrait = useMediaQuery({ query: "(orientation: portrait)" })
+  const { colorMode, toggleColorMode } = useColorMode()
   const closeAll = useCloseAllPrograms()
+  const language = useLanguage()
+  const changeLanguage = useChangeLanguage()
 
   const wallpaper = () => {
     let elem = programs[0]
@@ -56,7 +65,9 @@ const TopBar: React.FC = () => {
     } else return programs.length
   }
 
-  const handleChange = (event: {target: {value: React.SetStateAction<string>}}) => {
+  const handleChange = (event: {
+    target: { value: React.SetStateAction<string> }
+  }) => {
     setSearch(event.target.value)
   }
 
@@ -70,18 +81,33 @@ const TopBar: React.FC = () => {
   }
 
   return (
-    <Flex bg="black" color="white" h="26px" position="relative" w="100%">
+    <Flex justifyContent="space-between" bg="black" color="white" h="26px" position="relative" w="100%">
       {!isPortrait && (
-        <Flex position="sticky" zIndex="15">
+        <Flex flexGrow="1" position="sticky" zIndex="15">
           <Menu>
             <MenuButton
-              alt="Search button"
               as={Button}
-              leftIcon={<Search2Icon alignSelf="center" h={3} ml={["0px", "5px"]} w={3} />}
-              style={{backgroundColor: "transparent", height: "20px", alignSelf: "center"}}
+              leftIcon={
+                <Search2Icon
+                  alignSelf="center"
+                  h={3}
+                  ml={["0px", "5px"]}
+                  w={3}
+                />
+              }
+              style={{
+                backgroundColor: "transparent",
+                height: "20px",
+                alignSelf: "center",
+              }}
             >
-              <Text alignSelf="center" fontSize="small" fontWeight="bold" ml="5px">
-                Applications
+              <Text
+                alignSelf="center"
+                fontSize="small"
+                fontWeight="bold"
+                ml="5px"
+              >
+                {language === "ES" ? "Aplicaciones" : "Applications"}
               </Text>
             </MenuButton>
             <MenuList
@@ -89,7 +115,7 @@ const TopBar: React.FC = () => {
               border="0px"
               boxShadow="xl"
               color="black"
-              style={{marginLeft: "10px"}}
+              style={{ marginLeft: "10px" }}
             >
               <VStack>
                 <InputGroup>
@@ -107,13 +133,22 @@ const TopBar: React.FC = () => {
                     />
                   </HStack>
                 </InputGroup>
-                <Grid gap={6} p={6} templateColumns={`repeat(${cantPrograms()}, 1fr)`}>
+                <Grid
+                  gap={6}
+                  p={6}
+                  templateColumns={`repeat(${cantPrograms()}, 1fr)`}
+                >
                   {search === "" &&
                     programs.map((elem) => {
                       return (
                         <GridItem key={elem.name} m="10px">
                           <VStack as="button" onClick={() => openProgram(elem)}>
-                            <Image alt={elem.name} h="50px" src={elem.img} w="50px" />
+                            <Image
+                              alt={elem.name}
+                              h="50px"
+                              src={elem.img}
+                              w="50px"
+                            />
                             <Text color="white" fontSize="small">
                               {elem.name}
                             </Text>
@@ -123,12 +158,22 @@ const TopBar: React.FC = () => {
                     })}
                   {search !== "" &&
                     programs
-                      .filter((elem) => elem.name.toLowerCase().includes(search.toLowerCase()))
+                      .filter((elem) =>
+                        elem.name.toLowerCase().includes(search.toLowerCase())
+                      )
                       .map((elem) => {
                         return (
                           <GridItem key={elem.name} m="10px">
-                            <VStack as="button" onClick={() => openProgram(elem)}>
-                              <Image alt={elem.name} h="50px" src={elem.img} w="50px" />
+                            <VStack
+                              as="button"
+                              onClick={() => openProgram(elem)}
+                            >
+                              <Image
+                                alt={elem.name}
+                                h="50px"
+                                src={elem.img}
+                                w="50px"
+                              />
                               <Text color="white" fontSize="small">
                                 {elem.name}
                               </Text>
@@ -142,16 +187,18 @@ const TopBar: React.FC = () => {
           </Menu>
         </Flex>
       )}
-      {!isPortrait && <Box w="20px" />}
-      <Spacer />
-      <Clock />
-      <Spacer />
-      <HStack mr="10px" position="sticky" spacing="10px" zIndex="5">
+      <Clock isPortrait={isPortrait} />
+      <HStack justifyContent="flex-end" flexGrow="1" mr="10px" position="sticky" spacing="10px" zIndex="5">
+        <button onClick={() => changeLanguage(language === "ES" ? "EN" : "ES")}>
+          <Text align="center" fontSize="sm" fontWeight="semibold">
+            {language}
+          </Text>
+        </button>
         <Popover>
           <PopoverTrigger>
-            <Box role="button">
+            <Center role="button">
               <Icon as={BsInfoCircle} />
-            </Box>
+            </Center>
           </PopoverTrigger>
           <PopoverContent bg="black" position="static">
             <PopoverBody>
@@ -179,20 +226,25 @@ const TopBar: React.FC = () => {
                   roundicons
                 </Text>{" "}
                 from{" "}
-                <Text as="a" fontStyle="italic" href="https://www.flaticon.com/" target="_blank">
+                <Text
+                  as="a"
+                  fontStyle="italic"
+                  href="https://www.flaticon.com/"
+                  target="_blank"
+                >
                   www.flaticon.com
                 </Text>
               </Text>
             </PopoverBody>
           </PopoverContent>
         </Popover>
-        <Box as="button" onClick={() => functionOpenProgram(wallpaper())}>
-          <EditIcon alt="Edit icon" />
-        </Box>
-        <Box alignSelf="center" as="button" onClick={toggleColorMode}>
-          {colorMode === "light" && <MoonIcon alt="Dark mode icon" />}
-          {colorMode !== "light" && <SunIcon alt="Light mode icon" />}
-        </Box>
+        <Center as="button" onClick={() => functionOpenProgram(wallpaper())}>
+          <EditIcon />
+        </Center>
+        <Center as="button" onClick={toggleColorMode}>
+          {colorMode === "light" && <MoonIcon />}
+          {colorMode !== "light" && <SunIcon />}
+        </Center>
       </HStack>
     </Flex>
   )

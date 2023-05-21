@@ -11,10 +11,10 @@ import {
   SimpleGrid,
   Badge,
 } from "@chakra-ui/react"
-import {useMediaQuery} from "react-responsive"
+import { useMediaQuery } from "react-responsive"
 
-import github from "../../assets/GitHub_Logo.png"
-import {projects} from "../../data/data"
+import { projects, projectsEn } from "../../data/data"
+import { useLanguage } from "../../context/hooks"
 
 interface Props {
   w: string
@@ -22,22 +22,31 @@ interface Props {
   maximized: boolean
 }
 
-const Projects: React.FC<Props> = ({h, w, maximized}) => {
+const Projects: React.FC<Props> = ({ h, w, maximized }) => {
   const imageRef = React.useRef<HTMLImageElement>(null)
   const [loaded, setLoaded] = React.useState<boolean>(false)
-  const isPortrait = useMediaQuery({query: "(orientation: portrait)"})
+  const isPortrait = useMediaQuery({ query: "(orientation: portrait)" })
   const bg = useColorModeValue("#FBFBFB", "#242424")
   const bgItem = useColorModeValue("#A0A7AC", "#333333")
   const border = useColorModeValue("2px solid #A0A7AC", "2px solid #333333")
   const colorText = useColorModeValue("#242424", "#FBFBFB")
-  let heightImageProject = "140px"
-
-  if (maximized) {
-    heightImageProject = "220px"
-  }
+  const language = useLanguage()
+  const [arrayProjects, setArrayProjects] = React.useState(projects)
 
   React.useEffect(() => {
-    if (!loaded && imageRef.current?.complete && imageRef.current?.naturalWidth > 0) {
+    if (language === "ES") {
+      setArrayProjects(projects)
+    } else {
+      setArrayProjects(projectsEn)
+    }
+  }, [language])
+
+  React.useEffect(() => {
+    if (
+      !loaded &&
+      imageRef.current?.complete &&
+      imageRef.current?.naturalWidth > 0
+    ) {
       setLoaded(true)
     }
   }, [loaded])
@@ -53,7 +62,7 @@ const Projects: React.FC<Props> = ({h, w, maximized}) => {
     >
       {!isPortrait && !maximized && (
         <SimpleGrid columns={3} gap={4} h="100%" p={2} w={w}>
-          {projects.map((elem) => (
+          {arrayProjects.map((elem) => (
             <VStack
               key={elem.name}
               border={border}
@@ -64,26 +73,34 @@ const Projects: React.FC<Props> = ({h, w, maximized}) => {
               <Text fontWeight="bold" h="16px">
                 {elem.name}
               </Text>
-              <Link h={heightImageProject} href={elem.demo} target="_blank">
-                <Skeleton h="150px" isLoaded={loaded} w="100%">
+              <Link
+                href={elem.demo}
+                h={window.innerHeight > 725 ? "100%" : "70px"}
+                target="_blank"
+              >
+                <Skeleton h="100%" isLoaded={loaded}>
                   <Image
+                    h="100%"
+                    src={elem.img}
                     ref={imageRef}
                     alt={elem.name}
-                    src={elem.img}
-                    w="100%"
-                    onLoad={() => {
-                      setLoaded(true)
-                    }}
+                    onLoad={() => setLoaded(true)}
                   />
                 </Skeleton>
               </Link>
-              <Link bg="white" borderRadius="md" h="22px" href={elem.github} target="_blank">
-                <Image h="20px" src={github} />
+              <Link
+                bg="white"
+                borderRadius="md"
+                h="20px"
+                href={elem.github}
+                target="_blank"
+              >
+                <Image h="20px" src="/GitHub_Logo.png" alt="Github" />
               </Link>
-              <Box bg={bgItem} h="52px" m="auto" p={1} w="100%">
-                <Text>{elem.description}</Text>
+              <Box bg={bgItem} h="50px" m="auto" p={1}>
+                <Text textAlign="center">{elem.description}</Text>
               </Box>
-              <Center h="28px" w="100%">
+              <Center w="100%">
                 {elem.techs.map((tech) => (
                   <Badge key={tech} colorScheme="gray" ml={2}>
                     {tech}
@@ -109,33 +126,44 @@ const Projects: React.FC<Props> = ({h, w, maximized}) => {
               borderBottomRadius="xl"
               color={colorText}
               h={[null, null, null, "280px", "100%"]}
-              spacing="10px"
             >
               <Text fontWeight="bold" h="16px">
                 {elem.name}
               </Text>
               <Link
-                h={[null, null, null, "100px", heightImageProject]}
+                h={[
+                  null,
+                  null,
+                  null,
+                  "100%",
+                  window.innerHeight > 725 ? "100%" : "130px",
+                ]}
                 href={elem.demo}
                 target="_blank"
               >
-                <Skeleton h="150px" isLoaded={loaded} w="100%">
+                <Skeleton h="100%" isLoaded={loaded} w="100%">
                   <Image
                     ref={imageRef}
                     alt={elem.name}
                     src={elem.img}
-                    w="100%"
+                    h="100%"
                     onLoad={() => {
                       setLoaded(true)
                     }}
                   />
                 </Skeleton>
               </Link>
-              <Link bg="white" borderRadius="md" h="22px" href={elem.github} target="_blank">
-                <Image h="20px" src={github} />
+              <Link
+                bg="white"
+                borderRadius="md"
+                h="22px"
+                href={elem.github}
+                target="_blank"
+              >
+                <Image h="20px" src="/GitHub_Logo.png" alt="Github" />
               </Link>
               <Box bg={bgItem} h="52px" m="auto" p={1} w="100%">
-                <Text>{elem.description}</Text>
+                <Text textAlign="center">{elem.description}</Text>
               </Box>
               <Center h="28px" w="100%">
                 {elem.techs.map((tech) => (
@@ -149,7 +177,14 @@ const Projects: React.FC<Props> = ({h, w, maximized}) => {
         </SimpleGrid>
       )}
       {isPortrait && (
-        <SimpleGrid columns={[1, 2]} gap={2} h={h} overflow="scroll" p={1} w={w}>
+        <SimpleGrid
+          columns={[1, 2]}
+          gap={2}
+          h={h}
+          overflow="scroll"
+          p={1}
+          w={w}
+        >
           {projects.map((elem) => (
             <VStack
               key={elem.name}
@@ -174,8 +209,15 @@ const Projects: React.FC<Props> = ({h, w, maximized}) => {
                   />
                 </Skeleton>
               </Link>
-              <Box bg={bgItem} borderBottomRadius="md" h="80px" overflow="hidden" p={1} w="100%">
-                <Text fontSize={["small", "initial"]}>{elem.description}</Text>
+              <Box
+                bg={bgItem}
+                borderBottomRadius="md"
+                h="80px"
+                overflow="hidden"
+                p={1}
+                w="100%"
+              >
+                <Text textAlign="center" fontSize={["small", "initial"]}>{elem.description}</Text>
               </Box>
               <Center h="28px" w="100%">
                 {elem.techs.map((tech) => (
