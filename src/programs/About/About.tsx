@@ -57,11 +57,11 @@ const About: React.FC<Props> = ({ h, w }) => {
     if (language === "ES") {
       if (state === "about me") {
         changeSection("sobre mi")
-      } else changeSection("habilidades")
+      } else if (state === "skills") changeSection("habilidades")
     } else {
       if (state === "sobre mi") {
         changeSection("about me")
-      } else changeSection("skills")
+      } else if (state === "habilidades") changeSection("skills")
     }
   }, [language])
 
