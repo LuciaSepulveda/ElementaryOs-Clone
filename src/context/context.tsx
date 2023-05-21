@@ -37,7 +37,7 @@ const UserProvider = ({ children }: ChildrenProp) => {
   const [noProgramsOpen, setProgramsOpen] = React.useState<boolean>(false)
   const [anyProgramMaximized, setAnyProgramMaximized] =
     React.useState<boolean>(false)
-  const [sectionAbout, setSectionAbout] = React.useState<string>("about")
+  const [sectionAbout, setSectionAbout] = React.useState<string>("sobre mi")
   const [wallpaper, setWallpaper] = React.useState<string>(
     typeof window !== "undefined" && typeof JSON.parse(localStorage.getItem("Wallpaper") || "{}") !== "object"
       ? JSON.parse(localStorage.getItem("Wallpaper") || "{}")

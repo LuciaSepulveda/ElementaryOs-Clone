@@ -6,6 +6,7 @@ import { motion } from "framer-motion"
 
 import {
   useCloseProgram,
+  useLanguage,
   useMaximizedProgram,
   useMinimizedProgram,
   useSectionAbout,
@@ -26,6 +27,7 @@ const Window: React.FC<Props> = ({ program, children }) => {
   const [closeButton, setCloseButton] = React.useState<number>(0)
   const [minButton, setMinButton] = React.useState<number>(0)
   const [maxButton, setMaxButton] = React.useState<number>(0)
+  const language = useLanguage()
 
   return (
     <>
@@ -138,7 +140,15 @@ const Window: React.FC<Props> = ({ program, children }) => {
                   </Text>
                 )}
                 <Text color="white" fontWeight="bold" ml="5px">
-                  {program.name}
+                  {language === "EN"
+                    ? program.name
+                    : program.name === "User"
+                    ? "Usuario"
+                    : program.name === "Projects"
+                    ? "Proyectos"
+                    : program.name === "Contact"
+                    ? "Contacto"
+                    : "Pantalla"}
                 </Text>
               </Center>
             </Flex>

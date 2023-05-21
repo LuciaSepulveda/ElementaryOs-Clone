@@ -12,7 +12,7 @@ import * as React from "react"
 import { useMediaQuery } from "react-responsive"
 import { motion } from "framer-motion"
 
-import { useChangeWallpaper } from "../../context/hooks"
+import { useChangeWallpaper, useLanguage } from "../../context/hooks"
 import { wallpapers } from "../../data/data"
 
 interface Props {
@@ -27,6 +27,7 @@ const Wallpapers: React.FC<Props> = ({ h, w }) => {
   const colorText = useColorModeValue("#242424", "#FBFBFB")
   const isPortrait = useMediaQuery({ query: "(orientation: portrait)" })
   const changeWallpaper = useChangeWallpaper()
+  const language = useLanguage()
 
   React.useEffect(() => {
     if (
@@ -49,7 +50,9 @@ const Wallpapers: React.FC<Props> = ({ h, w }) => {
     >
       <VStack h={h} w={[w, w, "90%", "90%", "90%", w]}>
         <Text fontSize="xl" fontWeight="bold">
-          Select wallpaper
+          {language === "EN"
+            ? "Select wallpaper"
+            : "Seleccione un fondo de pantalla"}
         </Text>
         {!isPortrait && (
           <Grid

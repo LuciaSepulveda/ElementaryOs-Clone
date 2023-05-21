@@ -21,7 +21,7 @@ interface Props {
 }
 
 const About: React.FC<Props> = ({ h, w }) => {
-  const [state, setState] = React.useState<string>("about")
+  const [state, setState] = React.useState<string>("sobre mi")
   const [update, setUpdate] = React.useState<boolean>(false)
   const changeSection = useChangeSectionAbout()
   const bgLeft = useColorModeValue("#E6F2F3", "#07273B")
@@ -52,6 +52,18 @@ const About: React.FC<Props> = ({ h, w }) => {
     setState(s)
     changeSection(s)
   }
+
+  React.useEffect(() => {
+    if (language === "ES") {
+      if (state === "about me") {
+        changeSection("sobre mi")
+      } else changeSection("habilidades")
+    } else {
+      if (state === "sobre mi") {
+        changeSection("about me")
+      } else changeSection("skills")
+    }
+  }, [language])
 
   React.useEffect(() => {
     if (update === true) {
@@ -104,42 +116,44 @@ const About: React.FC<Props> = ({ h, w }) => {
               </Text>
             </Box>
             <HStack w="100%">
-              {state === "about" && (
+              {state === "sobre mi" || state === "about me" ? (
                 <>
                   <ChevronRightIcon color={text} />
                   <Text align="justify" color={text} ml="10px">
                     {language === "ES" ? "Sobre mí" : "About me"}
                   </Text>
                 </>
-              )}
-              {state !== "about" && (
+              ) : (
                 <Text
                   align="justify"
                   as="button"
                   color={text}
                   ml="10px"
-                  onClick={() => updateState("about")}
+                  onClick={() =>
+                    updateState(language === "ES" ? "sobre mi" : "about me")
+                  }
                 >
                   {language === "ES" ? "Sobre mí" : "About me"}
                 </Text>
               )}
             </HStack>
             <HStack w="100%">
-              {state === "tech" && (
+              {state === "skills" || state === "habilidades" ? (
                 <>
                   <ChevronRightIcon color={text} />
                   <Text align="justify" color={text} ml="10px">
                     {language === "ES" ? "Habilidades" : "Skills"}
                   </Text>
                 </>
-              )}
-              {state !== "tech" && (
+              ) : (
                 <Text
                   align="justify"
                   as="button"
                   color={text}
                   ml="10px"
-                  onClick={() => updateState("tech")}
+                  onClick={() =>
+                    updateState(language === "ES" ? "habilidades" : "skills")
+                  }
                 >
                   {language === "ES" ? "Habilidades" : "Skills"}
                 </Text>
@@ -149,7 +163,7 @@ const About: React.FC<Props> = ({ h, w }) => {
         </GridItem>
         <GridItem colSpan={3}>
           <VStack fontFamily="JetBrains Mono" spacing={0}>
-            {state === "about" && (
+            {(state === "about me" || state === "sobre mi") && (
               <>
                 <HStack spacing={["1px", "4px"]} w="100%">
                   <Text color={colorCorchetes}>{`<`}!</Text>
@@ -222,7 +236,7 @@ const About: React.FC<Props> = ({ h, w }) => {
                 </HStack>
               </>
             )}
-            {state === "tech" && (
+            {(state === "skills" || state === "habilidades") && (
               <>
                 <HStack spacing={["1px", "4px"]} w="100%">
                   <Text color={colorCorchetes}>{`<`}</Text>
