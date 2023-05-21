@@ -7,6 +7,7 @@ import {
   ColorModeScript,
 } from "@chakra-ui/react"
 import { Provider as UserProvider } from "../context/context"
+import { Analytics } from "@vercel/analytics/react"
 
 const config: ThemeConfig = {
   initialColorMode: "dark",
@@ -21,6 +22,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <UserProvider>
         <ColorModeScript initialColorMode={theme.config.initialColorMode} />
         <Component {...pageProps} />
+        <Analytics />
       </UserProvider>
     </ChakraProvider>
   )
