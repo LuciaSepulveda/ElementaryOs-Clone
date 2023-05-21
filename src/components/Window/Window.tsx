@@ -42,7 +42,7 @@ const Window: React.FC<Props> = ({ program, children }) => {
             borderRadius="xl"
             boxShadow="lg"
             position="relative"
-            width="fit-content"
+            width="100%"
             zIndex="1"
           >
             <Flex bg="#313131" borderTopRadius="xl" h="30px" w="100%">

@@ -133,10 +133,10 @@ export default function Home() {
                             style={{
                               position: "absolute",
                               height:
-                                elem.name === "User"
+                                elem.name === "User" ||
+                                elem.name === "Contact"
                                   ? "500px"
-                                  : elem.name === "Projects" ||
-                                    elem.name === "Contact"
+                                  : elem.name === "Projects"
                                   ? "fit-content"
                                   : "600px",
                               width:
@@ -154,13 +154,13 @@ export default function Home() {
                               )}
                               {elem.name === "Projects" && (
                                 <Projects
-                                  h="fit-content"
+                                  h={window.innerHeight > 725 ? "600px" :"500px"}
                                   maximized={false}
-                                  w="900px"
+                                  w={window.innerHeight > 725 ? "800px" : "900px"}
                                 />
                               )}
                               {elem.name === "Contact" && (
-                                <Contact h="600px" w="800px" />
+                                <Contact h="500px" w="800px" />
                               )}
                               {elem.name === "Wallpapers" && (
                                 <Wallpapers h="fit-content" w="800px" />
