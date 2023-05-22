@@ -1,6 +1,7 @@
 # Elementary OS
 
-Portfolio que simula el diseño de el sistema operativo Elementary OS.
+Portfolio que simula el diseño del sistema operativo Elementary OS.
+Realizado con Next.Js, Typescript, Chakra-UI y Framer motion
 
 # Demo
 [Elemetary OS](https://luciasepulveda.netlify.app/)
@@ -43,8 +44,8 @@ Versión mobile aplicación Projects, modo oscuro activado.
 
 ```bash
 ## Instalar las dependencias del proyecto
-yarn
+npm install
 
 ## Correr el proyecto
-yarn run start
+npm run dev
 ```
