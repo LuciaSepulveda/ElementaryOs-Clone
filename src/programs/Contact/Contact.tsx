@@ -2,12 +2,12 @@ import * as React from "react"
 import {
   Box,
   HStack,
-  Image,
   VStack,
   Text,
   useColorModeValue,
   Skeleton,
 } from "@chakra-ui/react"
+import Image from "next/image"
 
 import { social } from "../../data/data"
 
@@ -60,7 +60,8 @@ const Contact: React.FC<Props> = ({ w, h }) => {
             <Image
               ref={imageRef}
               alt="Cover social page"
-              h="150px"
+              height={150}
+              width={150}
               src="/undraw_Social.png"
               onLoad={() => {
                 setLoaded(true)
@@ -77,11 +78,7 @@ const Contact: React.FC<Props> = ({ w, h }) => {
             spacing={[2, 5]}
             w="95%"
           >
-            <Image
-              alt={`Logo ` + elem.name}
-              h={["40px", "50px"]}
-              src={elem.logo}
-            />
+            <Image alt={`Logo ` + elem.name} height={50} width={50} src={elem.logo} />
             <VStack alignItems="start" w="100%">
               <Text fontWeight="bold">{elem.name}</Text>
               {elem.name !== "Email" && (

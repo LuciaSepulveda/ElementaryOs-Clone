@@ -1,6 +1,5 @@
 import { Search2Icon, MoonIcon, SunIcon, EditIcon } from "@chakra-ui/icons"
 import {
-  Box,
   Grid,
   Flex,
   Menu,
@@ -9,8 +8,6 @@ import {
   Button,
   MenuList,
   GridItem,
-  Spacer,
-  Image,
   VStack,
   Input,
   InputGroup,
@@ -28,6 +25,7 @@ import * as React from "react"
 import { useMediaQuery } from "react-responsive"
 import { BsInfoCircle } from "react-icons/bs"
 import { Icon } from "@chakra-ui/icons"
+import Image from "next/image"
 
 import Clock from "../Clock/Clock"
 import {
@@ -81,7 +79,14 @@ const TopBar: React.FC = () => {
   }
 
   return (
-    <Flex justifyContent="space-between" bg="black" color="white" h="26px" position="relative" w="100%">
+    <Flex
+      justifyContent="space-between"
+      bg="black"
+      color="white"
+      h="26px"
+      position="relative"
+      w="100%"
+    >
       {!isPortrait && (
         <Flex flexGrow="1" position="sticky" zIndex="15">
           <Menu>
@@ -145,9 +150,9 @@ const TopBar: React.FC = () => {
                           <VStack as="button" onClick={() => openProgram(elem)}>
                             <Image
                               alt={elem.name}
-                              h="50px"
+                              height={50}
                               src={elem.img}
-                              w="50px"
+                              width={50}
                             />
                             <Text color="white" fontSize="small">
                               {elem.name}
@@ -170,9 +175,9 @@ const TopBar: React.FC = () => {
                             >
                               <Image
                                 alt={elem.name}
-                                h="50px"
+                                height={50}
                                 src={elem.img}
-                                w="50px"
+                                width={50}
                               />
                               <Text color="white" fontSize="small">
                                 {elem.name}
@@ -188,7 +193,14 @@ const TopBar: React.FC = () => {
         </Flex>
       )}
       <Clock isPortrait={isPortrait} />
-      <HStack justifyContent="flex-end" flexGrow="1" mr="10px" position="sticky" spacing="10px" zIndex="5">
+      <HStack
+        justifyContent="flex-end"
+        flexGrow="1"
+        mr="10px"
+        position="sticky"
+        spacing="10px"
+        zIndex="5"
+      >
         <button onClick={() => changeLanguage(language === "ES" ? "EN" : "ES")}>
           <Text align="center" fontSize="sm" fontWeight="semibold">
             {language}

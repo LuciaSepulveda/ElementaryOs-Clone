@@ -1,7 +1,6 @@
 import * as React from "react"
 import {
   Center,
-  Image,
   Box,
   Skeleton,
   Text,
@@ -12,6 +11,7 @@ import {
   Badge,
 } from "@chakra-ui/react"
 import { useMediaQuery } from "react-responsive"
+import Image from "next/image"
 
 import { projects, projectsEn } from "../../data/data"
 import { useLanguage } from "../../context/hooks"
@@ -77,10 +77,13 @@ const Projects: React.FC<Props> = ({ h, w, maximized }) => {
                 href={elem.demo}
                 h={window.innerHeight > 725 ? "100%" : "70px"}
                 target="_blank"
+                position="relative"
+                w="100%"
               >
-                <Skeleton h="100%" isLoaded={loaded}>
+                <Skeleton position="relative" h="100%" isLoaded={loaded}>
                   <Image
-                    h="100%"
+                    objectFit="contain"
+                    fill={true}
                     src={elem.img}
                     ref={imageRef}
                     alt={elem.name}
@@ -95,7 +98,12 @@ const Projects: React.FC<Props> = ({ h, w, maximized }) => {
                 href={elem.github}
                 target="_blank"
               >
-                <Image h="20px" src="/GitHub_Logo.png" alt="Github" />
+                <Image
+                  width={50}
+                  height={20}
+                  src="/GitHub_Logo.png"
+                  alt="Github"
+                />
               </Link>
               <Box bg={bgItem} h="50px" m="auto" p={1}>
                 <Text textAlign="center">{elem.description}</Text>
@@ -140,13 +148,21 @@ const Projects: React.FC<Props> = ({ h, w, maximized }) => {
                 ]}
                 href={elem.demo}
                 target="_blank"
+                position="relative"
+                w="100%"
               >
-                <Skeleton h="100%" isLoaded={loaded} w="100%">
+                <Skeleton
+                  position="relative"
+                  h="100%"
+                  isLoaded={loaded}
+                  w="100%"
+                >
                   <Image
                     ref={imageRef}
                     alt={elem.name}
                     src={elem.img}
-                    h="100%"
+                    fill={true}
+                    objectFit="contain"
                     onLoad={() => {
                       setLoaded(true)
                     }}
@@ -160,7 +176,12 @@ const Projects: React.FC<Props> = ({ h, w, maximized }) => {
                 href={elem.github}
                 target="_blank"
               >
-                <Image h="20px" src="/GitHub_Logo.png" alt="Github" />
+                <Image
+                  height={20}
+                  width={50}
+                  src="/GitHub_Logo.png"
+                  alt="Github"
+                />
               </Link>
               <Box bg={bgItem} h="52px" m="auto" p={1} w="100%">
                 <Text textAlign="center">{elem.description}</Text>
@@ -196,16 +217,29 @@ const Projects: React.FC<Props> = ({ h, w, maximized }) => {
               transitionTimingFunction="ease-in-out"
             >
               <Text fontWeight="bold">{elem.name}</Text>
-              <Link h={["100%", "80%"]} href={elem.demo} target="_blank">
-                <Skeleton h="50px" isLoaded={loaded} w="100%">
+              <Link
+                w="100%"
+                position="relative"
+                h={["100%", "80%"]}
+                href={elem.demo}
+                target="_blank"
+              >
+                <Skeleton
+                  position="relative"
+                  h="50px"
+                  isLoaded={loaded}
+                  w="100%"
+                >
                   <Image
                     ref={imageRef}
                     alt={elem.name}
-                    h="130px"
+                    height={50}
+                    width={200}
                     src={elem.img}
                     onLoad={() => {
                       setLoaded(true)
                     }}
+                    style={{ margin: "auto" }}
                   />
                 </Skeleton>
               </Link>
@@ -217,7 +251,9 @@ const Projects: React.FC<Props> = ({ h, w, maximized }) => {
                 p={1}
                 w="100%"
               >
-                <Text textAlign="center" fontSize={["small", "initial"]}>{elem.description}</Text>
+                <Text textAlign="center" fontSize={["small", "initial"]}>
+                  {elem.description}
+                </Text>
               </Box>
               <Center h="28px" w="100%">
                 {elem.techs.map((tech) => (
