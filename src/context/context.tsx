@@ -1,7 +1,6 @@
-import React from "react"
-
 import { Program, Status } from "../types/types"
 import { programs as programsArray, wallpapers } from "../data/data"
+import { createContext, useEffect, useState } from "react"
 
 export interface Context {
   state: {
@@ -30,19 +29,18 @@ interface ChildrenProp {
   children: React.ReactNode
 }
 
-const UserContext = React.createContext({} as Context)
+const UserContext = createContext({} as Context)
 
 const UserProvider = ({ children }: ChildrenProp) => {
-  const [status, setStatus] = React.useState<Status>(Status.loading)
-  const [noProgramsOpen, setProgramsOpen] = React.useState<boolean>(false)
-  const [anyProgramMaximized, setAnyProgramMaximized] =
-    React.useState<boolean>(false)
-  const [sectionAbout, setSectionAbout] = React.useState<string>("sobre mi")
-  const [wallpaper, setWallpaper] = React.useState<string>(wallpapers[0])
-  const [language, setLanguage] = React.useState<"EN" | "ES">("ES")
-  const [programs, setPrograms] = React.useState<Program[]>(programsArray)
+  const [status, setStatus] = useState<Status>(Status.loading)
+  const [noProgramsOpen, setProgramsOpen] = useState<boolean>(false)
+  const [anyProgramMaximized, setAnyProgramMaximized] = useState<boolean>(false)
+  const [sectionAbout, setSectionAbout] = useState<string>("sobre mi")
+  const [wallpaper, setWallpaper] = useState<string>(wallpapers[0])
+  const [language, setLanguage] = useState<"EN" | "ES">("ES")
+  const [programs, setPrograms] = useState<Program[]>(programsArray)
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (
       typeof window !== "undefined" &&
       typeof JSON.parse(localStorage.getItem("Wallpaper") || "{}") !== "object"

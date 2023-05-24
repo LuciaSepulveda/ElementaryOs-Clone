@@ -21,7 +21,6 @@ import {
   PopoverHeader,
   Center,
 } from "@chakra-ui/react"
-import * as React from "react"
 import { useMediaQuery } from "react-responsive"
 import { BsInfoCircle } from "react-icons/bs"
 import { Icon } from "@chakra-ui/icons"
@@ -36,9 +35,10 @@ import {
   useChangeLanguage,
 } from "../../context/hooks"
 import { Program } from "../../types/types"
+import { useState } from "react"
 
-const TopBar: React.FC = () => {
-  const [search, setSearch] = React.useState<string>("")
+const TopBar = () => {
+  const [search, setSearch] = useState<string>("")
   const programs = usePrograms()
   const openProgram = useOpenProgram()
   const isPortrait = useMediaQuery({ query: "(orientation: portrait)" })

@@ -7,29 +7,29 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react"
-import * as React from "react"
 import { useMediaQuery } from "react-responsive"
 import { motion } from "framer-motion"
 import Image from "next/image"
 
 import { useChangeWallpaper, useLanguage } from "../../context/hooks"
 import { wallpapers } from "../../data/data"
+import { useEffect, useRef, useState } from "react"
 
 interface Props {
   h: string
   w: string
 }
 
-const Wallpapers: React.FC<Props> = ({ h, w }) => {
-  const imageRef = React.useRef<HTMLImageElement>(null)
-  const [loaded, setLoaded] = React.useState<boolean>(false)
+const Wallpapers = ({ h, w }: Props) => {
+  const imageRef = useRef<HTMLImageElement>(null)
+  const [loaded, setLoaded] = useState<boolean>(false)
   const bg = useColorModeValue("#FBFBFB", "#242424")
   const colorText = useColorModeValue("#242424", "#FBFBFB")
   const isPortrait = useMediaQuery({ query: "(orientation: portrait)" })
   const changeWallpaper = useChangeWallpaper()
   const language = useLanguage()
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (
       !loaded &&
       imageRef.current?.complete &&

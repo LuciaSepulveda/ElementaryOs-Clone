@@ -1,7 +1,6 @@
 import Head from "next/head"
 import { Box, Center, Spinner } from "@chakra-ui/react"
 import Image from "next/image"
-import * as React from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import { useMediaQuery } from "react-responsive"
 import {
@@ -19,19 +18,20 @@ import Projects from "../programs/Projects"
 import Contact from "../programs/Contact"
 import Wallpapers from "../programs/Wallpapers/Wallpapers"
 import { Status } from "../types/types"
+import { useEffect, useRef, useState } from "react"
 
 export default function Home() {
-  const constraintRef = React.useRef(null)
+  const constraintRef = useRef(null)
   const programs = usePrograms()
   const noProgramsOpen = useNoProgramsOpen()
   const isPortrait = useMediaQuery({ query: "(orientation: portrait)" })
   const wallpaper = useWallpaper()
-  const imageRef = React.useRef<HTMLImageElement>(null)
-  const [loaded, setLoaded] = React.useState<boolean>(false)
+  const imageRef = useRef<HTMLImageElement>(null)
+  const [loaded, setLoaded] = useState<boolean>(false)
   const changeStatus = useChangeStatus()
   const status = useStatus()
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (
       !loaded &&
       imageRef.current?.complete &&

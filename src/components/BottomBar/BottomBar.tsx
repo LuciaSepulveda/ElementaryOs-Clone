@@ -1,5 +1,4 @@
 import { Box, Flex, VStack, useColorModeValue } from "@chakra-ui/react"
-import * as React from "react"
 import { useMediaQuery } from "react-responsive"
 import { motion, useMotionValue } from "framer-motion"
 
@@ -12,7 +11,7 @@ interface Props {
   programs: Program[]
 }
 
-const BottomBar: React.FC<Props> = ({ programs }) => {
+const BottomBar = ({ programs }: Props) => {
   const openProgram = useOpenProgram()
   const isPortrait = useMediaQuery({ query: "(orientation: portrait)" })
   const closeAllPrograms = useCloseAllPrograms()

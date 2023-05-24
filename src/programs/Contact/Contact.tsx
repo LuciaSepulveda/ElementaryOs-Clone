@@ -1,4 +1,3 @@
-import * as React from "react"
 import {
   Box,
   HStack,
@@ -10,21 +9,22 @@ import {
 import Image from "next/image"
 
 import { social } from "../../data/data"
+import { useEffect, useRef, useState } from "react"
 
 interface Props {
   w: string
   h: string
 }
 
-const Contact: React.FC<Props> = ({ w, h }) => {
+const Contact = ({ w, h }: Props) => {
   const bg = useColorModeValue("#F7F9F9", "#14202A")
   const bgProgram = useColorModeValue("#FFFFFF", "#14202A")
   const colorText = useColorModeValue("#0F1419", "#E6F2F3")
   const border = useColorModeValue("#EFF3F4", "#37444C")
-  const imageRef = React.useRef<HTMLImageElement>(null)
-  const [loaded, setLoaded] = React.useState<boolean>(false)
+  const imageRef = useRef<HTMLImageElement>(null)
+  const [loaded, setLoaded] = useState<boolean>(false)
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (
       !loaded &&
       imageRef.current?.complete &&

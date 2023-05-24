@@ -1,13 +1,13 @@
-import * as React from "react"
-import { Text, Center, Flex } from "@chakra-ui/react"
+import { Text, Flex } from "@chakra-ui/react"
 import { useLanguage } from "../../context/hooks"
+import { useEffect, useState } from "react"
 
 interface Props {
   isPortrait: boolean
 }
 
-const Clock: React.FC<Props> = ({ isPortrait }) => {
-  const [date, setDate] = React.useState<Date>(new Date())
+const Clock = ({ isPortrait }: Props) => {
+  const [date, setDate] = useState<Date>(new Date())
   const language = useLanguage()
   let day = ""
   let month = ""
@@ -75,7 +75,7 @@ const Clock: React.FC<Props> = ({ isPortrait }) => {
       break
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     setInterval(updateDate, 1000)
   })
 

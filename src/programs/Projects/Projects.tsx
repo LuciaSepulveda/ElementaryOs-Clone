@@ -1,4 +1,3 @@
-import * as React from "react"
 import {
   Center,
   Box,
@@ -15,6 +14,7 @@ import Image from "next/image"
 
 import { projects, projectsEn } from "../../data/data"
 import { useLanguage } from "../../context/hooks"
+import { useEffect, useRef, useState } from "react"
 
 interface Props {
   w: string
@@ -22,18 +22,18 @@ interface Props {
   maximized: boolean
 }
 
-const Projects: React.FC<Props> = ({ h, w, maximized }) => {
-  const imageRef = React.useRef<HTMLImageElement>(null)
-  const [loaded, setLoaded] = React.useState<boolean>(false)
+const Projects = ({ h, w, maximized }: Props) => {
+  const imageRef = useRef<HTMLImageElement>(null)
+  const [loaded, setLoaded] = useState<boolean>(false)
   const isPortrait = useMediaQuery({ query: "(orientation: portrait)" })
   const bg = useColorModeValue("#FBFBFB", "#242424")
   const bgItem = useColorModeValue("#A0A7AC", "#333333")
   const border = useColorModeValue("2px solid #A0A7AC", "2px solid #333333")
   const colorText = useColorModeValue("#242424", "#FBFBFB")
   const language = useLanguage()
-  const [arrayProjects, setArrayProjects] = React.useState(projects)
+  const [arrayProjects, setArrayProjects] = useState(projects)
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (language === "ES") {
       setArrayProjects(projects)
     } else {
@@ -41,7 +41,7 @@ const Projects: React.FC<Props> = ({ h, w, maximized }) => {
     }
   }, [language])
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (
       !loaded &&
       imageRef.current?.complete &&

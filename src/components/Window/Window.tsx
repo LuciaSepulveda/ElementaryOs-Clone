@@ -1,7 +1,6 @@
 import { Box, Center, Flex, Text } from "@chakra-ui/react"
 import { ArrowUpDownIcon, CloseIcon, MinusIcon } from "@chakra-ui/icons"
 import { useMediaQuery } from "react-responsive"
-import * as React from "react"
 import { motion } from "framer-motion"
 
 import {
@@ -12,21 +11,22 @@ import {
   useSectionAbout,
 } from "../../context/hooks"
 import { Program } from "../../types/types"
+import { useState } from "react"
 
 interface Props {
   program: Program
   children: React.ReactNode
 }
 
-const Window: React.FC<Props> = ({ program, children }) => {
+const Window = ({ program, children }: Props) => {
   const close = useCloseProgram()
   const maximized = useMaximizedProgram()
   const minimized = useMinimizedProgram()
   const section = useSectionAbout()
   const isPortrait = useMediaQuery({ query: "(orientation: portrait)" })
-  const [closeButton, setCloseButton] = React.useState<number>(0)
-  const [minButton, setMinButton] = React.useState<number>(0)
-  const [maxButton, setMaxButton] = React.useState<number>(0)
+  const [closeButton, setCloseButton] = useState<number>(0)
+  const [minButton, setMinButton] = useState<number>(0)
+  const [maxButton, setMaxButton] = useState<number>(0)
   const language = useLanguage()
 
   return (
