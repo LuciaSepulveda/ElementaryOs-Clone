@@ -108,7 +108,6 @@ const UserProvider = ({ children }: ChildrenProp) => {
       return program
     })
     setPrograms(aux)
-    console.log(aux)
     setStatus(Status.update)
     handleCheckProgramsClose()
     handleCheckProgramMaximized()
