@@ -6,7 +6,6 @@ import {
   Flex,
   HStack,
   Heading,
-  Switch,
   Text,
   VStack,
   useColorModeValue,
@@ -51,7 +50,7 @@ const Projects = () => {
   }
 
   return (
-    <VStack py={10} id="projects">
+    <VStack py={10} id="projects" zIndex={1} position="relative">
       <Box position="relative" mb={4}>
         <Heading as="h2" zIndex={2} mb={6}>
           {language === "ES" ? "PROYECTOS" : "PROJECTS"}

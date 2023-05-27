@@ -7,62 +7,7 @@ const MotionBox = motion(Box)
 const Hero = () => {
   const language = useLanguage()
   return (
-    <VStack py={[48, 16]} px={0} h="100vh" position="relative">
-      <MotionBox
-        position="absolute"
-        bg="rgb(174, 139, 246)"
-        width={[0, 40]}
-        height={["50%", "100%"]}
-        left="0rem"
-        initial={{ rotate: -90 }}
-        animate={{ rotate: -45 }}
-        transition={{ duration: 0.8 }}
-        boxShadow="md"
-        borderRadius="md"
-      />
-      <MotionBox
-        position="absolute"
-        bg="rgb(127, 193, 250)"
-        width={[20, 36]}
-        height="100%"
-        left="-6rem"
-        top="0rem"
-        zIndex={0}
-        initial={{ rotate: 60 }}
-        animate={{ rotate: 10 }}
-        transition={{ duration: 1.1 }}
-        boxShadow="2xl"
-        borderRadius="md"
-      />
-      <MotionBox
-        position="absolute"
-        bg="rgb(174, 139, 246)"
-        width={[20, 36]}
-        height={["60%", "80%"]}
-        right="0rem"
-        top={["20%", "0"]}
-        zIndex={0}
-        initial={{ rotate: 10 }}
-        animate={{ rotate: 30 }}
-        transition={{ duration: 1.2 }}
-        boxShadow="md"
-        borderRadius="md"
-      />
-      <MotionBox
-        position="absolute"
-        bg="rgb(127, 193, 250)"
-        width={[0, 40]}
-        height={["40%", "60%"]}
-        right={["-4rem", "-8rem"]}
-        bottom={["0", "0"]}
-        top="auto"
-        zIndex={0}
-        initial={{ rotate: 10 }}
-        animate={{ rotate: -35 }}
-        transition={{ duration: 1 }}
-        boxShadow="md"
-        borderRadius="md"
-      />
+    <VStack py={[48, 16]} px={0} h="800px" position="relative">
       <VStack alignItems="center" w="full" justifyContent="center" h="full">
         <Box position="relative" p={0} ml="auto" mr="auto" mb={6}>
           <Heading

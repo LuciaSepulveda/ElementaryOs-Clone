@@ -15,58 +15,7 @@ const MotionBox = motion(Box)
 const About = () => {
   const language = useLanguage()
   return (
-    <Center h="80vh" position="relative" id="about">
-      {/* <MotionBox
-        zIndex={0}
-        position="absolute"
-        //h="480px"
-        bg="rgb(120, 233, 143)"
-        bottom={-12}
-        //right="0"
-        transition={{
-          duration: 0.6,
-          ease: "easeInOut",
-          delay: 0.3,
-        }}
-        whileInView={{ width: "480px", height: "480px" }}
-        initial={{ width: 0, x: 640, height: 0 }}
-        viewport={{ once: true }}
-        borderRadius="full"
-      />
-      <MotionBox
-        zIndex={0}
-        position="absolute"
-        //h="480px"
-        bg="rgb(234, 98, 118)"
-        bottom={-8}
-        //right="0"
-        transition={{
-          duration: 0.4,
-          ease: "easeInOut",
-          delay: 0,
-        }}
-        whileInView={{ width: "280px", height: "280px" }}
-        initial={{ width: "100px", x: -640, height: "100px" }}
-        viewport={{ once: true }}
-        borderRadius="full"
-      />
-      <MotionBox
-        zIndex={0}
-        position="absolute"
-        //h="480px"
-        bg="rgb(223, 200, 122)"
-        bottom={"-50%"}
-        //right="0"
-        transition={{
-          duration: 0.4,
-          ease: "easeInOut",
-          delay: 0,
-        }}
-        whileInView={{ width: "180px", height: "180px" }}
-        initial={{ width: "0px", x: 0, height: "0px" }}
-        viewport={{ once: true }}
-        borderRadius="full"
-      /> */}
+    <Center h="500px" position="relative" id="about">
       <VStack zIndex={2}>
         <Box position="relative">
           <Heading as="h2" zIndex={2} mb={6}>

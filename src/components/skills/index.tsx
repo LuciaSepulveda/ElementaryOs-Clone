@@ -36,7 +36,7 @@ const Skills = () => {
   ]
 
   return (
-    <Center h="100vh" id="skills">
+    <Center minH="800px" id="skills" zIndex={1} position="relative">
       <VStack maxW="4xl">
         <Box position="relative" pt={8}>
           <Heading as="h2" zIndex={2} mb={6}>

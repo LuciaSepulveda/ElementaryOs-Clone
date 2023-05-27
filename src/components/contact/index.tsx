@@ -2,11 +2,11 @@ import { useLanguage } from "@/context/hooks"
 import {
   Box,
   Center,
-  HStack,
   Heading,
   VStack,
   Text,
   useColorModeValue,
+  Flex,
 } from "@chakra-ui/react"
 import { motion } from "framer-motion"
 import { social } from "../../data/data"
@@ -18,7 +18,7 @@ const Contact = () => {
   const language = useLanguage()
   const bg = useColorModeValue("rgb(238, 121, 70)", "rgb(234, 98, 118)")
   return (
-    <Center h="100vh" id="contact">
+    <Center h="800px" id="contact" zIndex={1} position="relative">
       <VStack maxW="4xl">
         <Box position="relative" pt={8}>
           <Heading as="h2" zIndex={2} mb={6}>
@@ -43,10 +43,10 @@ const Contact = () => {
         </Box>
         <VStack justifyContent="center" gap={4} alignItems="center" pt={4}>
           {social.map((soc, index) => (
-            <HStack key={soc.name}>
+            <Flex key={soc.name} flexDirection={["column", "column", "row", "row", "row"]} gap={2} w="full">
               <Box position="relative">
                 <Text
-                  fontSize="3xl"
+                  fontSize={["xl", "3xl"]}
                   fontWeight="bold"
                   zIndex={2}
                   position="relative"
@@ -72,11 +72,11 @@ const Contact = () => {
                 />
               </Box>
               <Link href={soc.link}>
-                <Text fontSize="3xl">
+                <Text fontSize={["xl", "3xl"]}>
                   {soc.name === "Email" ? soc.link.slice(-21) : soc.link}
                 </Text>
               </Link>
-            </HStack>
+            </Flex>
           ))}
         </VStack>
       </VStack>
