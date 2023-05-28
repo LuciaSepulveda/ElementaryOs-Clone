@@ -14,6 +14,9 @@ import {
 import Image from "next/image"
 import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
+import { motion } from "framer-motion"
+
+const MotionBox = motion(Box)
 
 const isBrowser = typeof window !== `undefined`
 
@@ -76,6 +79,18 @@ const Header = () => {
   const [showMenu, setShowMenu] = useState(false)
   const [scroll, setScroll] = useState(false)
 
+  const getRandomInt = () => {
+    return Math.floor(Math.random() * 4)
+  }
+
+  const colors = [
+    useColorModeValue("rgb(84, 167, 248)", "rgb(127, 193, 250)"),
+    useColorModeValue("rgb(101, 212, 97)", "rgb(120, 233, 143)"),
+    useColorModeValue("rgb(238, 121, 70)", "rgb(234, 98, 118)"),
+    useColorModeValue("rgb(243, 174, 66)", "rgb(223, 200, 122)"),
+    useColorModeValue("rgb(97, 211, 196)", "rgb(174, 139, 246)"),
+  ]
+
   useScrollPosition(
     ({ currPos }: any) => {
       const maxScroll = currPos.y < 0
@@ -127,27 +142,48 @@ const Header = () => {
           </Center>
           <HStack gap={4} display={["none", "none", "flex", "flex", "flex"]}>
             <Link href="#about">
-              <Text fontWeight="bold">
+              <Text
+                transition="all 0.3s ease"
+                _hover={{ color: colors[getRandomInt()] }}
+                fontWeight="bold"
+                position="relative"
+              >
                 {language === "ES" ? "Sobre mi" : "About me"}
               </Text>
             </Link>
             <Link href="#skills">
-              <Text fontWeight="bold">
+              <Text
+                fontWeight="bold"
+                transition="all 0.3s ease"
+                _hover={{ color: colors[getRandomInt()] }}
+              >
                 {language === "ES" ? "Habilidades" : "Skills"}
               </Text>
             </Link>
             <Link href="#projects">
-              <Text fontWeight="bold">
+              <Text
+                fontWeight="bold"
+                transition="all 0.3s ease"
+                _hover={{ color: colors[getRandomInt()] }}
+              >
                 {language === "ES" ? "Proyectos" : "Projects"}
               </Text>
             </Link>
             <Link href="#contact">
-              <Text fontWeight="bold">
+              <Text
+                fontWeight="bold"
+                transition="all 0.3s ease"
+                _hover={{ color: colors[getRandomInt()] }}
+              >
                 {language === "ES" ? "Contacto" : "Contact"}
               </Text>
             </Link>
             <Link href="/">
-              <Text fontWeight="bold">
+              <Text
+                fontWeight="bold"
+                transition="all 0.3s ease"
+                _hover={{ color: colors[getRandomInt()] }}
+              >
                 {language === "ES" ? "Inicio" : "Home"}
               </Text>
             </Link>
@@ -156,11 +192,16 @@ const Header = () => {
             <chakra.button
               onClick={() => changeLanguage(language === "ES" ? "EN" : "ES")}
             >
-              <Text fontWeight="bold">{language}</Text>
+              <Text
+                _hover={{ color: colors[getRandomInt()] }}
+                fontWeight="bold"
+              >
+                {language}
+              </Text>
             </chakra.button>
             <Center as="button" onClick={toggleColorMode}>
-              {colorMode === "light" && <MoonIcon />}
-              {colorMode !== "light" && <SunIcon />}
+              {colorMode === "light" && <MoonIcon  _hover={{color: colors[getRandomInt()] }} />}
+              {colorMode !== "light" && <SunIcon  _hover={{color: colors[getRandomInt()] }} />}
             </Center>
             <chakra.button
               display={["block", "block", "none", "none", "none"]}
