@@ -42,7 +42,7 @@ const Home = () => {
         <chakra.button
           onClick={() => changeLanguage(language === "ES" ? "EN" : "ES")}
         >
-          <Text fontWeight="bold">{language === "ES" ? "EN" : "ES"}</Text>
+          <Text fontWeight="bold">{language}</Text>
         </chakra.button>
         <Center as="button" onClick={toggleColorMode}>
           {colorMode === "light" && <MoonIcon />}
