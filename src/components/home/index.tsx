@@ -28,6 +28,18 @@ const Home = () => {
   const { colorMode, toggleColorMode } = useColorMode()
   const changeLanguage = useChangeLanguage()
 
+  const getRandomInt = () => {
+    return Math.floor(Math.random() * 4)
+  }
+
+  const colors = [
+    useColorModeValue("rgb(84, 167, 248)", "rgb(127, 193, 250)"),
+    useColorModeValue("rgb(101, 212, 97)", "rgb(120, 233, 143)"),
+    useColorModeValue("rgb(238, 121, 70)", "rgb(234, 98, 118)"),
+    useColorModeValue("rgb(243, 174, 66)", "rgb(223, 200, 122)"),
+    useColorModeValue("rgb(97, 211, 196)", "rgb(174, 139, 246)"),
+  ]
+
   return (
     <main style={{ height: "100vh", width: "100%", overflow: "hidden" }}>
       <HStack
@@ -42,11 +54,17 @@ const Home = () => {
         <chakra.button
           onClick={() => changeLanguage(language === "ES" ? "EN" : "ES")}
         >
-          <Text fontWeight="bold">{language}</Text>
+          <Text _hover={{ color: colors[getRandomInt()] }} fontWeight="bold">
+            {language}
+          </Text>
         </chakra.button>
         <Center as="button" onClick={toggleColorMode}>
-          {colorMode === "light" && <MoonIcon />}
-          {colorMode !== "light" && <SunIcon />}
+          {colorMode === "light" && (
+            <MoonIcon _hover={{ color: colors[getRandomInt()] }} />
+          )}
+          {colorMode !== "light" && (
+            <SunIcon _hover={{ color: colors[getRandomInt()] }} />
+          )}
         </Center>
       </HStack>
       <VStack
@@ -386,7 +404,11 @@ const Home = () => {
               <Image
                 objectFit="cover"
                 fill={true}
-                src={colorMode === "light" ? "/elementaryLight.png" : "/elementary.png"}
+                src={
+                  colorMode === "light"
+                    ? "/elementaryLight.png"
+                    : "/elementary.png"
+                }
                 alt="alt"
               />
             </Link>
