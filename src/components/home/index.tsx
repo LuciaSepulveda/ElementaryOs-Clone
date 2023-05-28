@@ -88,7 +88,7 @@ const Home = () => {
           overflow="hidden"
         >
           {language === "ES"
-            ? `(Los dos tiene la misma información)`
+            ? `(Los dos tienen la misma información)`
             : `(Both have the same information)`}
         </MotionText>
         <Flex
