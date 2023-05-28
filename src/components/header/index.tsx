@@ -13,7 +13,60 @@ import {
 } from "@chakra-ui/react"
 import Image from "next/image"
 import Link from "next/link"
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
+
+const isBrowser = typeof window !== `undefined`
+
+type Props = {
+  element: any
+  useWindow: any
+}
+
+function getScrollPosition({ element, useWindow }: Props) {
+  if (!isBrowser) return { x: 0, y: 0 }
+
+  const target = element ? element.current : document.body
+  const position = target.getBoundingClientRect()
+
+  return useWindow
+    ? { x: window.scrollX, y: window.scrollY }
+    : { x: position.left, y: position.top }
+}
+
+function useScrollPosition(
+  effect: any,
+  deps: any,
+  element: any,
+  useWindow: any,
+  wait: number
+) {
+  const position = useRef(getScrollPosition({ element, useWindow }))
+
+  let throttleTimeout: any = null
+
+  const callBack = () => {
+    const currPos = getScrollPosition({ element, useWindow })
+    effect({ prevPos: position.current, currPos })
+    position.current = currPos
+    throttleTimeout = null
+  }
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (wait) {
+        if (throttleTimeout === null) {
+          throttleTimeout = setTimeout(callBack, wait)
+        }
+      } else {
+        callBack()
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll)
+
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, deps)
+}
 
 const Header = () => {
   const bg = useColorModeValue("rgb(206, 206, 206)", "rgb(27, 33, 46)")
@@ -21,6 +74,23 @@ const Header = () => {
   const changeLanguage = useChangeLanguage()
   const { colorMode, toggleColorMode } = useColorMode()
   const [showMenu, setShowMenu] = useState(false)
+  const [scroll, setScroll] = useState(false)
+
+  useScrollPosition(
+    ({ currPos }: any) => {
+      const maxScroll = currPos.y < 0
+      if (maxScroll) {
+        setScroll(true)
+      }
+      if (!maxScroll) {
+        setScroll(false)
+      }
+    },
+    [scroll],
+    false,
+    false,
+    100
+  )
 
   return (
     <Box
@@ -40,7 +110,8 @@ const Header = () => {
         borderRadius={[0, 0, "full", "full", "full"]}
         boxShadow="md"
         w="full"
-        mt={[0, 0, 2, 2, 2]}
+        transition="all 0.2s ease"
+        mt={[0, 0, scroll ? 0 : 2, scroll ? 0 : 2, scroll ? 0 : 2]}
       >
         <HStack justify="space-between">
           <Center
