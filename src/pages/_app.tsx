@@ -8,6 +8,7 @@ import {
 } from "@chakra-ui/react"
 import { Provider as UserProvider } from "../context/context"
 import { Analytics } from "@vercel/analytics/react"
+import Head from "next/head"
 
 const config: ThemeConfig = {
   initialColorMode: "dark",
@@ -18,12 +19,20 @@ const theme = extendTheme({ config })
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <ChakraProvider>
-      <UserProvider>
-        <ColorModeScript initialColorMode={theme.config.initialColorMode} />
-        <Component {...pageProps} />
-        <Analytics />
-      </UserProvider>
-    </ChakraProvider>
+    <>
+      <Head>
+        <title>Lucia Sepulveda</title>
+        <meta name="description" content="Lucia Sepulveda portfolio" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/logo.jpg" />
+      </Head>
+      <ChakraProvider>
+        <UserProvider>
+          <ColorModeScript initialColorMode={theme.config.initialColorMode} />
+          <Component {...pageProps} />
+          <Analytics />
+        </UserProvider>
+      </ChakraProvider>
+    </>
   )
 }

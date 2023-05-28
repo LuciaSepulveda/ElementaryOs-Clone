@@ -1,4 +1,3 @@
-import * as React from "react"
 import {
   motion,
   useMotionValue,
@@ -7,13 +6,14 @@ import {
   MotionValue,
 } from "framer-motion"
 import useRaf from "@rooks/use-raf"
+import { useRef } from "react"
 
 interface Props {
   src: string
   mouseX: MotionValue<any>
 }
 
-const Icon: React.FC<Props> = ({ src, mouseX }) => {
+const Icon = ({ src, mouseX }: Props) => {
   const baseWidth = 60
   const distanceLimit = baseWidth * 6
   const beyondTheDistanceLimit = distanceLimit + 1
@@ -38,7 +38,7 @@ const Icon: React.FC<Props> = ({ src, mouseX }) => {
     stiffness: 250,
   })
 
-  const ref = React.useRef<any>(null)
+  const ref = useRef<any>(null)
 
   useRaf(() => {
     const el = ref.current

@@ -38,7 +38,7 @@ export const projects: Project[] = [
     demo: "https://abtm.vercel.app/",
     description: "Web para la Asociación Bahiense de Tenis de Mesa",
     img: "/ABTM.png",
-    techs: ["NextJs", "Strapi", "Chakra-UI"],
+    techs: ["Next", "Strapi", "Chakra-UI"],
   },
   {
     name: "Sambuche App",
@@ -54,7 +54,7 @@ export const projects: Project[] = [
     demo: "https://basement-challenge-ls.vercel.app/",
     description: "Aplicación que simula una tienda",
     img: "/basementChallenge.png",
-    techs: ["NextJS", "Tailwind"],
+    techs: ["Next", "Tailwind"],
   },
   {
     name: "Aerolab Challenge",
@@ -89,7 +89,7 @@ export const projectsEn: Project[] = [
     demo: "https://abtm.vercel.app/",
     description: "Website for Asociación Bahiense de Tenis de Mesa.",
     img: "/ABTM.png",
-    techs: ["NextJs", "Strapi", "Chakra-UI"],
+    techs: ["Next", "Strapi", "Chakra-UI"],
   },
   {
     name: "Sambuche App",
@@ -105,7 +105,7 @@ export const projectsEn: Project[] = [
     demo: "https://basement-challenge-ls.vercel.app/",
     description: "Site that simulates a store",
     img: "/basementChallenge.png",
-    techs: ["NextJS", "Tailwind"],
+    techs: ["Next", "Tailwind"],
   },
   {
     name: "Aerolab Challenge",
@@ -160,6 +160,8 @@ export const techs: string[] = [
   "CSS",
   "Chakra UI",
   "Styled Components",
+  "Tailwind",
+  "Framer motion",
   "Three.js",
   "Java",
   "POO",
@@ -175,6 +177,8 @@ export const techsEn: string[] = [
   "CSS",
   "Chakra UI",
   "Styled Components",
+  "Tailwind",
+  "Framer motion",
   "Three.js",
   "Java",
   "OOP",
@@ -183,13 +187,13 @@ export const techsEn: string[] = [
 
 export const info: string[] = [
   "Desarrolladora frontend",
-  "Mas de año de experiencia",
+  "Cuento con más de un año de experiencia",
   "Vivo en Bahía Blanca, Buenos Aires",
 ]
 
 export const infoEn: string[] = [
   "Frontend developer",
-  "More than a year of experience",
+  "With more than a year of experience",
   "I'm from Bahia Blanca, Buenos Aires",
 ]
 

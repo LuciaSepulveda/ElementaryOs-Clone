@@ -4,32 +4,32 @@ import {
   Center,
   useColorModeValue,
   Skeleton,
-  Image,
   Text,
   VStack,
 } from "@chakra-ui/react"
-import * as React from "react"
 import { useMediaQuery } from "react-responsive"
 import { motion } from "framer-motion"
+import Image from "next/image"
 
 import { useChangeWallpaper, useLanguage } from "../../context/hooks"
 import { wallpapers } from "../../data/data"
+import { useEffect, useRef, useState } from "react"
 
 interface Props {
   h: string
   w: string
 }
 
-const Wallpapers: React.FC<Props> = ({ h, w }) => {
-  const imageRef = React.useRef<HTMLImageElement>(null)
-  const [loaded, setLoaded] = React.useState<boolean>(false)
+const Wallpapers = ({ h, w }: Props) => {
+  const imageRef = useRef<HTMLImageElement>(null)
+  const [loaded, setLoaded] = useState<boolean>(false)
   const bg = useColorModeValue("#FBFBFB", "#242424")
   const colorText = useColorModeValue("#242424", "#FBFBFB")
   const isPortrait = useMediaQuery({ query: "(orientation: portrait)" })
   const changeWallpaper = useChangeWallpaper()
   const language = useLanguage()
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (
       !loaded &&
       imageRef.current?.complete &&
@@ -69,17 +69,19 @@ const Wallpapers: React.FC<Props> = ({ h, w }) => {
                   colSpan={1}
                   h="100%"
                   onClick={() => changeWallpaper(elem)}
+                  position="relative"
                 >
                   <Skeleton
                     h="160px"
                     isLoaded={loaded}
                     minWidth="200px"
                     w="100%"
+                    position="relative"
                   >
                     <Image
                       ref={imageRef}
                       alt="Wallpaper"
-                      boxShadow="dark-lg"
+                      fill={true}
                       src={elem}
                       onLoad={() => {
                         setLoaded(true)
@@ -108,12 +110,18 @@ const Wallpapers: React.FC<Props> = ({ h, w }) => {
                 h="100%"
                 p={1}
                 onClick={() => changeWallpaper(elem)}
+                position="relative"
               >
-                <Skeleton h="160px" isLoaded={loaded} w="96%">
+                <Skeleton
+                  h="160px"
+                  isLoaded={loaded}
+                  w="96%"
+                  position="relative"
+                >
                   <Image
                     ref={imageRef}
                     alt="Wallpaper"
-                    boxShadow="xl"
+                    fill={true}
                     src={elem}
                     onLoad={() => {
                       setLoaded(true)

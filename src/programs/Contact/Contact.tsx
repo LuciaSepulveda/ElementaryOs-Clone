@@ -1,30 +1,30 @@
-import * as React from "react"
 import {
   Box,
   HStack,
-  Image,
   VStack,
   Text,
   useColorModeValue,
   Skeleton,
 } from "@chakra-ui/react"
+import Image from "next/image"
 
 import { social } from "../../data/data"
+import { useEffect, useRef, useState } from "react"
 
 interface Props {
   w: string
   h: string
 }
 
-const Contact: React.FC<Props> = ({ w, h }) => {
+const Contact = ({ w, h }: Props) => {
   const bg = useColorModeValue("#F7F9F9", "#14202A")
   const bgProgram = useColorModeValue("#FFFFFF", "#14202A")
   const colorText = useColorModeValue("#0F1419", "#E6F2F3")
   const border = useColorModeValue("#EFF3F4", "#37444C")
-  const imageRef = React.useRef<HTMLImageElement>(null)
-  const [loaded, setLoaded] = React.useState<boolean>(false)
+  const imageRef = useRef<HTMLImageElement>(null)
+  const [loaded, setLoaded] = useState<boolean>(false)
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (
       !loaded &&
       imageRef.current?.complete &&
@@ -60,7 +60,8 @@ const Contact: React.FC<Props> = ({ w, h }) => {
             <Image
               ref={imageRef}
               alt="Cover social page"
-              h="150px"
+              height={150}
+              width={150}
               src="/undraw_Social.png"
               onLoad={() => {
                 setLoaded(true)
@@ -77,11 +78,7 @@ const Contact: React.FC<Props> = ({ w, h }) => {
             spacing={[2, 5]}
             w="95%"
           >
-            <Image
-              alt={`Logo ` + elem.name}
-              h={["40px", "50px"]}
-              src={elem.logo}
-            />
+            <Image alt={`Logo ` + elem.name} height={50} width={50} src={elem.logo} />
             <VStack alignItems="start" w="100%">
               <Text fontWeight="bold">{elem.name}</Text>
               {elem.name !== "Email" && (

@@ -1,6 +1,4 @@
 import "@fontsource/jetbrains-mono/"
-
-import * as React from "react"
 import {
   Box,
   Grid,
@@ -14,15 +12,16 @@ import { ChevronRightIcon } from "@chakra-ui/icons"
 
 import { techs, techsEn, info, infoEn } from "../../data/data"
 import { useChangeSectionAbout, useLanguage } from "../../context/hooks"
+import { useEffect, useState } from "react"
 
 interface Props {
   w: string
   h: string
 }
 
-const About: React.FC<Props> = ({ h, w }) => {
-  const [state, setState] = React.useState<string>("sobre mi")
-  const [update, setUpdate] = React.useState<boolean>(false)
+const About = ({ h, w }: Props) => {
+  const [state, setState] = useState<string>("sobre mi")
+  const [update, setUpdate] = useState<boolean>(false)
   const changeSection = useChangeSectionAbout()
   const bgLeft = useColorModeValue("#E6F2F3", "#07273B")
   const bgRight = useColorModeValue("#F4F6F6", "#07273B")
@@ -34,10 +33,10 @@ const About: React.FC<Props> = ({ h, w }) => {
   const text4 = useColorModeValue("#009BAF", "#46E991")
   const colorCorchetes = useColorModeValue("#8DA6AC", "#568498")
   const language = useLanguage()
-  const [skills, setSkills] = React.useState(techs)
-  const [information, setInformation] = React.useState(info)
+  const [skills, setSkills] = useState(techs)
+  const [information, setInformation] = useState(info)
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (language === "ES") {
       setSkills(techs)
       setInformation(info)
@@ -53,7 +52,7 @@ const About: React.FC<Props> = ({ h, w }) => {
     changeSection(s)
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (language === "ES") {
       if (state === "about me") {
         changeSection("sobre mi")
@@ -65,7 +64,7 @@ const About: React.FC<Props> = ({ h, w }) => {
     }
   }, [language])
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (update === true) {
       setUpdate(false)
 
