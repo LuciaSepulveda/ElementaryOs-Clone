@@ -36,6 +36,7 @@ import {
 } from "../../context/hooks"
 import { Program } from "../../types/types"
 import { useState } from "react"
+import Link from "next/link"
 
 const TopBar = () => {
   const [search, setSearch] = useState<string>("")
@@ -201,6 +202,11 @@ const TopBar = () => {
         spacing="10px"
         zIndex="5"
       >
+        <Link href="/">
+          <Text align="center" fontSize="sm" fontWeight="semibold">
+            {language === "ES" ? "Inicio" : "Home"}
+          </Text>
+        </Link>
         <button onClick={() => changeLanguage(language === "ES" ? "EN" : "ES")}>
           <Text align="center" fontSize="sm" fontWeight="semibold">
             {language}
