@@ -340,7 +340,7 @@ const Home = () => {
               <Image
                 objectFit="cover"
                 fill={true}
-                src="/formal.png"
+                src={colorMode === "light" ? "/formalLight.png" : "/formal.png"}
                 alt="alt"
               />
             </Link>
@@ -386,7 +386,7 @@ const Home = () => {
               <Image
                 objectFit="cover"
                 fill={true}
-                src="/elementary.png"
+                src={colorMode === "light" ? "/elementaryLight.png" : "/elementary.png"}
                 alt="alt"
               />
             </Link>
