@@ -80,16 +80,16 @@ const About = () => {
           <Text fontSize={["xl", "2xl"]} textAlign="center" display="inline">
             {language === "ES"
               ? `como desarrolladora Frontend.`
-              : `of frontend development.`}
+              : `on frontend development.`}
           </Text>
           <Text fontSize={["xl", "2xl"]} textAlign="center" display="inline">
             {language === "ES"
               ? `Trabajé para una agencia creativa donde tuve la oportunidad de formar
           parte de distintos proyectos. Algunos fueron sitios web tradicionales
           y otros fueron más creativos y desafiantes con elementos 3D.`
-              : `I worked for a creative agency where I have the opportunity to 
-          join differents projects. Some of them was traditional websites
-          and others was more creatives and challenge with 3D elements.`}
+              : `I worked for a creative agency where I had the opportunity to be part of different projects. 
+              Some of them was traditional websites
+          and others was more creatives and challenging with 3D elements.`}
           </Text>
         </Flex>
         {/* <VStack maxW="4xl">

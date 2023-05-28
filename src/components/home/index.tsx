@@ -71,7 +71,7 @@ const Home = () => {
         >
           {language === "ES"
             ? `(Los dos tiene la misma información)`
-            : `(Both has the same information)`}
+            : `(Both have the same information)`}
         </MotionText>
         <Flex
           flexDirection={["column", "row"]}
@@ -127,7 +127,7 @@ const Home = () => {
                     >
                       {language === "ES"
                         ? "Más formal para recruiters"
-                        : "More formal to recruiters"}
+                        : "More formal for recruiters"}
                     </MotionText>
                   </Box>
                   <svg
