@@ -315,6 +315,7 @@ const Home = () => {
                 h="30%"
                 bg="rgba(0,0,0, 0.9)"
                 position="absolute"
+                display={["block", "none"]}
               >
                 <Text color="white" textAlign="center" fontWeight="bold">
                   {language === "ES"
@@ -366,6 +367,7 @@ const Home = () => {
                 h="30%"
                 bg="rgba(0,0,0, 0.9)"
                 position="absolute"
+                display={["block", "none"]}
               >
                 <Text color="white" textAlign="center" fontWeight="bold">
                   {language === "ES" ? "Con más onda (?)" : "More fun (?)"}
