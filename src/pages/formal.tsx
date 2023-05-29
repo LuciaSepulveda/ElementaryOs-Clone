@@ -120,6 +120,7 @@ const Formal = () => {
               viewport={{ once: true }}
               borderRadius="full"
               boxShadow="lg"
+              display={["none", "block"]}
             />
             <MotionBox
               zIndex={0}
@@ -141,6 +142,7 @@ const Formal = () => {
               viewport={{ once: true }}
               borderRadius="full"
               boxShadow="lg"
+              display={["none", "block"]}
             />
             <MotionBox
               zIndex={0}
@@ -161,6 +163,7 @@ const Formal = () => {
               viewport={{ once: true }}
               borderRadius="full"
               boxShadow="lg"
+              display={["none", "block"]}
             />
             <MotionBox
               zIndex={0}
@@ -182,6 +185,7 @@ const Formal = () => {
               viewport={{ once: true }}
               borderRadius="full"
               boxShadow="lg"
+              display={["none", "block"]}
             />
           </MotionBox>
           <Box width="full" h="1000px"></Box>
@@ -216,6 +220,7 @@ const Formal = () => {
               viewport={{ once: true }}
               boxShadow="md"
               borderRadius="md"
+              display={["none", "block"]}
             />
           </MotionBox>
         </VStack>
