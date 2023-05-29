@@ -52,13 +52,16 @@ const Home = () => {
         my={2}
       >
         <chakra.button
+          aria-label={
+            language === "ES" ? "Cambiar lenguaje" : "Change language"
+          }
           onClick={() => changeLanguage(language === "ES" ? "EN" : "ES")}
         >
           <Text _hover={{ color: colors[getRandomInt()] }} fontWeight="bold">
             {language}
           </Text>
         </chakra.button>
-        <Center as="button" onClick={toggleColorMode}>
+        <Center as="button" onClick={toggleColorMode} aria-hidden="true">
           {colorMode === "light" && (
             <MoonIcon _hover={{ color: colors[getRandomInt()] }} />
           )}

@@ -2,8 +2,8 @@ import { useLanguage } from "@/context/hooks"
 import { projects as projectsEs, projectsEn } from "@/data/data"
 import {
   Box,
+  chakra,
   Center,
-  Flex,
   HStack,
   Heading,
   Text,
@@ -72,16 +72,28 @@ const Projects = () => {
           borderRadius="sm"
         />
       </Box>
-      <Flex flexWrap="wrap" gap={8} rowGap={10} justify="center" w="full">
+      <chakra.ul
+        display="flex"
+        flexWrap="wrap"
+        gap={8}
+        rowGap={10}
+        justifyContent="center"
+        w="full"
+      >
         {projects.map((project) => (
-          <VStack
+          <chakra.li
             key={project.name}
             maxWidth="300px"
             w="full"
             borderRadius="md"
             h={80}
             py={2}
+            gap={2}
             justifyContent="space-between"
+            alignItems="center"
+            flexDirection="column"
+            display="flex"
+            listStyleType="none"
           >
             <Center p={1}>
               <Text fontSize="xl" fontWeight="bold">
@@ -89,7 +101,7 @@ const Projects = () => {
               </Text>
             </Center>
             <Box w="full" position="relative" h={40}>
-              <Link href={project.demo}>
+              <Link href={project.demo} aria-label={project.name}>
                 <Image
                   objectFit="cover"
                   fill={true}
@@ -107,9 +119,9 @@ const Projects = () => {
             >
               {project.description}
             </Text>
-            <HStack>
+            <chakra.ul display="flex" gap={2}>
               {project.techs.map((tech, index) => (
-                <Box key={tech} position="relative">
+                <chakra.li listStyleType="none" key={tech} position="relative">
                   <MotionBox
                     zIndex={0}
                     position="absolute"
@@ -131,9 +143,9 @@ const Projects = () => {
                   <Text fontWeight="bold" zIndex={2} position="relative">
                     {tech}
                   </Text>
-                </Box>
+                </chakra.li>
               ))}
-            </HStack>
+            </chakra.ul>
             <HStack>
               <Box
                 position="relative"
@@ -162,9 +174,9 @@ const Projects = () => {
                 </Link>
               </Box>
             </HStack>
-          </VStack>
+          </chakra.li>
         ))}
-      </Flex>
+      </chakra.ul>
     </VStack>
   )
 }

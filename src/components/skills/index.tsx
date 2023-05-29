@@ -2,16 +2,17 @@ import { useLanguage } from "@/context/hooks"
 import { techs, techsEn } from "@/data/data"
 import {
   Box,
+  chakra,
   Heading,
   VStack,
   Text,
   Center,
-  Flex,
   useColorModeValue,
 } from "@chakra-ui/react"
 import { motion } from "framer-motion"
 import { useEffect, useState } from "react"
 
+const MotionLi = motion(chakra.li)
 const MotionBox = motion(Box)
 
 const Skills = () => {
@@ -59,15 +60,16 @@ const Skills = () => {
             borderRadius="sm"
           />
         </Box>
-        <Flex
+        <chakra.ul
           justifyContent="center"
           flexWrap="wrap"
           gap={4}
           alignItems="center"
           pt={4}
+          display="flex"
         >
           {arrayTech.map((tech, index) => (
-            <MotionBox
+            <MotionLi
               w={48}
               key={tech}
               initial={{
@@ -81,13 +83,14 @@ const Skills = () => {
               transition={{ duration: 0.4, delay: 0.1 }}
               borderRadius="sm"
               viewport={{ once: true }}
+              listStyleType="none"
             >
               <Text fontSize="2xl" fontWeight="bold" textAlign="center">
                 {tech}
               </Text>
-            </MotionBox>
+            </MotionLi>
           ))}
-        </Flex>
+        </chakra.ul>
       </VStack>
     </Center>
   )

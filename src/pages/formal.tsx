@@ -102,7 +102,6 @@ const Formal = () => {
             <MotionBox
               zIndex={0}
               position="absolute"
-              bg={useColorModeValue("rgb(101, 212, 97)", "rgb(120, 233, 143)")}
               top={10}
               right="0"
               transition={{
@@ -110,7 +109,8 @@ const Formal = () => {
                 ease: "easeInOut",
                 delay: 0.6,
               }}
-              initial={{ width: "100px", x: 50, height: "100px", opacity: 0 }}
+              border={`14px solid ${useColorModeValue("rgb(101, 212, 97)", "rgb(120, 233, 143)")}`}
+              initial={{ width: "100px", height: "100px", opacity: 0 }}
               animate={{
                 width: view && "350px",
                 x: view && 50,
@@ -145,7 +145,7 @@ const Formal = () => {
             <MotionBox
               zIndex={0}
               position="absolute"
-              bg={useColorModeValue("rgb(243, 174, 66)", "rgb(223, 200, 122)")}
+              border={`8px solid ${useColorModeValue("rgb(243, 174, 66)", "rgb(223, 200, 122)")}`}
               bottom={"10rem"}
               transition={{
                 duration: 0.8,

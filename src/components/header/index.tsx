@@ -9,14 +9,10 @@ import {
   Text,
   useColorModeValue,
   useColorMode,
-  VStack,
 } from "@chakra-ui/react"
 import Image from "next/image"
 import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
-import { motion } from "framer-motion"
-
-const MotionBox = motion(Box)
 
 const isBrowser = typeof window !== `undefined`
 
@@ -140,56 +136,69 @@ const Header = () => {
               <Image fill={true} src="/logo.jpg" alt="logo" />
             </Link>
           </Center>
-          <HStack gap={4} display={["none", "none", "flex", "flex", "flex"]}>
-            <Link href="#about">
-              <Text
-                transition="all 0.3s ease"
-                _hover={{ color: colors[getRandomInt()] }}
-                fontWeight="bold"
-                position="relative"
-              >
-                {language === "ES" ? "Sobre mi" : "About me"}
-              </Text>
-            </Link>
-            <Link href="#skills">
-              <Text
-                fontWeight="bold"
-                transition="all 0.3s ease"
-                _hover={{ color: colors[getRandomInt()] }}
-              >
-                {language === "ES" ? "Habilidades" : "Skills"}
-              </Text>
-            </Link>
-            <Link href="#projects">
-              <Text
-                fontWeight="bold"
-                transition="all 0.3s ease"
-                _hover={{ color: colors[getRandomInt()] }}
-              >
-                {language === "ES" ? "Proyectos" : "Projects"}
-              </Text>
-            </Link>
-            <Link href="#contact">
-              <Text
-                fontWeight="bold"
-                transition="all 0.3s ease"
-                _hover={{ color: colors[getRandomInt()] }}
-              >
-                {language === "ES" ? "Contacto" : "Contact"}
-              </Text>
-            </Link>
-            <Link href="/">
-              <Text
-                fontWeight="bold"
-                transition="all 0.3s ease"
-                _hover={{ color: colors[getRandomInt()] }}
-              >
-                {language === "ES" ? "Inicio" : "Home"}
-              </Text>
-            </Link>
-          </HStack>
+          <chakra.ul gap={4} display={["none", "none", "flex", "flex", "flex"]}>
+            <chakra.li listStyleType="none">
+              <Link href="#about">
+                <Text
+                  transition="all 0.3s ease"
+                  _hover={{ color: colors[getRandomInt()] }}
+                  fontWeight="bold"
+                  position="relative"
+                >
+                  {language === "ES" ? "Sobre mi" : "About me"}
+                </Text>
+              </Link>
+            </chakra.li>
+            <chakra.li listStyleType="none">
+              <Link href="#skills">
+                <Text
+                  fontWeight="bold"
+                  transition="all 0.3s ease"
+                  _hover={{ color: colors[getRandomInt()] }}
+                >
+                  {language === "ES" ? "Habilidades" : "Skills"}
+                </Text>
+              </Link>
+            </chakra.li>
+            <chakra.li listStyleType="none">
+              <Link href="#projects">
+                <Text
+                  fontWeight="bold"
+                  transition="all 0.3s ease"
+                  _hover={{ color: colors[getRandomInt()] }}
+                >
+                  {language === "ES" ? "Proyectos" : "Projects"}
+                </Text>
+              </Link>
+            </chakra.li>
+            <chakra.li listStyleType="none">
+              <Link href="#contact">
+                <Text
+                  fontWeight="bold"
+                  transition="all 0.3s ease"
+                  _hover={{ color: colors[getRandomInt()] }}
+                >
+                  {language === "ES" ? "Contacto" : "Contact"}
+                </Text>
+              </Link>
+            </chakra.li>
+            <chakra.li listStyleType="none">
+              <Link href="/">
+                <Text
+                  fontWeight="bold"
+                  transition="all 0.3s ease"
+                  _hover={{ color: colors[getRandomInt()] }}
+                >
+                  {language === "ES" ? "Inicio" : "Home"}
+                </Text>
+              </Link>
+            </chakra.li>
+          </chakra.ul>
           <HStack pr={3}>
             <chakra.button
+              aria-label={
+                language === "ES" ? "Cambiar lenguaje" : "Change language"
+              }
               onClick={() => changeLanguage(language === "ES" ? "EN" : "ES")}
             >
               <Text
@@ -199,15 +208,28 @@ const Header = () => {
                 {language}
               </Text>
             </chakra.button>
-            <Center as="button" onClick={toggleColorMode}>
-              {colorMode === "light" && <MoonIcon  _hover={{color: colors[getRandomInt()] }} />}
-              {colorMode !== "light" && <SunIcon  _hover={{color: colors[getRandomInt()] }} />}
+            <Center as="button" onClick={toggleColorMode} aria-hidden="true">
+              {colorMode === "light" && (
+                <MoonIcon _hover={{ color: colors[getRandomInt()] }} />
+              )}
+              {colorMode !== "light" && (
+                <SunIcon _hover={{ color: colors[getRandomInt()] }} />
+              )}
             </Center>
             <chakra.button
               display={["block", "block", "none", "none", "none"]}
               bg="transparent"
               onClick={() => setShowMenu(!showMenu)}
               p={1}
+              aria-label={
+                showMenu
+                  ? language === "ES"
+                    ? "Cerrar menu"
+                    : "Close menu"
+                  : language === "ES"
+                  ? "Abrir menu"
+                  : "Open menu"
+              }
             >
               <svg
                 width="36"
@@ -244,7 +266,7 @@ const Header = () => {
             </chakra.button>
           </HStack>
           {showMenu && (
-            <VStack
+            <chakra.ul
               position="absolute"
               w="full"
               h={48}
@@ -253,33 +275,47 @@ const Header = () => {
               left={-2}
               gap={2}
               boxShadow="xl"
+              display="flex"
+              flexDirection="column"
+              justifyContent="center"
+              alignItems="center"
             >
-              <Link href="#about" onClick={() => setShowMenu(false)}>
-                <Text fontWeight="bold">
-                  {language === "ES" ? "Sobre mi" : "About me"}
-                </Text>
-              </Link>
-              <Link href="#skills" onClick={() => setShowMenu(false)}>
-                <Text fontWeight="bold">
-                  {language === "ES" ? "Habilidades" : "Skills"}
-                </Text>
-              </Link>
-              <Link href="#projects" onClick={() => setShowMenu(false)}>
-                <Text fontWeight="bold">
-                  {language === "ES" ? "Proyectos" : "Projects"}
-                </Text>
-              </Link>
-              <Link href="#contact" onClick={() => setShowMenu(false)}>
-                <Text fontWeight="bold">
-                  {language === "ES" ? "Contacto" : "Contact"}
-                </Text>
-              </Link>
-              <Link href="/" onClick={() => setShowMenu(false)}>
-                <Text fontWeight="bold">
-                  {language === "ES" ? "Inicio" : "Home"}
-                </Text>
-              </Link>
-            </VStack>
+              <chakra.li listStyleType="none">
+                <Link href="#about" onClick={() => setShowMenu(false)}>
+                  <Text fontWeight="bold">
+                    {language === "ES" ? "Sobre mi" : "About me"}
+                  </Text>
+                </Link>
+              </chakra.li>
+              <chakra.li listStyleType="none">
+                <Link href="#skills" onClick={() => setShowMenu(false)}>
+                  <Text fontWeight="bold">
+                    {language === "ES" ? "Habilidades" : "Skills"}
+                  </Text>
+                </Link>
+              </chakra.li>
+              <chakra.li listStyleType="none">
+                <Link href="#projects" onClick={() => setShowMenu(false)}>
+                  <Text fontWeight="bold">
+                    {language === "ES" ? "Proyectos" : "Projects"}
+                  </Text>
+                </Link>
+              </chakra.li>
+              <chakra.li listStyleType="none">
+                <Link href="#contact" onClick={() => setShowMenu(false)}>
+                  <Text fontWeight="bold">
+                    {language === "ES" ? "Contacto" : "Contact"}
+                  </Text>
+                </Link>
+              </chakra.li>
+              <chakra.li listStyleType="none">
+                <Link href="/" onClick={() => setShowMenu(false)}>
+                  <Text fontWeight="bold">
+                    {language === "ES" ? "Inicio" : "Home"}
+                  </Text>
+                </Link>
+              </chakra.li>
+            </chakra.ul>
           )}
         </HStack>
       </Container>
