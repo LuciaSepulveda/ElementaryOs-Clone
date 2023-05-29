@@ -102,7 +102,6 @@ const Formal = () => {
             <MotionBox
               zIndex={0}
               position="absolute"
-              bg={useColorModeValue("rgb(101, 212, 97)", "rgb(120, 233, 143)")}
               top={10}
               right="0"
               transition={{
@@ -110,7 +109,8 @@ const Formal = () => {
                 ease: "easeInOut",
                 delay: 0.6,
               }}
-              initial={{ width: "100px", x: 50, height: "100px", opacity: 0 }}
+              border={`14px solid ${useColorModeValue("rgb(101, 212, 97)", "rgb(120, 233, 143)")}`}
+              initial={{ width: "100px", height: "100px", opacity: 0 }}
               animate={{
                 width: view && "350px",
                 x: view && 50,
@@ -120,6 +120,7 @@ const Formal = () => {
               viewport={{ once: true }}
               borderRadius="full"
               boxShadow="lg"
+              display={["none", "block"]}
             />
             <MotionBox
               zIndex={0}
@@ -141,11 +142,12 @@ const Formal = () => {
               viewport={{ once: true }}
               borderRadius="full"
               boxShadow="lg"
+              display={["none", "block"]}
             />
             <MotionBox
               zIndex={0}
               position="absolute"
-              bg={useColorModeValue("rgb(243, 174, 66)", "rgb(223, 200, 122)")}
+              border={`8px solid ${useColorModeValue("rgb(243, 174, 66)", "rgb(223, 200, 122)")}`}
               bottom={"10rem"}
               transition={{
                 duration: 0.8,
@@ -161,6 +163,7 @@ const Formal = () => {
               viewport={{ once: true }}
               borderRadius="full"
               boxShadow="lg"
+              display={["none", "block"]}
             />
             <MotionBox
               zIndex={0}
@@ -182,6 +185,7 @@ const Formal = () => {
               viewport={{ once: true }}
               borderRadius="full"
               boxShadow="lg"
+              display={["none", "block"]}
             />
           </MotionBox>
           <Box width="full" h="1000px"></Box>
@@ -216,6 +220,7 @@ const Formal = () => {
               viewport={{ once: true }}
               boxShadow="md"
               borderRadius="md"
+              display={["none", "block"]}
             />
           </MotionBox>
         </VStack>

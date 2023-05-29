@@ -52,13 +52,16 @@ const Home = () => {
         my={2}
       >
         <chakra.button
+          aria-label={
+            language === "ES" ? "Cambiar lenguaje" : "Change language"
+          }
           onClick={() => changeLanguage(language === "ES" ? "EN" : "ES")}
         >
           <Text _hover={{ color: colors[getRandomInt()] }} fontWeight="bold">
             {language}
           </Text>
         </chakra.button>
-        <Center as="button" onClick={toggleColorMode}>
+        <Center as="button" onClick={toggleColorMode} aria-hidden="true">
           {colorMode === "light" && (
             <MoonIcon _hover={{ color: colors[getRandomInt()] }} />
           )}
@@ -325,7 +328,14 @@ const Home = () => {
             onMouseEnter={() => setHoverPage("formal")}
             onMouseLeave={() => setHoverPage("")}
           >
-            <Link href="/formal" aria-label="Portfolio formal">
+            <Link
+              href="/formal"
+              aria-label={
+                language === "ES"
+                  ? "Más formal para recruiters"
+                  : "More formal to recruiters"
+              }
+            >
               <Center
                 bottom={0}
                 zIndex={1}
@@ -377,7 +387,12 @@ const Home = () => {
             onMouseEnter={() => setHoverPage("elementary")}
             onMouseLeave={() => setHoverPage("")}
           >
-            <Link href="/elementary" aria-label="Portfolio formal">
+            <Link
+              href="/elementary"
+              aria-label={
+                language === "ES" ? "Con más onda" : "More fun"
+              }
+            >
               <Center
                 bottom={0}
                 zIndex={1}

@@ -92,36 +92,6 @@ const About = () => {
           and others was more creatives and challenging with 3D elements.`}
           </Text>
         </Flex>
-        {/* <VStack maxW="4xl">
-          <Box position="relative" pt={8}>
-            <Heading as="h2" zIndex={2} mb={6}>
-              {language === "ES" ? "HABILIDADES" : "SKILLS"}
-            </Heading>
-            <MotionBox
-              zIndex={0}
-              position="absolute"
-              h="4%"
-              bg="rgb(120, 233, 143)"
-              bottom={6}
-              transition={{
-                duration: 0.6,
-                ease: "easeInOut",
-                delay: 0.3,
-              }}
-              whileInView={{ width: "100%" }}
-              initial={{ width: 0 }}
-              viewport={{ once: true }}
-              borderRadius="sm"
-            />
-          </Box>
-          <HStack flexWrap="wrap">
-            {techs.map((tech) => (
-              <Box w={40} key={tech}>
-                <Text fontSize="2xl" fontWeight="bold" textAlign="center">{tech}</Text>
-              </Box>
-            ))}
-          </HStack>
-        </VStack> */}
       </VStack>
     </Center>
   )
