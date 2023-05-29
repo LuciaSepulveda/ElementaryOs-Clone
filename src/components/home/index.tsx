@@ -328,7 +328,14 @@ const Home = () => {
             onMouseEnter={() => setHoverPage("formal")}
             onMouseLeave={() => setHoverPage("")}
           >
-            <Link href="/formal" aria-label="Portfolio formal">
+            <Link
+              href="/formal"
+              aria-label={
+                language === "ES"
+                  ? "Más formal para recruiters"
+                  : "More formal to recruiters"
+              }
+            >
               <Center
                 bottom={0}
                 zIndex={1}
@@ -380,7 +387,12 @@ const Home = () => {
             onMouseEnter={() => setHoverPage("elementary")}
             onMouseLeave={() => setHoverPage("")}
           >
-            <Link href="/elementary" aria-label="Portfolio formal">
+            <Link
+              href="/elementary"
+              aria-label={
+                language === "ES" ? "Con más onda" : "More fun"
+              }
+            >
               <Center
                 bottom={0}
                 zIndex={1}
