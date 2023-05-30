@@ -11,7 +11,7 @@ const Footer = () => {
 
   return (
     <Center zIndex={1} position="relative" py={4}>
-      <Flex flexDirection="row" align="center" gap={2}>
+      <Flex flexDirection={["column", "row"]} align="center" gap={2}>
         <Text>
           © {date.getFullYear()} |{" "}
           {language === "ES" ? "Desarrollado por" : "Coded by"}
