@@ -1,11 +1,5 @@
 import { useLanguage } from "@/context/hooks"
-import {
-  Box,
-  Center,
-  Flex,
-  Text,
-  useColorModeValue,
-} from "@chakra-ui/react"
+import { Box, Center, Flex, Text, useColorModeValue } from "@chakra-ui/react"
 import Link from "next/link"
 import { motion } from "framer-motion"
 
@@ -17,12 +11,10 @@ const Footer = () => {
 
   return (
     <Center zIndex={1} position="relative" py={4}>
-      <Flex flexDirection={["column", "row"]} align="center" gap={2}>
+      <Flex flexDirection="row" align="center" gap={2}>
         <Text>
           © {date.getFullYear()} |{" "}
-          {language === "ES"
-            ? "Diseñado y desarrollado por"
-            : "Designed and coded by"}
+          {language === "ES" ? "Desarrollado por" : "Coded by"}
         </Text>
         <Box position="relative" width="fit-content">
           <MotionBox
