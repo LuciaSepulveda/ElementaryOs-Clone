@@ -16,6 +16,7 @@ import Link from "next/link"
 import { useChangeLanguage, useLanguage } from "@/context/hooks"
 import { AnimatePresence, motion } from "framer-motion"
 import { MoonIcon, SunIcon } from "@chakra-ui/icons"
+import Footer from "../footer"
 
 const MotionText = motion(Text)
 const MotionBox = motion(Box)
@@ -41,7 +42,16 @@ const Home = () => {
   ]
 
   return (
-    <main style={{ height: "100vh", width: "100%", overflow: "hidden" }}>
+    <main
+      style={{
+        height: "100vh",
+        width: "100%",
+        overflow: "hidden",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+      }}
+    >
       <HStack
         m="auto"
         maxWidth="container.xl"
@@ -77,6 +87,7 @@ const Home = () => {
         h="full"
         m="auto"
         position="relative"
+        w="full"
       >
         <Heading textAlign="center" as="h1" pb={0} fontSize="5xl">
           {language === "ES" ? "Elige un portfolio" : "Choose a portfolio"}
@@ -98,7 +109,8 @@ const Home = () => {
           flexDirection={["column", "row"]}
           width="full"
           maxW="800px"
-          h={[96, 80]}
+          h={["100%", 80]}
+          maxHeight={[96, 80]}
           style={{ marginTop: "40px" }}
           borderRadius="md"
           position="relative"
@@ -343,7 +355,7 @@ const Home = () => {
                 h="30%"
                 bg="rgba(0,0,0, 0.9)"
                 position="absolute"
-                display={["block", "none"]}
+                display={["flex", "none"]}
               >
                 <Text color="white" textAlign="center" fontWeight="bold">
                   {language === "ES"
@@ -389,9 +401,7 @@ const Home = () => {
           >
             <Link
               href="/elementary"
-              aria-label={
-                language === "ES" ? "Con más onda" : "More fun"
-              }
+              aria-label={language === "ES" ? "Con más onda" : "More fun"}
             >
               <Center
                 bottom={0}
@@ -400,7 +410,7 @@ const Home = () => {
                 h="30%"
                 bg="rgba(0,0,0, 0.9)"
                 position="absolute"
-                display={["block", "none"]}
+                display={["flex", "none"]}
               >
                 <Text color="white" textAlign="center" fontWeight="bold">
                   {language === "ES" ? "Con más onda (?)" : "More fun (?)"}
@@ -430,6 +440,7 @@ const Home = () => {
           </Box>
         </Flex>
       </VStack>
+      <Footer />
     </main>
   )
 }
