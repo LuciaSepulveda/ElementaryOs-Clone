@@ -120,7 +120,7 @@ const Formal = () => {
               viewport={{ once: true }}
               borderRadius="full"
               boxShadow="lg"
-              display={["none", "block"]}
+              display={["none !important", "block"]}
             />
             <MotionBox
               zIndex={0}
@@ -142,7 +142,7 @@ const Formal = () => {
               viewport={{ once: true }}
               borderRadius="full"
               boxShadow="lg"
-              display={["none", "block"]}
+              display={["none !important", "block"]}
             />
             <MotionBox
               zIndex={0}
