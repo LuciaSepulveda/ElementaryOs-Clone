@@ -1,11 +1,11 @@
 import {
-  Grid,
-  GridItem,
   Center,
   useColorModeValue,
   Skeleton,
   Text,
   VStack,
+  Flex,
+  Box,
 } from "@chakra-ui/react"
 import { useMediaQuery } from "react-responsive"
 import { motion } from "framer-motion"
@@ -55,67 +55,87 @@ const Wallpapers = ({ h, w }: Props) => {
             : "Seleccione un fondo de pantalla"}
         </Text>
         {!isPortrait && (
-          <Grid
+          <Flex
             gap={4}
             h={[null, null, null, "500px", h, h]}
             p={0}
-            templateColumns="repeat(3, 1fr)"
             w={[null, null, null, "100%", "90%", w]}
+            alignItems="center"
+            justifyContent="center"
+            flexWrap="wrap"
           >
             {wallpapers.map((elem) => (
-              <motion.div key={elem} whileHover={{ scale: 1.05, y: -5 }}>
-                <GridItem
+              <motion.div
+                key={elem}
+                whileHover={{ scale: 1.05, y: -5 }}
+                style={{
+                  height: "100%",
+                  maxHeight: "50%",
+                  width: "100%",
+                  maxWidth: "30%",
+                  position: "relative",
+                }}
+              >
+                <Box
                   as="button"
-                  colSpan={1}
                   h="100%"
+                  minH="160px"
+                  w="100%"
                   onClick={() => changeWallpaper(elem)}
                   position="relative"
                 >
                   <Skeleton
-                    h="160px"
+                    h="100%"
+                    minHeight="160px"
                     isLoaded={loaded}
-                    minWidth="200px"
                     w="100%"
                     position="relative"
+                    objectFit="cover"
                   >
                     <Image
                       ref={imageRef}
                       alt="Wallpaper"
                       fill={true}
+                      objectFit="cover"
                       src={elem}
                       onLoad={() => {
                         setLoaded(true)
                       }}
                     />
                   </Skeleton>
-                </GridItem>
+                </Box>
               </motion.div>
             ))}
-          </Grid>
+          </Flex>
         )}
         {isPortrait && (
-          <Grid
+          <Flex
             gap={2}
-            h="100%"
+            w="full"
             overflow="scroll"
             p={2}
-            templateColumns={["repeat(1, 1fr)", "repeat(2, 1fr)"]}
+            pt={20}
+            flexDirection="column"
+            justifyContent="center"
+            alignItems="center"
+            position="relative"
           >
             {wallpapers.map((elem) => (
-              <GridItem
+              <Box
                 key={elem}
                 as="button"
                 bg="transparent"
-                colSpan={1}
+                minH={["160px", "260px"]}
                 h="100%"
+                w={["100%", "60%"]}
                 p={1}
                 onClick={() => changeWallpaper(elem)}
                 position="relative"
               >
                 <Skeleton
-                  h="160px"
+                  h="100%"
                   isLoaded={loaded}
-                  w="96%"
+                  w="100%"
                   position="relative"
                 >
                   <Image
@@ -128,9 +148,9 @@ const Wallpapers = ({ h, w }: Props) => {
                     }}
                   />
                 </Skeleton>
-              </GridItem>
+              </Box>
             ))}
-          </Grid>
+          </Flex>
         )}
       </VStack>
     </Center>
