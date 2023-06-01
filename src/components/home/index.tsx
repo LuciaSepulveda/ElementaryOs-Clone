@@ -83,7 +83,7 @@ const Home = () => {
       <VStack
         justifyContent={["flex-start", "center"]}
         maxWidth="container.xl"
-        px={[4, 0]}
+        px={[4, 4, 4, 0]}
         h="full"
         m="auto"
         position="relative"
@@ -106,11 +106,11 @@ const Home = () => {
             : `(Both have the same information)`}
         </MotionText>
         <Flex
-          flexDirection={["column", "row"]}
+          flexDirection={["column", "column", "column", "row"]}
           width="full"
           maxW="800px"
-          h={["100%", 80]}
-          maxHeight={[96, 80]}
+          h={["100%", "100%", "100%", 80]}
+          maxHeight={[96, 96, 96, 80]}
           style={{ marginTop: "40px" }}
           borderRadius="md"
           position="relative"
@@ -121,7 +121,7 @@ const Home = () => {
             top="-110px"
             w="100px"
             height="100px"
-            display={["none", "block"]}
+            display={["none", "none", "none", "block"]}
           >
             <AnimatePresence>
               {hoverPage === "formal" && (
@@ -227,7 +227,7 @@ const Home = () => {
             right={"-90px"}
             w="100px"
             height="100px"
-            display={["none", "block"]}
+            display={["none", "none", "none", "block"]}
           >
             <AnimatePresence>
               {hoverPage === "elementary" && (
@@ -329,10 +329,10 @@ const Home = () => {
           <Box
             width={
               hoverPage === "formal"
-                ? ["100%", "70%"]
+                ? ["100%", "100%", "100%", "70%"]
                 : hoverPage === "elementary"
-                ? ["100%", "30%"]
-                : ["100%", "50%"]
+                ? ["100%", "100%", "100%", "30%"]
+                : ["100%", "100%", "100%", "50%"]
             }
             transition="all 0.3s ease"
             position="relative"
@@ -355,7 +355,7 @@ const Home = () => {
                 h="30%"
                 bg="rgba(0,0,0, 0.9)"
                 position="absolute"
-                display={["flex", "none"]}
+                display={["flex", "flex", "flex", "none"]}
               >
                 <Text color="white" textAlign="center" fontWeight="bold">
                   {language === "ES"
@@ -364,7 +364,7 @@ const Home = () => {
                 </Text>
               </Center>
               <Center
-                display={["none", "block"]}
+                display={["none", "none", "none", "block"]}
                 transition="all 0.3s ease"
                 position="absolute"
                 width="full"
@@ -388,10 +388,10 @@ const Home = () => {
           <Box
             width={
               hoverPage === "elementary"
-                ? ["100%", "70%"]
+                ? ["100%", "100%", "100%", "70%"]
                 : hoverPage === "formal"
-                ? ["100%", "30%"]
-                : ["100%", "50%"]
+                ? ["100%", "100%", "100%", "30%"]
+                : ["100%", "100%", "100%", "50%"]
             }
             transition="all 0.3s ease"
             position="relative"
@@ -410,7 +410,7 @@ const Home = () => {
                 h="30%"
                 bg="rgba(0,0,0, 0.9)"
                 position="absolute"
-                display={["flex", "none"]}
+                display={["flex", "flex", "flex", "none"]}
               >
                 <Text color="white" textAlign="center" fontWeight="bold">
                   {language === "ES" ? "Con más onda (?)" : "More fun (?)"}
@@ -424,7 +424,7 @@ const Home = () => {
                 bg={hoverPage === "formal" ? "rgba(0,0,0, 0.9)" : "transparent"}
                 top="0"
                 zIndex={1}
-                display={["none", "block"]}
+                display={["none", "none", "none", "block"]}
               />
               <Image
                 objectFit="cover"
