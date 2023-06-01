@@ -72,8 +72,11 @@ const Header = () => {
   const language = useLanguage()
   const changeLanguage = useChangeLanguage()
   const { colorMode, toggleColorMode } = useColorMode()
-  const [showMenu, setShowMenu] = useState(false)
-  const [scroll, setScroll] = useState(false)
+  const [showMenu, setShowMenu] = useState<boolean>(false)
+  const [scroll, setScroll] = useState<boolean>(false)
+  const [section, setSection] = useState<
+    "about" | "projects" | "skills" | "contact" | undefined
+  >()
 
   const getRandomInt = () => {
     return Math.floor(Math.random() * 4)
@@ -95,6 +98,17 @@ const Header = () => {
       }
       if (!maxScroll) {
         setScroll(false)
+      }
+      if (currPos.y > -741) setSection(undefined)
+      else {
+        if (currPos.y <= -741 && currPos.y > -1241) setSection("about")
+        else {
+          if (currPos.y <= -1241 && currPos.y > -2041) setSection("skills")
+          else {
+            if (currPos.y <= -2041 && currPos.y > -2546) setSection("projects")
+            else if (currPos.y <= -2546) setSection("contact")
+          }
+        }
       }
     },
     [scroll],
@@ -144,6 +158,7 @@ const Header = () => {
                   _hover={{ color: colors[getRandomInt()] }}
                   fontWeight="bold"
                   position="relative"
+                  color={section === "about" ? colors[getRandomInt()] : ""}
                 >
                   {language === "ES" ? "Sobre mi" : "About me"}
                 </Text>
@@ -155,6 +170,7 @@ const Header = () => {
                   fontWeight="bold"
                   transition="all 0.3s ease"
                   _hover={{ color: colors[getRandomInt()] }}
+                  color={section === "skills" ? colors[getRandomInt()] : ""}
                 >
                   {language === "ES" ? "Habilidades" : "Skills"}
                 </Text>
@@ -166,6 +182,7 @@ const Header = () => {
                   fontWeight="bold"
                   transition="all 0.3s ease"
                   _hover={{ color: colors[getRandomInt()] }}
+                  color={section === "projects" ? colors[getRandomInt()] : ""}
                 >
                   {language === "ES" ? "Proyectos" : "Projects"}
                 </Text>
@@ -177,6 +194,7 @@ const Header = () => {
                   fontWeight="bold"
                   transition="all 0.3s ease"
                   _hover={{ color: colors[getRandomInt()] }}
+                  color={section === "contact" ? colors[getRandomInt()] : ""}
                 >
                   {language === "ES" ? "Contacto" : "Contact"}
                 </Text>
