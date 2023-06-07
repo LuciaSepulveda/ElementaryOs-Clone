@@ -36,7 +36,7 @@ const Formal = () => {
           zIndex={0}
         >
           <Box h="800px" position="relative" w="full">
-            <MotionBox
+            {/* <MotionBox
               position="absolute"
               bg={useColorModeValue("rgb(97, 211, 196)", "rgb(174, 139, 246)")}
               width={[0, 40]}
@@ -91,7 +91,7 @@ const Formal = () => {
               transition={{ duration: 1 }}
               boxShadow="md"
               borderRadius="md"
-            />
+            /> */}
           </Box>
           <MotionBox
             w="full"
@@ -99,7 +99,7 @@ const Formal = () => {
             position="relative"
             onViewportEnter={() => setView(true)}
           >
-            <MotionBox
+            {/* <MotionBox
               zIndex={0}
               position="absolute"
               top={10}
@@ -186,7 +186,7 @@ const Formal = () => {
               borderRadius="full"
               boxShadow="lg"
               display={["none", "block"]}
-            />
+            /> */}
           </MotionBox>
           <Box width="full" h="1000px"></Box>
           <MotionBox width="full" h="600px">
