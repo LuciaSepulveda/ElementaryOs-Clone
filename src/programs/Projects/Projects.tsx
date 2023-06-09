@@ -110,7 +110,7 @@ const Projects = ({ h, w, maximized }: Props) => {
               <Box bg={bgItem} h="50px" m="auto" p={1}>
                 <Text textAlign="center">{elem.description}</Text>
               </Box>
-              <Center w="100%">
+              <Center w="100%" overflow="hidden">
                 {elem.techs.map((tech) => (
                   <Badge key={tech} colorScheme="gray" ml={2}>
                     {tech}
@@ -189,7 +189,7 @@ const Projects = ({ h, w, maximized }: Props) => {
               <Box bg={bgItem} h="52px" m="auto" p={1} w="100%">
                 <Text textAlign="center">{elem.description}</Text>
               </Box>
-              <Center h="28px" w="100%">
+              <Center h="28px" w="100%" overflow="hidden">
                 {elem.techs.map((tech) => (
                   <Badge key={tech} colorScheme="gray" ml={2}>
                     {tech}
@@ -258,7 +258,7 @@ const Projects = ({ h, w, maximized }: Props) => {
                   {elem.description}
                 </Text>
               </Box>
-              <Center h="28px" w="100%">
+              <Center h="28px" w="100%" overflow="hidden" display="flex" flexWrap="wrap">
                 {elem.techs.map((tech) => (
                   <Badge key={tech} colorScheme="gray" ml={2}>
                     {tech}
