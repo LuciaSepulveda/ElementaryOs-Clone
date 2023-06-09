@@ -382,6 +382,7 @@ const Home = () => {
                 fill={true}
                 src={colorMode === "light" ? "/formalLight.png" : "/formal.png"}
                 alt="alt"
+                loading="lazy"
               />
             </Link>
           </Box>
@@ -435,6 +436,7 @@ const Home = () => {
                     : "/elementary.png"
                 }
                 alt="alt"
+                loading="lazy"
               />
             </Link>
           </Box>
