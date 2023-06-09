@@ -240,7 +240,7 @@ const Projects = () => {
           fontWeight="semibold"
           color="black"
         >
-          Participación en Genosha
+          Personales
         </Text>
         <MotionBox
           zIndex={0}
