@@ -10,9 +10,10 @@ export interface Project {
   name: string
   img: string
   description: string
-  github: string
+  github?: string
   demo: string
   techs: string[]
+  genosha?: boolean
 }
 
 export enum Status {

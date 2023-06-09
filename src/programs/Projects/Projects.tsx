@@ -61,7 +61,7 @@ const Projects = ({ h, w, maximized }: Props) => {
       w="100%"
     >
       {!isPortrait && !maximized && (
-        <SimpleGrid columns={3} gap={4} h="100%" p={2} w={w}>
+        <SimpleGrid overflowY="scroll" columns={3} gap={4} h="100%" p={2} w={w}>
           {arrayProjects.map((elem) => (
             <VStack
               key={elem.name}
@@ -91,20 +91,22 @@ const Projects = ({ h, w, maximized }: Props) => {
                   />
                 </Skeleton>
               </Link>
-              <Link
-                bg="white"
-                borderRadius="md"
-                h="20px"
-                href={elem.github}
-                target="_blank"
-              >
-                <Image
-                  width={50}
-                  height={20}
-                  src="/GitHub_Logo.png"
-                  alt="Github"
-                />
-              </Link>
+              {elem.github && (
+                <Link
+                  bg="white"
+                  borderRadius="md"
+                  h="20px"
+                  href={elem.github}
+                  target="_blank"
+                >
+                  <Image
+                    width={50}
+                    height={20}
+                    src="/GitHub_Logo.png"
+                    alt="Github"
+                  />
+                </Link>
+              )}
               <Box bg={bgItem} h="50px" m="auto" p={1}>
                 <Text textAlign="center">{elem.description}</Text>
               </Box>
@@ -126,6 +128,7 @@ const Projects = ({ h, w, maximized }: Props) => {
           h={[null, null, null, "80%", "100%"]}
           p={2}
           w={[null, null, null, "90%", "90%", `${w}`]}
+          overflowY="scroll"
         >
           {projects.map((elem) => (
             <VStack
