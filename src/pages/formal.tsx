@@ -188,7 +188,7 @@ const Formal = () => {
               display={["none", "block"]}
             /> */}
           </MotionBox>
-          <Box width="full" h="1000px"></Box>
+          <Box width="full" h="2000px"></Box>
           <MotionBox width="full" h="600px">
             <MotionBox
               position="absolute"

@@ -33,6 +33,56 @@ export const programs: Program[] = [
 
 export const projects: Project[] = [
   {
+    name: "Open Syllabus",
+    demo: "https://opensyllabus.org/",
+    description: "Sitio principal de Open Syllabus",
+    img: "/openSyllabus.png",
+    techs: ["Next", "Typescript", "Styled components"],
+    genosha: true,
+  },
+  {
+    name: "Open Syllabus Analytics",
+    demo: "https://analytics.opensyllabus.org/",
+    description:
+      "Herramientas para entender la curricula en la educación superior",
+    img: "/openSyllabusAnalytics.png",
+    techs: ["Next", "Typescript", "Styled components"],
+    genosha: true,
+  },
+  {
+    name: "Open Syllabus Course Matcher",
+    demo: "https://coursematcher.opensyllabus.org/",
+    description: "Busca posibles coincidencias entre clases de catálogos de cursos",
+    img: "/openSyllabusCourse.png",
+    techs: ["Next", "Typescript", "Tailwind"],
+    genosha: true,
+  },
+  {
+    name: "Open Syllabus Blog",
+    demo: "https://blog.opensyllabus.org/",
+    description: "Noticias de Open Syllabus",
+    img: "/openSyllabusBlog.png",
+    techs: ["Docusaurus", "Javascript", "SASS"],
+    genosha: true,
+  },
+  {
+    name: "Juicios de lesa humanidad",
+    demo: "http://www.juiciosdelesahumanidad.ar/",
+    description:
+      "Sitio de datos interactivos de los juicios de lesa humanidad argentinos",
+    img: "/juicioslesa.png",
+    techs: ["Next", "Styled components", "Typescript"],
+    genosha: true,
+  },
+  {
+    name: "Genosha",
+    demo: "https://front.dev.genosha.com.ar/",
+    description: "Sitio web de Genosha",
+    img: "/genosha.png",
+    techs: ["Next", "Styled components", "Three.js"],
+    genosha: true,
+  },
+  {
     name: "ABTM",
     github: "https://github.com/LuciaSepulveda/ABTM",
     demo: "https://abtm.vercel.app/",
@@ -83,6 +133,56 @@ export const projects: Project[] = [
 ]
 
 export const projectsEn: Project[] = [
+  {
+    name: "Open Syllabus",
+    demo: "https://opensyllabus.org/",
+    description: "Open Syllabus website",
+    img: "/openSyllabus.png",
+    techs: ["Next", "Typescript", "Styled components"],
+    genosha: true,
+  },
+  {
+    name: "Open Syllabus Analytics",
+    demo: "https://analytics.opensyllabus.org/",
+    description:
+      "Pro tools for understanding the curriculum in higher education",
+    img: "/openSyllabusAnalytics.png",
+    techs: ["Next", "Typescript", "Styled components"],
+    genosha: true,
+  },
+  {
+    name: "Open Syllabus Course Matcher",
+    demo: "https://coursematcher.opensyllabus.org/",
+    description: "Scores possible matches between classes in course catalogs",
+    img: "/openSyllabusCourse.png",
+    techs: ["Next", "Typescript", "Tailwind"],
+    genosha: true,
+  },
+  {
+    name: "Open Syllabus Blog",
+    demo: "https://blog.opensyllabus.org/",
+    description: "News and data stories from Open Syllabus",
+    img: "/openSyllabusBlog.png",
+    techs: ["Docusaurus", "Javascript", "SASS"],
+    genosha: true,
+  },
+  {
+    name: "Juicios de lesa humanidad",
+    demo: "http://www.juiciosdelesahumanidad.ar/",
+    description:
+      "Website of interactive data of argentinian trials against humanity",
+    img: "/juicioslesa.png",
+    techs: ["Next", "Styled components", "Typescript"],
+    genosha: true,
+  },
+  {
+    name: "Genosha",
+    demo: "https://front.dev.genosha.com.ar/",
+    description: "Genosha website",
+    img: "/genosha.png",
+    techs: ["Next", "Styled components", "Three.js"],
+    genosha: true,
+  },
   {
     name: "ABTM",
     github: "https://github.com/LuciaSepulveda/ABTM",
