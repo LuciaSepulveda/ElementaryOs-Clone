@@ -99,14 +99,15 @@ const Header = () => {
       if (!maxScroll) {
         setScroll(false)
       }
+      console.log(currPos.y)
       if (currPos.y > -741) setSection(undefined)
       else {
         if (currPos.y <= -741 && currPos.y > -1241) setSection("about")
         else {
           if (currPos.y <= -1241 && currPos.y > -2041) setSection("skills")
           else {
-            if (currPos.y <= -2041 && currPos.y > -2546) setSection("projects")
-            else if (currPos.y <= -2546) setSection("contact")
+            if (currPos.y <= -2041 && currPos.y > -3829) setSection("projects")
+            else if (currPos.y <= -3829) setSection("contact")
           }
         }
       }
