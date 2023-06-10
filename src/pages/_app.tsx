@@ -24,7 +24,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <title>Lucia Sepulveda</title>
         <meta name="description" content="Lucia Sepulveda portfolio" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/logo.jpg" />
+        <link rel="icon" href="/logo.png" />
       </Head>
       <ChakraProvider>
         <UserProvider>
