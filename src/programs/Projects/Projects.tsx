@@ -75,7 +75,7 @@ const Projects = ({ h, w, maximized }: Props) => {
               </Text>
               <Link
                 href={elem.demo}
-                h={window.innerHeight > 725 ? "100%" : "70px"}
+                h={window.innerHeight > 725 ? "160px" : "70px"}
                 target="_blank"
                 position="relative"
                 w="100%"
@@ -107,7 +107,14 @@ const Projects = ({ h, w, maximized }: Props) => {
                   />
                 </Link>
               )}
-              <Box bg={bgItem} h="50px" m="auto" p={1}>
+              <Box
+                w="full"
+                bg={bgItem}
+                h="50px"
+                m="auto"
+                p={1}
+                overflow="hidden"
+              >
                 <Text textAlign="center">{elem.description}</Text>
               </Box>
               <Center w="100%" overflow="hidden">
@@ -142,13 +149,7 @@ const Projects = ({ h, w, maximized }: Props) => {
                 {elem.name}
               </Text>
               <Link
-                h={[
-                  null,
-                  null,
-                  null,
-                  "100%",
-                  window.innerHeight > 725 ? "100%" : "130px",
-                ]}
+                h={[null, null, null, "100%", "130px"]}
                 href={elem.demo}
                 target="_blank"
                 position="relative"
@@ -258,7 +259,13 @@ const Projects = ({ h, w, maximized }: Props) => {
                   {elem.description}
                 </Text>
               </Box>
-              <Center h="28px" w="100%" overflow="hidden" display="flex" flexWrap="wrap">
+              <Center
+                h="28px"
+                w="100%"
+                overflow="hidden"
+                display="flex"
+                flexWrap="wrap"
+              >
                 {elem.techs.map((tech) => (
                   <Badge key={tech} colorScheme="gray" ml={2}>
                     {tech}
