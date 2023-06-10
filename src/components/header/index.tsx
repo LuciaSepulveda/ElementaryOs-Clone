@@ -148,7 +148,7 @@ const Header = () => {
             overflow="hidden"
           >
             <Link href="/formal">
-              <Image fill={true} src="/logo.jpg" alt="logo" />
+              <Image fill={true} src="/logo.png" alt="logo" />
             </Link>
           </Center>
           <chakra.ul gap={4} display={["none", "none", "flex", "flex", "flex"]}>
