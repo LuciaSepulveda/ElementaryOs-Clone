@@ -35,6 +35,21 @@ export default function App({ Component, pageProps }: AppProps) {
           property="og:image"
           content="https://luciasepulveda.vercel.app/imageLink.png"
         />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta property="twitter:domain" content="opensyllabus.org" />
+        <meta
+          property="twitter:url"
+          content="https://analytics-beta.opensyllabus.org/"
+        />
+        <meta name="twitter:title" content="Lucia Sepulveda" />
+        <meta
+          name="twitter:description"
+          content="Lucias Sepulveda portfolio"
+        />
+        <meta
+          name="twitter:image"
+          content="https://luciasepulveda.vercel.app/imageLink.png"
+        />
         <script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-JSBBTRBDY1"
