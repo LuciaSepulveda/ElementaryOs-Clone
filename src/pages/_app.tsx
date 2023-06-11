@@ -17,6 +17,8 @@ const config: ThemeConfig = {
 
 const theme = extendTheme({ config })
 
+const NEXT_PUBLIC_GOOGLE_ANALYTICS = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS
+
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
@@ -25,6 +27,30 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="description" content="Lucia Sepulveda portfolio" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/logo.png" />
+        <meta property="og:url" content="https://luciasepulveda.vercel.app/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Lucia Sepulveda" />
+        <meta property="og:description" content="Lucia Sepulveda portfolio" />
+        <meta
+          property="og:image"
+          content="https://luciasepulveda.vercel.app/imageLink.png"
+        />
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-JSBBTRBDY1"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
+                page_path: window.location.pathname,
+                });
+            `,
+          }}
+        />
       </Head>
       <ChakraProvider>
         <UserProvider>
