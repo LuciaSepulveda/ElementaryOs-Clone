@@ -52,7 +52,7 @@ export default function App({ Component, pageProps }: AppProps) {
         />
         <script
           async
-          src="https://www.googletagmanager.com/gtag/js?id=G-JSBBTRBDY1"
+          src={`https://www.googletagmanager.com/gtag/js?id=${NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
         />
         <script
           dangerouslySetInnerHTML={{
