@@ -52,7 +52,8 @@ export const projects: Project[] = [
   {
     name: "Open Syllabus Course Matcher",
     demo: "https://coursematcher.opensyllabus.org/",
-    description: "Busca posibles coincidencias entre clases de catálogos de cursos",
+    description:
+      "Busca posibles coincidencias entre clases de catálogos de cursos",
     img: "/openSyllabusCourse.png",
     techs: ["Next", "Typescript", "Tailwind"],
     genosha: true,
@@ -62,7 +63,7 @@ export const projects: Project[] = [
     demo: "https://blog.opensyllabus.org/",
     description: "Noticias de Open Syllabus",
     img: "/openSyllabusBlog.png",
-    techs: ["Docusaurus", "Javascript", "SASS"],
+    techs: ["Docusaurus", "Javascript", "Sass"],
     genosha: true,
   },
   {
@@ -163,7 +164,7 @@ export const projectsEn: Project[] = [
     demo: "https://blog.opensyllabus.org/",
     description: "News and data stories from Open Syllabus",
     img: "/openSyllabusBlog.png",
-    techs: ["Docusaurus", "Javascript", "SASS"],
+    techs: ["Docusaurus", "Javascript", "Sass"],
     genosha: true,
   },
   {
@@ -262,6 +263,7 @@ export const techs: string[] = [
   "Styled Components",
   "Tailwind",
   "Framer motion",
+  "Sass",
   "Three.js",
   "Java",
   "POO",
@@ -279,6 +281,7 @@ export const techsEn: string[] = [
   "Styled Components",
   "Tailwind",
   "Framer motion",
+  "Sass",
   "Three.js",
   "Java",
   "OOP",
@@ -304,4 +307,38 @@ export const wallpapers: string[] = [
   "/fondo4.jpg",
   "/fondo5.jpg",
   "/fondo6.jpg",
+]
+
+export const work = [
+  {
+    position: "Desarrolladora Frontend Junior",
+    company: "Genosha",
+    date: "Abril 2022 - Actualidad",
+    description:
+      "Participación en proyectos desarrollados con React, Next, Typescript, Styled Components, Tailwind, Sass y Three.js",
+  },
+  {
+    position: "Desarrolladora Frontend Trainee",
+    company: "Genosha",
+    date: "Enero 2022 - Marzo 2022",
+    description:
+      "Participación en un proyecto desarrollado con Next, Typescript y Styled Components.",
+  },
+]
+
+export const workEn = [
+  {
+    position: "Junior Frontend",
+    company: "Genosha",
+    date: "April 2022 - Present",
+    description:
+      "Development of websites using Next, React, Typescript, HTML, CSS, Javascript, Styled Components, Tailwind, Sass and Three.js.",
+  },
+  {
+    position: "Trainee Frontend",
+    company: "Genosha",
+    date: "January 2022 - March 2022",
+    description:
+      "Development of website using Next, Typescript and Styled Components.",
+  },
 ]

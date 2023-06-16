@@ -14,6 +14,7 @@ import Contact from "@/components/contact"
 import { motion } from "framer-motion"
 import { useState } from "react"
 import Footer from "@/components/footer"
+import Work from "@/components/work"
 
 const MotionBox = motion(Box)
 
@@ -35,7 +36,7 @@ const Formal = () => {
           w="full"
           zIndex={0}
         >
-          <Box h="800px" position="relative" w="full">
+          <Box h="100vh" position="relative" w="full">
             {/* <MotionBox
               position="absolute"
               bg={useColorModeValue("rgb(97, 211, 196)", "rgb(174, 139, 246)")}
@@ -95,7 +96,7 @@ const Formal = () => {
           </Box>
           <MotionBox
             w="full"
-            h="1300px"
+            h="100vh"
             position="relative"
             onViewportEnter={() => setView(true)}
           >
@@ -188,7 +189,7 @@ const Formal = () => {
               display={["none", "block"]}
             /> */}
           </MotionBox>
-          <Box width="full" h="2000px"></Box>
+          <Box width="full" h="500vh"></Box>
           <MotionBox width="full" h="600px">
             <MotionBox
               position="absolute"
@@ -227,6 +228,7 @@ const Formal = () => {
         <Container maxWidth="container.xl" px={0} h="full">
           <Hero />
           <About />
+          <Work />
           <Skills />
           <Projects />
           <Contact />

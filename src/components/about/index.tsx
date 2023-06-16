@@ -15,7 +15,7 @@ const MotionBox = motion(Box)
 const About = () => {
   const language = useLanguage()
   return (
-    <Center h="500px" position="relative" id="about">
+    <Center h="100vh" position="relative" id="about">
       <VStack zIndex={2}>
         <Box position="relative">
           <Heading as="h2" zIndex={2} mb={6}>
