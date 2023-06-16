@@ -89,7 +89,7 @@ const Projects = () => {
           fontWeight="semibold"
           color="black"
         >
-          Participación en Genosha
+          {language === "ES" ? "Participación en Genosha" : "Working on Genosha"}
         </Text>
         <MotionBox
           zIndex={0}
@@ -240,7 +240,7 @@ const Projects = () => {
           fontWeight="semibold"
           color="black"
         >
-          Personales
+          {language === "ES" ? "Personales" : "Personal"}
         </Text>
         <MotionBox
           zIndex={0}

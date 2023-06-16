@@ -75,7 +75,7 @@ const Header = () => {
   const [showMenu, setShowMenu] = useState<boolean>(false)
   const [scroll, setScroll] = useState<boolean>(false)
   const [section, setSection] = useState<
-    "about" | "projects" | "skills" | "contact" | undefined
+    "about" | "projects" | "skills" | "contact" | "work" | undefined
   >()
 
   const getRandomInt = () => {
@@ -102,12 +102,14 @@ const Header = () => {
       console.log(currPos.y)
       if (currPos.y > -741) setSection(undefined)
       else {
-        if (currPos.y <= -741 && currPos.y > -1241) setSection("about")
+        if (currPos.y <= -741 && currPos.y > -1450) setSection("about")
         else {
-          if (currPos.y <= -1241 && currPos.y > -2041) setSection("skills")
+          if (currPos.y <= -1450 && currPos.y > -2229) setSection("work")
           else {
-            if (currPos.y <= -2041 && currPos.y > -3829) setSection("projects")
-            else if (currPos.y <= -3829) setSection("contact")
+            if (currPos.y <= -2229 && currPos.y > -3029) setSection("skills")
+            else if (currPos.y <= -3029 && currPos.y > -4817)
+              setSection("projects")
+            else if (currPos.y <= -4817) setSection("contact")
           }
         }
       }
@@ -162,6 +164,18 @@ const Header = () => {
                   color={section === "about" ? colors[getRandomInt()] : ""}
                 >
                   {language === "ES" ? "Sobre mi" : "About me"}
+                </Text>
+              </Link>
+            </chakra.li>
+            <chakra.li listStyleType="none">
+              <Link href="#work">
+                <Text
+                  fontWeight="bold"
+                  transition="all 0.3s ease"
+                  _hover={{ color: colors[getRandomInt()] }}
+                  color={section === "work" ? colors[getRandomInt()] : ""}
+                >
+                  {language === "ES" ? "Trabajo" : "Work"}
                 </Text>
               </Link>
             </chakra.li>
@@ -303,6 +317,13 @@ const Header = () => {
                 <Link href="#about" onClick={() => setShowMenu(false)}>
                   <Text fontWeight="bold">
                     {language === "ES" ? "Sobre mi" : "About me"}
+                  </Text>
+                </Link>
+              </chakra.li>
+              <chakra.li listStyleType="none">
+                <Link href="#work" onClick={() => setShowMenu(false)}>
+                  <Text fontWeight="bold">
+                    {language === "ES" ? "Trabajo" : "Work"}
                   </Text>
                 </Link>
               </chakra.li>
