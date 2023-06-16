@@ -160,6 +160,8 @@ const Window = ({ program, children }: Props) => {
                     ? "Proyectos"
                     : program.name === "Contact"
                     ? "Contacto"
+                    : program.name === "Work"
+                    ? "Experiencia laboral"
                     : "Pantalla"}
                 </Text>
               </Center>

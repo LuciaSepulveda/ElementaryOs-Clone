@@ -29,6 +29,13 @@ export const programs: Program[] = [
     maximized: false,
     minimized: false,
   },
+  {
+    name: "Work",
+    img: "/work.png",
+    open: false,
+    maximized: false,
+    minimized: false,
+  }
 ]
 
 export const projects: Project[] = [

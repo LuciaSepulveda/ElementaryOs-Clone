@@ -18,6 +18,7 @@ import Contact from "../programs/Contact"
 import Wallpapers from "../programs/Wallpapers/Wallpapers"
 import { Status } from "../types/types"
 import { useEffect, useRef, useState } from "react"
+import Work from "@/programs/Work"
 
 const Elementary = () => {
   const constraintRef = useRef(null)
@@ -94,6 +95,7 @@ const Elementary = () => {
                           {elem.name === "Contact" && (
                             <Contact h="94%" w="100%" />
                           )}
+                          {elem.name === "Work" && <Work h="94%" w="100%" />}
                           {elem.name === "Wallpapers" && (
                             <Wallpapers h="96%" w="100%" />
                           )}
@@ -131,7 +133,9 @@ const Elementary = () => {
                             position: elem.maximized ? "relative" : "absolute",
                             height: elem.maximized
                               ? "100%"
-                              : elem.name === "User" || elem.name === "Contact"
+                              : elem.name === "User" ||
+                                elem.name === "Contact" ||
+                                elem.name === "Work"
                               ? "500px"
                               : elem.name === "Projects"
                               ? "fit-content"
@@ -179,6 +183,12 @@ const Elementary = () => {
                             )}
                             {elem.name === "Contact" && (
                               <Contact
+                                h={elem.maximized ? "96%" : "500px"}
+                                w={elem.maximized ? "100%" : "800px"}
+                              />
+                            )}
+                             {elem.name === "Work" && (
+                              <Work
                                 h={elem.maximized ? "96%" : "500px"}
                                 w={elem.maximized ? "100%" : "800px"}
                               />
