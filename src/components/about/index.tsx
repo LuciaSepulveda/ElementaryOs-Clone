@@ -38,10 +38,10 @@ const About = () => {
             borderRadius="sm"
           />
         </Box>
-        <Flex flexWrap="wrap" maxW="3xl" justify="center">
+        <Flex flexWrap="wrap" maxW="3xl">
           <Text
             fontSize={["xl", "2xl"]}
-            textAlign="center"
+            textAlign="justify"
             m={0}
             display="inline"
           >
@@ -50,13 +50,13 @@ const About = () => {
           <Box position="relative" m={0} display="inline" mx={2}>
             <Text
               fontSize={["xl", "2xl"]}
-              textAlign="center"
+              textAlign="justify"
               position="relative"
               zIndex={1}
             >
               {language !== "ES"
-                ? "more than a year of experience"
-                : "más de un año de experiencia"}
+                ? "one year and a half of experience"
+                : "un año y medio de experiencia"}
             </Text>
             <MotionBox
               zIndex={0}
@@ -77,19 +77,38 @@ const About = () => {
               opacity={0.9}
             />
           </Box>
-          <Text fontSize={["xl", "2xl"]} textAlign="center" display="inline">
+          <Text fontSize={["xl", "2xl"]} textAlign="justify" display="inline">
             {language === "ES"
               ? `como desarrolladora Frontend.`
               : `on frontend development.`}
           </Text>
-          <Text fontSize={["xl", "2xl"]} textAlign="center" display="inline">
+          <Text fontSize={["xl", "2xl"]} textAlign="justify" display="inline">
             {language === "ES"
               ? `Trabajé para una agencia creativa donde tuve la oportunidad de formar
-          parte de distintos proyectos. Algunos fueron sitios web tradicionales
-          y otros fueron más creativos y desafiantes con elementos 3D.`
-              : `I worked for a creative agency where I had the opportunity to be part of different projects. 
-              Some of them was traditional websites
-          and others was more creatives and challenging with 3D elements.`}
+          parte de distintos proyectos.`
+              : `I worked for a creative agency where I had the opportunity to be part of different projects.`}
+          </Text>
+          <Text
+            mt={2}
+            fontSize={["xl", "2xl"]}
+            textAlign="justify"
+            display="inline"
+          >
+            {language === "ES"
+              ? `Puedo trasladar las maquetas de diseño a código limpio, eficiente y mantenible, además de resolver problemas
+              y buscar soluciones creativas a los desafíos técnicos que se presenten.`
+              : `I consider myself proficient in translating design mockups into clean, efficient and maintainable code and adept at problem-solving and finding creative solutions to technical challenges.`}
+          </Text>
+          <Text
+            mt={2}
+            fontSize={["xl", "2xl"]}
+            textAlign="justify"
+            display="inline"
+          >
+            {language === "ES"
+              ? " Tengo muchas ganas de aportar mis conocimientos y crecer profesionalmente en un nuevo puesto desafiante."
+              : `I have eager to contribute my skills and grow professionally in a
+            new challenging role.`}
           </Text>
         </Flex>
       </VStack>

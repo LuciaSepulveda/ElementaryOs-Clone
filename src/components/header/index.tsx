@@ -99,7 +99,6 @@ const Header = () => {
       if (!maxScroll) {
         setScroll(false)
       }
-      console.log(currPos.y)
       if (currPos.y > -741) setSection(undefined)
       else {
         if (currPos.y <= -741 && currPos.y > -1450) setSection("about")
