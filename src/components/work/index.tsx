@@ -2,9 +2,6 @@ import { useLanguage } from "@/context/hooks"
 import { work, workEn } from "@/data/data"
 import {
   Box,
-  chakra,
-  Center,
-  HStack,
   Heading,
   Text,
   VStack,
@@ -14,8 +11,6 @@ import {
 } from "@chakra-ui/react"
 import { Fragment, useEffect, useState } from "react"
 import { motion } from "framer-motion"
-import Image from "next/image"
-import Link from "next/link"
 
 const MotionBox = motion(Box)
 
@@ -41,35 +36,6 @@ const Work = () => {
     useColorModeValue("rgb(243, 174, 66)", "rgb(223, 200, 122)"),
     useColorModeValue("rgb(97, 211, 196)", "rgb(174, 139, 246)"),
   ]
-
-  const getColor = (tech: string) => {
-    switch (tech) {
-      case "React":
-        if (colorMode !== "light") return "rgb(84, 167, 248)"
-        else return "rgb(127, 193, 250)"
-      case "Docusaurus":
-        if (colorMode !== "light") return "rgb(84, 167, 248)"
-        else return "rgb(127, 193, 250)"
-      case "Next":
-        if (colorMode !== "light") return "rgb(120, 233, 143)"
-        else return "rgb(101, 212, 97)"
-      case "Typescript":
-        if (colorMode !== "light") return "rgb(234, 98, 118)"
-        else return "rgb(238, 121, 70)"
-      case "Chakra-UI":
-        if (colorMode !== "light") return "rgb(223, 200, 122)"
-        else return "rgb(243, 174, 66)"
-      case "Styled components":
-        if (colorMode !== "light") return "rgb(223, 200, 122)"
-        else return "rgb(243, 174, 66)"
-      case "SASS":
-        if (colorMode !== "light") return "rgb(223, 200, 122)"
-        else return "rgb(243, 174, 66)"
-      default:
-        if (colorMode !== "light") return "rgb(174, 139, 246)"
-        else return "rgb(97, 211, 196)"
-    }
-  }
 
   return (
     <VStack minH="100vh" py={10} id="work" zIndex={1} position="relative">
@@ -139,9 +105,25 @@ const Work = () => {
                 <Text mb={2} fontSize="lg" display={["block", "none"]}>
                   {work.date}
                 </Text>
-                <Text fontSize="lg">{work.description}</Text>
+                <VStack alignItems="center">
+                  {work.description.map((item) => (
+                    <Flex key={item} gap={2}>
+                      <Box
+                        borderRadius="full"
+                        maxWidth="10px"
+                        w="full"
+                        h="10px"
+                        bg={colors[getRandomInt()]}
+                        marginTop={2}
+                      />
+                      <Text fontSize="lg">{item}</Text>
+                    </Flex>
+                  ))}
+                </VStack>
               </Flex>
-              <Text fontSize="lg" display={["none", "block"]}>{work.date}</Text>
+              <Text fontSize="lg" display={["none", "block"]}>
+                {work.date}
+              </Text>
             </Flex>
             {index !== works.length - 1 && (
               <MotionBox

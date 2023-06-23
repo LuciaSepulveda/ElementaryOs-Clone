@@ -3,6 +3,8 @@ import {
   VStack,
   Text,
   useColorModeValue,
+  Flex,
+  Box,
 } from "@chakra-ui/react"
 
 import { work, workEn } from "../../data/data"
@@ -62,6 +64,8 @@ const Work = ({ w, h }: Props) => {
         transitionTimingFunction="ease-in-out"
         w={["100%", "70%"]}
         justify="center"
+        overflowY="scroll"
+        pt={14}
       >
         {works.map((elem) => (
           <HStack
@@ -71,14 +75,33 @@ const Work = ({ w, h }: Props) => {
             p={4}
             spacing={[2, 5]}
             w="95%"
+            alignItems="flex-start"
           >
             <VStack alignItems="start" w="100%">
-              <Text fontWeight="bold" color={position}>{elem.position}</Text>
+              <Text fontWeight="bold" color={position}>
+                {elem.position}
+              </Text>
               <Text display={["block", "none"]}>{elem.date}</Text>
               <Text fontWeight="semibold">{elem.company}</Text>
-              <Text>{elem.description}</Text>
+              <VStack>
+                {elem.description.map((item) => (
+                  <Flex key={item} gap={2}>
+                    <Box
+                      borderRadius="full"
+                      maxWidth="10px"
+                      w="full"
+                      h="10px"
+                      bg={position}
+                      marginTop={2}
+                    />
+                    <Text>{item}</Text>
+                  </Flex>
+                ))}
+              </VStack>
             </VStack>
-            <Text textAlign="right" display={["none", "block"]}>{elem.date}</Text>
+            <Text textAlign="right" display={["none", "block"]}>
+              {elem.date}
+            </Text>
           </HStack>
         ))}
       </VStack>

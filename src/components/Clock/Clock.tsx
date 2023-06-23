@@ -88,7 +88,7 @@ const Clock = ({ isPortrait }: Props) => {
       justifyContent={"center"}
       flexGrow={"1"}
       w={isPortrait ? "100%" : ""}
-      ml={isPortrait ? "100px" : ""}
+      ml={isPortrait ? "80px" : ""}
     >
       <Text alignSelf="center" fontSize="small" fontWeight="bold" mr="10px">
         {day} {date.getDate().toString()} {language === "ES" ? "de" : "of"}{" "}

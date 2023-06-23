@@ -48,7 +48,7 @@ const Wallpapers = ({ h, w }: Props) => {
       p={[4, 10]}
       w="100%"
     >
-      <VStack h={h} w={[w, w, "90%", "90%", "90%", w]}>
+      <VStack h={h} w={[w, w, "90%", "90%", "90%", w]} overflow="hidden">
         <Text fontSize="xl" fontWeight="bold">
           {language === "EN"
             ? "Select wallpaper"
@@ -114,7 +114,7 @@ const Wallpapers = ({ h, w }: Props) => {
             w="full"
             overflow="scroll"
             p={2}
-            pt={20}
+            pt="480px"
             flexDirection="column"
             justifyContent="center"
             alignItems="center"
