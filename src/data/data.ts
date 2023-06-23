@@ -321,15 +321,20 @@ export const work = [
     position: "Desarrolladora Frontend Junior",
     company: "Genosha",
     date: "Abril 2022 - Actualidad",
-    description:
+    description: [
       "Participación en proyectos desarrollados con React, Next, Typescript, Styled Components, Tailwind, Sass y Three.js",
+      "Trabajo en equipo junto a diseñadores, project manager y desarrolladores para entregar aplicaciones web funcionales y visualmente atractivas.",
+      "Traducción de conceptos de diseño y wireframes en interfaces de usuario responsive e interactivas.",
+      "Participación activa en metodologías de desarrollo ágil, asistiendo a reuniones generalmente semanales.",
+    ],
   },
   {
     position: "Desarrolladora Frontend Trainee",
     company: "Genosha",
     date: "Enero 2022 - Marzo 2022",
-    description:
+    description: [
       "Participación en un proyecto desarrollado con Next, Typescript y Styled Components.",
+    ],
   },
 ]
 
@@ -338,14 +343,19 @@ export const workEn = [
     position: "Junior Frontend",
     company: "Genosha",
     date: "April 2022 - Present",
-    description:
+    description: [
       "Development of websites using Next, React, Typescript, HTML, CSS, Javascript, Styled Components, Tailwind, Sass and Three.js.",
+      "Collaborated closely with designers, project managers and developers to deliver highly functional and visually appealing web.",
+      "Translated design concepts and wireframes into responsive and interactive user interfaces.",
+      "Actively participated in agile development methodologies, attending weekly meetings generally.",
+    ],
   },
   {
     position: "Trainee Frontend",
     company: "Genosha",
     date: "January 2022 - March 2022",
-    description:
+    description: [
       "Development of website using Next, Typescript and Styled Components.",
+    ],
   },
 ]
