@@ -60,222 +60,454 @@ const Projects = ({ h, w, maximized }: Props) => {
       transitionTimingFunction="ease-in-out"
       w="100%"
     >
-      {!isPortrait && !maximized && (
-        <SimpleGrid overflowY="scroll" columns={3} gap={4} h="100%" p={2} w={w}>
-          {arrayProjects.map((elem) => (
-            <VStack
-              key={elem.name}
-              border={border}
-              borderBottomRadius="xl"
-              color={colorText}
-              spacing="10px"
-            >
-              <Text fontWeight="bold" h="16px">
-                {elem.name}
-              </Text>
-              <Link
-                href={elem.demo}
-                h={window.innerHeight > 725 ? "160px" : "70px"}
-                target="_blank"
-                position="relative"
-                w="100%"
-              >
-                <Skeleton position="relative" h="100%" isLoaded={loaded}>
-                  <Image
-                    objectFit="contain"
-                    fill={true}
-                    src={elem.img}
-                    ref={imageRef}
-                    alt={elem.name}
-                    onLoad={() => setLoaded(true)}
-                  />
-                </Skeleton>
-              </Link>
-              {elem.github && (
-                <Link
-                  bg="white"
-                  borderRadius="md"
-                  h="20px"
-                  href={elem.github}
-                  target="_blank"
+      <VStack w="100%" h="100%" overflow="scroll">
+        {!isPortrait && (
+          <Text>
+            {language === "ES"
+              ? "Participación en Genosha"
+              : "Working on Genosha"}
+          </Text>
+        )}
+        {!isPortrait && !maximized && (
+          <SimpleGrid overflow="visible" columns={3} gap={4} p={2} w={w}>
+            {arrayProjects
+              .filter((project) => project.genosha)
+              .map((elem) => (
+                <VStack
+                  key={elem.name}
+                  border={border}
+                  borderBottomRadius="xl"
+                  color={colorText}
+                  spacing="10px"
                 >
-                  <Image
-                    width={50}
-                    height={20}
-                    src="/GitHub_Logo.png"
-                    alt="Github"
-                  />
-                </Link>
-              )}
-              <Box
-                w="full"
-                bg={bgItem}
-                h="50px"
-                m="auto"
-                p={1}
-                overflow="hidden"
-              >
-                <Text textAlign="center">{elem.description}</Text>
-              </Box>
-              <Center w="100%" overflow="hidden">
-                {elem.techs.map((tech) => (
-                  <Badge key={tech} colorScheme="gray" ml={2}>
-                    {tech}
-                  </Badge>
-                ))}
-              </Center>
-            </VStack>
-          ))}
-        </SimpleGrid>
-      )}
-      {!isPortrait && maximized && (
-        <SimpleGrid
-          columns={3}
-          gap={2}
-          h={[null, null, null, "80%", "100%"]}
-          p={2}
-          w={[null, null, null, "90%", "90%", `${w}`]}
-          overflowY="scroll"
-        >
-          {projects.map((elem) => (
-            <VStack
-              key={elem.name}
-              border={border}
-              borderBottomRadius="xl"
-              color={colorText}
-              h={[null, null, null, "280px", "100%"]}
-            >
-              <Text fontWeight="bold" h="16px">
-                {elem.name}
-              </Text>
-              <Link
-                h={[null, null, null, "100%", "130px"]}
-                href={elem.demo}
-                target="_blank"
-                position="relative"
-                w="100%"
-              >
-                <Skeleton
-                  position="relative"
-                  h="100%"
-                  isLoaded={loaded}
-                  w="100%"
+                  <Text fontWeight="bold" h="16px">
+                    {elem.name}
+                  </Text>
+                  <Link
+                    href={elem.demo}
+                    h={window.innerHeight > 725 ? "160px" : "70px"}
+                    target="_blank"
+                    position="relative"
+                    w="100%"
+                  >
+                    <Skeleton position="relative" h="100%" isLoaded={loaded}>
+                      <Image
+                        objectFit="contain"
+                        fill={true}
+                        src={elem.img}
+                        ref={imageRef}
+                        alt={elem.name}
+                        onLoad={() => setLoaded(true)}
+                      />
+                    </Skeleton>
+                  </Link>
+                  {elem.github && (
+                    <Link
+                      bg="white"
+                      borderRadius="md"
+                      h="20px"
+                      href={elem.github}
+                      target="_blank"
+                    >
+                      <Image
+                        width={50}
+                        height={20}
+                        src="/GitHub_Logo.png"
+                        alt="Github"
+                      />
+                    </Link>
+                  )}
+                  <Box
+                    w="full"
+                    bg={bgItem}
+                    h="50px"
+                    m="auto"
+                    p={1}
+                    overflow="hidden"
+                  >
+                    <Text textAlign="center">{elem.description}</Text>
+                  </Box>
+                  <Center w="100%" overflow="hidden">
+                    {elem.techs.map((tech) => (
+                      <Badge key={tech} colorScheme="gray" ml={2}>
+                        {tech}
+                      </Badge>
+                    ))}
+                  </Center>
+                </VStack>
+              ))}
+          </SimpleGrid>
+        )}
+        {!isPortrait && maximized && (
+          <SimpleGrid
+            columns={3}
+            gap={2}
+            overflow="visible"
+            h={[null, null, null, "80%", "100%"]}
+            p={2}
+            w={[null, null, null, "90%", "90%", `${w}`]}
+          >
+            {projects
+              .filter((project) => project.genosha)
+              .map((elem) => (
+                <VStack
+                  key={elem.name}
+                  border={border}
+                  borderBottomRadius="xl"
+                  color={colorText}
+                  h={[null, null, null, "280px", "100%"]}
                 >
-                  <Image
-                    ref={imageRef}
-                    alt={elem.name}
-                    src={elem.img}
-                    fill={true}
-                    objectFit="contain"
-                    onLoad={() => {
-                      setLoaded(true)
-                    }}
-                  />
-                </Skeleton>
-              </Link>
-              <Link
-                bg="white"
-                borderRadius="md"
-                h="22px"
-                href={elem.github}
-                target="_blank"
-              >
-                <Image
-                  height={20}
-                  width={50}
-                  src="/GitHub_Logo.png"
-                  alt="Github"
-                />
-              </Link>
-              <Box bg={bgItem} h="52px" m="auto" p={1} w="100%">
-                <Text textAlign="center">{elem.description}</Text>
-              </Box>
-              <Center h="28px" w="100%" overflow="hidden">
-                {elem.techs.map((tech) => (
-                  <Badge key={tech} colorScheme="gray" ml={2}>
-                    {tech}
-                  </Badge>
-                ))}
-              </Center>
-            </VStack>
-          ))}
-        </SimpleGrid>
-      )}
-      {isPortrait && (
-        <SimpleGrid
-          columns={[1, 2]}
-          gap={2}
-          h={h}
-          overflow="scroll"
-          p={1}
-          w={w}
-        >
-          {projects.map((elem) => (
-            <VStack
-              key={elem.name}
-              bg={bgItem}
-              border={border}
-              borderBottomRadius="xl"
-              color={colorText}
-              h="100%"
-              transitionTimingFunction="ease-in-out"
-            >
-              <Text fontWeight="bold">{elem.name}</Text>
-              <Link
-                w="100%"
-                position="relative"
-                h={["100%", "80%"]}
-                href={elem.demo}
-                target="_blank"
-              >
-                <Skeleton
-                  position="relative"
-                  h="50px"
-                  isLoaded={loaded}
-                  w="100%"
+                  <Text fontWeight="bold" h="16px">
+                    {elem.name}
+                  </Text>
+                  <Link
+                    h={[null, null, null, "100%", "130px"]}
+                    href={elem.demo}
+                    target="_blank"
+                    position="relative"
+                    w="100%"
+                  >
+                    <Skeleton
+                      position="relative"
+                      h="100%"
+                      isLoaded={loaded}
+                      w="100%"
+                    >
+                      <Image
+                        ref={imageRef}
+                        alt={elem.name}
+                        src={elem.img}
+                        fill={true}
+                        objectFit="contain"
+                        onLoad={() => {
+                          setLoaded(true)
+                        }}
+                      />
+                    </Skeleton>
+                  </Link>
+                  <Link
+                    bg="white"
+                    borderRadius="md"
+                    h="22px"
+                    href={elem.github}
+                    target="_blank"
+                  >
+                    <Image
+                      height={20}
+                      width={50}
+                      src="/GitHub_Logo.png"
+                      alt="Github"
+                    />
+                  </Link>
+                  <Box bg={bgItem} h="52px" m="auto" p={1} w="100%">
+                    <Text textAlign="center">{elem.description}</Text>
+                  </Box>
+                  <Center h="28px" w="100%" overflow="hidden">
+                    {elem.techs.map((tech) => (
+                      <Badge key={tech} colorScheme="gray" ml={2}>
+                        {tech}
+                      </Badge>
+                    ))}
+                  </Center>
+                </VStack>
+              ))}
+          </SimpleGrid>
+        )}
+        {!isPortrait && (
+          <Text>{language === "ES" ? "Personales" : "Personal"}</Text>
+        )}
+        {!isPortrait && !maximized && (
+          <SimpleGrid columns={3} gap={4} p={2} w={w} overflow="visible">
+            {arrayProjects
+              .filter((project) => !project.genosha)
+              .map((elem) => (
+                <VStack
+                  key={elem.name}
+                  border={border}
+                  borderBottomRadius="xl"
+                  color={colorText}
+                  spacing="10px"
                 >
-                  <Image
-                    ref={imageRef}
-                    alt={elem.name}
-                    height={50}
-                    width={200}
-                    src={elem.img}
-                    onLoad={() => {
-                      setLoaded(true)
-                    }}
-                    style={{ margin: "auto" }}
-                  />
-                </Skeleton>
-              </Link>
-              <Box
-                bg={bgItem}
-                borderBottomRadius="md"
-                h="80px"
-                overflow="hidden"
-                p={1}
-                w="100%"
-              >
-                <Text textAlign="center" fontSize={["small", "initial"]}>
-                  {elem.description}
-                </Text>
-              </Box>
-              <Center
-                h="28px"
-                w="100%"
-                overflow="hidden"
-                display="flex"
-                flexWrap="wrap"
-              >
-                {elem.techs.map((tech) => (
-                  <Badge key={tech} colorScheme="gray" ml={2}>
-                    {tech}
-                  </Badge>
+                  <Text fontWeight="bold" h="16px">
+                    {elem.name}
+                  </Text>
+                  <Link
+                    href={elem.demo}
+                    h={window.innerHeight > 725 ? "160px" : "70px"}
+                    target="_blank"
+                    position="relative"
+                    w="100%"
+                  >
+                    <Skeleton position="relative" h="100%" isLoaded={loaded}>
+                      <Image
+                        objectFit="contain"
+                        fill={true}
+                        src={elem.img}
+                        ref={imageRef}
+                        alt={elem.name}
+                        onLoad={() => setLoaded(true)}
+                      />
+                    </Skeleton>
+                  </Link>
+                  {elem.github && (
+                    <Link
+                      bg="white"
+                      borderRadius="md"
+                      h="20px"
+                      href={elem.github}
+                      target="_blank"
+                    >
+                      <Image
+                        width={50}
+                        height={20}
+                        src="/GitHub_Logo.png"
+                        alt="Github"
+                      />
+                    </Link>
+                  )}
+                  <Box
+                    w="full"
+                    bg={bgItem}
+                    h="50px"
+                    m="auto"
+                    p={1}
+                    overflow="hidden"
+                  >
+                    <Text textAlign="center">{elem.description}</Text>
+                  </Box>
+                  <Center w="100%" overflow="hidden">
+                    {elem.techs.map((tech) => (
+                      <Badge key={tech} colorScheme="gray" ml={2}>
+                        {tech}
+                      </Badge>
+                    ))}
+                  </Center>
+                </VStack>
+              ))}
+          </SimpleGrid>
+        )}
+        {!isPortrait && maximized && (
+          <SimpleGrid
+            columns={3}
+            gap={2}
+            h={[null, null, null, "80%", "100%"]}
+            p={2}
+            w={[null, null, null, "90%", "90%", `${w}`]}
+            overflow="visible"
+          >
+            {projects
+              .filter((project) => !project.genosha)
+              .map((elem) => (
+                <VStack
+                  key={elem.name}
+                  border={border}
+                  borderBottomRadius="xl"
+                  color={colorText}
+                  h={[null, null, null, "280px", "100%"]}
+                >
+                  <Text fontWeight="bold" h="16px">
+                    {elem.name}
+                  </Text>
+                  <Link
+                    h={[null, null, null, "100%", "130px"]}
+                    href={elem.demo}
+                    target="_blank"
+                    position="relative"
+                    w="100%"
+                  >
+                    <Skeleton
+                      position="relative"
+                      h="100%"
+                      isLoaded={loaded}
+                      w="100%"
+                    >
+                      <Image
+                        ref={imageRef}
+                        alt={elem.name}
+                        src={elem.img}
+                        fill={true}
+                        objectFit="contain"
+                        onLoad={() => {
+                          setLoaded(true)
+                        }}
+                      />
+                    </Skeleton>
+                  </Link>
+                  <Link
+                    bg="white"
+                    borderRadius="md"
+                    h="22px"
+                    href={elem.github}
+                    target="_blank"
+                  >
+                    <Image
+                      height={20}
+                      width={50}
+                      src="/GitHub_Logo.png"
+                      alt="Github"
+                    />
+                  </Link>
+                  <Box bg={bgItem} h="52px" m="auto" p={1} w="100%">
+                    <Text textAlign="center">{elem.description}</Text>
+                  </Box>
+                  <Center h="28px" w="100%" overflow="hidden">
+                    {elem.techs.map((tech) => (
+                      <Badge key={tech} colorScheme="gray" ml={2}>
+                        {tech}
+                      </Badge>
+                    ))}
+                  </Center>
+                </VStack>
+              ))}
+          </SimpleGrid>
+        )}
+        {isPortrait && (
+          <VStack>
+            <Text>
+              {language === "ES"
+                ? "Participación en Genosha"
+                : "Working on Genosha"}
+            </Text>
+            <SimpleGrid columns={[1, 2]} gap={2} h={h} p={1} w={w}>
+              {projects
+                .filter((project) => project.genosha)
+                .map((elem) => (
+                  <VStack
+                    key={elem.name}
+                    bg={bgItem}
+                    border={border}
+                    borderBottomRadius="xl"
+                    color={colorText}
+                    h="100%"
+                    transitionTimingFunction="ease-in-out"
+                  >
+                    <Text fontWeight="bold">{elem.name}</Text>
+                    <Link
+                      w="100%"
+                      position="relative"
+                      h={["100%", "80%"]}
+                      href={elem.demo}
+                      target="_blank"
+                    >
+                      <Skeleton
+                        position="relative"
+                        h="50px"
+                        isLoaded={loaded}
+                        w="100%"
+                      >
+                        <Image
+                          ref={imageRef}
+                          alt={elem.name}
+                          height={50}
+                          width={200}
+                          src={elem.img}
+                          onLoad={() => {
+                            setLoaded(true)
+                          }}
+                          style={{ margin: "auto" }}
+                        />
+                      </Skeleton>
+                    </Link>
+                    <Box
+                      bg={bgItem}
+                      borderBottomRadius="md"
+                      h="80px"
+                      overflow="hidden"
+                      p={1}
+                      w="100%"
+                    >
+                      <Text textAlign="center" fontSize={["small", "initial"]}>
+                        {elem.description}
+                      </Text>
+                    </Box>
+                    <Center
+                      h="28px"
+                      w="100%"
+                      overflow="hidden"
+                      display="flex"
+                      flexWrap="wrap"
+                    >
+                      {elem.techs.map((tech) => (
+                        <Badge key={tech} colorScheme="gray" ml={2}>
+                          {tech}
+                        </Badge>
+                      ))}
+                    </Center>
+                  </VStack>
                 ))}
-              </Center>
-            </VStack>
-          ))}
-        </SimpleGrid>
-      )}
+            </SimpleGrid>
+            <Text mt={10}>{language === "ES" ? "Personales" : "Personal"}</Text>
+            <SimpleGrid mt={10} columns={[1, 2]} gap={2} h={h} p={1} w={w}>
+              {projects
+                .filter((project) => !project.genosha)
+                .map((elem) => (
+                  <VStack
+                    key={elem.name}
+                    bg={bgItem}
+                    border={border}
+                    borderBottomRadius="xl"
+                    color={colorText}
+                    h="100%"
+                    transitionTimingFunction="ease-in-out"
+                  >
+                    <Text fontWeight="bold">{elem.name}</Text>
+                    <Link
+                      w="100%"
+                      position="relative"
+                      h={["100%", "80%"]}
+                      href={elem.demo}
+                      target="_blank"
+                    >
+                      <Skeleton
+                        position="relative"
+                        h="50px"
+                        isLoaded={loaded}
+                        w="100%"
+                      >
+                        <Image
+                          ref={imageRef}
+                          alt={elem.name}
+                          height={50}
+                          width={200}
+                          src={elem.img}
+                          onLoad={() => {
+                            setLoaded(true)
+                          }}
+                          style={{ margin: "auto" }}
+                        />
+                      </Skeleton>
+                    </Link>
+                    <Box
+                      bg={bgItem}
+                      borderBottomRadius="md"
+                      h="80px"
+                      overflow="hidden"
+                      p={1}
+                      w="100%"
+                    >
+                      <Text textAlign="center" fontSize={["small", "initial"]}>
+                        {elem.description}
+                      </Text>
+                    </Box>
+                    <Center
+                      h="28px"
+                      w="100%"
+                      overflow="hidden"
+                      display="flex"
+                      flexWrap="wrap"
+                    >
+                      {elem.techs.map((tech) => (
+                        <Badge key={tech} colorScheme="gray" ml={2}>
+                          {tech}
+                        </Badge>
+                      ))}
+                    </Center>
+                  </VStack>
+                ))}
+            </SimpleGrid>
+          </VStack>
+        )}
+      </VStack>
     </Center>
   )
 }
