@@ -62,10 +62,10 @@ const Work = ({ w, h }: Props) => {
         maxWidth="600px"
         spacing={0}
         transitionTimingFunction="ease-in-out"
-        w={["100%", "70%"]}
+        w={["100%", "80%"]}
         justify="center"
         overflowY="scroll"
-        pt={60}
+        pt={["400px", 80]}
       >
         {works.map((elem) => (
           <HStack
@@ -74,7 +74,7 @@ const Work = ({ w, h }: Props) => {
             color={colorText}
             p={4}
             spacing={[2, 5]}
-            w="95%"
+            w="100%"
             alignItems="flex-start"
           >
             <VStack alignItems="start" w="100%">
