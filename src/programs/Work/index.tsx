@@ -65,7 +65,7 @@ const Work = ({ w, h }: Props) => {
         w={["100%", "70%"]}
         justify="center"
         overflowY="scroll"
-        pt={14}
+        pt={60}
       >
         {works.map((elem) => (
           <HStack
