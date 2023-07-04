@@ -35,7 +35,7 @@ export const programs: Program[] = [
     open: false,
     maximized: false,
     minimized: false,
-  }
+  },
 ]
 
 export const projects: Project[] = [
@@ -322,9 +322,11 @@ export const work = [
     company: "Genosha",
     date: "Abril 2022 - Actualidad",
     description: [
-      "Participación en proyectos desarrollados con React, Next, Typescript, Styled Components, Tailwind, Sass y Three.js",
+      "Participación en proyectos desarrollados con React, Next.js, Typescript, Styled Components, Tailwind, Sass y Three.js",
       "Trabajo en equipo junto a diseñadores, project manager y desarrolladores para entregar aplicaciones web funcionales y visualmente atractivas.",
       "Traducción de conceptos de diseño y wireframes en interfaces de usuario responsive e interactivas.",
+      "Integración de API para permitir la recuperación y manipulación dinámica de datos.",
+      "Implementación de accesibilidad en distintos sitios: Colaboración con diseñadores para implementar patrones de diseño accesibles. Optimización de la estructura, la semántica y la navegación de la página para mejorar la compatibilidad con lectores de pantalla y navegación mediante teclado.",
       "Participación activa en metodologías de desarrollo ágil, asistiendo a reuniones generalmente semanales.",
     ],
   },
@@ -333,7 +335,7 @@ export const work = [
     company: "Genosha",
     date: "Enero 2022 - Marzo 2022",
     description: [
-      "Participación en un proyecto desarrollado con Next, Typescript y Styled Components.",
+      "Participación en un proyecto desarrollado con Next.js, React, Typescript, HTML, CSS y Styled Components.",
     ],
   },
 ]
@@ -344,9 +346,11 @@ export const workEn = [
     company: "Genosha",
     date: "April 2022 - Present",
     description: [
-      "Development of websites using Next, React, Typescript, HTML, CSS, Javascript, Styled Components, Tailwind, Sass and Three.js.",
+      "Development of websites using Next.js, React, Typescript, HTML, CSS, Javascript, Styled Components, Tailwind, Sass and Three.js.",
       "Collaborated closely with designers, project managers and developers to deliver highly functional and visually appealing web.",
       "Translated design concepts and wireframes into responsive and interactive user interfaces.",
+      "Integrated APIs enabling dynamic data retrieval and manipulation.",
+      "Implementation of accessibility in different sites: Collaboration with designers to implement accessible design patterns. Optimization of page structure, semantics and navigation to improve compatibility with screen readers and keyboard navigation.",
       "Actively participated in agile development methodologies, attending weekly meetings generally.",
     ],
   },
@@ -355,7 +359,7 @@ export const workEn = [
     company: "Genosha",
     date: "January 2022 - March 2022",
     description: [
-      "Development of website using Next, Typescript and Styled Components.",
+      "Development of website using Next.js, React, Typescript, HTML, CSS, and Styled Components.",
     ],
   },
 ]

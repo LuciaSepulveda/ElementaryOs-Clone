@@ -70,7 +70,7 @@ const Work = () => {
               p={4}
               gap={4}
             >
-              <Flex flexDirection="column" maxW="500px">
+              <Flex flexDirection="column" maxW="560px">
                 <Box position="relative" mb={2} w="fit-content">
                   <Text
                     position="relative"
@@ -107,7 +107,7 @@ const Work = () => {
                 </Text>
                 <VStack alignItems="center">
                   {work.description.map((item) => (
-                    <Flex key={item} gap={2}>
+                    <Flex key={item} gap={2} w="full">
                       <Box
                         borderRadius="full"
                         maxWidth="10px"
