@@ -42,10 +42,7 @@ export default function App({ Component, pageProps }: AppProps) {
           content="https://analytics-beta.opensyllabus.org/"
         />
         <meta name="twitter:title" content="Lucia Sepulveda" />
-        <meta
-          name="twitter:description"
-          content="Lucias Sepulveda portfolio"
-        />
+        <meta name="twitter:description" content="Lucias Sepulveda portfolio" />
         <meta
           name="twitter:image"
           content="https://luciasepulveda.vercel.app/imageLink.png"
@@ -64,6 +61,19 @@ export default function App({ Component, pageProps }: AppProps) {
                 page_path: window.location.pathname,
                 });
             `,
+          }}
+        />
+        <script
+          id="hotjar-script"
+          dangerouslySetInnerHTML={{
+            __html: `(function(h,o,t,j,a,r){
+          h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+          h._hjSettings={hjid:3570899,hjsv:6};
+          a=o.getElementsByTagName('head')[0];
+          r=o.createElement('script');r.async=1;
+          r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+          a.appendChild(r);
+      })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');`,
           }}
         />
       </Head>
