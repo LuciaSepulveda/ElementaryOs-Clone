@@ -89,7 +89,9 @@ const Projects = () => {
           fontWeight="semibold"
           color="black"
         >
-          {language === "ES" ? "Participación en Genosha" : "Working on Genosha"}
+          {language === "ES"
+            ? "Participación en Genosha"
+            : "Working on Genosha"}
         </Text>
         <MotionBox
           zIndex={0}
@@ -141,7 +143,11 @@ const Projects = () => {
                 </Text>
               </Center>
               <Box w="full" position="relative" h={40}>
-                <Link href={project.demo} aria-label={project.name}>
+                <Link
+                  href={project.demo}
+                  aria-label={project.name}
+                  target="_blank"
+                >
                   <Image
                     objectFit="cover"
                     fill={true}
@@ -202,7 +208,7 @@ const Projects = () => {
                   bg="black"
                   borderRadius="xl"
                 >
-                  <Link href={project.demo} aria-label="Demo">
+                  <Link href={project.demo} aria-label="Demo" target="_blank">
                     <Text
                       color="white"
                       fontWeight="extrabold"
@@ -291,7 +297,11 @@ const Projects = () => {
                 </Text>
               </Center>
               <Box w="full" position="relative" h={40}>
-                <Link href={project.demo} aria-label={project.name}>
+                <Link
+                  href={project.demo}
+                  aria-label={project.name}
+                  target="_blank"
+                >
                   <Image
                     objectFit="cover"
                     fill={true}
@@ -353,7 +363,11 @@ const Projects = () => {
                     bg="white"
                     borderRadius="xl"
                   >
-                    <Link href={project.github} aria-label="Github">
+                    <Link
+                      href={project.github}
+                      aria-label="Github"
+                      target="_blank"
+                    >
                       <Text
                         color="black"
                         fontWeight="extrabold"
@@ -371,7 +385,7 @@ const Projects = () => {
                   bg="black"
                   borderRadius="xl"
                 >
-                  <Link href={project.demo} aria-label="Demo">
+                  <Link href={project.demo} aria-label="Demo" target="_blank">
                     <Text
                       color="white"
                       fontWeight="extrabold"
