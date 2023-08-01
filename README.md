@@ -1,4 +1,4 @@
-# Elementary OS
+# Portfolio
 
 Portfolio que en el inicio presenta dos opciones para elegir, un portfolio mas tradicional o formal y uno que simula el diseño del sistema operativo Elementary OS. 
 
