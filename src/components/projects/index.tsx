@@ -182,7 +182,7 @@ const Projects = () => {
                       transition={{
                         duration: 0.6,
                         ease: "easeInOut",
-                        delay: 0.3 + 0.3 * index,
+                        delay: 0.3 * index,
                       }}
                       whileInView={{ width: "104%" }}
                       initial={{ width: 0 }}
@@ -336,7 +336,7 @@ const Projects = () => {
                       transition={{
                         duration: 0.6,
                         ease: "easeInOut",
-                        delay: 0.3 + 0.3 * index,
+                        delay: 0.3 * index,
                       }}
                       whileInView={{ width: "104%" }}
                       initial={{ width: 0 }}
