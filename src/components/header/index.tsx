@@ -99,17 +99,14 @@ const Header = () => {
       if (!maxScroll) {
         setScroll(false)
       }
-      if (currPos.y > -741) setSection(undefined)
+      if (currPos.y > -1100) setSection(undefined)
       else {
-        if (currPos.y <= -741 && currPos.y > -1450) setSection("about")
+        if (currPos.y <= -1100 && currPos.y > -2300) setSection("work")
         else {
-          if (currPos.y <= -1450 && currPos.y > -2229) setSection("work")
-          else {
-            if (currPos.y <= -2229 && currPos.y > -3029) setSection("skills")
-            else if (currPos.y <= -3029 && currPos.y > -4817)
-              setSection("projects")
-            else if (currPos.y <= -4817) setSection("contact")
-          }
+          if (currPos.y <= -2300 && currPos.y > -3200) setSection("skills")
+          else if (currPos.y <= -3200 && currPos.y > -4817)
+            setSection("projects")
+          else if (currPos.y <= -4817) setSection("contact")
         }
       }
     },
@@ -153,19 +150,6 @@ const Header = () => {
             </Link>
           </Center>
           <chakra.ul gap={4} display={["none", "none", "flex", "flex", "flex"]}>
-            <chakra.li listStyleType="none">
-              <Link href="#about">
-                <Text
-                  transition="all 0.3s ease"
-                  _hover={{ color: colors[getRandomInt()] }}
-                  fontWeight="bold"
-                  position="relative"
-                  color={section === "about" ? colors[getRandomInt()] : ""}
-                >
-                  {language === "ES" ? "Sobre mi" : "About me"}
-                </Text>
-              </Link>
-            </chakra.li>
             <chakra.li listStyleType="none">
               <Link href="#work">
                 <Text
@@ -312,13 +296,6 @@ const Header = () => {
               justifyContent="center"
               alignItems="center"
             >
-              <chakra.li listStyleType="none">
-                <Link href="#about" onClick={() => setShowMenu(false)}>
-                  <Text fontWeight="bold">
-                    {language === "ES" ? "Sobre mi" : "About me"}
-                  </Text>
-                </Link>
-              </chakra.li>
               <chakra.li listStyleType="none">
                 <Link href="#work" onClick={() => setShowMenu(false)}>
                   <Text fontWeight="bold">

@@ -227,7 +227,6 @@ const Formal = () => {
         </VStack>
         <Container maxWidth="container.xl" px={0} h="full">
           <Hero />
-          <About />
           <Work />
           <Skills />
           <Projects />
