@@ -329,13 +329,13 @@ export const techsEn: string[] = [
 
 export const info: string[] = [
   "Desarrolladora frontend",
-  "Cuento con más de un año de experiencia",
+  "Con más de dos años de experiencia",
   "Vivo en Bahía Blanca, Buenos Aires",
 ]
 
 export const infoEn: string[] = [
   "Frontend developer",
-  "With more than a year of experience",
+  "With more than a two years of experience",
   "I'm from Bahia Blanca, Buenos Aires",
 ]
 
@@ -350,9 +350,17 @@ export const wallpapers: string[] = [
 
 export const work = [
   {
+    position: "Software Developer",
+    company: "Mercado Libre",
+    date: "Febrero 2024 - Actualidad",
+    description: [
+      "Formo parte de un equipo frontend que trabaja principalmente con React y Typescript.",
+    ],
+  },
+  {
     position: "Desarrolladora Frontend Junior",
     company: "Genosha",
-    date: "Abril 2022 - Actualidad",
+    date: "Abril 2022 - Enero 2024",
     description: [
       "Participación en proyectos desarrollados con React, Next.js, Typescript, Styled Components, Tailwind, Sass y Three.js",
       "Trabajo en equipo junto a diseñadores, project manager y desarrolladores para entregar aplicaciones web funcionales y visualmente atractivas.",
@@ -374,9 +382,17 @@ export const work = [
 
 export const workEn = [
   {
+    position: "Software Developer",
+    company: "Mercado Libre",
+    date: "February 2024 - Preset",
+    description: [
+      "I'm part of a frontend team working primarily with React and Typescript.",
+    ],
+  },
+  {
     position: "Junior Frontend",
     company: "Genosha",
-    date: "April 2022 - Present",
+    date: "April 2022 - January 2024",
     description: [
       "Development of websites using Next.js, React, Typescript, HTML, CSS, Javascript, Styled Components, Tailwind, Sass and Three.js.",
       "Collaborated closely with designers, project managers and developers to deliver highly functional and visually appealing web.",

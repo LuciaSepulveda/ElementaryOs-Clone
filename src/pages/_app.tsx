@@ -9,6 +9,7 @@ import {
 import { Provider as UserProvider } from "../context/context"
 import { Analytics } from "@vercel/analytics/react"
 import Head from "next/head"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const config: ThemeConfig = {
   initialColorMode: "dark",
@@ -36,10 +37,10 @@ export default function App({ Component, pageProps }: AppProps) {
           content="https://luciasepulveda.vercel.app/imageLink.png"
         />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta property="twitter:domain" content="opensyllabus.org" />
+        <meta property="twitter:domain" content="luciasepulveda.vercel.app" />
         <meta
           property="twitter:url"
-          content="https://analytics-beta.opensyllabus.org/"
+          content="https://luciasepulveda.vercel.app/"
         />
         <meta name="twitter:title" content="Lucia Sepulveda" />
         <meta name="twitter:description" content="Lucias Sepulveda portfolio" />
@@ -81,6 +82,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <UserProvider>
           <ColorModeScript initialColorMode={theme.config.initialColorMode} />
           <Component {...pageProps} />
+          <SpeedInsights />
           <Analytics />
         </UserProvider>
       </ChakraProvider>
