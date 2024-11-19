@@ -159,8 +159,8 @@ const Hero = () => {
             }}
           >
             {language !== "ES"
-              ? "I have more than a year and a half of experience as a frontend developer, I have eager to contribute my skills and grow professionally in a new challenging role"
-              : "Cuento con más de un año y medio de experiencia como desarrolladora frontend, tengo muchas ganas de aportar mis conocimientos y crecer profesionalmente en un nuevo puesto desafiante."}
+              ? "I have more than a two years and a half of experience as a frontend developer, I have eager to contribute my skills and grow professionally in a new challenging role"
+              : "Cuento con más de dos años y medio de experiencia como desarrolladora frontend, tengo muchas ganas de aportar mis conocimientos y crecer profesionalmente en un nuevo puesto desafiante."}
           </MotionText>
         </Stack>
       </VStack>
