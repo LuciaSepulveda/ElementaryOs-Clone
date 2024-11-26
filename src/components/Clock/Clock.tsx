@@ -95,10 +95,7 @@ const Clock = ({ isPortrait }: Props) => {
         {month}
       </Text>
       <Text alignSelf="center" fontSize="small" fontWeight="bold">
-        {date.getHours() === 0 &&
-          `${date.toLocaleTimeString().substring(4, -1)}`}
-        {date.getHours() !== 0 &&
-          `${date.toLocaleTimeString().substring(5, -1)}`}
+        {date.toLocaleTimeString()}
       </Text>
     </Flex>
   )

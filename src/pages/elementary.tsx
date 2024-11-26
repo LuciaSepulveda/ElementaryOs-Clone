@@ -136,7 +136,7 @@ const Elementary = () => {
                               : elem.name === "User" ||
                                 elem.name === "Contact" ||
                                 elem.name === "Work"
-                              ? "500px"
+                              ? "560px"
                               : elem.name === "Projects"
                               ? "fit-content"
                               : "600px",
