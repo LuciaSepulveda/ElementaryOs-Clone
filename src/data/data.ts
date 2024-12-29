@@ -296,6 +296,7 @@ export const techs: string[] = [
   "Next",
   "Typescript",
   "Javascript",
+  "React Testing Library",
   "HTML",
   "CSS",
   "Chakra UI",
@@ -314,6 +315,7 @@ export const techsEn: string[] = [
   "Next",
   "Typescript",
   "Javascript",
+  "React Testing Library",
   "HTML",
   "CSS",
   "Chakra UI",
@@ -329,13 +331,13 @@ export const techsEn: string[] = [
 
 export const info: string[] = [
   "Desarrolladora frontend",
-  "Con más de dos años de experiencia",
+  "Con tres años de experiencia",
   "Vivo en Bahía Blanca, Buenos Aires",
 ]
 
 export const infoEn: string[] = [
   "Frontend developer",
-  "With more than a two years of experience",
+  "With three years of experience",
   "I'm from Bahia Blanca, Buenos Aires",
 ]
 

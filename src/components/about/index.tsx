@@ -55,8 +55,8 @@ const About = () => {
               zIndex={1}
             >
               {language !== "ES"
-                ? "two years and a half of experience"
-                : "dos años y medio de experiencia"}
+                ? "three years of experience"
+                : "tres años de experiencia"}
             </Text>
             <MotionBox
               zIndex={0}
