@@ -357,6 +357,8 @@ export const work = [
     date: "Febrero 2024 - Actualidad",
     description: [
       "Formo parte de un equipo frontend que trabaja principalmente con React y Typescript.",
+      "Implementación de pruebas unitarias para garantizar la estabilidad y calidad del código.",
+      "Participación activa en revisiones de código",
     ],
   },
   {
@@ -386,9 +388,11 @@ export const workEn = [
   {
     position: "Software Developer",
     company: "Mercado Libre",
-    date: "February 2024 - Preset",
+    date: "February 2024 - Present",
     description: [
       "I'm part of a frontend team working primarily with React and Typescript.",
+      "Implementation of unit tests to ensure code stability and quality.",
+      "Active participation in code reviews",
     ],
   },
   {

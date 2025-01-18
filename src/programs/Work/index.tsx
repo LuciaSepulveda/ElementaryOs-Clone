@@ -65,7 +65,7 @@ const Work = ({ w, h }: Props) => {
         w={["100%", "80%"]}
         justify="center"
         overflowY="scroll"
-        pt={["400px", "380px"]}
+        pt={["400px", "450px"]}
       >
         {works.map((elem) => (
           <HStack
@@ -85,7 +85,7 @@ const Work = ({ w, h }: Props) => {
               <Text fontWeight="semibold">{elem.company}</Text>
               <VStack>
                 {elem.description.map((item) => (
-                  <Flex key={item} gap={2}>
+                  <Flex key={item} gap={2} w="100%">
                     <Box
                       borderRadius="full"
                       maxWidth="10px"
